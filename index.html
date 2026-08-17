@@ -1599,7 +1599,26 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 .p7bar button[aria-selected="true"]{background:var(--ink); border-color:var(--ink); color:#fff}
 .p7bar button i{font-style:normal; opacity:.55; margin-left:5px; font-family:var(--mono); font-size:11px}
 
-.p7grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(266px,1fr)); gap:14px}
+.ptbl{min-width:940px; table-layout:fixed}
+.ptbl col.ctype{width:150px} .ptbl col.cn{width:92px} .ptbl col.cn2{width:132px} .ptbl col.csee{width:270px}
+.ptbl th{padding:11px 15px 9px}
+.ptbl td{height:auto; padding:8px 15px 9px; vertical-align:top}
+.ptbl tbody tr{cursor:pointer}
+.ptbl tbody tr:hover{background:var(--brand-wash)}
+.ptbl tbody tr.off{opacity:.66}
+.ptbl .l1{display:block; line-height:18px; font-size:13px; font-weight:600; color:var(--ink);
+  letter-spacing:-.012em}
+.ptbl .l2{display:block; line-height:14px; margin-top:2px; font-size:11px; color:var(--ink-4)}
+.pcell{display:flex; align-items:flex-start; gap:10px}
+.pcell .p7av{width:28px; height:28px; border-radius:8px; font-size:10px; flex:none}
+.pid{min-width:0}
+.pid .l1{display:flex; align-items:center; gap:7px}
+.pid .p7dot{width:6px; height:6px; margin-top:0; flex:none}
+.ptbl .pnum{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:15px; letter-spacing:-.03em}
+.ptbl .pnum.g{color:var(--green)}
+.ptbl .pstate{font-weight:400; font-size:12.5px; color:var(--ink-4); font-style:italic}
+.ptbl .psee{line-height:1.38; white-space:normal; color:var(--ink-3)}
+.ptbl .p7type{margin-bottom:0}
 .p7card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
   padding:16px 17px 15px; text-align:left; width:100%; transition:.16s; display:flex; flex-direction:column}
 .p7card:hover{border-color:var(--line-2); box-shadow:var(--shadow); transform:translateY(-1px)}
@@ -5958,21 +5977,26 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       }).join("");
     }
     function cards(){
-      grid.innerHTML=P.filter(function(p){ return filt==="all"||p.t===filt; }).map(function(p){
+      var rows=P.filter(function(p){ return filt==="all"||p.t===filt; }).map(function(p){
         var t=T[p.t], off=p.st!=="on";
-        var body = p.st==="pend"
-          ? '<span class="p7state">Waiting on them to open it.</span>'
-          : p.st==="dead"
-          ? '<span class="p7state">Dormant \u2014 nothing shared in four months.</span>'
-          : '<span class="p7nums"><span><i>'+p.m1+'</i>'+p.m1l+'</span>'+
-            '<span class="'+(p.m2l==="ready now"?"g":"")+'"><i>'+p.m2+'</i>'+p.m2l+'</span></span>';
-        return '<button class="p7card'+(off?" off":"")+'" data-pk="'+esc(p.n)+'">'+
-          '<span class="p7top"><span class="p7av '+t.c+'">'+init(p.n)+'</span>'+
-            '<span class="p7id"><b>'+esc(p.n)+'</b><small>'+p.s+'</small></span>'+
-            '<span class="p7dot '+(p.st==="on"?"":p.st==="pend"?"pend":"dead")+'"></span></span>'+
-          '<span class="p7type '+t.c+'">'+t.l+'</span>'+ body +
-          '<span class="p7see">'+t.see+'</span></button>';
+        var nums = p.st==="on"
+          ? '<td class="ta-r"><span class="l1 pnum">'+p.m1+'</span><span class="l2">'+p.m1l+'</span></td>'+
+            '<td class="ta-r"><span class="l1 pnum'+(p.m2l==="ready now"?" g":"")+'">'+p.m2+'</span>'+
+            '<span class="l2">'+p.m2l+'</span></td>'
+          : '<td class="ta-r" colspan="2"><span class="l1 pstate">'+
+            (p.st==="pend"?"Invitation not opened":"Dormant since April")+'</span></td>';
+        return '<tr class="'+(off?"off":"")+'" tabindex="0" data-pk="'+esc(p.n)+'">'+
+          '<td><span class="pcell"><span class="p7av '+t.c+'">'+init(p.n)+'</span>'+
+            '<span class="pid"><span class="l1">'+esc(p.n)+
+              '<i class="p7dot '+(p.st==="on"?"":p.st==="pend"?"pend":"dead")+'"></i></span>'+
+              '<span class="l2">'+p.s+'</span></span></span></td>'+
+          '<td><span class="p7type '+t.c+'">'+t.l+'</span></td>'+ nums +
+          '<td><span class="l2 psee">'+t.see+'</span></td></tr>';
       }).join("");
+      grid.innerHTML='<div class="tablewrap"><table class="ptbl">'+
+        '<colgroup><col><col class="ctype"><col class="cn"><col class="cn2"><col class="csee"></colgroup>'+
+        '<thead><tr><th>Partner</th><th>Type</th><th class="ta-r">Shared</th>'+
+        '<th class="ta-r">Status</th><th>What they see</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
     }
     chips(); cards();
     document.getElementById("p7chips").addEventListener("click",function(e){
