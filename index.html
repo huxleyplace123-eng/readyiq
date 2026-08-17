@@ -1962,6 +1962,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 .gml.up li::before{background:var(--green)}
 .gml.wo li::before{background:var(--amber)}
 .gmpilot{font-size:13.5px; line-height:1.6; color:var(--ink-2)}
+.gmex{border-left:3px solid var(--line-2); padding-left:15px; white-space:pre-line}
 .gmol{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px}
 .gmol li{font-size:13.5px; color:var(--ink-3); line-height:1.55}
 .gmol li b{color:var(--ink); font-weight:600}
@@ -2037,17 +2038,15 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     again.</div>
 
     <div class="gmstack">
-      <div class="gmsh">What we can actually do, and when</div>
+      <div class="gmsh">What we can do now, and what would take work</div>
       <ol class="gmol gmph">
-        <li><b class="ph1">Sell it Monday</b> &mdash; needs nothing built. The consumer products already ship,
-        and links, forms and CSV uploads are not engineering. Four of the five ideas sit here, which is the
-        answer to &ldquo;we would need a great justification for development work.&rdquo;</li>
-        <li><b class="ph2">Earned by the first pilot</b> &mdash; a small build, paid for by results rather
-        than by argument. CRM write-back and lender-facing alerts belong here. Nobody asks for this budget
-        until the manual version has produced something.</li>
-        <li><b class="ph3">Only once it pays for itself</b> &mdash; real engineering. Encompass, Blend, a
-        lead provider&rsquo;s API, a full workspace. Worth listing so nobody thinks we missed it, and worth
-        refusing until there is a funded loan to point at.</li>
+        <li><b class="ph1">We can do this now</b> &mdash; the consumer products already exist and already do
+        this. Links, a short form and a CSV upload are not development. Four of the five ideas sit here.</li>
+        <li><b class="ph2">Needs a small build</b> &mdash; writing statuses back into a CRM, and getting
+        alerts to a loan officer rather than only to the consumer. Worth doing once a pilot has produced
+        something to point at.</li>
+        <li><b class="ph3">Needs real development</b> &mdash; sitting inside Encompass or Blend, a lead
+        provider API, a full workspace. Listed so it is on the record, but it should wait.</li>
       </ol>
     </div>
 
@@ -5213,10 +5212,11 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
      edited in one place rather than hunted through markup. */
   (function(){
     var box=document.getElementById("iblist"); if(!box) return;
-    var PH={1:"Sell it Monday",2:"Earned by the first pilot",3:"Only once it pays for itself"};
+    var PH={1:"We can do this now",2:"Needs a small build",3:"Needs real development"};
     var IDEAS=[
 
-    {p:1, t:"Screen before anybody pays for a pull",
+    {p:1, t:"Check credit before paying for a report",
+     ex:"Say a lender runs Facebook ads and gets 400 leads a month. Today an officer calls them, most sound fine on the phone, and the company buys a mortgage report on maybe 120 of them. A good chunk come back too low to do anything with, and that report money is just gone.\n\nWith this, the officer texts the lead a link before ordering anything. The person opens their own credit, sees their three scores, and shares the result. Now the officer knows who is over the line and only buys reports on those. Everybody else goes into the credit side instead of getting told to call back next year.",
      lead:"A 500 is not a bad lead. It is a bad pull.",
      one:"The consumer checks their own credit and shares the result. Nobody buys a mortgage report to find out somebody was never going to clear, and nobody gets told ninety days when the honest answer is two years.",
      who:"Lenders, loan officers and real estate agents",
@@ -5242,7 +5242,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
           "The score a consumer sees may not be the model underwriting runs, so call it a snapshot and never a qualification."],
      pilot:"Five loan officers and five agents, personal links, 30 days. Count checks completed, reports not bought, and how the three bands actually split &mdash; because that split decides whether the rest of this is a 90-day story or a two-year one."},
 
-    {p:1, t:"Give the ones who miss a real way forward",
+    {p:1, t:"Credit building and disputes for the ones who do not qualify",
+     ex:"A buyer checks and comes back at 585. She needs 620 for the loan she wants. She has rented the same house for three years and never missed.\n\nShe signs up for the three-bureau plan. Rent reporting goes on first, so 24 months of rent she already paid gets added to her file and shows up in about a month. The gameplan tells her which card to pay down and roughly how much. She spots a collection she does not recognise and runs the dispute herself. Every month she gets a fresh report and score.\n\nWhen she crosses 620 she taps request a review, and it goes back to the loan officer who sent her the link in the first place.",
      lead:"Not ready does not have to mean no.",
      one:"This is the product &mdash; CreditBuilderIQ, aimed at a mortgage. Everything below ships today, so the work is packaging and positioning rather than engineering. It is also the only part of the whole plan that can change what a credit report says.",
      who:"Consumers who are not mortgage-ready today",
@@ -5277,7 +5278,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
           "The dispute offering needs its own legal review under federal and state credit-repair law before it is sold into a mortgage channel."],
      pilot:"50 to 100 consumers, 90 days. Recruit near-misses deliberately so funded loans can land inside the window, and measure actions completed and reviews requested &mdash; not score movement on its own."},
 
-    {p:1, t:"Work the comeback list",
+    {p:1, t:"Going back to old leads",
+     ex:"A branch has about 3,000 people sitting in their CRM from the last two years who never got to an application. Most were told to work on their credit and call back, and nobody has spoken to them since.\n\nThey export that list to a CSV and upload it. Each person gets a text from the officer who originally worked them, along the lines of a lot may have changed, here is where you stand. Some open it. The ones who look ready go straight back to that officer. The ones who do not get the plan, and the officer gets a note whenever one of them clears, whether that is next month or next year.",
      lead:"Your next closing may already be sitting in your old leads.",
      one:"Everyone the company already paid to acquire and then lost. They are still in the database, most of them still want a house, and right now nobody is speaking to them.",
      who:"Any lender or brokerage with a database",
@@ -5301,7 +5303,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
           "Many take six months or more to come back, so a 90-day readout will undercount the result. Agree the measurement window up front."],
      pilot:"250 to 500 leads from one branch, 90 days, with a pre-agreed nine-month funded-loan readout so nobody re-litigates the metric later."},
 
-    {p:2, t:"Protect the loan you already have",
+    {p:2, t:"Watching the loan through closing, and after",
+     ex:"A borrower is under contract, closing in about six weeks. Three weeks in he finances a sofa at the furniture store.\n\nRight now the lender finds that out at the final credit refresh, usually a few days before closing, and then the file has to be re-run with everybody scrambling. With monitoring on, the inquiry shows up the day it happens and the officer can call him before it turns into a problem.\n\nSame thing after closing. If that client applies somewhere else two years later, the officer who did the original loan hears about it instead of finding out afterwards.",
      lead:"Somebody just pulled your client&rsquo;s credit. It was not you.",
      one:"The day somebody applies it stops being a credit-building coach and starts being a guard. After closing it keeps running, so the next loan comes back here instead of to whoever bought the trigger lead.",
      who:"Lenders with live applications and a book of past clients",
@@ -5326,7 +5329,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
           "It cannot judge underwriting consequences. It says something changed; the lender decides what that means."],
      pilot:"100 active purchase loans for 60 days. Measure useful alerts, lender interventions and how many files stayed on schedule &mdash; then 200 past clients for 90 days on the retention half."},
 
-    {p:1, t:"Put it in their hands without changing their software",
+    {p:1, t:"Getting it to people without replacing their software",
+     ex:"An agent puts a QR code on her yard signs and a link in her email signature. Somebody at an open house scans it on their phone, checks their credit, and finds out they can afford around $280,000 rather than the $200,000 they had assumed.\n\nOn the lender side, the company adds a check your credit button to their website and uploads their old leads. Each officer gets their own link for texting. Nobody logs into a new system, because the statuses land in the CRM they already use.",
      lead:"Keep your CRM. Keep your brand. Just add the layer.",
      one:"One program, six ways in, three things to buy. This is deliberately not a mortgage CRM, because the moment it becomes one the sale turns into a software replacement and stalls.",
      who:"Everybody &mdash; and the list of who to approach first is below",
@@ -5339,8 +5343,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
           "<b>Now.</b> A thirty-second Add Consumer form: name, mobile, email, source, assigned officer, assigned agent, timeline, permission to contact. <b>The professional never enters a Social Security number</b> &mdash; anything sensitive the consumer enters themselves.",
           "<b>Now.</b> A CSV upload of old leads.",
           "<b>Now.</b> A &ldquo;check your credit readiness&rdquo; button on the company website.",
-          "<b>Earned by the first pilot.</b> The CRM sends anyone marked not ready automatically, and statuses flow back into it.",
-          "<b>Only once it pays for itself.</b> Living inside Encompass, Blend, Floify or a lead provider&rsquo;s API. Real engineering, and it should wait for proof.",
+          "<b>Needs a small build.</b> The CRM sends anyone marked not ready automatically, and the statuses flow back into it so nobody has to check two places.",
+          "<b>Needs real development.</b> Sitting inside Encompass, Blend, Floify or a lead provider&rsquo;s API. That is a proper project and it should wait until something has worked.",
           "<b>Who to approach, in order:</b> builders with in-house lending, then independent mortgage banks and consumer-direct teams, then brokerages, credit unions, state housing agencies, realtor associations, and title or insurance partners last."],
      lend:"Nothing to migrate and nothing to learn. The pipeline stays where it is; the fields just get better. Or take the workspace if there is nothing worth keeping.",
      agent:"A link and a QR code. That is the whole implementation, and there is nothing to log into unless they want to.",
@@ -5374,20 +5378,21 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
         '<div class="gmnum" id="idea'+(x+1)+'">Idea '+(x+1)+'</div>'+
         '<h4>'+i.t+'</h4>'+
         '<p class="gmsum">'+i.one+'</p>'+
+        '<div class="gmsec">What this looks like</div><p class="gmpilot gmex">'+i.ex+'</p>'+
         '<div class="gmfacts">'+
           '<div><b>Who it is for</b><span>'+i.who+'</span></div>'+
           '<div><b>When</b><span class="ph'+i.p+'">'+PH[i.p]+'</span></div>'+
           '<div><b>Who pays</b><span>'+i.pay+'</span></div>'+
-          '<div><b>Lead message</b><span>&ldquo;'+i.lead+'&rdquo;</span></div>'+
+
         '</div>'+
         '<div class="gmsec">What the consumer gets</div>'+li(i.inc)+
         '<div class="gmsec">How it works</div>'+li(i.how)+
         '<div class="gmsec">For a mortgage lender</div><p class="gmpilot">'+i.lend+'</p>'+
         '<div class="gmsec">For a real estate agent</div><p class="gmpilot">'+i.agent+'</p>'+
-        '<div class="gmsec">Upside</div>'+li(i.pro,"up")+
-        '<div class="gmsec">Watchouts</div>'+li(i.con,"wo")+
+        '<div class="gmsec">What is good about it</div>'+li(i.pro,"up")+
+        '<div class="gmsec">What could go wrong</div>'+li(i.con,"wo")+
         (i.note?'<div class="gmsec">Worth saying plainly</div><p class="gmpilot">'+i.note+'</p>':'')+
-        '<div class="gmsec">Recommended pilot</div><p class="gmpilot">'+i.pilot+'</p>'+
+        '<div class="gmsec">How we would test it</div><p class="gmpilot">'+i.pilot+'</p>'+
       '</article>';
     }).join("");
   })();
