@@ -1720,6 +1720,28 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 @media (max-width:620px){.p8grid{grid-template-columns:minmax(0,1fr)}
   .p8frame h3{font-size:21px} .p8fr{flex-direction:column}}
 
+/* ── the overview was one long scroll of identical cards ── */
+#v-overview{counter-reset:ovsec}
+.ovh{counter-increment:ovsec; margin-top:56px; padding-top:30px; border-top:1px solid var(--line-2)}
+.ovh h2::before{content:counter(ovsec,decimal-leading-zero); display:block; font-family:var(--mono);
+  font-size:11.5px; font-weight:600; color:var(--brand); letter-spacing:.09em; margin-bottom:11px}
+
+/* the use-case cards get something to look at other than more text */
+.p8ico{width:27px; height:27px; border-radius:8px; background:var(--surface-2);
+  border:1px solid var(--line); display:grid; place-items:center; flex:none}
+.p8ico svg{width:15px; height:15px; fill:none; stroke:var(--ink-2); stroke-width:1.6;
+  stroke-linecap:round; stroke-linejoin:round}
+.p8u.key .p8ico{background:var(--brand); border-color:var(--brand)}
+.p8u.key .p8ico svg{stroke:#fff}
+
+/* the closing argument goes dark, so the page breaks before the doors */
+.moat{gap:1px; background:var(--line-2); border:1px solid var(--line-2);
+  border-radius:var(--r-lg); overflow:hidden; padding:0}
+.mo2{background:var(--ink); border:0; border-radius:0; padding:22px 24px}
+.mo2 h4{color:#fff}
+.mo2 p{color:#96B2C2}
+.mo2 p b{color:#fff}
+
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 </style>
 
@@ -1792,42 +1814,42 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
   <div class="p8grid">
       <div class="p8u">
-        <div class="p8top"><span class="p8n">01</span><span class="p8who l">Lender</span></div>
+        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4.5"/><path d="M10 10l4 4"/></svg></span><span class="p8n">01</span><span class="p8who l">Lender</span></div>
         <h4>Screen before you pay for the real pull</h4>
         <p>A mortgage tri-merge costs real money every time and puts a hard inquiry on the file whether the answer is yes or no. Run ours first, on the same models, and only buy the expensive one once you already know how it lands.</p>
         <div class="p8k"><b>$14.95</b> one bureau &middot; <b>$24.95</b> all three, against what a tri-merge costs you today</div>
       </div>
 
       <div class="p8u">
-        <div class="p8top"><span class="p8n">02</span><span class="p8who a">Agent</span></div>
+        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6.5L8 2l6 4.5"/><path d="M3.5 7.5V14h9V7.5"/></svg></span><span class="p8n">02</span><span class="p8who a">Agent</span></div>
         <h4>Prequalify without a lender in the room</h4>
         <p>An agent finds out what a buyer can offer and when, without sending them off to be pulled and without owing anybody a favour for it. They get a price range and a date &mdash; never a pre-approval letter, which stays the lender&rsquo;s to write.</p>
         <div class="p8k">Decides whether a Saturday is worth spending, before it is spent</div>
       </div>
 
       <div class="p8u key">
-        <div class="p8top"><span class="p8n">03</span><span class="p8who b">Both</span></div>
+        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1.5v3M11 1.5v3M2 7h12"/></svg></span><span class="p8n">03</span><span class="p8who b">Both</span></div>
         <h4>Nobody gets declined. They get a date.</h4>
         <p>This is the part people get backwards. A borrower who comes back short has not been turned down &mdash; there is no file to turn down. They are simply early, and now they know by how much and until when, instead of being quietly dropped.</p>
         <div class="p8k">The difference between &ldquo;not right now&rdquo; and a <b>specific month</b></div>
       </div>
 
       <div class="p8u">
-        <div class="p8top"><span class="p8n">04</span><span class="p8who b">Both</span></div>
+        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 13.5V9M6.5 13.5V6M10.5 13.5V3.5M14 13.5h-12"/></svg></span><span class="p8n">04</span><span class="p8who b">Both</span></div>
         <h4>Build the file instead of losing the client</h4>
         <p>Rent they have already paid and bills they already pay, reported to all three bureaus, up to twenty-four months backdated. It moves a thin file in about a month rather than over two years, and none of it is credit repair.</p>
         <div class="p8k"><b>~30 days</b> for a rent backfill to land, not two years of waiting</div>
       </div>
 
       <div class="p8u">
-        <div class="p8top"><span class="p8n">05</span><span class="p8who b">Both</span></div>
+        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4h8M6 8h8M6 12h8"/><circle cx="2.75" cy="4" r="1"/><circle cx="2.75" cy="8" r="1"/><circle cx="2.75" cy="12" r="1"/></svg></span><span class="p8n">05</span><span class="p8who b">Both</span></div>
         <h4>Work the list you already have</h4>
         <p>Every &ldquo;call me next year&rdquo; sitting in the database gets re-checked every month against every program on the shelf. The day one of them clears, you are told &mdash; and you paid nothing to find them.</p>
         <div class="p8k">The cheapest borrower in the business is the one already in your CRM</div>
       </div>
 
       <div class="p8u">
-        <div class="p8top"><span class="p8n">06</span><span class="p8who b">Both</span></div>
+        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 9.5a3 3 0 004.2 0l2.3-2.3a3 3 0 00-4.2-4.2l-.8.8"/><path d="M9.5 6.5a3 3 0 00-4.2 0L3 8.8a3 3 0 004.2 4.2l.8-.8"/></svg></span><span class="p8n">06</span><span class="p8who b">Both</span></div>
         <h4>Use our CRM, or wire it into yours</h4>
         <p>A pipeline, client records, campaigns and the partner side are all included if you want them. If you already run something, eleven fields and seven events push into Total Expert, Follow Up Boss, kvCORE and a few thousand others through one connection &mdash; or we build directly into your own systems, a la carte.</p>
         <div class="p8k">Nobody is asked to move off the software they already run</div>
@@ -4633,24 +4655,35 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   });
   document.addEventListener("click",function(e){
     var g=e.target.closest("[data-goset]"); if(!g) return;
-    var st=document.querySelector('.viewnav button[data-view="settings"]');
-    if(st) st.click();
+    goView("settings", true);
     var pane=document.querySelector('.setnav button[data-set="'+g.getAttribute("data-goset")+'"]');
     if(pane) pane.click();
     window.scrollTo(0,0);
   });
 
+
+  /* Switching views used to slam you back to the top, so going and looking at
+     something meant scrolling all the way down again to click the next one.
+     Remember where each view was left and put you back there. */
+  var VIEWS=["overview","lender","agent","partners","settings"];
+  var SCROLLPOS={}, curView="overview";
+  function goView(v, toTop){
+    if(!document.getElementById("v-"+v)) return;
+    if(v===curView){ if(toTop) window.scrollTo(0,0); return; }
+    SCROLLPOS[curView]=window.pageYOffset;
+    VIEWS.forEach(function(x){ document.getElementById("v-"+x).hidden=(x!==v); });
+    var vb=document.querySelectorAll(".viewnav button");
+    for(var i=0;i<vb.length;i++)
+      vb[i].setAttribute("aria-selected", vb[i].getAttribute("data-view")===v?"true":"false");
+    curView=v;
+    window.scrollTo(0, toTop ? 0 : (SCROLLPOS[v]||0));
+  }
+
   /* hero and overview cards act as nav */
   document.addEventListener("click",function(e){
     var d=e.target.closest("[data-view]");
     if(!d || d.closest(".viewnav")) return;
-    var v=d.getAttribute("data-view");
-    var vb=document.querySelectorAll(".viewnav button");
-    for(var i=0;i<vb.length;i++) vb[i].setAttribute("aria-selected", vb[i].getAttribute("data-view")===v?"true":"false");
-    ["overview","lender","agent","partners","settings"].forEach(function(x){
-      document.getElementById("v-"+x).hidden=(x!==v);
-    });
-    window.scrollTo(0,0);
+    goView(d.getAttribute("data-view"), true);
   });
 
   (function(){
@@ -4878,11 +4911,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       });
     })(g[i]);}
   }
-  tabs(".viewnav button",function(b){
-    var v=b.getAttribute("data-view");
-    ["overview","lender","agent","partners","settings"].forEach(function(x){ document.getElementById("v-"+x).hidden=(x!==v); });
-    window.scrollTo(0,0);
-  });
+  tabs(".viewnav button",function(b){ goView(b.getAttribute("data-view")); });
 
 
   /* Account type is not a preference, it is the shape of the app. One switch
@@ -4908,10 +4937,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
       /* if the switch just hid whatever you were looking at, go somewhere real */
       var cur=document.querySelector('.viewnav button[aria-selected="true"]');
-      if(cur && cur.offsetParent===null){
-        var ov=document.querySelector('.viewnav button[data-view="overview"]');
-        if(ov) ov.click();
-      }
+      if(cur && cur.offsetParent===null && typeof goView==="function") goView("overview", true);
       var pane=document.querySelector('.setnav button[aria-selected="true"]');
       if(pane && pane.offsetParent===null){
         var ac=document.querySelector('.setnav button[data-set="account"]');
