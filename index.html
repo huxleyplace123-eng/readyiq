@@ -1793,6 +1793,18 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   .pzrow{grid-template-columns:minmax(0,1fr); gap:10px; padding:18px 18px 17px}}
 
 /* ── the agent pipeline, laid out on a grid instead of by accident ── */
+.tablewrap.agpipe{max-height:min(70vh,720px); overflow:auto; position:relative}
+.tablewrap.agpipe thead th{position:sticky; top:0; z-index:4; background:var(--surface);
+  box-shadow:inset 0 -1px 0 var(--line)}
+/* the buyer stays put while the columns move under them */
+.tablewrap.agpipe tbody td:first-child{position:sticky; left:0; z-index:3; background:var(--surface);
+  box-shadow:1px 0 0 var(--line)}
+.tablewrap.agpipe thead th:first-child{position:sticky; left:0; z-index:5; background:var(--surface);
+  box-shadow:1px 0 0 var(--line), inset 0 -1px 0 var(--line)}
+.tablewrap.agpipe tbody tr:not(.p6band):hover td:first-child{background:var(--brand-wash)}
+/* a band header spans all eight columns, so it can be neither frozen nor
+   edged - the frozen column's hairline would trail off its right end */
+.tablewrap.agpipe tbody tr.p6band td{position:static; background:var(--surface-2); box-shadow:none}
 .agtbl{min-width:1181px; table-layout:fixed}
 .agtbl col.cadded{width:106px}
 .agtbl col.cscore{width:165px}
@@ -3273,7 +3285,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     <span class="cnt2" id="acount">8 buyers</span>
   </div>
 
-  <div class="tablewrap"><table class="agtbl">
+  <div class="tablewrap agpipe"><table class="agtbl">
     <colgroup><col class="cbuy"><col class="cadded"><col class="cscore"><col class="coffer"><col class="cshop"><col class="cwant"><col class="clend"><col class="cact"></colgroup>
     <thead><tr><th>Buyer</th><th>Added</th><th class="ta-r">Qualifying score</th><th class="ta-r">Can offer</th>
       <th>Can shop</th><th>Wants to move</th><th>Their lender</th><th class="ta-r">Action</th></tr></thead>
