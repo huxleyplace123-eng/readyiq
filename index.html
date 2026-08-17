@@ -1742,6 +1742,41 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 .mo2 p{color:#96B2C2}
 .mo2 p b{color:#fff}
 
+/* ── the plain-English list of what you actually do with it ── */
+.pzlist{display:flex; flex-direction:column; gap:12px}
+.pzrow{display:grid; grid-template-columns:auto minmax(0,1fr); gap:20px; align-items:start;
+  background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--r-md); padding:20px 24px 19px; transition:.16s}
+.pzrow:hover{border-color:var(--line-2); border-left-color:var(--brand); box-shadow:var(--shadow)}
+.pzrow.big{background:var(--brand-wash); border-color:var(--brand-line); border-left-color:var(--brand)}
+.pzrow.calm{border-left-color:var(--teal)}
+.pzrow.flat{border-left-color:var(--ink-3)}
+.pzn{font-family:var(--mono); font-size:26px; font-weight:600; letter-spacing:-.05em;
+  color:var(--line-2); line-height:1; padding-top:3px}
+.pzrow.big .pzn{color:var(--brand)}
+.pzmain h4{font-size:18px; letter-spacing:-.028em; line-height:1.25}
+.pzmain > p{font-size:13.5px; color:var(--ink-2); line-height:1.6; margin-top:8px; max-width:78ch}
+.pzwho{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:11px; margin-top:15px}
+.pzwho div{background:var(--surface-2); border:1px solid var(--line); border-radius:9px;
+  padding:11px 13px; font-size:12.5px; color:var(--ink-2); line-height:1.5}
+.pzrow.big .pzwho div{background:var(--surface); border-color:var(--brand-line)}
+.pzwho b{display:block; font-size:9px; font-weight:500; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-4); margin-bottom:5px}
+.pztag{display:inline-block; font-size:8.5px; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--brand); color:#fff; padding:3px 9px; border-radius:20px; margin-left:10px;
+  vertical-align:middle}
+
+.pzflow{display:flex; align-items:stretch; gap:8px; margin-top:22px; flex-wrap:wrap}
+.pzstep{flex:1; min-width:132px; background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--r-sm); padding:13px 14px}
+.pzstep b{display:block; font-size:13px; letter-spacing:-.014em; margin-bottom:4px}
+.pzstep span{font-size:11.5px; color:var(--ink-3); line-height:1.45}
+.pzstep.on{background:var(--ink); border-color:var(--ink)}
+.pzstep.on b{color:#fff} .pzstep.on span{color:#9DBACB}
+
+@media (max-width:760px){.pzwho{grid-template-columns:minmax(0,1fr)}
+  .pzrow{grid-template-columns:minmax(0,1fr); gap:10px; padding:18px 18px 17px}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 </style>
 
@@ -1856,6 +1891,101 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       </div>
 
   </div>
+
+
+  <div class="ovh">
+    <h2>Ways to put it to work</h2>
+    <p>Nobody uses all six. Most start with one and add another when it pays for itself. None of them
+    require anybody to change the software they already run.</p>
+  </div>
+
+  <div class="pzlist">
+      <div class="pzrow">
+        <div class="pzn">01</div>
+        <div class="pzmain">
+          <h4>Put a link where people already find you</h4>
+          <p>A button on the website, a QR code on a yard sign, one line in an email signature. Somebody taps it and finds out where their credit actually stands in about a minute. No application, no login, and it does not touch their score.</p>
+          <div class="pzwho">
+            <div><b>The loan officer</b>Paste one link. Everybody who clears arrives already knowing they can buy.</div>
+            <div><b>The real estate agent</b>Put the code on the sign rider. People know their number before they call you.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pzrow big">
+        <div class="pzn">02</div>
+        <div class="pzmain">
+          <h4>Upload the leads you already gave up on<span class="pztag">The big one</span></h4>
+          <p>Everyone you told to work on their credit and call you back. They are still in the database, most of them still want a house, and right now nobody is talking to them. We work that list every month and tell you the day one of them clears.</p>
+          <div class="pzwho">
+            <div><b>The loan officer</b>Send the list. You get a phone call when somebody is ready, not a report to read.</div>
+            <div><b>The real estate agent</b>Same for every buyer you stopped calling because they were a year out.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pzrow">
+        <div class="pzn">03</div>
+        <div class="pzmain">
+          <h4>Give every agent their own link</h4>
+          <p>The lender pays for it, the agent hands it out. The agent never sees a credit score &mdash; only whether the buyer is getting started, building, or ready to talk to a lender.</p>
+          <div class="pzwho">
+            <div><b>The loan officer</b>Your agents start sending you buyers who are already ready to go.</div>
+            <div><b>The real estate agent</b>Something genuinely useful to hand out at an open house.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pzrow calm">
+        <div class="pzn">04</div>
+        <div class="pzmain">
+          <h4>Protect the loans already in process</h4>
+          <p>The day somebody applies, it flips. It stops suggesting they open credit and starts telling them not to. If they go finance a car before closing, you find out that day instead of at the final refresh three days out.</p>
+          <div class="pzwho">
+            <div><b>The loan officer</b>No more surprises the week of closing, on a file you have already paid to underwrite.</div>
+            <div><b>The real estate agent</b>Your closing date stops moving because your buyer bought a sofa on credit.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pzrow calm">
+        <div class="pzn">05</div>
+        <div class="pzmain">
+          <h4>Watch the ones who already closed</h4>
+          <p>Keep them on it after the loan funds. Their credit changes, or somebody else pulls it, and you hear about it first.</p>
+          <div class="pzwho">
+            <div><b>The loan officer</b>The refinance and the next purchase come back to you instead of to a trigger lead.</div>
+            <div><b>The real estate agent</b>You hear before your past client lists their house with somebody else.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pzrow flat">
+        <div class="pzn">06</div>
+        <div class="pzmain">
+          <h4>Use our workspace, or your own CRM</h4>
+          <p>The pipeline in this demo is optional. If the company already runs Total Expert, Follow Up Boss, kvCORE or almost anything else, the readiness updates land in there instead and nobody logs into a second system.</p>
+          <div class="pzwho">
+            <div><b>The loan officer</b>Your pipeline stays where it is. The fields just get better.</div>
+            <div><b>The real estate agent</b>Same. Nothing to learn, nothing to migrate.</div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="pzflow">
+    <div class="pzstep"><b>Check</b><span>A minute, no application, no inquiry.</span></div>
+    <div class="pzstep"><b>Build</b><span>One thing to do at a time, if they are short.</span></div>
+    <div class="pzstep on"><b>Tell the lender</b><span>The day they clear, not the next quarter.</span></div>
+    <div class="pzstep"><b>Apply</b><span>Back to the loan officer who started it.</span></div>
+    <div class="pzstep"><b>Protect</b><span>Nothing new on the file before closing.</span></div>
+    <div class="pzstep"><b>Stay in touch</b><span>The next loan comes back to you.</span></div>
+  </div>
+
+  <div class="notice" style="margin-top:20px">This is a <strong>credit screen, not a mortgage
+  decision</strong>. It answers whether somebody clears a credit threshold you set. Income, debt-to-income,
+  assets, employment and the property are still yours to underwrite, and the loan still needs your own
+  credit report pulled at the right moment.</div>
 
   <div class="ovh">
     <h2>Two products IDIQ already owns, in the order a borrower needs them</h2>
@@ -3936,10 +4066,10 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     document.getElementById("d-upd").textContent=r.u+" ("+r.ua.toLowerCase()+")";
 
     /* ── credit report ── */
-    var bur=[["Experian",r.ex],["Equifax",r.eq],["TransUnion",r.tu]], rb="";
+    var bur=[["Experian",r.ex,"FICO 2"],["Equifax",r.eq,"FICO 5"],["TransUnion",r.tu,"FICO 4"]], rb="";
     bur.forEach(function(x){
       rb+='<div class="rptb'+(x[1]===m?" mid":"")+'"><div class="bn">'+x[0]+'</div><div class="bv">'+x[1]+'</div>'+
-          '<div class="bd">'+(x[1]===m?"Qualifying score":"VantageScore 4.0")+'</div></div>';
+          '<div class="bd">'+x[2]+(x[1]===m?" &middot; qualifying":"")+'</div></div>';
     });
     document.getElementById("r-bar").innerHTML=rb;
 
@@ -3977,14 +4107,16 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
     var ch="";
     COLLECTIONS.forEach(function(c){
-      ch+='<tr><td><div class="tlname">'+c.c+'</div>'+(c.excluded?'<span class="excl">Excluded from VantageScore 4.0</span>':'')+'</td>'+
+      ch+='<tr><td><div class="tlname">'+c.c+'</div>'+(c.excluded?'<span class="excl">Newer scores ignore this</span>':'')+'</td>'+
         '<td class="tlsub">'+c.r+'</td><td class="tlnum">'+money(c.amt)+'</td>'+
         '<td class="tlsub">'+c.t+'</td>'+dots(c)+'</tr>';
     });
     document.getElementById("r-col").innerHTML=ch;
     document.getElementById("r-colnote").innerHTML=
-      "Both of these are ignored by VantageScore 4.0 &mdash; medical collections are excluded outright and paid collections carry no weight. "+
-      "Under the old model they were costing this borrower real points, which is why the same file scores differently now.";
+      "Newer scoring models forgive both of these &mdash; paid collections carry no weight and medical debt is discounted. "+
+      "<b>The mortgage models do not.</b> A loan runs on FICO 2, 4 and 5, which are the older versions, and they still count "+
+      "every dollar of this. That gap is why a borrower quotes you the score from their banking app and it is forty points "+
+      "higher than the one the loan turns on.";
 
     var ih="";
     INQUIRIES.forEach(function(q){
