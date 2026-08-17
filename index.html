@@ -1804,6 +1804,171 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 .agtbl .p6nol{font-weight:500}
 .agtbl .p6band td{padding:10px 15px !important}
 
+/* ── the idea board: a decision document, not a brochure ── */
+.ibwave{display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px}
+.ibw{padding:7px 14px; border-radius:20px; font-size:12.5px; font-weight:500; border:1px solid var(--line);
+  background:var(--surface); color:var(--ink-3); transition:.15s}
+.ibw:hover{border-color:var(--line-2); color:var(--ink-2)}
+.ibw.on{background:var(--ink); border-color:var(--ink); color:#fff}
+.ibw i{font-style:normal; opacity:.55; margin-left:6px; font-family:var(--mono); font-size:11px}
+
+.iblist{display:flex; flex-direction:column; gap:11px}
+.ibc{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden}
+.ibc[open]{border-color:var(--line-2); box-shadow:var(--shadow)}
+.ibc summary{list-style:none; cursor:pointer; padding:18px 22px; display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto; gap:18px; align-items:start; transition:.14s}
+.ibc summary::-webkit-details-marker{display:none}
+.ibc summary:hover{background:var(--surface-2)}
+.ibc[open] summary{border-bottom:1px solid var(--line); background:var(--surface-2)}
+.ibn{font-family:var(--mono); font-size:22px; font-weight:600; letter-spacing:-.05em;
+  color:var(--line-2); line-height:1.1}
+.ibc.w1 .ibn{color:var(--brand)}
+.ibh h4{font-size:17px; letter-spacing:-.026em; line-height:1.25}
+.ibh > p{font-size:13px; color:var(--ink-3); line-height:1.55; margin-top:6px; max-width:80ch}
+.ibmeta{display:flex; gap:14px; flex-wrap:wrap; margin-top:11px}
+.ibmeta span{font-size:11px; color:var(--ink-4); line-height:1.4}
+.ibmeta b{display:block; font-size:8.5px; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--line-2); margin-bottom:2px}
+.ibtag{font-size:8.5px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; padding:3px 9px;
+  border-radius:20px; white-space:nowrap; align-self:center}
+.ibtag.w1{background:var(--brand); color:#fff}
+.ibtag.w2{background:var(--teal-wash); color:var(--teal)}
+.ibtag.w3{background:var(--surface-3); color:var(--ink-3)}
+
+.ibbody{padding:20px 22px 22px}
+.ibgrid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px 26px}
+.ibsec h5{font-size:9.5px; font-weight:500; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-4); margin-bottom:9px}
+.ibsec ul{list-style:none; display:flex; flex-direction:column; gap:6px}
+.ibsec li{font-size:12.5px; color:var(--ink-2); line-height:1.5; padding-left:15px; position:relative}
+.ibsec li::before{content:""; position:absolute; left:0; top:8px; width:5px; height:5px; border-radius:50%;
+  background:var(--line-2)}
+.ibsec.pro li::before{background:var(--green)}
+.ibsec.con li::before{background:var(--amber)}
+.ibpilot{margin-top:20px; padding:14px 16px; border-radius:var(--r-sm); background:var(--ink); color:#9DBACB;
+  font-size:12.5px; line-height:1.55}
+.ibpilot b{display:block; font-size:8.5px; font-weight:500; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--brand); margin-bottom:5px}
+.ibnote{margin-top:14px; font-size:12px; line-height:1.55; color:var(--amber);
+  background:var(--amber-wash); border-radius:9px; padding:11px 13px}
+.ibnote b{color:var(--amber)}
+
+@media (max-width:760px){.ibgrid{grid-template-columns:minmax(0,1fr)}
+  .ibc summary{grid-template-columns:auto minmax(0,1fr); gap:14px; padding:16px 17px}
+  .ibtag{grid-column:1/-1; justify-self:start}}
+
+/* ── how far out is this person, really ── */
+.trigrid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
+.triband{border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface);
+  padding:20px 22px 19px; display:flex; flex-direction:column; border-top:4px solid var(--green)}
+.triband.mid{border-top-color:var(--amber)}
+.triband.far{border-top-color:var(--red)}
+.trinum{font-family:var(--mono); font-size:30px; font-weight:600; letter-spacing:-.05em; line-height:1;
+  color:var(--green)}
+.triband.mid .trinum{color:var(--amber)} .triband.far .trinum{color:var(--red)}
+.trinum small{font-family:var(--sans); font-size:12px; font-weight:500; color:var(--ink-4);
+  letter-spacing:0; display:block; margin-top:6px}
+.triband h4{font-size:16px; letter-spacing:-.024em; margin:14px 0 7px}
+.triband > p{font-size:12.5px; color:var(--ink-3); line-height:1.6}
+.tritime{margin-top:13px; font-family:var(--mono); font-size:12px; font-weight:600; color:var(--ink-2)}
+.trisay{margin-top:auto; padding-top:14px; border-top:1px solid var(--line); font-size:12.5px;
+  color:var(--ink-2); line-height:1.5}
+.trisay b{display:block; font-size:8.5px; font-weight:500; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-4); margin-bottom:5px}
+
+/* ── what a partner actually buys ── */
+.mxgrid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
+.mxp{border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface);
+  padding:22px 22px 20px; display:flex; flex-direction:column}
+.mxp.best{border-color:var(--brand); box-shadow:0 0 0 3px var(--brand-wash)}
+.mxeb{font-size:8.5px; font-weight:500; letter-spacing:.11em; text-transform:uppercase; color:var(--ink-4)}
+.mxp.best .mxeb{color:var(--brand)}
+.mxp h4{font-size:19px; letter-spacing:-.028em; margin:9px 0 8px}
+.mxp > p{font-size:12.5px; color:var(--ink-3); line-height:1.55}
+.mxprice{font-family:var(--mono); font-size:15px; font-weight:600; letter-spacing:-.03em;
+  margin:15px 0 4px; color:var(--ink)}
+.mxprice small{font-family:var(--sans); font-size:11.5px; font-weight:400; color:var(--ink-4); letter-spacing:0}
+.mxl{list-style:none; margin-top:15px; display:flex; flex-direction:column; gap:7px}
+.mxl li{font-size:12.5px; line-height:1.45; padding-left:21px; position:relative; color:var(--ink-2)}
+.mxl li::before{content:"\2713"; position:absolute; left:0; top:0; color:var(--green); font-weight:600; font-size:12px}
+.mxl li.off{color:var(--ink-4)}
+.mxl li.off::before{content:"\2013"; color:var(--line-2)}
+.mxwho{margin-top:auto; padding-top:16px; border-top:1px solid var(--line); font-size:12px;
+  color:var(--ink-3); line-height:1.5}
+.mxwho b{display:block; font-size:8.5px; font-weight:500; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-4); margin-bottom:5px}
+
+.ibtools{display:flex; gap:7px; margin-left:auto}
+.ibtools button{padding:7px 13px; border-radius:20px; font-size:12px; font-weight:500;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink-3)}
+.ibtools button:hover{border-color:var(--line-2); color:var(--ink-2)}
+.ibwave{align-items:center}
+
+@media (max-width:900px){.trigrid,.mxgrid{grid-template-columns:minmax(0,1fr)}
+  .ibtools{margin-left:0; width:100%}}
+
+/* ── the go-to-market section, set as a document rather than a UI ── */
+.gmfront{margin-bottom:10px; max-width:78ch}
+.gmnorth{font-size:13.5px; line-height:1.65; color:var(--ink-2); padding-left:16px;
+  border-left:3px solid var(--brand)}
+.gmnorth b{display:block; font-size:9px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--brand); margin-bottom:6px}
+.gmsh{font-size:9.5px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--ink-4);
+  padding-bottom:9px; border-bottom:1px solid var(--line); margin-bottom:14px}
+.gmstack{margin-top:30px}
+.gmsl{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:18px}
+.gmsl div{display:flex; flex-direction:column}
+.gmsl i{font-style:normal; font-family:var(--mono); font-size:11px; color:var(--brand); font-weight:600;
+  letter-spacing:.04em}
+.gmsl b{font-size:14px; letter-spacing:-.018em; margin:5px 0 5px}
+.gmsl span{font-size:12px; color:var(--ink-3); line-height:1.5}
+.gmmap{margin-top:30px}
+.gmt{width:100%; border-collapse:collapse}
+.gmt th{text-align:left; font-size:9px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-4); padding:0 14px 9px 0; border-bottom:1px solid var(--line)}
+.gmt th:first-child{width:34px}
+.gmt th:nth-child(3){width:210px} .gmt th:last-child{width:132px}
+.gmt tbody tr{cursor:pointer}
+.gmt tbody tr:hover td{background:var(--brand-wash)}
+.gmt td{padding:11px 14px 11px 0; border-bottom:1px solid var(--line); font-size:13px; color:var(--ink-2)}
+.gmt tr:last-child td{border-bottom:0}
+.gmt td:first-child{font-family:var(--mono); font-size:11.5px; color:var(--ink-4)}
+.gmt td:nth-child(2){font-weight:600; color:var(--ink)}
+.gmt td:last-child{font-size:12px; color:var(--ink-4)}
+
+.gmplays{display:flex; flex-direction:column}
+/* one column, 78ch, so an idea reads like a page rather than a dashboard */
+.gmplay{padding:40px 0 44px; border-top:2px solid var(--ink); max-width:78ch}
+.gmnum{font-family:var(--mono); font-size:12px; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--brand)}
+.gmplay h4{font-size:26px; letter-spacing:-.032em; line-height:1.18; margin:12px 0 0}
+.gmsum{font-size:14.5px; color:var(--ink-2); line-height:1.65; margin-top:12px}
+.gmfacts{margin:22px 0 8px; border-top:1px solid var(--line)}
+.gmfacts div{display:flex; gap:16px; padding:10px 0; border-bottom:1px solid var(--line)}
+.gmfacts b{flex:none; width:104px; font-size:9px; font-weight:600; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-4); padding-top:3px}
+.gmfacts span{font-size:13.5px; color:var(--ink-2); line-height:1.5}
+.gmsec{font-size:10px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--ink);
+  margin:28px 0 12px}
+.gml{list-style:none; display:flex; flex-direction:column; gap:8px}
+.gml li{font-size:13.5px; color:var(--ink-2); line-height:1.6; padding-left:18px; position:relative}
+.gml li::before{content:""; position:absolute; left:2px; top:8px; width:5px; height:5px; border-radius:50%;
+  background:var(--ink-4)}
+.gml.up li::before{background:var(--green)}
+.gml.wo li::before{background:var(--amber)}
+.gmpilot{font-size:13.5px; line-height:1.6; color:var(--ink-2)}
+.gmol{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px}
+.gmol li{font-size:13.5px; color:var(--ink-3); line-height:1.55}
+.gmol li b{color:var(--ink); font-weight:600}
+
+@media (max-width:900px){.gmsl{grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px}
+  .gmcols{grid-template-columns:minmax(0,1fr)}
+  .gmcols > div > .gmsec{margin-top:28px}
+  .gmmeta{grid-template-columns:minmax(0,1fr); gap:0}
+  .gmmeta div{padding:12px 0; border-bottom:1px solid var(--line)}
+  .gmmeta div:last-child{border-bottom:0}
+  .gmplay h4{font-size:22px}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 </style>
 
@@ -1852,311 +2017,37 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
 
   <div class="ovh">
-    <h2>What a company actually does with this</h2>
-    <p>Six of them, and most start with the first one. The thing they all have in common is where they
-    sit &mdash; ahead of the expensive part, not after it.</p>
+    <h2>The ideas</h2>
+    <p>Every idea is written the same way &mdash; who it is for, when, who pays, what the consumer gets,
+    how it runs, what is good about it, what is wrong with it, and the smallest pilot that would settle
+    the argument. Read the first two and you have the whole thing.</p>
   </div>
 
-  <div class="p8frame">
-    <div>
-      <span class="p8fe">Where this sits</span>
-      <h3>Before the application, not after it.</h3>
-      <p>Today a lender buys a mortgage credit report to find out whether somebody qualifies, and pays
-      for it either way &mdash; plus a hard inquiry on the borrower, even when the answer is no. An agent
-      cannot find out at all without sending the person off to a lender first.</p>
-      <p>This runs before that, for a fraction of the cost, and answers the same question. If they pass,
-      go pull the real one. If they do not, they go on a plan instead of going quiet.</p>
-    </div>
-    <div class="p8fr">
-      <div><b>$14.95 / $24.95</b><span>Per borrower &mdash; one bureau, or all three</span></div>
-      <div><b>No hard inquiry</b><span>It is soft, and the borrower requests it themselves</span></div>
-      <div><b>About a minute</b><span>No login, no application, no paperwork</span></div>
-    </div>
-  </div>
+  <div class="gmfront">
+    <div class="gmnorth"><b>North star</b>The consumer credit-building, dispute, monitoring and reporting
+    products are the value. Links, lender alerts, CRM connections and the optional workspace are the
+    delivery layer, not the thing being sold.</div>
 
-  <div class="p8grid">
-      <div class="p8u">
-        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4.5"/><path d="M10 10l4 4"/></svg></span><span class="p8n">01</span><span class="p8who l">Lender</span></div>
-        <h4>Screen before you pay for the real pull</h4>
-        <p>A mortgage tri-merge costs real money every time and puts a hard inquiry on the file whether the answer is yes or no. Run ours first, on the same models, and only buy the expensive one once you already know how it lands.</p>
-        <div class="p8k"><b>$14.95</b> one bureau &middot; <b>$24.95</b> all three, against what a tri-merge costs you today</div>
-      </div>
-
-      <div class="p8u">
-        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6.5L8 2l6 4.5"/><path d="M3.5 7.5V14h9V7.5"/></svg></span><span class="p8n">02</span><span class="p8who a">Agent</span></div>
-        <h4>Prequalify without a lender in the room</h4>
-        <p>An agent finds out what a buyer can offer and when, without sending them off to be pulled and without owing anybody a favor for it. They get a price range and a date &mdash; never a pre-approval letter, which stays the lender&rsquo;s to write.</p>
-        <div class="p8k">Decides whether a Saturday is worth spending, before it is spent</div>
-      </div>
-
-      <div class="p8u key">
-        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1.5v3M11 1.5v3M2 7h12"/></svg></span><span class="p8n">03</span><span class="p8who b">Both</span></div>
-        <h4>Nobody gets declined. They get a date.</h4>
-        <p>This is the part people get backwards. A borrower who comes back short has not been turned down &mdash; there is no file to turn down. They are simply early, and now they know by how much and until when, instead of being quietly dropped.</p>
-        <div class="p8k">The difference between &ldquo;not right now&rdquo; and a <b>specific month</b></div>
-      </div>
-
-      <div class="p8u">
-        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 13.5V9M6.5 13.5V6M10.5 13.5V3.5M14 13.5h-12"/></svg></span><span class="p8n">04</span><span class="p8who b">Both</span></div>
-        <h4>Build the file instead of losing the client</h4>
-        <p>Rent they have already paid and bills they already pay, reported to all three bureaus, up to twenty-four months backdated. It moves a thin file in about a month rather than over two years, and none of it is credit repair.</p>
-        <div class="p8k"><b>~30 days</b> for a rent backfill to land, not two years of waiting</div>
-      </div>
-
-      <div class="p8u">
-        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4h8M6 8h8M6 12h8"/><circle cx="2.75" cy="4" r="1"/><circle cx="2.75" cy="8" r="1"/><circle cx="2.75" cy="12" r="1"/></svg></span><span class="p8n">05</span><span class="p8who b">Both</span></div>
-        <h4>Work the list you already have</h4>
-        <p>Every &ldquo;call me next year&rdquo; sitting in the database gets re-checked every month against every program on the shelf. The day one of them clears, you are told &mdash; and you paid nothing to find them.</p>
-        <div class="p8k">The cheapest borrower in the business is the one already in your CRM</div>
-      </div>
-
-      <div class="p8u">
-        <div class="p8top"><span class="p8ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 9.5a3 3 0 004.2 0l2.3-2.3a3 3 0 00-4.2-4.2l-.8.8"/><path d="M9.5 6.5a3 3 0 00-4.2 0L3 8.8a3 3 0 004.2 4.2l.8-.8"/></svg></span><span class="p8n">06</span><span class="p8who b">Both</span></div>
-        <h4>Use our CRM, or wire it into yours</h4>
-        <p>A pipeline, client records, campaigns and the partner side are all included if you want them. If you already run something, eleven fields and seven events push into Total Expert, Follow Up Boss, kvCORE and a few thousand others through one connection &mdash; or we build directly into your own systems, a la carte.</p>
-        <div class="p8k">Nobody is asked to move off the software they already run</div>
-      </div>
-
-  </div>
-
-
-  <div class="ovh">
-    <h2>Ways to put it to work</h2>
-    <p>Nobody uses all six. Most start with one and add another when it pays for itself. None of them
-    require anybody to change the software they already run.</p>
-  </div>
-
-  <div class="pzlist">
-      <div class="pzrow">
-        <div class="pzn">01</div>
-        <div class="pzmain">
-          <h4>Put a link where people already find you</h4>
-          <p>A button on the website, a QR code on a yard sign, one line in an email signature. Somebody taps it and finds out where their credit actually stands in about a minute. No application, no login, and it does not touch their score.</p>
-          <div class="pzwho">
-            <div><b>The loan officer</b>Paste one link. Everybody who clears arrives already knowing they can buy.</div>
-            <div><b>The real estate agent</b>Put the code on the sign rider. People know their number before they call you.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pzrow big">
-        <div class="pzn">02</div>
-        <div class="pzmain">
-          <h4>Upload the leads you already gave up on<span class="pztag">The big one</span></h4>
-          <p>Everyone you told to work on their credit and call you back. They are still in the database, most of them still want a house, and right now nobody is talking to them. We work that list every month and tell you the day one of them clears.</p>
-          <div class="pzwho">
-            <div><b>The loan officer</b>Send the list. You get a phone call when somebody is ready, not a report to read.</div>
-            <div><b>The real estate agent</b>Same for every buyer you stopped calling because they were a year out.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pzrow">
-        <div class="pzn">03</div>
-        <div class="pzmain">
-          <h4>Give every agent their own link</h4>
-          <p>The lender pays for it, the agent hands it out. The agent sees the scores on buyers they enrolled themselves, and never the credit report behind them.</p>
-          <div class="pzwho">
-            <div><b>The loan officer</b>Your agents start sending you buyers who are already ready to go.</div>
-            <div><b>The real estate agent</b>Something genuinely useful to hand out at an open house.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pzrow calm">
-        <div class="pzn">04</div>
-        <div class="pzmain">
-          <h4>Protect the loans already in process</h4>
-          <p>The day somebody applies, it flips. It stops suggesting they open credit and starts telling them not to. If they go finance a car before closing, you find out that day instead of at the final refresh three days out.</p>
-          <div class="pzwho">
-            <div><b>The loan officer</b>No more surprises the week of closing, on a file you have already paid to underwrite.</div>
-            <div><b>The real estate agent</b>Your closing date stops moving because your buyer bought a sofa on credit.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pzrow calm">
-        <div class="pzn">05</div>
-        <div class="pzmain">
-          <h4>Watch the ones who already closed</h4>
-          <p>Keep them on it after the loan funds. Their credit changes, or somebody else pulls it, and you hear about it first.</p>
-          <div class="pzwho">
-            <div><b>The loan officer</b>The refinance and the next purchase come back to you instead of to a trigger lead.</div>
-            <div><b>The real estate agent</b>You hear before your past client lists their house with somebody else.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pzrow flat">
-        <div class="pzn">06</div>
-        <div class="pzmain">
-          <h4>Use our workspace, or your own CRM</h4>
-          <p>The pipeline in this demo is optional. If the company already runs Total Expert, Follow Up Boss, kvCORE or almost anything else, the readiness updates land in there instead and nobody logs into a second system.</p>
-          <div class="pzwho">
-            <div><b>The loan officer</b>Your pipeline stays where it is. The fields just get better.</div>
-            <div><b>The real estate agent</b>Same. Nothing to learn, nothing to migrate.</div>
-          </div>
-        </div>
-      </div>
-  </div>
-
-  <div class="pzflow">
-    <div class="pzstep"><b>Check</b><span>A minute, no application, no inquiry.</span></div>
-    <div class="pzstep"><b>Build</b><span>One thing to do at a time, if they are short.</span></div>
-    <div class="pzstep on"><b>Tell the lender</b><span>The day they clear, not the next quarter.</span></div>
-    <div class="pzstep"><b>Apply</b><span>Back to the loan officer who started it.</span></div>
-    <div class="pzstep"><b>Protect</b><span>Nothing new on the file before closing.</span></div>
-    <div class="pzstep"><b>Stay in touch</b><span>The next loan comes back to you.</span></div>
-  </div>
-
-  <div class="notice" style="margin-top:20px">This is a <strong>credit screen, not a mortgage
-  decision</strong>. It answers whether somebody clears a credit threshold you set. Income, debt-to-income,
-  assets, employment and the property are still yours to underwrite, and the loan still needs your own
-  credit report pulled at the right moment.</div>
-
-  <div class="ovh">
-    <h2>Two products IDIQ already owns, in the order a borrower needs them</h2>
-    <p>One tells a lender the truth about a borrower. The other changes that truth. Almost nobody in credit
-    sells both halves of that sentence &mdash; and neither is a new build.</p>
-  </div>
-  <div class="spine">
-    <div class="sp2 p1"><div class="spn">01 &middot; Measure</div><span class="splogo"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODg1IiBoZWlnaHQ9IjE1MiIgdmlld0JveD0iMCAwIDg4NSAxNTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF81MDI0XzExNikiPgo8cGF0aCBkPSJNNDY0LjkwOSA2NS41Mzg3SDQyOS45NTJDNDI4LjkyMyA2NS41Mzg3IDQyOC4xMTQgNjYuMzQ3MyA0MjguMTE0IDY3LjM3NjVDNDI4LjExNCA3My4yNTc3IDQyNi4wOTMgNzguMTA5NyA0MjEuOTM5IDgyLjI2MzNDNDE3Ljc4NiA4Ni40MTY5IDQxMi45MzQgODguNDM4NiA0MDcuMDUyIDg4LjQzODZDNDAxLjE3MSA4OC40Mzg2IDM5Ni4yNDYgODYuNDUzNyAzOTIuMTI5IDgyLjMwMDFDMzg4LjAxMiA3OC4xODMyIDM4NS45OSA3My4yOTQ1IDM4NS45OSA2Ny4zNzY1QzM4NS45OSA2MS40NTg2IDM4OC4wMTIgNTYuNjQzMyAzOTIuMTY2IDUyLjQ4OThDMzkzLjU2MiA1MS4wOTMgMzk1LjE0MyA0OS44OCAzOTYuODM0IDQ4LjkyNDNDMzk3LjYwNiA0OC40ODMyIDM5Ny45NzMgNDcuNTI3NSAzOTcuNjQyIDQ2LjY4MjFMMzg1LjE0NSAxMy43NDc0QzM4NC45NjEgMTMuMjY5NSAzODQuNTk0IDEyLjkwMiAzODQuMTUzIDEyLjcxODJDMzgzLjY3NSAxMi41MzQ0IDM4My4xNiAxMi41MzQ0IDM4Mi43MTkgMTIuNzE4MkMzNzYuMTAzIDE1LjY1ODggMzcwLjA3NCAxOS44MTI0IDM2NC44MTggMjUuMDY4N0MzNTMuMjM5IDM2LjY0NzMgMzQ3LjM5NSA1MC44NzI0IDM0Ny4zOTUgNjcuMzM5OEMzNDcuMzk1IDgzLjgwNzEgMzUzLjIzOSA5OC4xMDU4IDM2NC43ODEgMTA5LjY0OEMzNzYuMzIzIDEyMS4xODkgMzkwLjU0OCAxMjcuMDM0IDQwNy4wODkgMTI3LjAzNEM0MjMuNjMgMTI3LjAzNCA0MzcuNzgyIDEyMS4xODkgNDQ5LjM2IDEwOS42MTFDNDYwLjkwMiA5OC4wMzIzIDQ2Ni43ODMgODMuODQzOSA0NjYuNzgzIDY3LjMzOThDNDY2Ljc4MyA2Ni4zMTA2IDQ2NS45NzUgNjUuNTAxOSA0NjQuOTQ1IDY1LjUwMTlMNDY0LjkwOSA2NS41Mzg3WiIgZmlsbD0iIzAyMDIzNiIvPgo8cGF0aCBkPSJNNDU1Ljc1NiAxOC42MzYyQzQ0OC4xMTEgMTAuOTkwNiA0MzkuMjUyIDUuODQ0NTYgNDI5LjQwMSAzLjMwODI5QzQyOC45MjMgMy4xOTgwMiA0MjguNDA5IDMuNDU1MzIgNDI4LjI5OCAzLjkzMzE3TDQxOC44NTIgMzcuNzEzM0M0MTguNzc4IDM3Ljk3MDYgNDE4Ljg1MiAzOC4yMjc5IDQxOC45NjIgMzguNDExN0M0MTkuMDcyIDM4LjYzMjIgNDE5LjI5MyAzOC43NzkzIDQxOS41NSAzOC44NTI4QzQyMy40MSAzOS43NzE3IDQyNi44MjggNDEuNzE5OSA0MjkuNzMyIDQ0LjY2MDVDNDMzLjk5NiA0OC45MjQzIDQzNi4xNjQgNTQuMTQzOSA0MzYuMTY0IDYwLjIwODlDNDM2LjE2NCA2MC43MjM1IDQzNi41NjkgNjEuMTI3OCA0MzcuMDgzIDYxLjEyNzhINDcyLjA0QzQ3Mi41NTQgNjEuMTI3OCA0NzIuOTU5IDYwLjcyMzUgNDcyLjk1OSA2MC4yMDg5QzQ3Mi45NTkgNDQuMDM1NiA0NjcuMTg4IDMwLjAzMSA0NTUuNzU2IDE4LjYzNjJaIiBmaWxsPSIjMDA4MUZGIi8+CjxwYXRoIGQ9Ik00MjQuMTA4IDIuMjA1MzRDNDIzLjk5OCAxLjk4NDggNDIzLjc3NyAxLjgzNzc3IDQyMy41MiAxLjc2NDI1QzQxOC43NzggMC41ODgwMTIgNDEzLjc0MiAtMC4wMzY4NjUyIDQwOC41NTkgLTAuMDM2ODY1Mkg0MDcuNzg3QzQwMC40MzYgMC4wNzM0MDcyIDM5My40NTIgMS4zNTk5MiAzODcuMDkzIDMuODIyNjdDMzg2LjYxNSA0LjAwNjQ2IDM4Ni4zOTUgNC41MjEwNiAzODYuNTc4IDQuOTk4OTFMMzk5LjExMyAzNy43ODY2QzM5OS4xODYgMzguMDA3MSAzOTkuMzcgMzguMTkwOSAzOTkuNTkxIDM4LjMwMTJDMzk5LjcwMSAzOC4zMzc5IDM5OS44NDggMzguMzc0NyAzOTkuOTU4IDM4LjM3NDdDNDAwLjA2OCAzOC4zNzQ3IDQwMC4xNzkgMzguMzc0NyA0MDAuMjg5IDM4LjMwMTJDNDAwLjk1MSAzOC4wNDM5IDQwMS42NDkgMzcuODYwMSA0MDIuNDIxIDM3LjY3NjNMNDAyLjc1MiAzNy42MDI4QzQwNC42MjYgMzcuMTI0OSA0MDYuMjQ0IDM2Ljg2NzYgNDA3LjgyNCAzNi44MzA5SDQwOC4xOTJDNDA5Ljk5MyAzNi42ODM5IDQxMS44NjggMzYuOTQxMiA0MTMuNjMyIDM3LjM0NTVDNDE0LjExIDM3LjQ1NTggNDE0LjU4OCAzNy4xNjE3IDQxNC43MzUgMzYuNjgzOUw0MjQuMTgxIDIuOTAzNzNDNDI0LjI1NSAyLjY0NjQzIDQyNC4xODEgMi40MjU4OSA0MjQuMTA4IDIuMjA1MzRaIiBmaWxsPSIjOEZFOTU4Ii8+CjxwYXRoIGQ9Ik04NS4zODc2IDcxLjIzNTlDODMuNzMzNSA2OS4wMzA1IDgxLjQ5MTMgNjcuMzAyOSA3OC43MzQ1IDY2LjEyNjdDNzYuMDUxMiA2NC45ODcyIDcyLjcwNjMgNjQuMzk5MSA2OC43NzMyIDY0LjM5OTFDNjYuMDg5OSA2NC4zOTkxIDYzLjQ4MDIgNjQuODc2OSA2MC45ODA3IDY1LjgzMjZDNTguNTU0NyA2Ni43NTE1IDU2LjI3NTcgNjguMDM4MSA1NC4yNTQgNjkuNTgxOUM1Mi4yMzI0IDcxLjEyNTcgNTAuNDMxMyA3Mi45MjY4IDQ4Ljg1MDcgNzQuOTExN0M0OC4zNzI4IDc1LjUzNjYgNDcuOTMxOCA3Ni4xNjE1IDQ3LjQ5MDcgNzYuNzg2M0M0Ni40NjE1IDczLjU1MTcgNDQuODgwOSA3MC45MDUxIDQyLjcxMjIgNjguODgzNUMzOS41MTQzIDY1LjkwNjEgMzQuNzM1OCA2NC4zNjIzIDI4LjUyMzggNjQuMzYyM0MyNi4wNjExIDY0LjM2MjMgMjMuNTYxNSA2NC44NDAxIDIxLjA2MiA2NS43OTU4QzE4LjU5OTMgNjYuNzE0OCAxNi4yODM2IDY4LjAwMTMgMTQuMTUxNiA2OS42MTg2QzEyLjA1NjUgNzEuMTYyNCAxMC4xODE4IDczLjAwMDMgOC41NjQ0OSA3NS4wMjJWNjcuNjMzN0M4LjU2NDQ5IDY2LjYwNDUgNy43NTU4MyA2NS43OTU4IDYuNzI2NjIgNjUuNzk1OEgxLjgzNzg3QzAuODA4NjY1IDY1Ljc5NTggMCA2Ni42MDQ1IDAgNjcuNjMzN1YxMjUuMTIyQzAgMTI2LjE1MiAwLjgwODY2NSAxMjYuOTYgMS44Mzc4NyAxMjYuOTZINi42NTMxQzcuNjgyMzEgMTI2Ljk2IDguNDkwOTggMTI2LjE1MiA4LjQ5MDk4IDEyNS4xMjJWOTcuMDM5N0M4LjQ5MDk4IDk1LjcxNjQgOC41NjQ0OSA5NC40Mjk5IDguNjc0NzYgOTMuMTgwMkM4Ljc4NTA0IDkyLjAwMzkgOS4wMDU1OCA5MC44NjQ0IDkuMzczMTYgODkuNzI1QzkuOTk4MDMgODcuNDgyOCAxMC45MTcgODUuMjc3MyAxMi4xMyA4My4yMTg5QzEzLjM0MyA4MS4xNjA1IDE0Ljc3NjUgNzkuMjg1OCAxNi40Njc0IDc3LjcwNTNDMTguMTIxNCA3Ni4xMjQ3IDE5Ljk5NjEgNzQuODM4MiAyMi4wNTQ1IDczLjkxOTNDMjQuMDM5NCA3My4wMDAzIDI2LjIwODEgNzIuNTU5MiAyOC40ODcgNzIuNTU5MkMzMS4zMTc0IDcyLjU1OTIgMzMuNTIyOCA3My4wMzcxIDM1LjA2NjYgNzMuOTkyOEMzNi42NDcyIDc0Ljk0ODUgMzcuNzg2NyA3Ni4xNjE1IDM4LjU5NTQgNzcuNzA1M0MzOS40NDA4IDc5LjMyMjYgMzkuOTkyMSA4MS4yMzQgNDAuMjQ5NCA4My40MDI3QzQwLjUwNjcgODUuNjgxNiA0MC42NTM4IDg4LjA3MDkgNDAuNjUzOCA5MC40NjAxVjEyNS4xNTlDNDAuNjUzOCAxMjYuMTg4IDQxLjQ2MjQgMTI2Ljk5NyA0Mi40OTE2IDEyNi45OTdINDcuMzA2OUM0OC4zMzYxIDEyNi45OTcgNDkuMTQ0NyAxMjYuMTg4IDQ5LjE0NDcgMTI1LjE1OVY5Ny4wNzY1QzQ5LjE0NDcgOTUuNDU5MSA0OS4yMTgzIDkzLjk4ODggNDkuNDAyMSA5Mi42Mjg4QzQ5LjU4NTggOTEuMzA1NSA0OS44NDMxIDkwLjAxOSA1MC4yNDc1IDg4Ljc2OTNDNTAuODM1NiA4Ni43MTA5IDUxLjc1NDUgODQuNjUyNCA1Mi45MzA4IDgyLjcwNDNDNTQuMTQzOCA4MC43NTYxIDU1LjU3NzMgNzguOTkxOCA1Ny4xOTQ2IDc3LjQ4NDdDNTguODEyIDc2LjAxNDQgNjAuNjEzMSA3NC44MDE0IDYyLjU5OCA3My44ODI1QzY0LjUwOTQgNzMuMDAwMyA2Ni41Njc4IDcyLjU1OTIgNjguNjk5NyA3Mi41NTkyQzcxLjQxOTggNzIuNTU5MiA3My41ODg1IDczLjAwMDMgNzUuMjA1OCA3My44ODI1Qzc2LjgyMzEgNzQuNzY0NyA3Ny45OTk0IDc1LjkwNDIgNzguODgxNSA3Ny40MTEyQzc5LjgwMDUgNzguOTkxOCA4MC40MjU0IDgwLjkwMzIgODAuNzE5NCA4My4wMzUxQzgxLjA1MDIgODUuMzE0MSA4MS4yMzQgODcuODEzNiA4MS4yMzQgOTAuMzg2NlYxMjUuMDg2QzgxLjIzNCAxMjYuMTE1IDgyLjA0MjcgMTI2LjkyNCA4My4wNzE5IDEyNi45MjRIODcuODg3MUM4OC45MTYzIDEyNi45MjQgODkuNzI1IDEyNi4xMTUgODkuNzI1IDEyNS4wODZWODguNjU5Qzg5LjcyNSA4NS4xMzAzIDg5LjM5NDIgODEuODk1NiA4OC43NjkzIDc4Ljk5MThDODguMTA3NyA3NS45Nzc3IDg2LjkzMTQgNzMuMzY3OSA4NS4zNTA5IDcxLjE5OTJMODUuMzg3NiA3MS4yMzU5WiIgZmlsbD0iIzAyMDIzNiIvPgo8cGF0aCBkPSJNMTUzLjIwNSA2Ni42MDQ1QzE1Mi44NzQgNjYuMDg5OSAxNTIuMjg2IDY1Ljc5NTggMTUxLjY2MSA2NS43OTU4SDE0Ni40NzlDMTQ1Ljc0MyA2NS43OTU4IDE0NS4wODIgNjYuMjM2OSAxNDQuNzg4IDY2LjkzNTNMMTI1LjgyMSAxMTIuNzcyQzEyNS42NzQgMTEzLjEzOSAxMjUuNTI3IDExMy41MDcgMTI1LjM4IDExMy44MzhDMTI1LjIzMyAxMTMuNTA3IDEyNS4wODYgMTEzLjEzOSAxMjQuOTM5IDExMi43NzJMMTA1Ljk3MiA2Ni44OTg1QzEwNS42NzggNjYuMjAwMSAxMDUuMDE2IDY1Ljc1OSAxMDQuMjgxIDY1Ljc1OUg5OS4wOTgzQzk4LjQ3MzQgNjUuNzU5IDk3LjkyMiA2Ni4wNTMxIDk3LjU1NDQgNjYuNTY3N0M5Ny4yMjM2IDY3LjA4MjMgOTcuMTUwMSA2Ny43NDM5IDk3LjM3MDcgNjguMjk1M0wxMjAuODU5IDEyNC43MThMMTE2Ljk5OSAxMzMuNTc3QzExNi40ODUgMTM0LjgyNiAxMTUuODYgMTM2LjA3NiAxMTUuMTYxIDEzNy4yNTJDMTE0LjUgMTM4LjM5MiAxMTMuNzY0IDEzOS4zODQgMTEyLjk1NiAxNDAuMTkzQzExMi4xODQgMTQxLjAwMiAxMTEuMzM5IDE0MS42MjYgMTEwLjM4MyAxNDIuMTA0QzEwOC44NzYgMTQyLjgzOSAxMDYuODU0IDE0Mi45NSAxMDUuMjM3IDE0Mi40MzVDMTA0LjUwMiAxNDIuMTc4IDEwMy44NCAxNDEuOTIxIDEwMy4zMjUgMTQxLjY2M0MxMDIuNjY0IDE0MS4yOTYgMTAyLjAzOSAxNDAuODkxIDEwMS40MTQgMTQwLjQxM0MxMDAuOTczIDE0MC4wODMgMTAwLjQyMiAxMzkuOTcyIDk5LjkwNjkgMTQwLjA4M0M5OS4zOTIzIDE0MC4xOTMgOTguOTE0NSAxNDAuNTI0IDk4LjY1NzIgMTQxLjAwMkw5Ni40NTE3IDE0NS4xNTVDOTYuMDQ3NCAxNDUuOTI3IDk2LjIzMTIgMTQ2Ljg0NiA5Ni44OTI4IDE0Ny4zOTdDOTcuNzc1IDE0OC4xMzMgOTguNzY3NCAxNDguNzk0IDk5LjgzMzQgMTQ5LjI3MkMxMDAuNzUyIDE0OS43NSAxMDEuODE4IDE1MC4xNTQgMTAzLjEwNSAxNTAuNDg1QzEwNC40MjggMTUwLjg1MyAxMDUuODYyIDE1MS4wMzYgMTA3LjM2OSAxNTEuMDM2QzEwOS4zOSAxNTEuMDM2IDExMS4yNjUgMTUwLjcwNiAxMTIuOTU2IDE1MC4wODFDMTE0LjY0NyAxNDkuNDU2IDExNi4xOSAxNDguNjEgMTE3LjU1MSAxNDcuNTQ0QzExOC45MTEgMTQ2LjQ3OCAxMjAuMDg3IDE0NS4yMjkgMTIxLjExNiAxNDMuNzk1QzEyMi4xMDggMTQyLjM5OCAxMjIuOTU0IDE0MC44OTEgMTIzLjY1MiAxMzkuMjM3TDE1My4yNDIgNjguMjk1M0MxNTMuNDYzIDY3Ljc0MzkgMTUzLjQyNiA2Ny4wODIzIDE1My4wNTggNjYuNTY3N0wxNTMuMjA1IDY2LjYwNDVaIiBmaWxsPSIjMDIwMjM2Ii8+CjxwYXRoIGQ9Ik0xODAuNDQyIDg5LjM1NzRDMTgxLjM2MSA5MC4xMjkzIDE4Mi41MzggOTEuMTIxNyAxODMuOTcxIDkyLjQwODJDMTg1LjQwNSA5My42OTQ3IDE4Ny4wMjIgOTQuOTQ0NSAxODguODk3IDk2LjE5NDJDMTkxLjY1MyA5OC4wMzIxIDE5NC4zNzQgOTkuNDY1NyAxOTcuMDk0IDEwMC40OTVDMTk5LjgxNCAxMDEuNTI0IDIwMi42NDQgMTAyLjAzOSAyMDUuNjIxIDEwMi4wMzlDMjA4LjM3OCAxMDIuMDM5IDIxMC42OTQgMTAxLjc0NSAyMTIuNTY4IDEwMS4xMkMyMTQuNDQzIDEwMC40OTUgMjE1LjkxMyA5OS42ODYyIDIxNi45NzkgOTguNjU3QzIxOC4wNDUgOTcuNjI3OCAyMTguODE3IDk2LjQ1MTYgMjE5LjI5NSA5NS4wOTE1QzIxOS43NzMgOTMuNzMxNSAyMTkuOTkzIDkyLjI5OCAyMTkuOTkzIDkwLjc5MDlDMjE5Ljk5MyA4OS4xMDAxIDIxOS4zNjkgODcuNjI5OCAyMTguMDgyIDg2LjMwNjVDMjE2Ljc5NiA4NC45ODMyIDIxNS4yNTIgODMuODA3IDIxMy40MTQgODIuNzc3OEMyMTEuNTc2IDgxLjc0ODYgMjA5LjY2NSA4MC44NjY0IDIwNy42NDMgODAuMTMxMkMyMDUuNjU4IDc5LjM5NjEgMjAzLjg5NCA3OC44MDggMjAyLjQ2IDc4LjI5MzRDMTk1Ljk1NCA3Ni4wMTQ0IDE5MC4yOTMgNzMuNTg4NCAxODUuNDQxIDcwLjk0MTlDMTgwLjU4OSA2OC4zMzIxIDE3Ni41MDkgNjUuMzkxNSAxNzMuMjc1IDYyLjE5MzZDMTcwLjA0IDU4Ljk1ODkgMTY3LjYxNCA1NS40MzAyIDE2NS45NiA1MS41NzA3QzE2NC4zNDMgNDcuNzExMSAxNjMuNTM0IDQzLjQxMDUgMTYzLjUzNCAzOC42MzJDMTYzLjUzNCAzMy41OTYzIDE2NC41NjMgMjkuMDM4MyAxNjYuNTg1IDI0LjkyMTVDMTY4LjYwNyAyMC44MDQ3IDE3MS41MSAxNy4zMTI3IDE3NS4yNiAxNC4zNzIxQzE3OS4wMDkgMTEuNDY4MyAxODMuNTMgOS4xODkyOSAxODguODYgNy42MDg3MkMxOTQuMTUzIDYuMDI4MTUgMjAwLjA3MSA1LjIxOTQ4IDIwNi42MTQgNS4yMTk0OEMyMTEuNTM5IDUuMjE5NDggMjE2LjI0NCA1Ljc3MDg0IDIyMC43NjUgNi44NzM1N0MyMjUuMjg3IDcuOTc2MjkgMjI5LjczNCA5Ljc0MDY1IDIzNC4xMDggMTIuMjAzNEMyMzUuOTQ2IDEzLjMwNjEgMjM3LjY3NCAxNC40MDg5IDIzOS4zMjggMTUuNTg1MUMyNDAuOTgyIDE2Ljc2MTMgMjQyLjQxNiAxNy44NjQxIDI0My42NjUgMTguOTY2OEMyNDQuOTE1IDIwLjAzMjcgMjQ1LjkwNyAyMS4wNjIgMjQ2LjY0MyAyMi4wNTQ0QzI0Ny4zNzggMjMuMDEwMSAyNDcuNzQ1IDIzLjg1NTUgMjQ3Ljc0NSAyNC41NTM5QzI0Ny43NDUgMjUuMjUyMyAyNDcuNTYyIDI1LjkxMzkgMjQ3LjIzMSAyNi41MDIxQzI0Ni45IDI3LjA5MDIgMjQ2LjM0OSAyNy43ODg2IDI0NS42NSAyOC41MjM3TDIzMy4yMjYgNDEuNzU2NEMyMzIuMzA3IDQyLjY3NTQgMjMxLjM4OCA0My4xNTMyIDIzMC40NjkgNDMuMTUzMkMyMjkuNjk3IDQzLjE1MzIgMjI5LjAzNiA0Mi45MzI3IDIyOC40MTEgNDIuNDkxNkMyMjcuNzg2IDQyLjA1MDUgMjI3LjA4OCA0MS41MzU5IDIyNi4zNTMgNDAuODc0MkwyMjUuNjE3IDQwLjIxMjZDMjI0LjU1MSAzOS4yOTM3IDIyMy4zMzggMzguMzM4IDIyMi4wMTUgMzcuMzgyM0MyMjAuNjkyIDM2LjQyNjYgMjE5LjI1OCAzNS41NDQ0IDIxNy43NTEgMzQuNzM1N0MyMTYuMjQ0IDMzLjk2MzggMjE0LjYyNyAzMy4zMDIyIDIxMi45NzMgMzIuNzg3NkMyMTEuMjgyIDMyLjI3MyAyMDkuNTkxIDMyLjAxNTcgMjA3Ljg2NCAzMi4wMTU3QzIwNi4xMzYgMzIuMDE1NyAyMDQuNDA4IDMyLjE2MjcgMjAyLjgyOCAzMi40NTY4QzIwMS4yNDcgMzIuNzUwOCAxOTkuODg3IDMzLjIyODcgMTk4LjY3NCAzMy44OTAzQzE5Ny40OTggMzQuNTUyIDE5Ni41NDIgMzUuMzk3NCAxOTUuODQ0IDM2LjQ2MzNDMTk1LjE0NSAzNy41MjkzIDE5NC43NzggMzguODE1OCAxOTQuNzc4IDQwLjMyMjlDMTk0Ljc3OCA0MS44Mjk5IDE5NS4xNDUgNDMuMTUzMiAxOTUuOTE3IDQ0LjI1NTlDMTk2LjY4OSA0NS4zNTg3IDE5Ny43OTIgNDYuMzg3OSAxOTkuMzM2IDQ3LjM0MzZDMjAwLjg0MyA0OC4yOTkzIDIwMi43MTcgNDkuMTgxNCAyMDQuOTYgNTAuMDI2OUMyMDcuMjAyIDUwLjg3MjMgMjA5LjgxMiA1MS43NTQ1IDIxMi43ODkgNTIuNzQ2OUMyMTguNTIzIDU0LjY1ODMgMjIzLjgxNiA1Ni42NDMyIDIyOC42MzEgNTguNzAxNkMyMzMuNDgzIDYwLjc5NjggMjM3LjYzNyA2My4yNTk1IDI0MS4xNjYgNjYuMDg5OUMyNDQuNjk1IDY4LjkyMDIgMjQ3LjQxNSA3Mi4zMzg2IDI0OS4zOTkgNzYuMjcxN0MyNTEuMzg0IDgwLjIwNDcgMjUyLjM3NyA4NS4wMiAyNTIuMzc3IDkwLjY0MzlDMjUyLjM3NyA5Ni41OTg2IDI1MS4xNjQgMTAyLjAwMiAyNDguNzM4IDEwNi44MTdDMjQ2LjMxMiAxMTEuNjMyIDI0Mi45NjcgMTE1Ljc4NiAyMzguNzAzIDExOS4yMDRDMjM0LjQzOSAxMjIuNjIzIDIyOS40NzcgMTI1LjIzMyAyMjMuNzQzIDEyNy4xMDdDMjE4LjAwOSAxMjguOTgyIDIxMS44MzMgMTI5LjkwMSAyMDUuMjU0IDEyOS45MDFDMTk5LjA0MiAxMjkuOTAxIDE5Mi45NCAxMjguNzk4IDE4Ni45MTIgMTI2LjU1NkMxODAuODg0IDEyNC4zMTQgMTc1LjI5NiAxMjEuMzM2IDE3MC4xMTQgMTE3LjYyNEMxNjcuOTQ1IDExNi4wNDMgMTY2LjEwNyAxMTQuNDk5IDE2NC42MzcgMTEyLjk5MkMxNjMuMTY2IDExMS40ODUgMTYxLjk1MyAxMTAuMjM2IDE2MS4xMDggMTA5LjMxN0wxNjAuODUxIDEwOS4wNTlDMTYwLjg1MSAxMDkuMDU5IDE2MC43NCAxMDguODc2IDE2MC43MDQgMTA4LjgzOUMxNjAuNjMgMTA4LjgzOSAxNjAuNTkzIDEwOC43NjUgMTYwLjU1NyAxMDguNzI5QzE2MC41MiAxMDguNjE4IDE2MC40NDYgMTA4LjU0NSAxNjAuNDEgMTA4LjU0NUMxNjAuMzczIDEwOC41NDUgMTYwLjI5OSAxMDguNDcxIDE2MC4yNjMgMTA4LjQzNEMxNTkuMDEzIDEwNy4wNzQgMTU4LjM4OCAxMDYuMDA4IDE1OC4zODggMTA1LjE2M0MxNTguMzg4IDEwNC4yNDQgMTU5LjAxMyAxMDMuMjE1IDE2MC4yNjMgMTAyLjA3NUwxNzQuMzA0IDg4LjY5NTdDMTc1LjQ0MyA4Ny44ODcxIDE3Ni4zNjIgODcuNDgyNyAxNzcuMDYxIDg3LjQ4MjdDMTc3LjUzOSA4Ny40ODI3IDE3OC4wNTMgODcuNjI5OCAxNzguNjA1IDg3Ljk2MDZDMTc5LjE1NiA4OC4yOTE0IDE3OS43ODEgODguNzY5MiAxODAuNTUzIDg5LjQzMDlMMTgwLjQ0MiA4OS4zNTc0WiIgZmlsbD0iIzAyMDIzNiIvPgo8cGF0aCBkPSJNMzU1LjUxOCAxNi41Nzc1QzM1Ni40MzcgMTcuMTI4OSAzNTcuMDk5IDE3LjgyNzMgMzU3LjU0IDE4LjY3MjdDMzU3Ljk4MSAxOS41NTQ5IDM1Ny45MDcgMjAuNTg0MSAzNTcuMjgzIDIxLjc2MDNMMzQzLjU3MiA0MS4yNDE4QzM0Mi45ODQgNDIuMTYwNyAzNDIuMzU5IDQyLjY3NTMgMzQxLjY2MSA0Mi44MjIzQzM0MC45OTkgNDIuOTY5NCAzNDAuMTU0IDQyLjcxMjEgMzM5LjE5OCA0Mi4xMjRDMzM2LjU1MSA0MC4xMzkgMzMzLjYxMSAzOC41OTUyIDMzMC40NSAzNy40OTI1QzMyNy4yNTIgMzYuNDI2NSAzMjMuODcgMzUuODc1MiAzMjAuMzA1IDM1Ljg3NTJDMzE1Ljg1NyAzNS44NzUyIDMxMS43NzcgMzYuNzIwNiAzMDguMDY0IDM4LjM3NDdDMzA0LjMxNSA0MC4wNjU1IDMwMS4xMTcgNDIuMzQ0NSAyOTguMzk3IDQ1LjI4NTFDMjk1LjY3NyA0OC4xODg5IDI5My41ODIgNTEuNjA3NCAyOTIuMDc1IDU1LjUwMzdDMjkwLjU2OCA1OS40IDI4OS43OTYgNjMuNTUzNiAyODkuNzk2IDY4LjAwMTJDMjg5Ljc5NiA3Mi40NDg5IDI5MC41NjggNzYuNjAyNSAyOTIuMDc1IDgwLjQ2MkMyOTMuNTgyIDg0LjMyMTUgMjk1LjcxNCA4Ny43MDMyIDI5OC4zOTcgOTAuNjA3MUMzMDEuMTE3IDkzLjUxMDkgMzA0LjMxNSA5NS43ODk5IDMwOC4wNjQgOTcuNDQ0QzMxMS44MTQgOTkuMTM0OCAzMTUuODk0IDk5Ljk0MzUgMzIwLjMwNSA5OS45NDM1QzMyMy44NyA5OS45NDM1IDMyNy4yODggOTkuMzkyMSAzMzAuNTIzIDk4LjI4OTRDMzMzLjc1OCA5Ny4xODY3IDMzNi42OTggOTUuNjQyOCAzMzkuMzgyIDkzLjYyMTJDMzQwLjMzNyA5My4wMzMxIDM0MS4xODMgOTIuNzc1OCAzNDEuODA4IDkyLjg4NkMzNDIuNDY5IDkyLjk5NjMgMzQzLjA5NCA5My40NzQyIDM0My43NTYgOTQuMzU2M0wzNTcuNjEzIDExNC4zMTZDMzU4LjIwMiAxMTUuNDkyIDM1OC4yNzUgMTE2LjUyMSAzNTcuODcxIDExNy4zM0MzNTcuNDMgMTE4LjEzOCAzNTYuNzY4IDExOC44MzcgMzU1Ljg0OSAxMTkuMzUxQzM1MC43NzcgMTIyLjc3IDM0NS4zIDEyNS4zOCAzMzkuNDE4IDEyNy4yNTRDMzMzLjUzNyAxMjkuMTI5IDMyNy4zNjIgMTMwLjA0OCAzMjAuODkzIDEzMC4wNDhDMzE1LjE1OSAxMzAuMDQ4IDMwOS42NDUgMTI5LjMxMyAzMDQuMzg5IDEyNy44NDJDMjk5LjEzMiAxMjYuMzcyIDI5NC4xNyAxMjQuMzE0IDI4OS41NzUgMTIxLjU5NEMyODQuOTgxIDExOC44NzQgMjgwLjc5IDExNS42NzYgMjc3LjA0MSAxMTEuODlDMjczLjI5MiAxMDguMTQgMjcwLjA1NyAxMDMuOTUgMjY3LjMzNyA5OS4zOTIxQzI2NC42MTcgOTQuODM0MiAyNjIuNTU5IDg5LjkwODcgMjYxLjA4OCA4NC42MTU2QzI1OS42MTggNzkuMzU5MyAyNTguODgzIDczLjg0NTcgMjU4Ljg4MyA2OC4xMTE1QzI1OC44ODMgNjIuMzc3MyAyNTkuNjE4IDU2Ljg2MzcgMjYxLjA4OCA1MS42MDc0QzI2Mi41NTkgNDYuMzUxMSAyNjQuNjE3IDQxLjM4ODggMjY3LjMzNyAzNi43NTc0QzI3MC4wNTcgMzIuMTI1OSAyNzMuMjU1IDI3LjkzNTYgMjc3LjA0MSAyNC4xNDk1QzI4MC43OSAyMC4zNjM1IDI4NC45ODEgMTcuMTI4OSAyODkuNTc1IDE0LjQ0NTZDMjk0LjE3IDExLjc2MjMgMjk5LjA5NSA5LjcwMzg1IDMwNC4zODkgOC4xOTY4QzMwOS42NDUgNi43MjY1IDMxNS4xNTkgNS45NTQ1OSAzMjAuODkzIDUuOTU0NTlDMzI3LjM5OSA1Ljk1NDU5IDMzMy41MDEgNi44NzM1MyAzMzkuMjcxIDguNjc0NjRDMzQ1LjA0MiAxMC40NzU4IDM1MC40NDYgMTMuMDg1NSAzNTUuNTE4IDE2LjUwNFYxNi41Nzc1WiIgZmlsbD0iIzAyMDIzNiIvPgo8cGF0aCBkPSJNNDc5LjcyMiAxMC40MDIzQzQ3OS43MjIgOS4yNjI4NiA0ODAuMDE2IDguMzgwNjggNDgwLjYwNCA3LjY4MjI5QzQ4MS4xOTIgNy4wMjA2NSA0ODIuMDc0IDYuNjUzMDggNDgzLjI4NyA2LjY1MzA4SDUzNS43MDRDNTQxLjI5MSA2LjY1MzA4IDU0Ni41MSA3LjY4MjI5IDU1MS4zNjIgOS43Nzc0NkM1NTYuMjE0IDExLjg3MjYgNTYwLjQ3OCAxNC42NjYyIDU2NC4wOCAxOC4yNjg0QzU2Ny43MTkgMjEuODMzOSA1NzAuNTUgMjYuMDI0MyA1NzIuNjQ1IDMwLjgwMjdDNTc0Ljc0IDM1LjU4MTIgNTc1Ljc2OSA0MC42OTA1IDU3NS43NjkgNDYuMDkzOEM1NzUuNzY5IDQ5Ljc2OTYgNTc1LjI1NSA1My4yNjE2IDU3NC4yNjIgNTYuNjA2NUM1NzMuMjcgNTkuOTE0NyA1NzEuODczIDYzLjAzOTEgNTcwLjA3MiA2NS45NDI5QzU2OC4yNzEgNjguODQ2NyA1NjYuMTc2IDcxLjQ1NjUgNTYzLjcxMyA3My44MDlDNTYxLjI1IDc2LjE2MTUgNTU4LjU2NyA3OC4xODMxIDU1NS42MjYgNzkuODM3Mkw1NzYuNDY4IDExOS4wOTRDNTc2LjgzNSAxMTkuODY2IDU3Ny4zMTMgMTIwLjc0OCA1NzcuOTM4IDEyMS43NzhDNTc4LjUyNiAxMjIuODA3IDU3OC44MiAxMjMuNjg5IDU3OC44MiAxMjQuNDYxQzU3OC44MiAxMjUuMzQzIDU3OC41MjYgMTI2LjAwNSA1NzcuOTc1IDEyNi40NDZDNTc3LjQyMyAxMjYuODg3IDU3Ni42NTEgMTI3LjE0NCA1NzUuNjU5IDEyNy4xNDRINTQ3LjgzNEM1NDYuOTE1IDEyNy4xNDQgNTQ2LjEwNiAxMjYuODg3IDU0NS4zNzEgMTI2LjMzNUM1NDQuNjM2IDEyNS43ODQgNTQ0LjE1OCAxMjUuMDQ5IDU0My45MzcgMTI0LjEzTDUyNC4yMzUgODcuMDQxN0g1MTEuMDc2VjEyMy42MTVDNTExLjA3NiAxMjUuOTMxIDUwOS44MjYgMTI3LjEwNyA1MDcuMzI3IDEyNy4xMDdINDgzLjI1MUM0ODIuMTg1IDEyNy4xMDcgNDgxLjMwMiAxMjYuODEzIDQ4MC42NDEgMTI2LjI2MkM0NzkuOTc5IDEyNS43MTEgNDc5LjY0OCAxMjQuODI4IDQ3OS42NDggMTIzLjYxNVYxMC40MDIzSDQ3OS43MjJaTTU0My4yMzkgNDYuMzg3OUM1NDMuMjM5IDQ0Ljc3MDYgNTQyLjk0NSA0My4xNTMzIDU0Mi4zNTcgNDEuNTM1OUM1NDEuNzY5IDM5LjkxODYgNTQwLjkyMyAzOC40MTE1IDUzOS44NTcgMzcuMDg4M0M1MzguNzkxIDM1LjcyODIgNTM3LjQ2OCAzNC41ODg4IDUzNS45NjEgMzMuNjY5OEM1MzQuNDU0IDMyLjc1MDkgNTMyLjc2MyAzMi4xNjI4IDUzMC45MjUgMzEuODY4N0M1MjkuNDE4IDMxLjc1ODQgNTI3Ljk4NSAzMS42ODQ5IDUyNi42NjEgMzEuNTc0NkM1MjUuMzM4IDMxLjUwMTEgNTIzLjkwNCAzMS40NjQ0IDUyMi4zMjQgMzEuNDY0NEg1MTEuMTEzVjYxLjIzNzlINTI2LjAzNkM1MjYuOTkyIDYxLjIzNzkgNTI3Ljg3NCA2MS4yMzc5IDUyOC42NDYgNjEuMTY0NEM1MjkuNDE4IDYxLjEyNzcgNTMwLjIyNyA2MS4wMTc0IDUzMS4xNDYgNjAuOTA3MUM1MzMuMDIgNjAuNjg2NiA1MzQuNzQ4IDYwLjEzNTIgNTM2LjI1NSA1OS4yNTNDNTM3Ljc2MiA1OC4zNzA5IDUzOS4wNDggNTcuMjMxNCA1NDAuMDc4IDU1LjkwODFDNTQxLjEwNyA1NC41ODQ4IDU0MS44NzkgNTMuMTE0NSA1NDIuNDMgNTEuNDYwNEM1NDIuOTgyIDQ5LjgwNjQgNTQzLjIzOSA0OC4xMTU1IDU0My4yMzkgNDYuMzg3OVoiIGZpbGw9IiMwMjAyMzYiLz4KPHBhdGggZD0iTTU4NS41ODMgMTAuNDAyM0M1ODUuNTgzIDkuMjYyODYgNTg1Ljg3OCA4LjM4MDY4IDU4Ni41MDIgNy42ODIyOUM1ODcuMTI3IDcuMDIwNjUgNTg4LjAwOSA2LjY1MzA4IDU4OS4xNDkgNi42NTMwOEg2NjkuNjQ4QzY3MC44MjQgNi42NTMwOCA2NzEuNzQzIDcuMDIwNjUgNjcyLjQwNSA3LjcxOTA0QzY3My4wNjYgOC40MTc0NCA2NzMuMzYgOS4zNzMxMyA2NzMuMzYgMTAuNTQ5NFYzMC42MTlDNjczLjM2IDMxLjUzNzkgNjczLjAzIDMyLjQyMDEgNjcyLjQwNSAzMy4yMjg3QzY3MS43NDMgMzQuMDc0MiA2NzAuODI0IDM0LjQ3ODUgNjY5LjU3NCAzNC40Nzg1SDYxNy4wMTFWNTQuNTg0OEg2NTcuNTkxQzY1OC42MjEgNTQuNTg0OCA2NTkuNDY2IDU0Ljg0MjEgNjYwLjEyOCA1NS4zMkM2NjAuNzg5IDU1Ljc5NzggNjYxLjE1NyA1Ni42MDY1IDY2MS4xNTcgNTcuNzQ2Vjc1LjI3OTNDNjYxLjE1NyA3Ni4wNTEyIDY2MC44NjMgNzYuNzQ5NiA2NjAuMjc1IDc3LjQ4NDdDNjU5LjY4NyA3OC4xODMxIDY1OC44MDQgNzguNTUwNyA2NTcuNjY1IDc4LjU1MDdINjE3LjAxMVY5OS4zMTg3SDY3MS41MjNDNjczLjk0OSA5OS4zMTg3IDY3NS4xNjEgMTAwLjU2OCA2NzUuMTYxIDEwMy4wMzFWMTIzLjQzMkM2NzUuMTYxIDEyMy45ODMgNjc0Ljk0MSAxMjQuNDYxIDY3NC41IDEyNC45MDJDNjc0LjI3OSAxMjYuNDA5IDY3My4xNzcgMTI3LjE4MSA2NzEuMTkyIDEyNy4xODFINTg5LjE4NkM1ODguMTIgMTI3LjE4MSA1ODcuMjM4IDEyNi44ODcgNTg2LjYxMyAxMjYuMzM1QzU4NS45NTEgMTI1Ljc4NCA1ODUuNjU3IDEyNC45MDIgNTg1LjY1NyAxMjMuNjg5VjEwLjQwMjNINTg1LjU4M1oiIGZpbGw9IiMwMjAyMzYiLz4KPHBhdGggZD0iTTg2MC43MTMgMTIzLjc5OUw4NDEuNDE2IDEwNS42NzhDODQ5Ljc5NiA5NC4yNDYzIDg1NC4yMDcgODAuOTc2OCA4NTQuMjA3IDY3LjE5MjhDODU0LjIwNyA1MC4xMDA1IDg0Ny40ODEgMzMuNzgwMiA4MzUuMjc3IDIxLjIwOTJDODIyLjg1MyA4Ljc4NTEzIDgwNi41MzMgMS45NDgyNCA3ODkuMjkzIDEuOTQ4MjRDNzcyLjA1NCAxLjk0ODI0IDc1NS41MTMgOC45Njg5MiA3NDMuNDU3IDIxLjI0NTlDNzMxLjI5IDMzLjgxNyA3MjQuNTYzIDUwLjEzNzMgNzI0LjU2MyA2Ny4yMjk1QzcyNC41NjMgODguMDcxIDczNC44MTkgMTAzLjczIDc0My40MiAxMTMuMTc2Qzc1NC4zNzQgMTI1LjMwNiA3NzEuMDYyIDEzMi4yOSA3ODkuMjU3IDEzMi4yOUM4MDMuMDQxIDEzMi4yOSA4MTYuNDk0IDEyOC4zOTQgODI4LjE4MyAxMjAuOTY5TDgzOC44MDYgMTMwLjQ1MkM4MzkuMTM3IDEzMC43NDYgODM5LjU3OCAxMzAuOTMgODQwLjAxOSAxMzAuOTNIODU5LjQ2M0M4NjAuNDkzIDEzMC45MyA4NjEuMzAxIDEzMC4xMjIgODYxLjMwMSAxMjkuMDkyVjEyNS4xOTZDODYxLjMwMSAxMjQuNjgxIDg2MS4wODEgMTI0LjIwNCA4NjAuNzEzIDEyMy44NzNWMTIzLjc5OVpNODA2LjA5MiA3NC4yODY5QzgwNS43NjEgNzMuOTkyOSA4MDUuMzIgNzMuODA5MSA4MDQuODQyIDczLjgwOTFINzgwLjEwNEM3NzkuMzMyIDczLjgwOTEgNzc4LjY3IDc0LjI4NjkgNzc4LjM3NiA3NC45ODUzQzc3OC4xMTkgNzUuNjgzNyA3NzguMzAzIDc2LjQ5MjQgNzc4Ljg1NCA3Ny4wMDdMODExLjIwMSAxMDUuODYyQzgwNC41NDggMTA5LjM5IDc5Ny4yNyAxMTEuMjY1IDc4OS45OTIgMTExLjI2NUM3NzguMzc2IDExMS4yNjUgNzY3LjI3NiAxMDYuNTYgNzU4Ljc0OCA5OC4wMzIzQzc1MC42NjEgODkuNzYxOCA3NDYuMDMgNzguNTE0MSA3NDYuMDMgNjcuMTU2Qzc0Ni4wMyA1NS43OTc5IDc1MC41NTEgNDQuODQ0MiA3NTguNzQ4IDM2LjQ2MzVDNzY3LjA1NSAyOC4xNTYzIDc3Ny44OTkgMjMuNTYxNiA3ODkuMjU3IDIzLjU2MTZDODAwLjYxNSAyMy41NjE2IDgxMS42MDUgMjguMTE5NiA4MTkuNzI5IDM2LjQyNjhDODI3LjkyNiA0NC44MDc1IDgzMi40NDcgNTUuNzI0NCA4MzIuNDQ3IDY3LjExOTJDODMyLjQ0NyA3Ni4wNTEzIDgyOS44NzQgODUuMTMwNCA4MjUuNSA5MS45MzA1TDgwNi4wMTggNzQuMjUwMkw4MDYuMDkyIDc0LjI4NjlaIiBmaWxsPSIjMDA4MUZGIi8+CjxwYXRoIGQ9Ik03MTMuNDk5IDQuOTI1NTRINjk2LjQ4MUM2OTUuNDY2IDQuOTI1NTQgNjk0LjY0MyA1Ljc0ODM4IDY5NC42NDMgNi43NjM0MVYxMjYuNTU2QzY5NC42NDMgMTI3LjU3MSA2OTUuNDY2IDEyOC4zOTQgNjk2LjQ4MSAxMjguMzk0SDcxMy40OTlDNzE0LjUxNCAxMjguMzk0IDcxNS4zMzcgMTI3LjU3MSA3MTUuMzM3IDEyNi41NTZWNi43NjM0MUM3MTUuMzM3IDUuNzQ4MzggNzE0LjUxNCA0LjkyNTU0IDcxMy40OTkgNC45MjU1NFoiIGZpbGw9IiMwMDgxRkYiLz4KPHBhdGggZD0iTTg1MS4zNCAxOS45MjI0Qzg1MS4zNCAxNy42ODAyIDg1MS43NDQgMTUuNTg1MSA4NTIuNTkgMTMuNjAwMkM4NTMuMzk4IDExLjYxNTMgODU0LjUzOCA5Ljk2MTE3IDg1NS45NzIgOC41NjQzOEM4NTcuNDA1IDcuMTY3NiA4NTkuMTMzIDYuMDY0ODcgODYxLjE1NCA1LjI1NjIxQzg2My4xNzYgNC40NDc1NCA4NjUuMzQ1IDQuMDQzMjEgODY3LjY2IDQuMDQzMjFDODY5Ljk3NiA0LjA0MzIxIDg3Mi4xNDUgNC40NDc1NCA4NzQuMTY3IDUuMjU2MjFDODc2LjE4OCA2LjA2NDg3IDg3Ny45NTMgNy4xNjc2IDg3OS4zODYgOC41NjQzOEM4ODAuODIgOS45NjExNyA4ODEuOTk2IDExLjY1MiA4ODIuODA0IDEzLjYwMDJDODgzLjY1IDE1LjU4NTEgODg0LjA1NCAxNy42ODAyIDg4NC4wNTQgMTkuOTIyNEM4ODQuMDU0IDIyLjE2NDYgODgzLjY1IDI0LjI5NjYgODgyLjgwNCAyNi4yODE1Qzg4MS45NTkgMjguMjY2NCA4ODAuODIgMjkuOTU3MiA4NzkuMzg2IDMxLjM1NEM4NzcuOTUzIDMyLjc1MDggODc2LjE4OCAzMy44NTM1IDg3NC4xNjcgMzQuNjk4OUM4NzIuMTQ1IDM1LjUwNzYgODY5Ljk3NiAzNS45MTE5IDg2Ny42NiAzNS45MTE5Qzg2NS4zNDUgMzUuOTExOSA4NjMuMTc2IDM1LjUwNzYgODYxLjE1NCAzNC42OTg5Qzg1OS4xMzMgMzMuODkwMyA4NTcuNDA1IDMyLjc4NzYgODU1Ljk3MiAzMS4zNTRDODU0LjUzOCAyOS45NTcyIDg1My4zOTggMjguMjY2NCA4NTIuNTkgMjYuMjgxNUM4NTEuNzgxIDI0LjI5NjYgODUxLjM0IDIyLjIwMTQgODUxLjM0IDE5LjkyMjRaTTg4MS45OTYgMTkuOTU5MkM4ODEuOTk2IDE3LjM0OTQgODgxLjM3MSAxNC45OTY5IDg4MC4xNTggMTIuODY1Qzg3OC45MDggMTAuNzMzMSA4NzcuMjE3IDkuMDQyMjMgODc1LjAxMiA3LjgyOTIzQzg3Mi44MDYgNi42MTYyNCA4NzAuMzggNS45OTEzNiA4NjcuNjk3IDUuOTkxMzZDODY1LjY3NSA1Ljk5MTM2IDg2My44MDEgNi4zNTg5MyA4NjIuMDM3IDcuMDU3MzNDODYwLjI3MiA3Ljc1NTcyIDg1OC43NjUgOC43NDgxNyA4NTcuNTE1IDkuOTk3OTJDODU2LjI2NiAxMS4yNDc3IDg1NS4zMSAxMi43MTggODU0LjU3NSAxNC40NDU2Qzg1My44NCAxNi4xNzMyIDg1My41MDkgMTcuOTc0MyA4NTMuNTA5IDE5LjkyMjRDODUzLjUwOSAyMS44NzA2IDg1My44NzYgMjMuNzQ1MiA4NTQuNTc1IDI1LjQ3MjhDODU1LjMxIDI3LjIwMDQgODU2LjI2NiAyOC43MDc1IDg1Ny41MTUgMjkuOTU3MkM4NTguNzY1IDMxLjIwNyA4NjAuMjcyIDMyLjE5OTQgODYyLjAzNyAzMi45MzQ2Qzg2My44MDEgMzMuNjY5NyA4NjUuNjc1IDM0LjAzNzMgODY3LjY5NyAzNC4wMzczQzg3MC4zNDQgMzQuMDM3MyA4NzIuNzcgMzMuNDQ5MiA4NzQuOTM4IDMyLjI3M0M4NzcuMTA3IDMxLjA5NjcgODc4LjgzNSAyOS40NDI2IDg4MC4wODQgMjcuMzEwN0M4ODEuMzM0IDI1LjE3ODggODgxLjk5NiAyMi43MTYgODgxLjk5NiAyMC4wMzI3VjE5Ljk1OTJaTTg2MC44NiAxMC4wMzQ3SDg2OS4zMTRDODcxLjAwNSAxMC4wMzQ3IDg3Mi40MDIgMTAuNjk2MyA4NzMuNTc4IDEyLjAxOTZDODc0LjcxOCAxMy4zNDI5IDg3NS4zMDYgMTQuNzc2NCA4NzUuMzA2IDE2LjM5MzdDODc1LjMwNiAxNy43OTA1IDg3NC45MDIgMTkuMDAzNSA4NzQuMTMgMjAuMTQzQzg3My4zNTggMjEuMjQ1NyA4NzIuMzI5IDIxLjk4MDkgODcxLjA3OSAyMi4yNzQ5TDg3NS44OTQgMjkuODQ3SDg3Mi42NTlMODY4LjE3NSAyMi42NzkzSDg2My43MjdWMjkuODQ3SDg2MC44NlYxMC4wMzQ3Wk04NjkuMTY3IDIwLjE3OTdDODcwLjE5NyAyMC4xNzk3IDg3MS4wMDUgMTkuODEyMiA4NzEuNTkzIDE5LjExMzhDODcyLjE4MiAxOC40MTU0IDg3Mi40NzYgMTcuNDk2NSA4NzIuNDc2IDE2LjM5MzdDODcyLjQ3NiAxNS4yOTEgODcyLjE0NSAxNC4zNzIxIDg3MS40ODMgMTMuNjczN0M4NzAuODIyIDEyLjk3NTMgODcwLjAxMyAxMi42NDQ1IDg2OS4wMiAxMi42NDQ1SDg2My42OTFWMjAuMTc5N0g4NjkuMTY3WiIgZmlsbD0iIzAwODFGRiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzUwMjRfMTE2Ij4KPHJlY3Qgd2lkdGg9Ijg4NC4wOTEiIGhlaWdodD0iMTUxLjExIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="MyScoreIQ"></span>
-      <p>The industry-specific FICO scores lenders actually underwrite on &mdash; 2, 4 and 5 today, with
-      VantageScore 4.0 and FICO 10&nbsp;T landing here as they arrive.</p>
-      <span class="spb">Solves &ldquo;that is just an educational score&rdquo;</span></div>
-    <div class="sp2 p2"><div class="spn">02 &middot; Move</div><span class="splogo"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM1IiB2aWV3Qm94PSIwIDAgMzAwIDM1IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMV8xNDEzKSI+CjxtYXNrIGlkPSJtYXNrMF8xXzE0MTMiIHN0eWxlPSJtYXNrLXR5cGU6bHVtaW5hbmNlIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIwIiB5PSIwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM1Ij4KPHBhdGggZD0iTTI5OS45ODIgMC42NDAwMTVIMC4wMTgzMTA1VjM0LjM0SDI5OS45ODJWMC42NDAwMTVaIiBmaWxsPSJ3aGl0ZSIvPgo8L21hc2s+CjxnIG1hc2s9InVybCgjbWFzazBfMV8xNDEzKSI+CjxnIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTpsaWdodGVuIiBvcGFjaXR5PSIwLjQ1Ij4KPHBhdGggZD0iTTI4Ny40MjQgMjkuMDAwOEMyODguMzQ4IDI4LjA4MjEgMjg5LjE0MSAyNy4wNzY5IDI4OS44MTQgMjUuOTk2MUgyNzUuNTg0VjMzLjgxMDRDMjc1LjU4NCAzMy44MTA0IDI3NS42ODIgMzMuODEwNCAyNzUuNzI1IDMzLjgxMDRDMjc5Ljk2MiAzMy44MTA0IDI4NC4xOTggMzIuMjEwOCAyODcuNDI0IDI5LjAwMDhaIiBmaWxsPSIjMDBEQkZGIi8+CjwvZz4KPHBhdGggZD0iTTI4My40MjcgMjEuMzU5NEMyODMuMDI1IDIyLjEyNjcgMjgyLjUwMyAyMi44NDAxIDI4MS44NjMgMjMuNDY3QzI4MC4yNTUgMjUuMDY2NiAyNzguMTU4IDI1LjkwOTYgMjc2LjA1MSAyNS45ODUzTDI4OS44MTQgMjUuOTk2MUMyOTAuNzA1IDI0LjU1ODYgMjkxLjM2OCAyMi45OTE0IDI5MS43OCAyMS4zNTk0SDI4My40MjdaIiBmaWxsPSIjMDBEQkZGIi8+CjxwYXRoIGQ9Ik0yODkuODc5IDI1Ljk0MkgyNzUuODY2QzI3My4yOTIgMjUuOTUyOCAyNzAuNzA3IDI0Ljg1MDQgMjY4LjkzNiAyMi42MDIzQzI2Ny45NjkgMjEuMzcwMiAyNjcuMzUgMTkuODg5NCAyNjcuMTc2IDE4LjM0MzlDMjY2Ljg2MSAxNS42NjM0IDI2Ny43NzQgMTMuMDgwMyAyNjkuNjUzIDExLjIxMDVDMjcxLjM0NyA5LjUyNDM2IDI3My41NjQgOC42ODEzMyAyNzUuNzkgOC42ODEzM0MyNzcuODQzIDguNjgxMzMgMjc5Ljg5NiA5LjQwNTQ4IDI4MS41MzcgMTAuODQzTDI4Ny4wOTkgNS4zMDkxNkMyODAuNjI0IC0wLjczMjYxOSAyNzAuNDEzIC0wLjYxMzczMSAyNjQuMDkxIDUuNjc2NjVDMjYwLjk2MyA4Ljc4OTQgMjU5LjI0NiAxMi45MTgxIDI1OS4yNDYgMTcuMzE3MUMyNTkuMjQ2IDIxLjcxNiAyNjAuOTYzIDI1Ljg0NDggMjY0LjA5MSAyOC45NTc2QzI2Ny4yNzQgMzIuMTM1MiAyNzEuNDU2IDMzLjczNDggMjc1LjY0OSAzMy43NjcyTDI5OS4wOCAzMy43NzhDMjk5LjU4IDMzLjc3OCAyOTkuOTgyIDMzLjM3ODEgMjk5Ljk4MiAzMi44ODA5VjI2LjgzOTFDMjk5Ljk4MiAyNi4zNDIgMjk5LjU4IDI1Ljk0MiAyOTkuMDggMjUuOTQySDI4OS44NzlaIiBmaWxsPSIjMDBEQkZGIi8+CjxwYXRoIGQ9Ik0yODcuNDkgNS42NjU4M0MyODcuMzU5IDUuNTM2MTQgMjg3LjIyOSA1LjQxNzI1IDI4Ny4xMDkgNS4yOTgzN0MyODUuNjk3IDYuNzAzNDMgMjgzLjUyNSA4Ljg2NTA2IDI4MS41NDggMTAuODMyMkMyODEuNjc4IDEwLjk1MTEgMjgxLjgwOCAxMS4wNjk5IDI4MS45MzkgMTEuMTg4OEMyODMuNTc5IDEyLjgyMDkgMjg0LjQ4MSAxNC45ODI1IDI4NC40ODEgMTcuMjk1NUMyODQuNDgxIDE4LjcxMTMgMjg0LjE0NCAyMC4wNzMyIDI4My41MDMgMjEuMjgzN0MyODMuMTAxIDIyLjA1MTEgMjgyLjU3OSAyMi43NjQ0IDI4MS45MzkgMjMuMzkxM0MyODAuMzMxIDI0Ljk5MDkgMjc4LjIzNCAyNS44MzM5IDI3Ni4xMjcgMjUuOTA5NkwyODkuODkgMjUuOTIwNEMyOTAuNzgxIDI0LjQ4MjkgMjkxLjQ0MyAyMi45MTU4IDI5MS44NTYgMjEuMjgzN0MyOTIuMTgyIDE5Ljk5NzUgMjkyLjM0NSAxOC42NTczIDI5Mi4zNDUgMTcuMjk1NUMyOTIuMzQ1IDEyLjg5NjYgMjkwLjYyOSA4Ljc2NzggMjg3LjUgNS42NTUwMkwyODcuNDkgNS42NjU4M1oiIGZpbGw9IiMwMERCRkYiLz4KPHBhdGggZD0iTTI4My4zMTggMjEuODU2NUMyODMuMTAxIDIyLjEwNTEgMjc4Ljg2NSAyOC43MDg5IDI2OC4xNzYgMjYuNDgyNUwyNjcuOTU4IDI2LjQ2MDlDMjY3Ljg5MyAyNi40NjA5IDI2MS4wODIgMjUuNjkzNSAyNTguMDg0IDIxLjIwODFDMjU2LjU3NCAxOC45NTk5IDI1NS45OTkgMTYuMjc5NSAyNTUuNzgxIDEyLjcxMjhDMjU1Ljc0OSAxMi4yMzczIDI1NS4zNTggMTEuODU4OSAyNTQuODkxIDExLjg1ODlIMjQ5LjA3OUMyNDguNTY5IDExLjg1ODkgMjQ4LjE0NSAxMi4yOTEzIDI0OC4xNzggMTIuNzk5M0MyNDguNDQ5IDE3LjY1MjEgMjQ5LjI4NSAyMS42OTQ0IDI1MS43NjIgMjUuNDAxNkMyNTYuNTUyIDMyLjU0NTkgMjY1Ljg1MSAzMy44MzIgMjY3LjExMSAzMy45NzI1QzI2OC41NjcgMzQuMTg4OSAyNjkuOTQ2IDM0LjI4NiAyNzEuMjcyIDM0LjI4NkMyODIuNjAxIDM0LjI4NiAyODguODI2IDI3LjA5ODUgMjg5LjExOSAyNi43NTI3TDI4My4zMjkgMjEuODU2NUgyODMuMzE4WiIgZmlsbD0iIzAwREJGRiIvPgo8cGF0aCBkPSJNNy4xMTE2NiAzMi40MTYyQzQuOTE3MzkgMzEuMTYyNCAzLjE3OTM2IDI5LjQyMjMgMS45MTkyOSAyNy4yMDY2QzAuNjU5MjExIDI0Ljk5MDkgMC4wMTgzMTA1IDIyLjUzNzUgMC4wMTgzMTA1IDE5LjgzNTRDMC4wMTgzMTA1IDE3LjEzMzMgMC42NDgzNSAxNC42MzY3IDEuOTE5MjkgMTIuNDIxQzMuMTc5MzYgMTAuMjA1MyA0LjkxNzM5IDguNDY1MTcgNy4xMTE2NiA3LjIwMDYyQzkuMzA1OTMgNS45MjUyNiAxMS43NSA1LjI5ODM3IDE0LjQ0NCA1LjI5ODM3QzE2LjY4MTcgNS4yOTgzNyAxOC43NDU3IDUuNzYzMTMgMjAuNjU3NSA2LjY5MjYyQzIyLjU2OTMgNy42MjIxNCAyNC4xNTUzIDguOTE5MTIgMjUuNDI2MiAxMC42MDUyQzI2LjUxMjUgMTIuMDMxOSAyNy4yOTQ2IDEzLjY0MjMgMjcuNzYxNyAxNS40MjU3QzI3Ljg5MjEgMTUuOTEyIDI3LjUwMSAxNi4zNzY4IDI3LjAwMTMgMTYuMzc2OEgyMi40NDk4QzIyLjEzNDggMTYuMzc2OCAyMS44NTI0IDE2LjE3MTQgMjEuNzMyOSAxNS44Nzk2QzIxLjEzNTUgMTQuNDQyMSAyMC4yNTU2IDEzLjI5NjQgMTkuMDcxNSAxMi40NDI2QzE3Ljc1NzIgMTEuNDkxNSAxNi4yMTQ2IDExLjAxNTkgMTQuNDU0OSAxMS4wMTU5QzEyLjkxMjQgMTEuMDE1OSAxMS41MTExIDExLjQwNSAxMC4yNDAxIDEyLjE3MjRDOC45ODAwNyAxMi45Mzk4IDcuOTgwNjkgMTMuOTk5IDcuMjQyMDIgMTUuMzVDNi41MDMzNiAxNi43MDEgNi4xNDQ5IDE4LjE5MjYgNi4xNDQ5IDE5LjgzNTRDNi4xNDQ5IDIxLjQ3ODIgNi41MTQyNCAyMi45Njk4IDcuMjQyMDIgMjQuMzFDNy45Njk4NCAyNS42NTAyIDguOTY5MiAyNi42OTg2IDEwLjI0MDEgMjcuNDQ0NEMxMS41MDAyIDI4LjIwMSAxMi45MTI0IDI4LjU3OTMgMTQuNDU0OSAyOC41NzkzQzE2LjI5MDcgMjguNTc5MyAxNy44NzY2IDI4LjA2MDUgMTkuMjAxOSAyNy4wMzM3QzIwLjM5NjggMjYuMTA0MiAyMS4yNTUgMjQuODgyOCAyMS43ODcyIDIzLjM1ODlDMjEuODk1OSAyMy4wNDU1IDIyLjE4OTEgMjIuODE4NSAyMi41MjU5IDIyLjgxODVIMjcuMDk5MUMyNy41OTg4IDIyLjgxODUgMjcuOTg5OCAyMy4yODMyIDI3Ljg3MDMgMjMuNzY5NkMyNy40MDMyIDI1LjY2MSAyNi42MjExIDI3LjM0NzEgMjUuNTI0IDI4LjgzODdDMjQuMjQyMiAzMC41Nzg4IDIyLjY1NjIgMzEuOTE5IDIwLjc1NTMgMzIuODcwMUMxOC44NTQzIDMzLjgyMTIgMTYuNzU3OCAzNC4yOTY3IDE0LjQ2NTcgMzQuMjk2N0MxMS43NzE4IDM0LjI5NjcgOS4zMzg1MyAzMy42Njk5IDcuMTMzMzggMzIuNDA1M0w3LjExMTY2IDMyLjQxNjJaIiBmaWxsPSIjMzMzNTM1Ii8+CjxwYXRoIGQ9Ik00Mi45NDc3IDEyLjkwNzNWMTYuODMwN0M0Mi45NDc3IDE3LjI2MyA0Mi42IDE3LjYwODkgNDIuMTY1NiAxNy42MDg5SDQwLjQyNzZDMzguODA5IDE3LjYwODkgMzcuNjM1OCAxNy45OTggMzYuOTE5MSAxOC43NjU0QzM2LjIwMiAxOS41MzI3IDM1Ljg0MzcgMjAuNzk3MyAzNS44NDM3IDIyLjUzNzRWMzIuOTI0MUMzNS44NDM3IDMzLjM1NjQgMzUuNDk2IDMzLjcwMjMgMzUuMDYxMyAzMy43MDIzSDMwLjc5MjRDMzAuMzU3OSAzMy43MDIzIDMwLjAxMDMgMzMuMzU2NCAzMC4wMTAzIDMyLjkyNDFWMTMuMDI2MkMzMC4wMTAzIDEyLjU5MzkgMzAuMzU3OSAxMi4yNDggMzAuNzkyNCAxMi4yNDhIMzMuMjM2NUMzMy41NjI0IDEyLjI0OCAzMy44NDQ3IDEyLjQ0MjYgMzMuOTY0MiAxMi43NDUyTDM0LjM1NTIgMTMuNzE3OUMzNC41NjE4IDE0LjIzNjcgMzUuMjEzNCAxNC4zNjY0IDM1LjYyNjEgMTMuOTg4MUMzNi4xODA0IDEzLjQ4MDIgMzYuNzg4NiAxMy4wODAzIDM3LjQ1MTMgMTIuNzg4NEMzOC40NjEzIDEyLjM1NjEgMzkuNjU2NSAxMi4xMjkxIDQxLjA0NjggMTIuMTI5MUg0Mi4xNzY2QzQyLjYxMTEgMTIuMTI5MSA0Mi45NTg3IDEyLjQ3NSA0Mi45NTg3IDEyLjkwNzNINDIuOTQ3N1oiIGZpbGw9IiMzMzM1MzUiLz4KPHBhdGggZD0iTTYzLjg4MDEgMjQuNjAxOEg0OS4yODA2QzQ4Ljc0ODQgMjQuNjAxOCA0OC4zNjg0IDI1LjEyMDYgNDguNTMxMiAyNS42MTc4QzQ4LjgzNTIgMjYuNTkwNSA0OS4zMzUgMjcuMzY4NyA1MC4wMzA0IDI3Ljk1MjNDNTAuOTUzNiAyOC43MzA1IDUyLjEyNjggMjkuMTE5NiA1My41NjA1IDI5LjExOTZDNTQuNTQ5MiAyOS4xMTk2IDU1LjQzOTcgMjguOTAzNSA1Ni4yMzI4IDI4LjQ2MDNDNTYuOTA2MiAyOC4wOTI4IDU3LjQ0OTQgMjcuNjA2NSA1Ny44ODQxIDI3LjAwMTJDNTguMDM1OSAyNi43ODUxIDU4LjI3NTIgMjYuNjQ0NSA1OC41MzU4IDI2LjY0NDVINjMuMTA5QzYzLjY4NDUgMjYuNjQ0NSA2NC4wNTM5IDI3LjIzOSA2My44MjYgMjcuNzU3OEM2My4wMDAyIDI5LjU3MzYgNjEuNzgzNiAzMS4wNTQzIDYwLjE3NjEgMzIuMjEwOEM1OC4yNDI1IDMzLjU4MzQgNTYuMDQ4MyAzNC4yNzUzIDUzLjU3MTUgMzQuMjc1M0M1MS40NjQxIDM0LjI3NTMgNDkuNTYzMiAzMy43NzggNDcuODU3NSAzMi43ODM2QzQ2LjE1MjIgMzEuNzg5MyA0NC44MTYyIDMwLjQzODIgNDMuODQ5MiAyOC43MDg5QzQyLjg4MjYgMjYuOTkwNCA0Mi4zOTM4IDI1LjA2NjYgNDIuMzkzOCAyMi45NDgyQzQyLjM5MzggMjAuODI5NyA0Mi44ODI2IDE4LjkwNTkgNDMuODQ5MiAxNy4xNjU4QzQ0LjgxNjIgMTUuNDM2NCA0Ni4xNjMyIDE0LjA3NDYgNDcuODU3NSAxMy4wOTExQzQ5LjU2MzIgMTIuMTA3NSA1MS40NjQxIDExLjYyMTIgNTMuNTcxNSAxMS42MjEyQzU1LjY3ODkgMTEuNjIxMiA1Ny42NTU5IDEyLjEyOTEgNTkuMzM5NiAxMy4xMzQzQzYxLjAzNDIgMTQuMTM5NCA2Mi4zNDg1IDE1LjUwMTMgNjMuMjkzNSAxNy4yMzA2QzY0LjIzODcgMTguOTQ5MSA2NC43MTY1IDIwLjgyOTcgNjQuNzE2NSAyMi44NzI1QzY0LjcxNjUgMjMuMjE4NCA2NC43MDU5IDIzLjU1MzQgNjQuNjczMiAyMy44ODg1QzY0LjY0MDUgMjQuMjg4NCA2NC4yOTMxIDI0LjU4MDIgNjMuODkxMSAyNC41ODAyTDYzLjg4MDEgMjQuNjAxOFpNNTAuMzEyNiAxNy42NTIxQzQ5LjY5MzQgMTguMTQ5MyA0OS4yMDQ1IDE4Ljc3NjIgNDguODQ2MiAxOS41NDM2QzQ4LjYwNzMgMjAuMDUxNiA0OS4wMDkgMjAuNjI0NCA0OS41NzM5IDIwLjYyNDRINTcuNzMyQzU4LjI5NjkgMjAuNjI0NCA1OC42OTg2IDIwLjAyOTkgNTguNDQ4NyAxOS41MjE5QzU4LjA1NzYgMTguNzQzOCA1Ny41NDcxIDE4LjExNjkgNTYuOTA2MiAxNy42MzA1QzU1Ljk4MjkgMTYuOTI4IDU0Ljg3NTEgMTYuNTgyMSA1My41NzE1IDE2LjU4MjFDNTIuMjY3OSAxNi41ODIxIDUxLjIxNDIgMTYuOTM4OCA1MC4zMTI2IDE3LjY1MjFaIiBmaWxsPSIjMzMzNTM1Ii8+CjxwYXRoIGQ9Ik04OC41NDk2IDQuNzAzOVYzMi45MzQ5Qzg4LjU0OTYgMzMuMzY3MiA4OC4yMDE5IDMzLjcxMzEgODcuNzc4MiAzMy43MTMxSDg0LjgzNDZDODQuNTE5NiAzMy43MTMxIDg0LjIyNjMgMzMuNTE4NiA4NC4xMTc1IDMzLjIxNTlMODMuOTk4MSAzMi45MTMzQzgzLjgyNDIgMzIuNDQ4NiA4My4yNTk0IDMyLjI1NCA4Mi44NTc2IDMyLjUzNUM4MS4xNTE5IDMzLjc0NTYgNzkuMTg2IDM0LjM1MDcgNzYuOTkxNSAzNC4zNTA3Qzc0Ljc5NzMgMzQuMzUwNyA3Mi45NjE1IDMzLjg1MzYgNzEuMjc3OCAzMi44NzAxQzY5LjU5NDIgMzEuODg2NSA2OC4yNTc4IDMwLjUyNDcgNjcuMjkxMiAyOC44MTdDNjYuMzI0MyAyNy4wOTg1IDY1LjgzNTQgMjUuMTc0NiA2NS44MzU0IDIzLjA0NTRDNjUuODM1NCAyMC45MTYyIDY2LjMxMzYgMTguOTgxNSA2Ny4yNjk1IDE3LjI3MzhDNjguMjI1NSAxNS41NTUzIDY5LjU1MDggMTQuMjE1MSA3MS4yNTYxIDEzLjI0MjRDNzIuOTYxNSAxMi4yNjk2IDc0Ljg3MzQgMTEuNzgzMyA3Ni45OTE1IDExLjc4MzNDNzguNjg2MiAxMS43ODMzIDgwLjI2MTQgMTIuMTUwNyA4MS42OTUxIDEyLjg3NDlDODIuMjA1NiAxMy4xMzQzIDgyLjgwMzIgMTIuNzY2OCA4Mi44MDMyIDEyLjE5NFY0LjcwMzlDODIuODAzMiA0LjI3MTU3IDgzLjE1MDkgMy45MjU2OSA4My41NzQzIDMuOTI1NjlIODcuNzY3NUM4OC4xOTEyIDMuOTI1NjkgODguNTM4NiA0LjI3MTU3IDg4LjUzODYgNC43MDM5SDg4LjU0OTZaTTgwLjM5MTUgMjguMTAzNkM4MS4yNzE0IDI3LjU4NDkgODEuOTY2NyAyNi44ODIzIDgyLjQ3NzIgMjUuOTg1MkM4Mi45ODc4IDI1LjA4ODIgODMuMjQ4NyAyNC4xMDQ2IDgzLjI0ODcgMjMuMDEzQzgzLjI0ODcgMjEuMzI2OSA4Mi42OTQ1IDE5LjkzMjcgODEuNTk3NCAxOC44MTk0QzgwLjUwMDMgMTcuNzA2MiA3OS4xMDk5IDE3LjE1NDkgNzcuNDM2OSAxNy4xNTQ5Qzc1Ljc2NDMgMTcuMTU0OSA3NC40MDYzIDE3LjcwNjIgNzMuMzA5MiAxOC44MTk0QzcyLjIxMjEgMTkuOTMyNyA3MS42NTc5IDIxLjMyNjkgNzEuNjU3OSAyMy4wMTNDNzEuNjU3OSAyNC42OTkxIDcyLjIxMjEgMjYuMTA0MSA3My4zMDkyIDI3LjIwNjZDNzQuNDA2MyAyOC4zMDkgNzUuNzg2IDI4Ljg3MSA3Ny40MzY5IDI4Ljg3MUM3OC41MzQgMjguODcxIDc5LjUyMjcgMjguNjExNiA4MC40MDI1IDI4LjEwMzZIODAuMzkxNVoiIGZpbGw9IiMzMzM1MzUiLz4KPHBhdGggZD0iTTkyLjkyNzEgMy45Nzk3NEg5Ny4xOTZDOTcuNjMwOCAzLjk3OTc0IDk3Ljk3ODEgNC4zMjU1OCA5Ny45NzgxIDQuNzU3OTFWOC42MDU2NUM5Ny45NzgxIDkuMDM3OTcgOTcuNjMwOCA5LjM4Mzg1IDk3LjE5NiA5LjM4Mzg1SDkyLjkyNzFDOTIuNDkyNyA5LjM4Mzg1IDkyLjE0NSA5LjAzNzk3IDkyLjE0NSA4LjYwNTY1VjQuNzU3OTFDOTIuMTQ1IDQuMzI1NTggOTIuNDkyNyAzLjk3OTc0IDkyLjkyNzEgMy45Nzk3NFpNOTIuOTI3MSAxMi4yNDhIOTcuMTk2Qzk3LjYzMDggMTIuMjQ4IDk3Ljk3ODEgMTIuNTkzOSA5Ny45NzgxIDEzLjAyNjJWMzIuOTI0MUM5Ny45NzgxIDMzLjM1NjUgOTcuNjMwOCAzMy43MDIzIDk3LjE5NiAzMy43MDIzSDkyLjkyNzFDOTIuNDkyNyAzMy43MDIzIDkyLjE0NSAzMy4zNTY1IDkyLjE0NSAzMi45MjQxVjEzLjAyNjJDOTIuMTQ1IDEyLjU5MzkgOTIuNDkyNyAxMi4yNDggOTIuOTI3MSAxMi4yNDhaIiBmaWxsPSIjMzMzNTM1Ii8+CjxwYXRoIGQ9Ik0xMTkuNDMyIDI5LjMxNDJWMzIuOTI0MUMxMTkuNDMyIDMzLjM1NjQgMTE5LjA4NSAzMy43MDIzIDExOC42NSAzMy43MDIzSDExMC42MjNDMTA4LjI1NSAzMy43MDIzIDEwNi4zODYgMzMuMDIxNCAxMDUuMDE4IDMxLjY1OTVDMTAzLjY0OSAzMC4yOTc3IDEwMi45NjQgMjguNDE3MSAxMDIuOTY0IDI2LjAzOTNWMTcuNjg0NUMxMDIuOTY0IDE3LjI1MjIgMTAyLjYxNyAxNi45MDYzIDEwMi4xODIgMTYuOTA2M0g5OS4wNTRWMTUuOTg3NkM5OS4wNTQgMTUuNzkzMSA5OS4xMyAxNS41OTg1IDk5LjI3MTIgMTUuNDU4TDEwNy42MDMgNi42NjAxNkgxMDguNjc4VjExLjQ4MDZDMTA4LjY3OCAxMS45MTMgMTA5LjAyNiAxMi4yNTg4IDEwOS40NiAxMi4yNTg4SDExMy44NDlDMTE0LjI4MyAxMi4yNTg4IDExNC42MzEgMTIuNjA0NyAxMTQuNjMxIDEzLjAzN1YxNi4xMjgyQzExNC42MzEgMTYuNTYwNSAxMTQuMjgzIDE2LjkwNjMgMTEzLjg0OSAxNi45MDYzSDEwOS41OEMxMDkuMTQ1IDE2LjkwNjMgMTA4Ljc5OCAxNy4yNTIyIDEwOC43OTggMTcuNjg0NVYyNS4yOTM1QzEwOC43OTggMjYuMzMxMSAxMDkuMDggMjcuMTMwOSAxMDkuNjU2IDI3LjY5MjlDMTEwLjIzMiAyOC4yNjU4IDExMS4wNDYgMjguNTQ2OCAxMTIuMTExIDI4LjU0NjhIMTE4LjY2MUMxMTkuMDk1IDI4LjU0NjggMTE5LjQ0MyAyOC44OTI2IDExOS40NDMgMjkuMzI1TDExOS40MzIgMjkuMzE0MloiIGZpbGw9IiMzMzM1MzUiLz4KPHBhdGggZD0iTTEzNy4yNDcgMjEuNzI2OEMxMzcuOTIxIDIyLjg3MjUgMTM4LjI2OCAyNC4xOTExIDEzOC4yNjggMjUuNjcxOEMxMzguMjY4IDI2Ljk3OTYgMTM3LjkzMSAyOC4yNzY2IDEzNy4yOCAyOS40MDA2QzEzNi40NzYgMzAuNzg0MSAxMzUuMzU3IDMxLjg1NDEgMTMzLjkwMSAzMi42MzIzQzEzMi41NTQgMzMuMzQ1NiAxMzEuMDg4IDMzLjcwMjMgMTI5LjQ5MSAzMy43MDIzSDExOC4zNzlDMTE3Ljk0NCAzMy43MDIzIDExNy41OTcgMzMuMzU2NSAxMTcuNTk3IDMyLjkyNDFWNi42NzA5NkMxMTcuNTk3IDYuMjM4NjMgMTE3Ljk0NCA1Ljg5Mjc5IDExOC4zNzkgNS44OTI3OUgxMjkuMTc2QzEzMC43NTEgNS44OTI3OSAxMzIuMTc0IDYuMjA2MjQgMTMzLjQ0NSA2LjgyMjI4QzEzNC43MjcgNy40NDkxNiAxMzUuNzI3IDguMzAzMDEgMTM2LjQ2NSA5LjM4Mzg0QzEzNy4xOTMgMTAuNDY0NiAxMzcuNTYyIDExLjY4NiAxMzcuNTYyIDEzLjAzN0MxMzcuNTYyIDE0LjIyNTkgMTM3LjI4IDE1LjM1IDEzNi43MjYgMTYuNDA5MkMxMzYuMzM1IDE3LjE1NDkgMTM1LjgyNCAxNy44MTQzIDEzNS4yMTYgMTguMzc2M0MxMzQuODU3IDE4LjcxMTMgMTM0Ljg5IDE5LjI4NDIgMTM1LjMwMyAxOS41NzZDMTM2LjEwNyAyMC4xNDg4IDEzNi43NTggMjAuODYyMiAxMzcuMjY5IDIxLjcxNkwxMzcuMjQ3IDIxLjcyNjhaTTEzMC44MzggMTEuODQ4MUMxMzAuMjg0IDExLjI5NjkgMTI5LjUyNCAxMS4wMTU5IDEyOC41NTcgMTEuMDE1OUgxMjQuMzFDMTIzLjg3NSAxMS4wMTU5IDEyMy41MjggMTEuMzYxNyAxMjMuNTI4IDExLjc5NDFWMTYuMTYwNkMxMjMuNTI4IDE2LjU5MjkgMTIzLjg3NSAxNi45Mzg4IDEyNC4zMSAxNi45Mzg4SDEyOC41NTdDMTI5LjUxMyAxNi45Mzg4IDEzMC4yNzMgMTYuNjY4NiAxMzAuODM4IDE2LjEyODFDMTMxLjM5MiAxNS41ODc3IDEzMS42NzUgMTQuODc0NCAxMzEuNjc1IDEzLjk5ODlDMTMxLjY3NSAxMy4xMjM1IDEzMS4zOTIgMTIuNDEwMSAxMzAuODM4IDExLjg1ODlWMTEuODQ4MVpNMTMxLjI4NCAyNy4zMDM4QzEzMS44OTIgMjYuNzIwMiAxMzIuMjA3IDI1Ljk2MzYgMTMyLjIwNyAyNS4wMzQxQzEzMi4yMDcgMjQuMTA0NiAxMzEuOTAzIDIzLjM5MTMgMTMxLjI4NCAyMi44MDc2QzEzMC42NzUgMjIuMjI0IDEyOS44NzEgMjEuOTMyMiAxMjguODgzIDIxLjkzMjJIMTI0LjMxQzEyMy44NzUgMjEuOTMyMiAxMjMuNTI4IDIyLjI3OCAxMjMuNTI4IDIyLjcxMDRWMjcuMzkwM0MxMjMuNTI4IDI3LjgyMjcgMTIzLjg3NSAyOC4xNjg1IDEyNC4zMSAyOC4xNjg1SDEyOC44ODNDMTI5Ljg3MSAyOC4xNjg1IDEzMC42NjQgMjcuODc2NyAxMzEuMjg0IDI3LjI5M1YyNy4zMDM4WiIgZmlsbD0iIzMzMzUzNSIvPgo8cGF0aCBkPSJNMTQ1LjMxOCAzMy4wODYyQzE0My43ODYgMzIuMjc1NiAxNDIuNjAyIDMxLjE1MTUgMTQxLjc2NiAyOS42OTI0QzE0MC45MyAyOC4yMzMzIDE0MC41MDYgMjYuNTU4MSAxNDAuNTA2IDI0LjY0NVYxMy4wMjYyQzE0MC41MDYgMTIuNTkzOSAxNDAuODU0IDEyLjI0OCAxNDEuMjg4IDEyLjI0OEgxNDUuNTU3QzE0NS45OTIgMTIuMjQ4IDE0Ni4zMzkgMTIuNTkzOSAxNDYuMzM5IDEzLjAyNjJWMjMuOTY0MUMxNDYuMzM5IDI1LjQ5ODkgMTQ2LjcxOSAyNi42OTg2IDE0Ny40OCAyNy41NjMyQzE0OC4yNCAyOC40Mjc5IDE0OS4yOTQgMjguODQ5NCAxNTAuNjUyIDI4Ljg0OTRDMTUyLjAxIDI4Ljg0OTQgMTUzLjAzMSAyOC40MTcxIDE1My43OTEgMjcuNTQxNkMxNTQuNTUxIDI2LjY2NjEgMTU0LjkzMSAyNS40NzcyIDE1NC45MzEgMjMuOTY0MVYxMy4wMjYyQzE1NC45MzEgMTIuNTkzOSAxNTUuMjc5IDEyLjI0OCAxNTUuNzE0IDEyLjI0OEgxNTkuOTgzQzE2MC40MTcgMTIuMjQ4IDE2MC43NjUgMTIuNTkzOSAxNjAuNzY1IDEzLjAyNjJWMjQuNjQ1QzE2MC43NjUgMjYuNTQ3MyAxNjAuMzQxIDI4LjI0NDEgMTU5LjUwNSAyOS43MTQxQzE1OC42NjggMzEuMTg0IDE1Ny40ODQgMzIuMzE4OCAxNTUuOTc0IDMzLjEwNzhDMTU0LjQ1NCAzMy45MDc2IDE1Mi42ODMgMzQuMjk2NiAxNTAuNjYzIDM0LjI5NjZDMTQ4LjY0MiAzNC4yOTY2IDE0Ni44NiAzMy44OTY5IDE0NS4zMjkgMzMuMDg2MkgxNDUuMzE4WiIgZmlsbD0iIzMzMzUzNSIvPgo8cGF0aCBkPSJNMTY0Ljg0OSAzLjk3OTc0SDE2OS4xMThDMTY5LjU1MyAzLjk3OTc0IDE2OS45IDQuMzI1NTggMTY5LjkgNC43NTc5MVY4LjYwNTY1QzE2OS45IDkuMDM3OTcgMTY5LjU1MyA5LjM4Mzg1IDE2OS4xMTggOS4zODM4NUgxNjQuODQ5QzE2NC40MTUgOS4zODM4NSAxNjQuMDY3IDkuMDM3OTcgMTY0LjA2NyA4LjYwNTY1VjQuNzU3OTFDMTY0LjA2NyA0LjMyNTU4IDE2NC40MTUgMy45Nzk3NCAxNjQuODQ5IDMuOTc5NzRaTTE2NC44NDkgMTIuMjQ4SDE2OS4xMThDMTY5LjU1MyAxMi4yNDggMTY5LjkgMTIuNTkzOSAxNjkuOSAxMy4wMjYyVjMyLjkyNDFDMTY5LjkgMzMuMzU2NSAxNjkuNTUzIDMzLjcwMjMgMTY5LjExOCAzMy43MDIzSDE2NC44NDlDMTY0LjQxNSAzMy43MDIzIDE2NC4wNjcgMzMuMzU2NSAxNjQuMDY3IDMyLjkyNDFWMTMuMDI2MkMxNjQuMDY3IDEyLjU5MzkgMTY0LjQxNSAxMi4yNDggMTY0Ljg0OSAxMi4yNDhaIiBmaWxsPSIjMzMzNTM1Ii8+CjxwYXRoIGQ9Ik0xNzQuMjY3IDMuOTc5NzRIMTc4LjUzNkMxNzguOTcxIDMuOTc5NzQgMTc5LjMxOSA0LjMyNTU4IDE3OS4zMTkgNC43NTc5MVYzMi45MjQxQzE3OS4zMTkgMzMuMzU2NSAxNzguOTcxIDMzLjcwMjMgMTc4LjUzNiAzMy43MDIzSDE3NC4yNjdDMTczLjgzMyAzMy43MDIzIDE3My40ODUgMzMuMzU2NSAxNzMuNDg1IDMyLjkyNDFWNC43NTc5MUMxNzMuNDg1IDQuMzI1NTggMTczLjgzMyAzLjk3OTc0IDE3NC4yNjcgMy45Nzk3NFoiIGZpbGw9IiMzMzM1MzUiLz4KPHBhdGggZD0iTTIwNC41OTYgNC43NTc5MVYzMi45MjQxQzIwNC41OTYgMzMuMzU2NSAyMDQuMjQ4IDMzLjcwMjMgMjAzLjgxNCAzMy43MDIzSDIwMC44MjdDMjAwLjUwMSAzMy43MDIzIDIwMC4yMDggMzMuNDk3IDIwMC4wOTkgMzMuMTk0M0wxOTkuOTc5IDMyLjg5MTdDMTk5LjgwNiAzMi40MjY5IDE5OS4yMyAzMi4yMzI0IDE5OC44MjggMzIuNTEzNEMxOTcuMDkgMzMuNzIzOSAxOTUuMTAyIDM0LjMyOTMgMTkyLjg2NCAzNC4zMjkzQzE5MC42MjYgMzQuMzI5MyAxODguNzY5IDMzLjgzMiAxODcuMDUzIDMyLjgzNzZDMTg1LjMzNiAzMS44NDMzIDE4My45ODkgMzAuNDkyMyAxODMuMDAxIDI4Ljc2M0MxODIuMDEyIDI3LjA0NDUgMTgxLjUyMyAyNS4xMDk4IDE4MS41MjMgMjIuOTU4OUMxODEuNTIzIDIwLjgwODEgMTgyLjAxMiAxOC44ODQyIDE4Mi45NzkgMTcuMTU0OUMxODMuOTQ2IDE1LjQzNjQgMTg1LjMwNCAxNC4wODU0IDE4Ny4wMzEgMTMuMTAxOUMxODguNzU4IDEyLjExODMgMTkwLjcwMyAxMS42MzE5IDE5Mi44NjQgMTEuNjMxOUMxOTQuNTkxIDExLjYzMTkgMTk2LjE4OCAxMS45OTk0IDE5Ny42NDQgMTIuNzIzNkMxOTguMTY1IDEyLjk4MyAxOTguNzc0IDEyLjYxNTUgMTk4Ljc3NCAxMi4wMzE4VjQuNzU3OTFDMTk4Ljc3NCA0LjMyNTU4IDE5OS4xMjEgMy45Nzk3NCAxOTkuNTU2IDMuOTc5NzRIMjAzLjgyNUMyMDQuMjU5IDMuOTc5NzQgMjA0LjYwNyA0LjMyNTU4IDIwNC42MDcgNC43NTc5MUgyMDQuNTk2Wk0xOTYuMzA4IDI4LjA4MkMxOTcuMTk5IDI3LjU2MzIgMTk3LjkwNSAyNi44NjA3IDE5OC40MjYgMjUuOTUyOEMxOTguOTQ3IDI1LjA1NTggMTk5LjIwOCAyNC4wNjE0IDE5OS4yMDggMjIuOTY5OEMxOTkuMjA4IDIxLjI3MjkgMTk4LjY1NCAxOS44Njc4IDE5Ny41MzUgMTguNzU0NkMxOTYuNDE3IDE3LjY0MTMgMTk1LjAwNCAxNy4wOTAxIDE5My4yOTkgMTcuMDkwMUMxOTEuNTkzIDE3LjA5MDEgMTkwLjIyNSAxNy42NDEzIDE4OS4xMDYgMTguNzU0NkMxODcuOTg3IDE5Ljg2NzggMTg3LjQzMyAyMS4yNzI5IDE4Ny40MzMgMjIuOTY5OEMxODcuNDMzIDI0LjY2NjYgMTg3Ljk4NyAyNi4wNzE3IDE4OS4xMDYgMjcuMTg1QzE5MC4yMjUgMjguMjk4MiAxOTEuNjI2IDI4Ljg0OTQgMTkzLjI5OSAyOC44NDk0QzE5NC40MTggMjguODQ5NCAxOTUuNDE3IDI4LjU5IDE5Ni4zMTkgMjguMDcxMkwxOTYuMzA4IDI4LjA4MloiIGZpbGw9IiMzMzM1MzUiLz4KPHBhdGggZD0iTTIyOC4yODggMjQuNjAxOEgyMTMuNjg4QzIxMy4xNTYgMjQuNjAxOCAyMTIuNzc2IDI1LjEyMDYgMjEyLjkzOSAyNS42MTc4QzIxMy4yNDMgMjYuNTkwNSAyMTMuNzQyIDI3LjM2ODcgMjE0LjQzOCAyNy45NTIzQzIxNS4zNjEgMjguNzMwNSAyMTYuNTM0IDI5LjExOTYgMjE3Ljk2OCAyOS4xMTk2QzIxOC45NTcgMjkuMTE5NiAyMTkuODQ4IDI4LjkwMzUgMjIwLjY0IDI4LjQ2MDNDMjIxLjMxNCAyOC4wOTI4IDIyMS44NTcgMjcuNjA2NSAyMjIuMjkyIDI3LjAwMTJDMjIyLjQ0NCAyNi43ODUxIDIyMi42ODMgMjYuNjQ0NSAyMjIuOTQzIDI2LjY0NDVIMjI3LjUxNkMyMjguMDkyIDI2LjY0NDUgMjI4LjQ2MiAyNy4yMzkgMjI4LjIzMyAyNy43NTc4QzIyNy40MDggMjkuNTczNiAyMjYuMTkxIDMxLjA1NDMgMjI0LjU4NCAzMi4yMTA4QzIyMi42NSAzMy41ODM0IDIyMC40NTYgMzQuMjc1MyAyMTcuOTc5IDM0LjI3NTNDMjE1Ljg3MiAzNC4yNzUzIDIxMy45NzEgMzMuNzc4IDIxMi4yNjUgMzIuNzgzNkMyMTAuNTYgMzEuNzg5MyAyMDkuMjI0IDMwLjQzODIgMjA4LjI1NyAyOC43MDg5QzIwNy4yOSAyNi45OTA0IDIwNi44MDEgMjUuMDY2NiAyMDYuODAxIDIyLjk0ODJDMjA2LjgwMSAyMC44Mjk3IDIwNy4yOSAxOC45MDU5IDIwOC4yNTcgMTcuMTY1OEMyMDkuMjI0IDE1LjQzNjQgMjEwLjU3MSAxNC4wNzQ2IDIxMi4yNjUgMTMuMDkxMUMyMTMuOTcxIDEyLjEwNzUgMjE1Ljg3MiAxMS42MjEyIDIxNy45NzkgMTEuNjIxMkMyMjAuMDg2IDExLjYyMTIgMjIyLjA2MyAxMi4xMjkxIDIyMy43NDcgMTMuMTM0M0MyMjUuNDQyIDE0LjEzOTQgMjI2Ljc1NiAxNS41MDEzIDIyNy43MDEgMTcuMjMwNkMyMjguNjQ2IDE4Ljk0OTEgMjI5LjExMyAyMC44Mjk3IDIyOS4xMTMgMjIuODcyNUMyMjkuMTEzIDIzLjIxODQgMjI5LjEwMiAyMy41NTM0IDIyOS4wNyAyMy44ODg1QzIyOS4wMzcgMjQuMjg4NCAyMjguNjkgMjQuNTgwMiAyMjguMjg4IDI0LjU4MDJWMjQuNjAxOFpNMjE0LjcyIDE3LjY1MjFDMjE0LjEwMSAxOC4xNDkzIDIxMy42MTIgMTguNzc2MiAyMTMuMjU0IDE5LjU0MzZDMjEzLjAxNSAyMC4wNTE2IDIxMy40MTcgMjAuNjI0NCAyMTMuOTgyIDIwLjYyNDRIMjIyLjEzOUMyMjIuNzA0IDIwLjYyNDQgMjIzLjEwNiAyMC4wMjk5IDIyMi44NTYgMTkuNTIxOUMyMjIuNDY1IDE4Ljc0MzggMjIxLjk1NSAxOC4xMTY5IDIyMS4zMTQgMTcuNjMwNUMyMjAuMzkxIDE2LjkyOCAyMTkuMjgzIDE2LjU4MjEgMjE3Ljk3OSAxNi41ODIxQzIxNi42NzUgMTYuNTgyMSAyMTUuNjIyIDE2LjkzODggMjE0LjcyIDE3LjY1MjFaIiBmaWxsPSIjMzMzNTM1Ii8+CjxwYXRoIGQ9Ik0yNDQuMjEzIDEyLjkwNzNWMTYuODMwN0MyNDQuMjEzIDE3LjI2MyAyNDMuODY1IDE3LjYwODkgMjQzLjQzMSAxNy42MDg5SDI0MS42OTJDMjQwLjA2MyAxNy42MDg5IDIzOC45MDEgMTcuOTk4IDIzOC4xNzMgMTguNzY1NEMyMzcuNDU2IDE5LjUzMjcgMjM3LjA5OCAyMC43OTczIDIzNy4wOTggMjIuNTM3NFYzMi45MjQxQzIzNy4wOTggMzMuMzU2NCAyMzYuNzUgMzMuNzAyMyAyMzYuMzE1IDMzLjcwMjNIMjMyLjA0NkMyMzEuNjEyIDMzLjcwMjMgMjMxLjI2NCAzMy4zNTY0IDIzMS4yNjQgMzIuOTI0MVYxMy4wMjYyQzIzMS4yNjQgMTIuNTkzOSAyMzEuNjEyIDEyLjI0OCAyMzIuMDQ2IDEyLjI0OEgyMzQuNDlDMjM0LjgxNiAxMi4yNDggMjM1LjA5OSAxMi40NDI2IDIzNS4yMTggMTIuNzQ1MkwyMzUuNTk4IDEzLjcxNzlDMjM1LjgwNSAxNC4yMzY3IDIzNi40NTcgMTQuMzY2NCAyMzYuODY5IDEzLjk4ODFDMjM3LjQyMyAxMy40ODAyIDIzOC4wMzIgMTMuMDgwMyAyMzguNjk0IDEyLjc4ODRDMjM5LjcwNCAxMi4zNTYxIDI0MC44OTkgMTIuMTI5MSAyNDIuMjkgMTIuMTI5MUgyNDMuNDJDMjQzLjg1NCAxMi4xMjkxIDI0NC4yMDIgMTIuNDc1IDI0NC4yMDIgMTIuOTA3M0gyNDQuMjEzWiIgZmlsbD0iIzMzMzUzNSIvPgo8cGF0aCBkPSJNMjU0Ljg1OCAwLjY0MDAxNUgyNDkuMDM2QzI0OC41NDMgMC42NDAwMTUgMjQ4LjE0NSAxLjAzNjgxIDI0OC4xNDUgMS41MjYyOVY3LjM0MTExQzI0OC4xNDUgNy44MzA1OSAyNDguNTQzIDguMjI3MzkgMjQ5LjAzNiA4LjIyNzM5SDI1NC44NThDMjU1LjM1IDguMjI3MzkgMjU1Ljc0OSA3LjgzMDU5IDI1NS43NDkgNy4zNDExMVYxLjUyNjI5QzI1NS43NDkgMS4wMzY4MSAyNTUuMzUgMC42NDAwMTUgMjU0Ljg1OCAwLjY0MDAxNVoiIGZpbGw9IiMwMERCRkYiLz4KPHBhdGggc3R5bGU9Im1peC1ibGVuZC1tb2RlOmNvbG9yLWJ1cm4iIGQ9Ik0yODcuNDkgNS42NjU4M0MyODcuMzU5IDUuNTM2MTQgMjg3LjIyOSA1LjQxNzI1IDI4Ny4xMDkgNS4yOTgzN0MyODUuNjk3IDYuNzAzNDMgMjgzLjUyNSA4Ljg2NTA2IDI4MS41NDggMTAuODMyMkMyODEuNjc4IDEwLjk1MTEgMjgxLjgwOCAxMS4wNjk5IDI4MS45MzkgMTEuMTg4OEMyODMuNTc5IDEyLjgyMDkgMjg0LjQ4MSAxNC45ODI1IDI4NC40ODEgMTcuMjk1NUMyODQuNDgxIDE4LjcxMTMgMjg0LjE0NCAyMC4wNzMyIDI4My41MDMgMjEuMjgzN0MyODMuMTAxIDIyLjA1MTEgMjgyLjU3OSAyMi43NjQ0IDI4MS45MzkgMjMuMzkxM0MyODAuMzMxIDI0Ljk5MDkgMjc4LjIzNCAyNS44MzM5IDI3Ni4xMjcgMjUuOTA5NkwyODkuODkgMjUuOTIwNEMyOTAuNzgxIDI0LjQ4MjkgMjkxLjQ0MyAyMi45MTU4IDI5MS44NTYgMjEuMjgzN0MyOTIuMTgyIDE5Ljk5NzUgMjkyLjM0NSAxOC42NTczIDI5Mi4zNDUgMTcuMjk1NUMyOTIuMzQ1IDEyLjg5NjYgMjkwLjYyOSA4Ljc2NzggMjg3LjUgNS42NTUwMkwyODcuNDkgNS42NjU4M1oiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8xXzE0MTMpIi8+CjxnIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTpjb2xvci1idXJuIj4KPHBhdGggZD0iTTI3NS42NDkgMzMuNzU2NEMyNzEuNDU2IDMzLjcyNCAyNjcuMjg1IDMyLjEyNDQgMjY0LjA5MSAyOC45NDY3QzI2Mi41MzggMjcuNDAxMiAyNjEuMzQzIDI1LjYwNyAyNjAuNTE3IDIzLjY2MTVDMjU5LjU5NCAyMy4wMDIyIDI1OC43MzYgMjIuMjAyNCAyNTguMDczIDIxLjIwODFDMjU2LjU2MyAxOC45NTk5IDI1NS45ODcgMTYuMjc5NSAyNTUuNzcgMTIuNzEyOEMyNTUuNzM4IDEyLjIzNzMgMjU1LjM0NyAxMS44NTg5IDI1NC44OCAxMS44NTg5SDI0OS4wNjhDMjQ4LjU1NyAxMS44NTg5IDI0OC4xMzQgMTIuMjkxMyAyNDguMTY2IDEyLjc5OTNDMjQ4LjQzOCAxNy42NTIxIDI0OS4yNzQgMjEuNjk0NCAyNTEuNzUxIDI1LjQwMTZDMjU2LjU0MiAzMi41NDU5IDI2NS44NCAzMy44MzIgMjY3LjEgMzMuOTcyNUMyNjguNTU2IDM0LjE4ODkgMjY5LjkzNSAzNC4yODYgMjcxLjI2IDM0LjI4NkMyNzMuMDg1IDM0LjI4NiAyNzQuNzY5IDM0LjA4MDggMjc2LjMzNCAzMy43NjcySDI3NS42NDlWMzMuNzU2NFoiIGZpbGw9InVybCgjcGFpbnQxX2xpbmVhcl8xXzE0MTMpIi8+CjwvZz4KPHBhdGggb3BhY2l0eT0iMC41NCIgZD0iTTI4Ny40OSA1LjY2NTgzQzI4Ny4zNTkgNS41MzYxNCAyODcuMjI5IDUuNDE3MjUgMjg3LjEwOSA1LjI5ODM3QzI4NS42OTcgNi43MDM0MyAyODMuNTI1IDguODY1MDYgMjgxLjU0OCAxMC44MzIyQzI4MS42NzggMTAuOTUxMSAyODEuODA4IDExLjA2OTkgMjgxLjkzOSAxMS4xODg4QzI4My41NzkgMTIuODIwOSAyODQuNDgxIDE0Ljk4MjUgMjg0LjQ4MSAxNy4yOTU1QzI4NC40ODEgMTguNzExMyAyODQuMTQ0IDIwLjA3MzIgMjgzLjUwMyAyMS4yODM3QzI4My4xMDEgMjIuMDUxMSAyODIuNTc5IDIyLjc2NDQgMjgxLjkzOSAyMy4zOTEzQzI4MC4zMzEgMjQuOTkwOSAyNzguMjM0IDI1LjgzMzkgMjc2LjEyNyAyNS45MDk2TDI4OS44OSAyNS45MjA0QzI5MC43ODEgMjQuNDgyOSAyOTEuNDQzIDIyLjkxNTggMjkxLjg1NiAyMS4yODM3QzI5Mi4xODIgMTkuOTk3NSAyOTIuMzQ1IDE4LjY1NzMgMjkyLjM0NSAxNy4yOTU1QzI5Mi4zNDUgMTIuODk2NiAyOTAuNjI5IDguNzY3OCAyODcuNSA1LjY1NTAyTDI4Ny40OSA1LjY2NTgzWiIgZmlsbD0idXJsKCNwYWludDJfbGluZWFyXzFfMTQxMykiLz4KPGcgb3BhY2l0eT0iMC41NCI+CjxwYXRoIGQ9Ik0yNzUuNjQ5IDMzLjc1NjRDMjcxLjQ1NiAzMy43MjQgMjY3LjI4NSAzMi4xMjQ0IDI2NC4wOTEgMjguOTQ2N0MyNjIuNTM4IDI3LjQwMTIgMjYxLjM0MyAyNS42MDcgMjYwLjUxNyAyMy42NjE1QzI1OS41OTQgMjMuMDAyMiAyNTguNzM2IDIyLjIwMjQgMjU4LjA3MyAyMS4yMDgxQzI1Ni41NjMgMTguOTU5OSAyNTUuOTg3IDE2LjI3OTUgMjU1Ljc3IDEyLjcxMjhDMjU1LjczOCAxMi4yMzczIDI1NS4zNDcgMTEuODU4OSAyNTQuODggMTEuODU4OUgyNDkuMDY4QzI0OC41NTcgMTEuODU4OSAyNDguMTM0IDEyLjI5MTMgMjQ4LjE2NiAxMi43OTkzQzI0OC40MzggMTcuNjUyMSAyNDkuMjc0IDIxLjY5NDQgMjUxLjc1MSAyNS40MDE2QzI1Ni41NDIgMzIuNTQ1OSAyNjUuODQgMzMuODMyIDI2Ny4xIDMzLjk3MjVDMjY4LjU1NiAzNC4xODg5IDI2OS45MzUgMzQuMjg2IDI3MS4yNiAzNC4yODZDMjczLjA4NSAzNC4yODYgMjc0Ljc2OSAzNC4wODA4IDI3Ni4zMzQgMzMuNzY3MkgyNzUuNjQ5VjMzLjc1NjRaIiBmaWxsPSJ1cmwoI3BhaW50M19saW5lYXJfMV8xNDEzKSIvPgo8L2c+CjxwYXRoIGQ9Ik0yOTIuNjM4IDYuMDExN0MyOTEuNzM3IDYuMDExNyAyOTEuMTA3IDUuNTE0NSAyOTEuMDk2IDQuNzc5NTRIMjkxLjcxNUMyOTEuNzU5IDUuMTQ3MDQgMjkyLjAxOSA1LjUxNDUgMjkyLjYzOCA1LjUxNDVDMjkzLjIwMyA1LjUxNDUgMjkzLjU0IDUuMjAxMDYgMjkzLjU0IDQuNzc5NTRDMjkzLjU0IDMuNTc5ODMgMjkxLjExOCA0LjM0NzIyIDI5MS4xMTggMi42OTM1NkMyOTEuMTE4IDEuOTU4NiAyOTEuNzE1IDEuNDYxNDMgMjkyLjU5NSAxLjQ2MTQzQzI5My40NzUgMS40NjE0MyAyOTQuMDA3IDEuOTI2MTggMjk0LjA3MyAyLjYwNzFIMjkzLjQzMkMyOTMuMzg4IDIuMzA0NDcgMjkzLjEwNiAxLjk2OTQxIDI5Mi41NjIgMS45NTg2QzI5Mi4wODUgMS45NDc4IDI5MS43MDQgMi4xOTYzOSAyOTEuNzA0IDIuNjcxOTVDMjkxLjcwNCAzLjgxNzYyIDI5NC4xMTYgMy4xMDQyNyAyOTQuMTE2IDQuNzQ3MTFDMjk0LjExNiA1LjM3NCAyOTMuNTk0IDYuMDAwODkgMjkyLjYyOCA2LjAwMDg5TDI5Mi42MzggNi4wMTE3WiIgZmlsbD0iIzAwREJGRiIvPgo8cGF0aCBkPSJNMjk0Ljk4NSAxLjU0Nzg4SDI5NS42MTVMMjk3LjI1NSA1LjIwMTA1TDI5OC44OTUgMS41NDc4OEgyOTkuNTE1VjUuOTY4NDRIMjk4LjkyOFYyLjY3MTkzTDI5Ny40NTEgNS45Njg0NEgyOTcuMDM4TDI5NS41NjEgMi42NzE5M1Y1Ljk2ODQ0SDI5NC45NzRWMS41NDc4OEgyOTQuOTg1WiIgZmlsbD0iIzAwREJGRiIvPgo8L2c+CjwvZz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8xXzE0MTMiIHgxPSIyODQuOTgiIHkxPSIzMS45NzMiIHgyPSIyODMuNDY0IiB5Mj0iMTAuMzEyMyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjQUEzQUY1Ii8+CjxzdG9wIG9mZnNldD0iMC4yNSIgc3RvcC1jb2xvcj0iIzgzNUVGNyIvPgo8c3RvcCBvZmZzZXQ9IjAuODEiIHN0b3AtY29sb3I9IiMyMkJBRkMiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDBEQkZGIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl8xXzE0MTMiIHgxPSIyNzYuMTciIHkxPSIzMy44OTY5IiB4Mj0iMjQ3LjQyNSIgeTI9IjE1LjQ1NjYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0FBM0FGNSIvPgo8c3RvcCBvZmZzZXQ9IjAuMjUiIHN0b3AtY29sb3I9IiM4MzVFRjciLz4KPHN0b3Agb2Zmc2V0PSIwLjgxIiBzdG9wLWNvbG9yPSIjMjJCQUZDIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwREJGRiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50Ml9saW5lYXJfMV8xNDEzIiB4MT0iMjg0Ljk4IiB5MT0iMzEuOTczIiB4Mj0iMjgzLjQ2NCIgeTI9IjEwLjMxMjMiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0FBM0FGNSIvPgo8c3RvcCBvZmZzZXQ9IjAuMjUiIHN0b3AtY29sb3I9IiM4MzVFRjciLz4KPHN0b3Agb2Zmc2V0PSIwLjgxIiBzdG9wLWNvbG9yPSIjMjJCQUZDIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwREJGRiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50M19saW5lYXJfMV8xNDEzIiB4MT0iMjc2LjE3IiB5MT0iMzMuODk2OSIgeDI9IjI0Ny40MjUiIHkyPSIxNS40NTY2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNBQTNBRjUiLz4KPHN0b3Agb2Zmc2V0PSIwLjI1IiBzdG9wLWNvbG9yPSIjODM1RUY3Ii8+CjxzdG9wIG9mZnNldD0iMC44MSIgc3RvcC1jb2xvcj0iIzIyQkFGQyIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMERCRkYiLz4KPC9saW5lYXJHcmFkaWVudD4KPGNsaXBQYXRoIGlkPSJjbGlwMF8xXzE0MTMiPgo8cmVjdCB3aWR0aD0iMjk5Ljk2MyIgaGVpZ2h0PSIzMy43IiBmaWxsPSJ3aGl0ZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMTgzMTA1IDAuNjQwMDE1KSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="CreditBuilderIQ"></span>
-      <p>A ranked plan, a simulator, and Resident-Link rent reporting that puts up to 24 months of
-      already-paid rent onto all three bureaus.</p>
-      <span class="spb">Approval in 30 days, no behavior change</span></div>
-    <div class="sp2 p3" hidden><div class="spn">03 &middot; Protect</div><span class="splogo"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTgxIiBoZWlnaHQ9IjE4OCIgdmlld0JveD0iMCAwIDk4MSAxODgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xODQuMTM1IDQ5LjM4NzFDMTg0LjEzNSA0Mi40MjQ1IDE4Ny41MjQgMzguOTg5NyAxOTQuMjU0IDM4Ljk4OTdIMjA0LjA5NFYxMzYuNzlIMTg0LjEzNVY0OS4zODcxWiIgZmlsbD0iI0ZGMUQxRCIvPgo8cGF0aCBkPSJNMjE5Ljk2OSA0OS4zODcxQzIxOS45NjkgNDIuNjU2NiAyMjMuMzU3IDM5LjE3NTQgMjMwLjA4OCAzOC45ODk3SDI1OC4yMTZDMjczLjIwOSAzOC45ODk3IDI4NC4zNDkgNDMuMDI4IDI5MS42MzYgNTEuMTA0NUMyOTkuMTEgNTkuNTUyNCAzMDIuOTE2IDcxLjgwNjQgMzAyLjkxNiA4Ny45MTNDMzAyLjkxNiA5Ni45MTc5IDMwMS40NzcgMTA0Ljc2MiAyOTguNjkyIDExMS41MzlDMjk1Ljg2IDExOC4yNyAyOTEuOTE1IDEyMy43OTMgMjg2Ljg1NSAxMjguMTFDMjgyLjkxIDEzMS4yNjYgMjc4LjUgMTMzLjU0MSAyNzMuNjI3IDEzNC44NEMyNjguNzUzIDEzNi4xODcgMjYxLjgzNyAxMzYuNzkgMjUyLjgzMiAxMzYuNzlIMjE5LjkyMlY0OS4zODcxSDIxOS45NjlaTTI1NS42NjMgMTE5LjEwNUMyNjUuMDQgMTE5LjEwNSAyNzEuNzcgMTE2LjY0NSAyNzUuOTAxIDExMS43NzFDMjgwLjIxOCAxMDYuODk4IDI4Mi4zNTMgOTguOTEzOCAyODIuMzUzIDg3Ljg2NjZDMjgyLjM1MyA3Ni44MTk0IDI4MC40MDQgNjkuMDIxNCAyNzYuNDU4IDY0LjAwODRDMjcyLjUxMyA1OC43NjMzIDI2Ni40MzIgNTYuMTE3NSAyNTguMjE2IDU2LjExNzVIMjM5LjY1VjExOS4xMDVIMjU1LjY2M1oiIGZpbGw9IiNGRjFEMUQiLz4KPHBhdGggZD0iTTMxOC40NjggNDkuMzg3MUMzMTguNDY4IDQyLjY1NjYgMzIxLjg1NiAzOS4xNzU0IDMyOC41ODYgMzguOTg5N0gzODkuM1Y1NS44ODU0SDMzOC4xNDhWNzYuOTU4N0gzNzYuMzk2VjgzLjQxMDZDMzc2LjU4MSA5MC4xNDEgMzczLjEgOTMuNTI5NSAzNjUuOTUyIDkzLjUyOTVIMzM4LjE0OFYxMTguODI3SDM4OS4zVjEzNi43OUgzMTguNDY4VjQ5LjM4NzFaIiBmaWxsPSIjRkYxRDFEIi8+CjxwYXRoIGQ9Ik00MDUuMTczIDQ5LjM4NzFDNDA1LjE3MyA0Ni41NTU2IDQwNi4xNDggNDQuMTQyIDQwOC4xNDMgNDIuMDk5NkM0MTAuMDkzIDQwLjA1NzMgNDEyLjUwNyAzOC45ODk3IDQxNS4yOTIgMzguOTg5N0g0MjUuOTY3TDQ2NS44ODYgMTA2LjIwMVYzOC45ODk3SDQ4NS41NjdWMTM2Ljc5SDQ2NC43NzJMNDI0Ljg1MyA2OS42MjQ4VjEzNi43OUg0MDUuMTczVjQ5LjM4NzFaIiBmaWxsPSIjRkYxRDFEIi8+CjxwYXRoIGQ9Ik01MzAuOTYzIDU2LjQ0MjVINTAyLjA0NVY0OS40MzM2QzUwMi4wNDUgNDYuNjAyMSA1MDMuMDIgNDQuMTg4NSA1MDQuOTY5IDQyLjE0NjFDNTA2LjkxOSA0MC4xMDM4IDUwOS4zMzMgMzkuMDgyNiA1MTIuMTE4IDM5LjA4MjZINTc5Ljg4NlY1Ni40ODg5SDU1MC45MjJWMTM2LjgzNkg1MzAuOTYzVjU2LjQ0MjVaIiBmaWxsPSIjRkYxRDFEIi8+CjxwYXRoIGQ9Ik01OTQuOTI0IDQ5LjM4NzFDNTk0LjkyNCA0Mi40MjQ1IDU5OC4zMTMgMzguOTg5NyA2MDUuMDQzIDM4Ljk4OTdINjE0Ljg4M1YxMzYuNzlINTk0LjkyNFY0OS4zODcxWiIgZmlsbD0iI0ZGMUQxRCIvPgo8cGF0aCBkPSJNNjU5LjY3NSA1Ni40NDI1SDYzMC43MTFWNDkuNDMzNkM2MzAuNzExIDQ2LjYwMjEgNjMxLjY4NiA0NC4xODg1IDYzMy42ODIgNDIuMTQ2MUM2MzUuNjMyIDQwLjEwMzggNjM4LjA0NSAzOS4wODI2IDY0MC44MyAzOS4wODI2SDcwOC41NTJWNTYuNDg4OUg2NzkuNTg4VjEzNi44MzZINjU5LjYyOVY1Ni40NDI1SDY1OS42NzVaIiBmaWxsPSIjRkYxRDFEIi8+CjxwYXRoIGQ9Ik03NTguMjE4IDEzNi43OVYxMDAuMjZMNzIyLjgwMiAzOC45ODk3SDc0Ny4yNjNMNzY4LjMzNyA4MS4xMzYyTDc4NC45MDcgNDQuODg0NkM3ODYuODExIDQwLjkzOTIgNzg5Ljg3NCAzOC45ODk3IDc5NC4xOTEgMzguOTg5N0g4MTAuNDgzTDc3OC40NTYgMTAwLjI2VjEzNi43OUg3NTguMjE4WiIgZmlsbD0iI0ZGMUQxRCIvPgo8cGF0aCBkPSJNMTI0LjM5NyAxMzEuMDM1QzEyMy42NTQgMTMxLjAzNSAxMjMuMDA1IDEzMS4zNiAxMjIuNDk0IDEzMS45MTdDMTExLjQ0NyAxNDQuNDQ5IDk1LjA2MTcgMTUyLjE1NSA3Ni45NTkyIDE1MS40NThDNDguNTUyMSAxNTAuMzkxIDI0LjY5MzggMTI4LjE1NyAyMS42NzY3IDk5Ljg4OTJDMjAuNjU1NSA5MC4xNDE2IDIyLjA5NDUgODAuODExOCAyNS40MzY1IDcyLjQ1NjhDMjUuNjIyMSA3MS45NDYyIDI2LjA4NjMgNzEuNjIxMyAyNy4xNTM5IDcxLjYyMTNIMzMuMDQ4OEMzMy42MDU4IDcxLjYyMTMgMzMuOTc3MiA3Mi4xNzgzIDMzLjc0NTEgNzIuNjg4OUMyOS42NjA0IDgxLjQxNTMgMjcuOTg5NCA5MS40NDEzIDI5Ljc1MzIgMTAyLjAyNEMzMy4zNzM3IDEyMy44NCA1MS4zMzcxIDE0MC45NjggNzMuMjkyMiAxNDMuNDc1Qzg3Ljg2NzEgMTQ1LjE0NiAxMDEuMzc0IDE0MC41MDQgMTExLjQ5MyAxMzEuOTYzQzExMS44NjUgMTMxLjYzOCAxMTEuNjMzIDEzMS4wMzUgMTExLjE2OCAxMzEuMDM1QzEwNC44NTYgMTMxLjAzNSA3OS4yOCAxMzEuMDM1IDc5LjI4IDEzMS4wMzVDNTguNjcwOSAxMzEuMDM1IDQxLjkxNDQgMTE0LjI3OCA0MS45MTQ0IDkzLjY2OTNDNDEuOTE0NCA4Mi4wNjUxIDQ3LjI1MjQgNzEuNzE0MiA1NS41NjEgNjQuODQ0NUM1NS45MzIzIDY0LjUxOTUgNTUuNzQ2NyA2My45NjI1IDU1LjIzNjEgNjMuOTYyNUgyLjk3MDcyQzEuNDg1MzggNjMuOTYyNSAwLjMyNDk2MiA2NS4yMTU4IDAuNDE3Nzk2IDY2LjcwMTFDMS44MTAzIDg2LjQyODMgNy4xMDE4MiAxMTAuNzA0IDIxLjcyMzEgMTM0Ljg4N0MzOC4zNDAzIDE2Mi4zMiA2MC4xNTYzIDE3OC4yODcgNzQuMDM0OSAxODYuNTk2Qzc3LjIzNzcgMTg4LjQ5OSA4MS4yNzU5IDE4OC40NTIgODQuNDc4NyAxODYuNTQ5QzExNS4wMjEgMTY4LjI2MSAxMzMuMTI0IDE0MC42OSAxMzcuNzY1IDEzMy4wNzdDMTM4LjI3NiAxMzIuMjQyIDEzNy42NzIgMTMxLjEyOCAxMzYuNjUxIDEzMS4xMjhIMTI0LjM5N1YxMzEuMDM1WiIgZmlsbD0iIzkwQTBBRiIvPgo8cGF0aCBkPSJNMzQuMDIzNSA1Ni4yNTcyQzM0LjcxOTggNTYuMjU3MiAzNS4zNjk2IDU1LjkzMjMgMzUuODMzOCA1NS40MjE3QzQ2Ljg4MSA0Mi44ODkyIDYzLjI2NjIgMzUuMTg0IDgxLjQxNTEgMzUuODgwMkMxMTAuMDA4IDM2Ljk0NzggMTMzLjkxMyA1OS40NiAxMzYuNjk4IDg3LjkxMzVDMTM3LjYyNiA5Ny41MjE4IDEzNi4xODcgMTA2LjY2NiAxMzIuOTM4IDExNC44ODJDMTMyLjc1MiAxMTUuMzkyIDEzMi4yNDIgMTE1LjcxNyAxMzEuNzMxIDExNS43MTdIMTI1LjM3MkMxMjQuODE1IDExNS43MTcgMTI0LjQ0NCAxMTUuMTYgMTI0LjY3NiAxMTQuNjVDMTI4Ljc2IDEwNS45MjMgMTMwLjQzMSA5NS44OTcyIDEyOC42NjcgODUuMjY3N0MxMjUuMDQ3IDYzLjY4MzkgMTA3LjQwOSA0Ni42OTUzIDg1LjY4NTUgNDMuOTEwM0M3MC44Nzg1IDQyLjAwNzIgNTcuMTM5MSA0Ni42OTUzIDQ2Ljg4MSA1NS4zNzUzQzQ2LjUwOTcgNTUuNjUzOCA0Ni43NDE4IDU2LjI1NzIgNDkuMjAxOSA1Ni4yNTcySDc4LjIxMjRDOTYuNTQ3IDU2LjI1NzIgMTE0LjIzMiA3MS4wNjQyIDExNi4zMjEgODkuMjU5NkMxMTcuODUyIDEwMi42MjggMTEyLjI4MiAxMTQuNzQyIDEwMi45MDYgMTIyLjQ0OEMxMDIuNTM1IDEyMi43NzMgMTAyLjcyIDEyMy4zMyAxMDMuMjMxIDEyMy4zM0gxNDEuMzM5QzE0Mi4zMTQgMTIzLjMzIDE0My4yNDIgMTIyLjc3MyAxNDMuNjYgMTIxLjg0NEMxNjAuNzQyIDg1Ljk2NCAxNTkuMzAzIDUxLjY2MTkgMTU3LjA3NSAzNC40ODc3QzE1Ni40NzEgMjkuODkyNCAxNTIuOTQzIDI2LjMxODMgMTQ4LjM0OCAyNS42Njg1QzEzOS40ODMgMjQuNDYxNyAxMjguOTQ2IDIyLjE4NzIgMTE3LjUyNyAxOC4xMDI2QzEwNC4wMiAxMy4yNzUyIDkzLjExMjIgNy4xOTQ2MSA4NC43NTcxIDEuNjcxMDFDODEuMzY4NyAtMC41NTcwMDIgNzcuMDA1NSAtMC41NTcwMDIgNzMuNjE3MSAxLjY3MTAxQzY1LjI2MjEgNy4xOTQ2MSA1NC4zNTQxIDEzLjI3NTIgNDAuODQ2OCAxOC4xMDI2QzI5LjQyODMgMjIuMjMzNyAxOC44OTE3IDI0LjQ2MTcgMTAuMDI2IDI1LjY2ODVDNS40MzA3NyAyNi4zMTgzIDEuODU2NjcgMjkuODkyNCAxLjI5OTY3IDM0LjQ4NzdDMC42NDk4MzYgMzkuNTQ3MSAwLjA0NjQxNjggNDYuMDkxOSAwIDUzLjcwNDNDMCA1NS4xNDMyIDEuMTYwNDIgNTYuMzAzNiAyLjU1MjkzIDU2LjMwMzZDMTEuNjk3IDU2LjMwMzYgMjkuNDI4MyA1Ni4zMDM2IDM0LjAyMzUgNTYuMzAzNlY1Ni4yNTcyWiIgZmlsbD0iI0ZGMUQxRCIvPgo8cGF0aCBkPSJNNzguODYyOCA2My45MTYyQzYzLjI2NjcgNjQuMDU1NSA1MC4wODQ0IDc2LjgyMDEgNDkuNDgwOSA5Mi40MTYyQzQ4LjgzMTEgMTA5LjM1OCA2Mi4zODQ4IDEyMy4zMyA3OS4xODc3IDEyMy4zM0M5MS42Mjc0IDEyMy4zMyAxMDMuMTM5IDExNS43NjQgMTA3LjEzMSAxMDMuOTc0QzExNC4yMzIgODMuMDg2NCA5OC43NzU2IDYzLjY4NDEgNzguODYyOCA2My44Njk4VjYzLjkxNjJaTTg0Ljg1MDYgMTEyLjc0N0M4NC44NTA2IDExNC4xMzkgODMuNjkwMSAxMTUuMyA4Mi4yOTc2IDExNS4zSDc2LjA3NzhDNzQuNjg1MyAxMTUuMyA3My41MjQ5IDExNC4xMzkgNzMuNTI0OSAxMTIuNzQ3Vjc0LjQ5OTNDNzMuNTI0OSA3My4xMDY3IDc0LjY4NTMgNzEuOTQ2MyA3Ni4wNzc4IDcxLjk0NjNIODIuMjk3NkM4My42OTAxIDcxLjk0NjMgODQuODUwNiA3My4xMDY3IDg0Ljg1MDYgNzQuNDk5M1YxMTIuNzQ3WiIgZmlsbD0iI0ZGMUQxRCIvPgo8cGF0aCBkPSJNODI1Ljg0OCA0OS4zODcxQzgyNS44NDggNDIuNDI0NiA4MjkuMjM3IDM4Ljk4OTcgODM1Ljk2NyAzOC45ODk3SDg0NS44MDhWMTM2Ljc5SDgyNS44NDhWNDkuMzg3MVoiIGZpbGw9IiM5MEEwQUYiLz4KPHBhdGggZD0iTTk3MC41NzcgNTUuNzAwNkM5NjkuMjMxIDU1LjcwMDYgOTY3Ljk3NyA1NS40Njg1IDk2Ni44MTcgNTUuMDA0NEM5NjUuNjU3IDU0LjU0MDIgOTY0LjY4MiA1My44OTA0IDk2My44NDYgNTMuMTAxM0M5NjMuMDExIDUyLjI2NTggOTYyLjM2MSA1MS4zMzc0IDk2MS44OTcgNTAuMjIzNEM5NjEuNDMzIDQ5LjEwOTQgOTYxLjIwMSA0Ny45MDI2IDk2MS4yMDEgNDYuNjAyOUM5NjEuMjAxIDQ1LjMwMzIgOTYxLjQzMyA0NC4wOTY0IDk2MS44OTcgNDIuOTgyNEM5NjIuMzYxIDQxLjg2ODQgOTYzLjAxMSA0MC44OTM3IDk2My44NDYgNDAuMTA0NkM5NjQuNjgyIDM5LjMxNTUgOTY1LjcwMyAzOC42NjU2IDk2Ni44MTcgMzguMjAxNUM5NjcuOTc3IDM3LjczNzMgOTY5LjIzMSAzNy41MDUyIDk3MC41NzcgMzcuNTA1MkM5NzEuOTIzIDM3LjUwNTIgOTczLjIyMyAzNy43MzczIDk3NC4zMzcgMzguMjAxNUM5NzUuNDk3IDM4LjY2NTYgOTc2LjQ3MiAzOS4zMTU1IDk3Ny4zNTQgNDAuMTA0NkM5NzguMTg5IDQwLjg5MzcgOTc4Ljg4NSA0MS44Njg0IDk3OS4zNSA0Mi45ODI0Qzk3OS44MTQgNDQuMDk2NCA5ODAuMDkyIDQ1LjMwMzIgOTgwLjA5MiA0Ni42MDI5Qzk4MC4wOTIgNDcuOTAyNiA5NzkuODYgNDkuMTA5NCA5NzkuMzUgNTAuMjIzNEM5NzguODg1IDUxLjMzNzQgOTc4LjE4OSA1Mi4zMTIyIDk3Ny4zNTQgNTMuMTAxM0M5NzYuNTE4IDUzLjkzNjggOTc1LjQ5NyA1NC41NDAyIDk3NC4zMzcgNTUuMDA0NEM5NzMuMTc2IDU1LjQ2ODUgOTcxLjkyMyA1NS43MDA2IDk3MC41NzcgNTUuNzAwNlpNOTcwLjU3NyA1NC42MzNDOTcxLjczNyA1NC42MzMgOTcyLjgwNSA1NC40NDc0IDk3My44MjYgNTQuMDI5NkM5NzQuODQ3IDUzLjYxMTkgOTc1LjY4MyA1My4xMDEzIDk3Ni40NzIgNTIuNDA1Qzk3Ny4yNjEgNTEuNzA4OCA5NzcuODE4IDUwLjg3MzMgOTc4LjIzNiA0OS44NTIxQzk3OC42NTMgNDguODc3MyA5NzguODg1IDQ3Ljc2MzMgOTc4Ljg4NSA0Ni42MDI5Qzk3OC44ODUgNDUuNDg4OSA5NzguNyA0NC40MjEzIDk3OC4yODIgNDMuNDQ2NkM5NzcuODY0IDQyLjQ3MTggOTc3LjMwNyA0MS42MzYzIDk3Ni41NjUgNDAuODkzN0M5NzUuODIyIDQwLjE5NzQgOTc0Ljk0IDM5LjU5NCA5NzMuOTE5IDM5LjIyMjZDOTcyLjg5OCAzOC44MDQ5IDk3MS44MyAzOC42MTkyIDk3MC42MjMgMzguNjE5MkM5NjkuNDE2IDM4LjYxOTIgOTY4LjM0OSAzOC44MDQ5IDk2Ny4zMjggMzkuMjIyNkM5NjYuMzUzIDM5LjY0MDQgOTY1LjQ3MSA0MC4xOTc0IDk2NC43MjggNDAuODkzN0M5NjMuOTg2IDQxLjU4OTkgOTYzLjQyOSA0Mi40NzE4IDk2My4wMTEgNDMuNDAwMkM5NjIuNTkzIDQ0LjM3NDkgOTYyLjQwNyA0NS4zOTYxIDk2Mi40MDcgNDYuNTU2NUM5NjIuNDA3IDQ3LjcxNjkgOTYyLjU5MyA0OC43ODQ1IDk2My4wMTEgNDkuNzU5M0M5NjMuNDI5IDUwLjczNCA5NjMuOTg2IDUxLjU2OTUgOTY0LjcyOCA1Mi4zMTIyQzk2NS40NzEgNTMuMDU0OSA5NjYuMzA2IDUzLjYxMTkgOTY3LjMyOCA1NC4wMjk2Qzk2OC4zMDIgNTQuNDQ3NCA5NjkuNDE2IDU0LjYzMyA5NzAuNjIzIDU0LjYzM0g5NzAuNTc3Wk05NjYuNTg1IDQwLjk4NjVIOTcxLjQ1OUM5NzEuOTY5IDQwLjk4NjUgOTcyLjQzMyA0MS4wNzkzIDk3Mi44NTEgNDEuMzExNEM5NzMuMjY5IDQxLjU0MzUgOTczLjY0IDQxLjgyMiA5NzMuOTY1IDQyLjE0NjlDOTc0LjI5IDQyLjQ3MTggOTc0LjUyMiA0Mi44ODk2IDk3NC43MDggNDMuMzA3M0M5NzQuODk0IDQzLjcyNTEgOTc0Ljk4NiA0NC4xODkyIDk3NC45ODYgNDQuNjUzNEM5NzQuOTg2IDQ1LjM5NjEgOTc0LjgwMSA0Ni4wOTIzIDk3NC4zODMgNDYuNjk1OEM5NzMuOTY1IDQ3LjI5OTIgOTczLjQwOCA0Ny43MTY5IDk3Mi43NTggNDcuOTQ5TDk3NS40NTEgNTIuMjE5NEg5NzMuMjIzTDk3MC43NjIgNDguMzIwM0g5NjguNjc0VjUyLjIxOTRIOTY2LjY3OFY0MC45ODY1SDk2Ni41ODVaTTk3MS4zMTkgNDYuNTU2NUM5NzEuODMgNDYuNTU2NSA5NzIuMjQ4IDQ2LjM3MDggOTcyLjUyNiA0Ni4wNDU5Qzk3Mi44MDUgNDUuNzIxIDk3Mi45NDQgNDUuMjU2OCA5NzIuOTQ0IDQ0LjY1MzRDOTcyLjk0NCA0NC4wNSA5NzIuNzU4IDQzLjU4NTggOTcyLjQzMyA0My4yNjA5Qzk3Mi4xMDkgNDIuOTM2IDk3MS42OTEgNDIuNzUwMyA5NzEuMjI3IDQyLjc1MDNIOTY4LjUzNFY0Ni41MTAxSDk3MS4yNzNMOTcxLjMxOSA0Ni41NTY1WiIgZmlsbD0iIzkwQTBBRiIvPgo8cGF0aCBkPSJNOTIwLjc3MyAxMjEuMTAyQzkxOC4zMTMgMTIxLjY1OSA5MTUuNzYgMTIxLjk4MyA5MTMuMTE0IDEyMS45ODNDODk0LjY4NyAxMjEuOTgzIDg3OS43ODcgMTA3LjAzNyA4NzkuNzg3IDg4LjY1NjJDODc5Ljc4NyA3MC4yNzUxIDg5NC43MzMgNTUuMzI4OSA5MTMuMTE0IDU1LjMyODlDOTMxLjQ5NSA1NS4zMjg5IDk0Ni40NDEgNzAuMjc1MSA5NDYuNDQxIDg4LjY1NjJDOTQ2LjQ0MSAxMDEuMjM1IDkzOS40NzkgMTEyLjE4OSA5MjkuMTc0IDExNy44NTJMOTQ0LjE2NyAxMzIuNzA2Qzk1Ny45OTkgMTIyLjk1OCA5NjcuMDA0IDEwNi44NTIgOTY3LjAwNCA4OC42NTYyQzk2Ny4wMDQgNTguOTAzIDk0Mi44NjcgMzQuNzY2MiA5MTMuMTE0IDM0Ljc2NjJDODgzLjM2MSAzNC43NjYyIDg1OS4yMjQgNTguOTAzIDg1OS4yMjQgODguNjU2MkM4NTkuMjI0IDExOC40MDkgODgzLjM2MSAxNDIuNTQ2IDkxMy4xMTQgMTQyLjU0NkM5MjEuNjU1IDE0Mi41NDYgOTI5LjY4NSAxNDAuNTUgOTM2Ljg3OSAxMzcuMDIzTDkyMC43NzMgMTIxLjA1NVYxMjEuMTAyWiIgZmlsbD0iIzkwQTBBRiIvPgo8cGF0aCBkPSJNOTI5LjA4NCA4OC43OTU5QzkyNy4wODggODYuMDU3MyA5MjMuNzQ2IDg0LjMzOTkgOTIwLjAzMyA4NC41NzJDOTE1LjAyIDg0Ljg5NjkgOTEwLjg4OCA4OC44ODg3IDkxMC40MjQgOTMuOTAxOEM5MTAuMTkyIDk2LjQwODMgOTEwLjg0MiA5OC43NzU1IDkxMi4xNDIgMTAwLjY3OUM5MTIuNTEzIDEwMS4yMzYgOTEyLjkzMSAxMDEuNzQ2IDkxMy4zOTUgMTAyLjIxTDk2Ni44NjcgMTU1LjIxOEw5NjcuMDA2IDEzNC4wMDZDOTY3LjAwNiAxMjkuMDg2IDk2NS4xMDMgMTI0LjM1MSA5NjEuNTc2IDEyMC45MTZMOTI5LjAzNyA4OC43OTU5SDkyOS4wODRaIiBmaWxsPSIjOTBBMEFGIi8+Cjwvc3ZnPgo=" alt="IdentityIQ"></span>
-      <p>Monitoring through underwriting so nobody wrecks their own loan, then the refinance recapture
-      three years later.</p>
-      <span class="spb">Turns one loan into a lifetime subscription</span></div>
-  </div>
-
-  <div class="foundation" style="margin-bottom:42px">
-    <span class="flogo" id="foundlogo2"></span>
-    <span class="ftag">Built in</span>
-    <span class="ftxt">Monitoring runs underneath both so the numbers stay current. It is infrastructure here,
-    not something we lead with &mdash; though a closed borrower is still the best identity-protection prospect
-    there is.</span>
-  </div>
-
-  <div class="ovh">
-    <h2>How the system actually works</h2>
-    <p>End to end, from the moment somebody who cannot buy a house turns up, to the day a loan officer
-    picks up the phone because they can.</p>
-  </div>
-
-  <div class="flow">
-    <div class="fstep"><div class="fnum">01</div>
-      <h4>Somebody arrives</h4>
-      <p>Three ways in, and the borrower never pays to walk through any of them. Whoever sends them &mdash;
-      lender or agent &mdash; owns the relationship from that point.</p>
-      <div class="fdet">
-        <div class="fd"><b>Somebody decides not to send them forward</b><span>One click, or it fires on its
-        own the moment an officer or an agent marks them as not ready. That is the highest intent anybody
-        in this funnel will ever have, and today it is where they go quiet.</span></div>
-        <div class="fd"><b>An agent checks them</b><span>At the kitchen table or an open house. The agent finds
-        out whether Saturday is worth spending, without sending them to a lender first.</span></div>
-        <div class="fd"><b>They click a button on the website</b><span>The second door, for visitors who know
-        they will not qualify and would otherwise leave without ever giving a name.</span></div>
-      </div>
+    <div class="gmstack">
+      <div class="gmsh">The product stack</div>
+      <ol class="gmol">
+        <li><b>Check</b> &mdash; find the starting point and what is actually in the way.</li>
+        <li><b>Build</b> &mdash; monitoring, a gameplan, and one action at a time.</li>
+        <li><b>Dispute</b> &mdash; guided review, consumer-approved letters, response tracking.</li>
+        <li><b>Report</b> &mdash; rent and utility payments, 24 months back, where eligible.</li>
+        <li><b>Protect</b> &mdash; warnings from application through closing.</li>
+      </ol>
     </div>
 
-    <div class="fstep"><div class="fnum">02</div>
-      <h4>We read all three bureaus<span class="ftag2">MyScoreIQ</span></h4>
-      <p>The borrower authorizes it themselves, so it is a consumer-permissioned soft pull. No hard inquiry
-      lands on their file, and no trigger lead gets sold to a competitor the next morning.</p>
-      <div class="fdet">
-        <div class="fd acc"><b>The middle score, not the best one</b><span>Mortgage qualifies on the middle of
-        three. A single-bureau pull can hand you the high one and tell everybody a borrower is ready when
-        they are not.</span></div>
-        <div class="fd"><b>The models lenders actually use</b><span>FICO 2, 4 and 5 today, with VantageScore
-        4.0 and FICO 10 T landing here as they arrive.</span></div>
-        <div class="fd"><b>Refreshed on a schedule</b><span>Not a one-off snapshot. Every month the file is
-        re-read, which is what makes everything downstream possible.</span></div>
-      </div>
-    </div>
-
-    <div class="fstep"><div class="fnum">03</div>
-      <h4>The engine works out the gap &mdash; and the date</h4>
-      <p>Not against a generic 620. Against the specific threshold for the specific loan product this
-      borrower is aiming at, and then against every other program on the lender&rsquo;s shelf.</p>
-      <div class="fdet">
-        <div class="fd"><b>Every program, every night</b><span>FHA, conventional, VA, USDA, portfolio and the
-        state assistance programs. Borrowers routinely clear something they were never told about.</span></div>
-        <div class="fd acc"><b>A date, not a guess</b><span>Trended data is what makes a projection credible.
-        You cannot forecast a snapshot; you can forecast a trajectory.</span></div>
-        <div class="fd"><b>Cash as a separate gate</b><span>Credit and down payment are different problems. A
-        borrower can clear one and fail the other, and a credit-only tool will not tell you.</span></div>
-      </div>
-    </div>
-
-    <div class="fstep"><div class="fnum">04</div>
-      <h4>They get one thing to do<span class="ftag2">CreditBuilderIQ</span></h4>
-      <p>Not a list of six. The single highest-value move still available, ranked by points per dollar and
-      points per day &mdash; and the ones that cost nothing always come first.</p>
-      <div class="fdet">
-        <div class="fd acc"><b>Rent they already paid</b><span>Up to 24 months, backdated, to all three
-        bureaus. For a thin file it is usually worth more than everything else combined, and it takes about
-        thirty days.</span></div>
-        <div class="fd"><b>Moves that cost nothing</b><span>Paying before the statement closes instead of
-        before the due date. Spreading balances. Asking for a limit increase that is a soft pull. Most
-        borrowers never reach the moves that cost money.</span></div>
-        <div class="fd"><b>Optimized for approval, not score</b><span>A credit builder loan raises a score and
-        hurts debt-to-income. Anything that only optimizes the score can push a borrower away from
-        qualifying.</span></div>
-      </div>
-    </div>
-
-    <div class="fstep"><div class="fnum">05</div>
-      <h4>Everyone watches the same file move</h4>
-      <p>The borrower sees a date getting closer. The lender or agent sees a pipeline sorting itself. Neither
-      has to chase the other, and none of it lives in a tab anybody has to remember to open.</p>
-      <div class="fdet">
-        <div class="fd"><b>It goes to their CRM</b><span>Eleven fields and seven events through one Zapier
-        connection. Their own filters, reports and automations become a readiness pipeline.</span></div>
-        <div class="fd"><b>Shared between partners</b><span>If the agent and the lender are connected, both see
-        the borrower from their own side. The handoff stops being a phone call somebody forgets.</span></div>
-        <div class="fd"><b>Protection while it is live</b><span>A borrower financing a car between application
-        and closing kills their own loan. The inquiry surfaces the day it lands.</span></div>
-      </div>
-    </div>
-
-    <div class="fstep"><div class="fnum">06</div>
-      <h4>The day they clear, somebody calls</h4>
-      <p>That is the whole product. Everything above exists so that one alert is accurate and arrives on the
-      right day, to the person who has been waiting for it.</p>
-      <div class="fdet">
-        <div class="fd acc"><b>&ldquo;Maria hit 641&rdquo;</b><span>She qualifies for the FHA product she asked
-        about in April. The message is already drafted. The officer hits send.</span></div>
-        <div class="fd"><b>Then a compliant pull</b><span>This never replaces the tri-merge. It removes the
-        wasted ones &mdash; you only pay for a full report on a borrower who is actually ready.</span></div>
-        <div class="fd"><b>And it keeps going</b><span>After closing they are still monitored, so the
-        refinance in three years comes back to the same lender instead of a competitor&rsquo;s mailer.</span></div>
-      </div>
+    <div class="gmmap">
+      <div class="gmsh">At a glance</div>
+      <table class="gmt"><thead><tr><th>#</th><th>Play</th><th>Primary user</th><th>When</th></tr></thead>
+      <tbody id="gmmapbody"></tbody></table>
     </div>
   </div>
 
-  <div class="ovh" style="margin-top:44px">
-    <h2>Why it holds up</h2>
-    <p>Four things here are genuinely hard to copy, and three of them are because IDIQ already owns the rails.</p>
-  </div>
-  <div class="moat">
-    <div class="mo2"><h4>We can write to the bureaus</h4>
-      <p>Most of this industry can only read. <b>Furnishing rent and utility history is the difference between
-      advising someone and actually changing their file.</b></p></div>
-    <div class="mo2"><h4>The score is the real one</h4>
-      <p>Consumer credit apps have always shown an educational score no lender uses. <b>Showing the models a
-      mortgage is actually underwritten on removes the objection that killed every previous attempt.</b></p></div>
-    <div class="mo2"><h4>Trended data makes it forecastable</h4>
-      <p>A projected date and a ranked plan both require a trajectory. <b>Nobody can produce either from a
-      point-in-time snapshot.</b></p></div>
-    <div class="mo2"><h4>The lender pays to acquire the customer</h4>
-      <p>Consumer credit is a customer-acquisition business, and acquisition is the whole cost structure.
-      <b>Here the lender hands the borrower over and pays for the privilege.</b></p></div>
-  </div>
+  <div class="gmplays" id="iblist"></div>
+
 
   <div class="ovh">
     <h2>Have a look around</h2>
@@ -5304,6 +5195,492 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     document.getElementById("pcloseb").addEventListener("click",pClose);
     if(sc) sc.addEventListener("click",pClose);
     document.addEventListener("keydown",function(e){ if(e.key==="Escape") pClose(); });
+  })();
+
+  /* The idea board. Content lives here as data so it can be argued with and
+     edited in one place rather than hunted through markup. */
+  (function(){
+    var box=document.getElementById("iblist"); if(!box) return;
+    var IDEAS=[
+    {n:"L", w:1, t:"How a mortgage lender uses it",
+     lead:"Stop paying for reports on people who were never going to clear.",
+     one:"The whole thing from the lender&rsquo;s side, start to finish. This is the version to walk a production manager through, because every other idea on this list is a piece of it.",
+     who:"Loan officers, branch managers, consumer-direct teams", when:"Now", pay:"Lender sponsors the check; the consumer usually pays for the rest",
+     inc:["A soft check for $14.95 one bureau or $24.95 all three, no inquiry",
+          "Their scores against the threshold for the loan they actually want",
+          "Monthly reports and scores, and a personalized gameplan if they are short",
+          "Inaccuracy disputing",
+          "Rental payment reporting, 24 months back",
+          "Utility payment reporting, 24 months back",
+          "Score Center, goal tracking, quick action guidance, score factors education",
+          "Secured card and builder loan guidance",
+          "Identity monitoring and $1M insurance underneath all of it"],
+     how:["The officer sends their own link, or the company uploads a list of people who never moved forward.",
+          "The borrower runs the soft check themselves. No application, no inquiry, about a minute.",
+          "Clears the threshold: pull the real report and take the application. That report is now money well spent.",
+          "Does not clear: they go on a plan, and the officer gets a date instead of a dead lead.",
+          "The officer gets an alert the day somebody crosses the line, not the following quarter.",
+          "Once the application goes live, the product flips to Protect and starts warning them off new credit."],
+     pro:["The cost case is immediate and lands on this quarter, not next year.",
+          "The people it recovers were already paid for once.",
+          "Nothing here needs building. It is packaging, positioning and the invitation."],
+     con:["It is a credit screen, not a mortgage decision. Income, ratio, assets and the property are still the lender&rsquo;s work.",
+          "One officer using it proves nothing. It needs a branch or a team to show a pattern.",
+          "Somebody has to own the follow-up when the alert fires, or the alert is just noise."],
+     pilot:"One branch or consumer-direct team, 90 days. Count checks run, reports not bought, enrolments, alerts fired, applications taken and loans funded."},
+
+    {n:"A", w:1, t:"How a real estate agent uses it",
+     lead:"Find out what they can afford before you give up a Saturday.",
+     one:"The same products, arranged for somebody who works in price and time rather than in scores. The agent sells nothing and issues nothing.",
+     who:"Agents, teams and brokerages", when:"Now", pay:"Almost always consumer-paid; a lender partner can sponsor the check",
+     inc:["The same soft check, $14.95 or $24.95",
+          "A price range and a date, not a pre-approval",
+          "The full building shelf if the buyer needs it \u2014 gameplan, rent and utility reporting, disputes, Score Center",
+          "Scores on buyers the agent enrolled themselves",
+          "A simple status on buyers a lender shared: building, review recommended, connected"],
+     how:["The agent puts a link in an email signature, a QR code on a sign rider, or hands it out at an open house.",
+          "The buyer runs it themselves. The agent never touches their credit information.",
+          "Ready: the agent books showings and hands the file to their lender partner.",
+          "Not ready: the buyer gets a plan and the agent gets a date to call back, instead of losing them.",
+          "The agent&rsquo;s pipeline sorts by when somebody can go out, not by score."],
+     pro:["Answers the only question an agent is really asking: is this weekend worth spending.",
+          "Keeps buyers who are six months out from drifting to another agent.",
+          "Costs a lender nothing and sends that lender ready buyers, which is why they will pay for it."],
+     con:["It is not a pre-approval and cannot be presented as one. The letter is the lender&rsquo;s to write.",
+          "Agents will not use a second tool unless sharing takes one tap.",
+          "Who owns the buyer when an agent&rsquo;s link produces a loan for a partner lender has to be settled in writing first."],
+     pilot:"10 to 20 agents at one brokerage, unique links, 60 days. Track checks run, enrolments, lender handoffs, and which agents actually used it."},
+
+    {n:"T", w:1, t:"Tell them honestly how far out they are",
+     lead:"A 500 is not a bad lead. It is a bad pull.",
+     one:"The question everything hangs on, and where programs like this usually die. Somebody with a 500 gets told ninety days and quits in month four. The product&rsquo;s real job is to say which band a person is in, out loud, on day one.",
+     who:"Everybody who runs a check", when:"Now \u2014 it is a rule, not a feature", pay:"Part of the check",
+     inc:["<b>Near miss \u2014 10 to 25 points short.</b> Twenty-four months of backdated rent usually covers it alone. 30 to 90 days. Tell them: about a month, and do not open anything new.",
+          "<b>Real work \u2014 25 to 60 points short.</b> Rent and bills together, utilisation brought down deliberately, a dispute where something is genuinely wrong. 6 to 12 months. Tell them: next spring, if you work the plan.",
+          "<b>Long road \u2014 60+ points, or a 500.</b> Collections, charge-offs, a recent bankruptcy, or a file too thin to build on. 12 to 24 months. Tell them: next year, honestly, and here is the first step."],
+     how:["The check sorts the person into one of the three bands before anybody quotes a timeline.",
+          "The plan, the messaging and the follow-up cadence all change by band.",
+          "The lender sees the band, so nobody is chasing a long-road borrower every month.",
+          "A near miss gets rent reporting and nothing else sold to them."],
+     pro:["It is the honest version, and honesty is what stops month-four churn.",
+          "It makes the cost argument concrete: a lender pays for a mortgage report to learn what the check would have told them for $14.95.",
+          "It gives the pilot a fair scoreboard \u2014 recruit near-misses if the window is 90 days."],
+     con:["Long-road borrowers will still churn. Some of them should.",
+          "Bands are a guide, not a promise, and cannot be presented as a prediction.",
+          "A lender who only wants quick wins will want to cherry-pick, which shrinks the addressable list."],
+     pilot:"Run it against a real fallout list before selling anything. If most of the list is long road, the offer and the pilot window both need rethinking."},
+
+    {n:"P", w:1, t:"What a partner actually buys",
+     lead:"Take the whole shelf, or just the part you need.",
+     one:"Not everybody wants everything. Some lenders only ever want to know whether it is worth pulling. The partner picks the shelf; the consumer picks from what is on it.",
+     who:"Any lender, agent, brokerage or builder", when:"Design now", pay:"Sponsored, consumer-paid, or the lender pays the start and the consumer continues",
+     inc:["<b>Scores only.</b> $14.95 one bureau, $24.95 all three. The soft check, the threshold comparison, and the reason they are short. Nothing else. For shops whose only pain is report spend.",
+          "<b>Scores and building.</b> Everything above plus monthly reports and scores, the gameplan, rent and utility reporting with 24 months of history, Score Center and goal tracking, secured card and builder loan guidance. No disputes. This is the one to lead with.",
+          "<b>Everything.</b> Adds inaccuracy disputing, quick action guidance, score factors education, Protect Mode through closing, and identity monitoring with $1M insurance."],
+     how:["The partner chooses which shelf they are putting in front of their people.",
+          "The consumer sees plainly what is sponsored, what costs money, and for how long.",
+          "Upgrades are the consumer&rsquo;s choice, and the lender never sees private detail merely because they paid.",
+          "Protect Mode is normally lender-paid, because it protects the lender&rsquo;s loan."],
+     pro:["Fits a lender with no budget and a lender who wants a premium borrower benefit.",
+          "Direct consumer revenue without asking the lender to fund every service.",
+          "The middle package sidesteps the dispute conversation entirely, which shortens a lot of sales calls."],
+     con:["Three billing paths will confuse people if the offer is not stated in one sentence.",
+          "Pricing, sponsorship and anything resembling a referral arrangement needs review before launch.",
+          "The lender must not receive consumer information simply because they paid for the seat."],
+     pilot:"Run the hybrid first: lender-paid check, consumer-paid continuation. Compare enrolment and upgrade rates against a fully consumer-paid group."},
+
+    {n:"X1", w:1, t:"The free fallout audit",
+     lead:"Show me last year's list and I will tell you what is still in it.",
+     one:"Not a product &mdash; the way you get the first meeting. The lender hands over anonymised counts, you hand back what that pile is worth. It costs a spreadsheet and it produces the working list for every other idea here.",
+     who:"Any lender with a database and a marketing budget", when:"Now \u2014 it is a sales motion, not a build", pay:"Free. That is the point.",
+     inc:["A one-page read on their own fallout: how many, what they were worth, how many bought elsewhere",
+          "Their own economics, not ours \u2014 lead count, fallout rate, revenue per closed loan",
+          "A named list of who is worth contacting first",
+          "A recommended pilot scoped to what the numbers actually support"],
+     how:["Ask for counts, not names \u2014 nothing identifiable changes hands at this stage.",
+          "Run their numbers against average recovery rates and their own average revenue per loan.",
+          "Present it as a receipt, not a projection.",
+          "The obvious next question is theirs to ask: what would it take to work this list?"],
+     pro:["Costs almost nothing and it is a second meeting generator, not a pitch.",
+          "Uses the lender&rsquo;s own data, which nobody argues with.",
+          "Qualifies the account before you spend real time on it \u2014 a thin list means walk away."],
+     con:["It is unpaid work, so it has to be fast and templated or it eats the week.",
+          "Some lenders cannot pull the numbers, which is itself a signal.",
+          "Ends up as a free consulting habit if there is no rule about when to stop."],
+     pilot:"Do it for the first five prospects. If it does not convert at least two into pilots, the offer is wrong, not the audit."},
+
+    {n:"X2", w:2, t:"Live inside the tools they already use",
+     lead:"Do not ask anybody to open a second tab.",
+     one:"Be a checkbox inside Encompass, Blend, Floify or Maxwell rather than a thing somebody has to remember to go to. Distribution through software beats distribution through salespeople.",
+     who:"Lenders already running a point-of-sale or LOS", when:"Later \u2014 real integration work, needs a proven pilot first", pay:"Platform fee, plus consumer enrolments",
+     inc:["A readiness check offered inside the application flow they already use",
+          "Statuses written back onto the loan record",
+          "A trigger when somebody fails a credit screen inside their own system",
+          "No new login for the loan officer"],
+     how:["Certify as a partner in one marketplace to start, not four.",
+          "The officer sees the readiness option where they already work.",
+          "The soft check runs before the expensive pull is ordered.",
+          "Whoever does not clear is enrolled without leaving the file."],
+     pro:["The officer does not have to change a habit, which is the real barrier.",
+          "Marketplace listings generate inbound that inside sales cannot.",
+          "One integration reaches every lender on that platform."],
+     con:["<b>This is the biggest build on the list</b> and it contradicts the no-development constraint. It belongs after a pilot, not before.",
+          "Marketplace certification is slow and on their timetable, not ours.",
+          "Each platform is its own roadmap forever."],
+     pilot:"Do not start until one lender is live and funded loans are provable. Then pick the single platform the best partners already run."},
+
+    {n:"X3", w:2, t:"Credit unions and member benefit programs",
+     lead:"You already spend money on financial wellness. This one produces mortgages.",
+     one:"Credit unions run member-benefit and financial-wellness budgets already, and retention is the entire business model. Easier compliance conversation than an independent mortgage bank, and a warmer audience.",
+     who:"Credit unions, and employers running benefit programs", when:"Next", pay:"Institution sponsors; members can upgrade",
+     inc:["The full consumer stack under the credit union&rsquo;s brand",
+          "Member-wide enrolment rather than per-borrower",
+          "Reporting the institution can show its board",
+          "A mortgage-ready pipeline as a by-product of a wellness program"],
+     how:["Sold as a member benefit, not as a lead generator.",
+          "Members enrol themselves through a branded link.",
+          "The mortgage team is told when a member becomes ready.",
+          "The wellness budget pays; the mortgage department gets the pipeline."],
+     pro:["Different budget line than mortgage marketing, which is usually the one that is empty.",
+          "Retention is already the mandate, so the pitch is aligned rather than opportunistic.",
+          "Compliance culture is conservative but the conversation is more receptive."],
+     con:["Slow procurement and committee decisions.",
+          "The mortgage team may not be the buyer, so internal handoff is somebody else&rsquo;s problem.",
+          "Member communications go through their own approval process."],
+     pilot:"One credit union, one branch region, 90 days. Measure member enrolment first, mortgage-ready conversions second."},
+
+    {n:"X4", w:2, t:"Down payment assistance and housing finance agencies",
+     lead:"Your programs have score floors. Most of the people who miss them are close.",
+     one:"State housing finance agencies and DPA programs have hard credit minimums and a mission mandate to serve exactly the borrowers who fall short. Slow to sell, but the credibility is worth more than the revenue.",
+     who:"State HFAs, DPA administrators, non-profit housing counsellors", when:"Next \u2014 long cycle, start early", pay:"Agency or grant funded; consumer-paid continuation",
+     inc:["The check against the specific program&rsquo;s floor, not a generic threshold",
+          "The building stack for whoever is short",
+          "Reporting the agency can use for its own mission metrics",
+          "Referral into participating lenders when somebody clears"],
+     how:["The agency or counsellor hands out the link at intake or a homebuyer workshop.",
+          "Applicants find out where they stand against that program specifically.",
+          "Whoever misses gets the plan and stays in the agency&rsquo;s pipeline instead of disappearing.",
+          "Participating lenders receive them when they clear."],
+     pro:["Enormous credibility. A state agency reference opens private-sector doors.",
+          "Their mandate is literally to serve this borrower.",
+          "Grant funding exists for exactly this kind of program."],
+     con:["Procurement can take a year. This cannot be the revenue plan.",
+          "Public-sector reporting and accessibility requirements add real work.",
+          "Fair-lending scrutiny is higher, which is fine but must be planned for."],
+     pilot:"One agency, one homebuyer education cohort. Treat it as a reference customer, not a revenue line."},
+
+    {n:"X5", w:3, t:"Title, insurance and closing partners",
+     lead:"You lose the file too when the loan falls apart.",
+     one:"Everybody at the closing table loses money when a deal dies on credit, not just the lender. Title and insurance partners have their own marketing budgets and their own agent relationships.",
+     who:"Title companies, homeowner insurance agencies, closing attorneys", when:"Later", pay:"Partner sponsors; consumer-paid continuation",
+     inc:["The check and the building stack, co-branded to the partner",
+          "A name and a closing date only \u2014 no credit information crosses to them",
+          "A shared pipeline with their agent and lender relationships",
+          "Something to give agents that is not another branded notepad"],
+     how:["The partner hands out the link through their existing agent relationships.",
+          "The consumer enrols and the partner sees status only.",
+          "The lender and agent get the readiness signal.",
+          "The partner keeps the relationship warm on deals that are months out."],
+     pro:["A budget nobody else is competing for.",
+          "They already talk to the agents you want.",
+          "Very low compliance surface, because they see almost nothing."],
+     con:["Weakest natural fit of anything on this list &mdash; they are furthest from the credit decision.",
+          "RESPA is sharpest here, because title and insurance are settlement services.",
+          "Easy to be seen as a marketing gimmick rather than a product."],
+     pilot:"One title company with strong agent relationships. Test whether their agents actually distribute it."},
+
+    {n:"X6", w:2, t:"Sell it as a desk, not as software",
+     lead:"Every lender should have a second-look desk. Yours runs on this.",
+     one:"Positioning, not product. Lenders buy departments and processes more readily than they buy subscriptions. Same thing underneath, completely different conversation and a different budget.",
+     who:"Production leadership at multi-branch lenders", when:"Now \u2014 it is how you frame the same offer", pay:"Program fee rather than per-seat licensing",
+     inc:["The full stack, framed as the tooling for a recovery function",
+          "A defined process: who owns the list, who calls, what the trigger is",
+          "Scripts, templates and the invitation copy",
+          "Reporting built for a production meeting, not a product dashboard"],
+     how:["Sell the outcome and the operating rhythm, not the login.",
+          "Name the owner inside the lender \u2014 a desk without an owner does not exist.",
+          "Weekly list, monthly review, quarterly funded-loan readout.",
+          "The software is how the desk runs, not what they bought."],
+     pro:["Sidesteps the software-procurement queue entirely.",
+          "Lenders understand desks. They do not understand another SaaS seat.",
+          "Justifies a higher price than a per-borrower licence."],
+     con:["Needs a named owner at the lender or it quietly dies.",
+          "More consultative, which does not suit five inside sales people.",
+          "Harder to templatise, so it scales through people rather than product."],
+     pilot:"Frame the next three pitches this way and the three after that as software. Compare which gets to a signature faster."},
+
+    {n:"X7", w:2, t:"White-label it completely",
+     lead:"Your name on it. Ours nowhere.",
+     one:"Some partners will not put a third-party brand in front of their borrowers at any price. Let them have their own, and take the volume instead of the logo.",
+     who:"Larger lenders, brokerages and builders with real brand discipline", when:"Next", pay:"Higher platform fee, lower or no consumer branding",
+     inc:["Their brand end to end \u2014 the link, the emails, the consumer app",
+          "Their domain",
+          "Their colours, their logo, their loan officer&rsquo;s name and photo",
+          "One small line of attribution and nothing more"],
+     how:["The partner configures brand, domain and messaging once.",
+          "Consumers never see a name they do not recognise.",
+          "Everything underneath is the same product on the same rails.",
+          "Support and compliance stay ours; the relationship stays theirs."],
+     pro:["Removes the last objection for partners who care about brand.",
+          "Usually commands a higher fee, not a lower one.",
+          "Bigger partners will not sign without it."],
+     con:["No brand equity accrues to IDIQ, which is a real strategic cost.",
+          "Support gets harder when the consumer does not know who they are talking to.",
+          "Multiple white labels means multiple configurations to maintain."],
+     pilot:"Offer it to one partner who has already said no on branding grounds. See whether it actually closes them."},
+
+    {n:"X8", w:2, t:"Associations, boards and events",
+     lead:"One room, four hundred agents.",
+     one:"Realtor associations, MLS boards and homebuyer workshops put the entire audience in one place. Slow, unglamorous, and the cheapest distribution on this list per person reached.",
+     who:"Realtor associations, MLS boards, first-time buyer programs", when:"Next", pay:"Association or sponsor pays; consumers upgrade",
+     inc:["A member benefit for every agent in the association",
+          "Co-branded materials for events and workshops",
+          "A workshop-ready version of the check",
+          "Continuing-education-friendly content on how mortgage credit actually works"],
+     how:["Sponsor or present at the association&rsquo;s own events.",
+          "Every attending agent leaves with their own link.",
+          "Homebuyer workshops run the check live in the room.",
+          "Local lender partners pick up whoever becomes ready."],
+     pro:["Hundreds of distributors from one conversation.",
+          "Association endorsement carries weight an ad never will.",
+          "Events produce consumers and distributors at the same time."],
+     con:["Association politics and sponsorship costs, with no guarantee of adoption.",
+          "Agents who get something free at an event mostly do not use it.",
+          "Seasonal &mdash; the calendar decides the timeline, not us."],
+     pilot:"One association event, one workshop. Count links claimed against links actually used thirty days later."},
+
+    {n:"01", w:1, t:"Mortgage Ready Check",
+     one:"A soft credit check somebody runs before anyone pays for a mortgage report. It finds the starting point and the obstacles; it does not fix anything on its own.",
+     who:"Lenders, loan officers, agents", when:"Now &middot; 1\u20132 weeks", pay:"Lender-paid, consumer-paid, or free with paid upgrades",
+     inc:["One or three bureau soft check, consumer-permissioned",
+          "Their scores against the threshold for the loan they want",
+          "Plain-language reason they are short, if they are",
+          "A direct route into Build, Dispute or Reporting"],
+     how:["A link, button or QR goes on a website, an ad, an email signature or an open-house flyer.",
+          "The consumer permissions it, says what they are trying to buy, and runs the check.",
+          "Clears the threshold: invited to ask for a lender review. Does not: gets options and a next step.",
+          "The lender sees contact details and a readiness status &mdash; nothing else unless the consumer authorises it."],
+     pro:["The easiest thing on this list to explain in one sentence.",
+          "Stops a lender buying a tri-merge on somebody who was never going to clear.",
+          "Works with or without a CRM, and it feeds every other idea here."],
+     con:["It is not a pre-qualification and cannot be presented as one.",
+          "By itself it changes nothing &mdash; the value is what happens next.",
+          "Bureau, model, date and who-sees-what all have to be labelled on screen."],
+     pilot:"Five loan officers and five agents, personal links, 30 days. Count checks completed, product enrolments, lender-review requests and applications.",
+     note:"Sell this on <b>cost avoided</b>, not lead capture. A lender pays for a report on every applicant including the ones who could never qualify. That is money out the door this quarter, which is a far easier budget conversation than a funnel argument."},
+
+    {n:"02", w:1, t:"Credit Building and Disputes",
+     one:"The actual product. Somebody who is not ready gets tools rather than a waiting list and a vague instruction to work on their credit.",
+     who:"Consumers who are not ready today", when:"Now, once messaging is settled", pay:"Lender-sponsored, consumer-paid, or sponsored start then paid continuation",
+     inc:["Monthly credit reports and scores &mdash; <b>one bureau or all three</b>",
+          "A personalized gameplan, not a page of generic tips",
+          "Inaccuracy disputing",
+          "Rental payment reporting, <b>including 24 months of history</b>",
+          "Utility payment reporting, <b>including 24 months of history</b>",
+          "Score Center and goal tracking",
+          "Quick action guidance, and score factors education",
+          "Secured card and builder loan guidance"],
+     how:["The engine reads the file and picks the single biggest obstacle.",
+          "The consumer gets one action, why it matters, and when it should show up.",
+          "If an account looks wrong, the Dispute Center walks the review, the evidence and the letter.",
+          "Eligible positive payments get verified and reported; monitoring measures what moves.",
+          "When a lender-set milestone lands, the consumer can ask for a fresh review."],
+     pro:["This is the part that can actually change the file.",
+          "Recurring engagement, and a real reason for a subscription to exist.",
+          "Gives the lender a credible reason to stay in touch for a year."],
+     con:["Timing and point movement vary and must never be promised.",
+          "Disputes and furnishing need real compliance, support and consent records.",
+          "A dispute during underwriting can stall a live file, so behaviour has to change by loan phase."],
+     pilot:"50\u2013100 consumers, 90 days. Measure engagement, actions completed, disputes resolved, reporting landed, lender reviews and funded loans &mdash; not score movement alone.",
+     note:"<b>Every line above ships today in CreditBuilderIQ.</b> Nothing here is a development ask, which is the whole answer to the justification question &mdash; the work is packaging, positioning and the invitation, not engineering. The one-bureau and three-bureau split is already how it is sold, and it maps straight onto the $14.95 and $24.95 anchors."},
+
+    {n:"03", w:1, t:"Old Lead Recovery",
+     one:"The lender uploads everybody who was declined, went quiet, or never finished. They get a new check and a path back.",
+     who:"Lenders sitting on a large database", when:"Now &middot; 1\u20132 weeks for a basic campaign", pay:"Lender-sponsored, consumer-paid or hybrid",
+     inc:["A Check to establish where each person stands today",
+          "Build for monitoring and a ranked plan",
+          "Dispute where something looks inaccurate",
+          "Positive payment reporting where eligible"],
+     how:["The lender uploads a clean list and assigns each person to the original officer or a recovery desk.",
+          "A short invitation goes out: things may have changed, here is where you stand.",
+          "Whoever is interested picks the sponsored or paid option and starts working.",
+          "The lender gets milestone alerts and a review request when somebody hits the mark."],
+     pro:["Targets people the company has already paid to acquire.",
+          "Easiest pilot to score, because applications and closings are countable.",
+          "Makes the consumer products immediately relevant to a lender."],
+     con:["<b>Consent to contact is the gating risk.</b> Old numbers, lapsed permissions and TCPA exposure will be the first thing compliance raises &mdash; settle it before the first send, not after.",
+          "Stale data: wrong numbers, people who already bought, people who no longer want to.",
+          "Many take months to come back, so a 90-day window will undercount the result."],
+     pilot:"250\u2013500 leads from one branch, 90 days. Report enrolments, active consumers, review requests, applications and closings."},
+
+    {n:"04", w:1, t:"Agent Buyer Program",
+     one:"Every participating agent gets a co-branded link. Buyers who are months away stay connected to the agent without the agent seeing the credit file.",
+     who:"Agents, teams, and the lenders they work with", when:"Now &middot; 2\u20133 weeks", pay:"Free or sponsored Check, consumer-paid upgrades, or a lender-sponsored journey",
+     inc:["A Check for early buyer screening",
+          "Build and Dispute when the buyer needs them",
+          "Positive payment reporting for renters and thin files",
+          "A simple agent status view"],
+     how:["The agent shares a personal link with new leads, renters and open-house visitors.",
+          "The buyer runs the check and picks up whatever they need.",
+          "The agent sees status &mdash; building, review recommended, connected &mdash; and the scores on their own buyers.",
+          "The preferred lender gets the handoff when the buyer is worth a professional review."],
+     pro:["A distribution channel that does not compete with the lender&rsquo;s own marketing.",
+          "Keeps agents connected to buyers who are six months out.",
+          "Gives a lender something genuinely useful to hand their agent partners."],
+     con:["Agents will not use a second tool unless sharing is effortless.",
+          "The agent view must never imply pre-approval or buying power as a credit decision.",
+          "<b>Attribution has to be settled first.</b> If a buyer enrols on an agent link and closes with a different lender, the pilot cannot be scored unless the rule was written down in advance."],
+     pilot:"One lender, 10\u201320 agents, unique links, 60 days. Track checks, enrolments, lender connections and which agents actually used it."},
+
+    {n:"05", w:2, t:"Renter to Homeowner",
+     one:"A longer program for renters who want to buy but need time. Rent they already pay becomes the thing that moves the file.",
+     who:"Lenders, agents, apartment communities, property managers", when:"Next &middot; 30\u201360 days after the core journey works", pay:"Property partner, lender or consumer &mdash; hybrid works too",
+     inc:["Build with a homeownership goal and monthly milestones",
+          "Rent and bill reporting where eligible",
+          "Dispute when something looks wrong",
+          "Monitoring and lender-review alerts"],
+     how:["Renters join through an apartment partner, an agent campaign or a first-time-buyer event.",
+          "Each one gets a readiness result and a simple homebuyer credit plan.",
+          "Eligible rent and bill history is verified and reported.",
+          "They meet the lender and the agent when a review is actually worth having."],
+     pro:["Reaches people before they ever enter the mortgage market.",
+          "Rent reporting is the easiest thing on the shelf to explain and the fastest to land.",
+          "<b>The only idea here with a partner who already owns the list.</b> Resident-Link gives IDIQ rails into property managers that nobody else has."],
+     con:["The conversion window is long, and a quarterly pilot will not show it.",
+          "Rent and bill eligibility varies and must be verified before anything is claimed.",
+          "Partner acquisition and attribution add operational work."],
+     pilot:"One apartment community or property-management partner. Keep the first cohort small until reporting eligibility and messaging are proven."},
+
+    {n:"06", w:2, t:"Borrower Protect Mode",
+     one:"Once somebody applies or goes under contract, this stops being a credit-building coach and starts protecting the loan.",
+     who:"Lenders and consumers with live applications", when:"Next &middot; 30\u201360 days", pay:"Normally lender-paid",
+     inc:["Monitoring through the expected closing window",
+          "A warning before opening or financing anything new",
+          "Reminders about cars, furniture and store cards",
+          "Alerts on new inquiries, new accounts and meaningful changes"],
+     how:["The officer or the system switches it on when the application goes active.",
+          "Credit-building suggestions that involve new accounts are disabled.",
+          "The consumer gets lender-approved warnings and is told to ask before any big decision.",
+          "The lender gets the alerts that matter and decides whether a file needs another look."],
+     pro:["The most mortgage-specific thing on this list &mdash; ordinary credit monitoring does not do it.",
+          "Immediate value in a short, expensive, high-risk window.",
+          "Prevents the surprise that shows up three days before closing on a file already paid for."],
+     con:["Too many alerts becomes noise and anxiety.",
+          "It cannot judge underwriting consequences &mdash; that stays with the lender.",
+          "Needs clear start and stop dates, consent, and messaging the lender has approved."],
+     pilot:"100 active purchase loans, 60 days. Measure useful alerts, lender interventions and how many files stayed on schedule."},
+
+    {n:"07", w:2, t:"CRM Connection, or Our Workspace",
+     one:"Be the readiness layer, not another mandatory mortgage CRM. Statuses and alerts land in whatever they already run.",
+     who:"Mortgage companies, branches, small teams, agent partners", when:"Connection 30\u201360 days &middot; full workspace 60\u201390", pay:"Company connection fee plus consumer enrolments",
+     inc:["Fields for readiness status, last update, estimated review date, next action",
+          "Events for enrolled, progressed, threshold reached, at risk, review requested",
+          "The optional ReadyIQ pipeline, borrower detail and partner views",
+          "Permissions that keep credit detail out of ordinary CRM records"],
+     how:["The company picks a link, a CRM connection, the workspace, or a combination.",
+          "The consumer product is identical either way.",
+          "Only approved statuses, dates, alerts and tasks cross into their system.",
+          "Managers use the workspace for recovery cohorts, teams and partners if they want one."],
+     pro:["Removes the biggest objection there is: replacing software.",
+          "Fits a two-person team and a multi-branch lender with the same product.",
+          "Keeps the consumer experience consistent across every channel."],
+     con:["Every CRM added is development, security and support work forever.",
+          "A full workspace will distract the team from the consumer products that actually earn.",
+          "Sharing rules, roles and audit logs must exist before scale, not after."],
+     pilot:"Connect one CRM with the smallest useful set of fields and alerts. Keep our workspace as the demo and the fallback, never the requirement."},
+
+    {n:"08", w:2, t:"Shopping Alerts",
+     one:"Somebody else pulls your past client's credit and you hear about it. Lenders already buy this from the bureaus as trigger leads \u2014 this is the first-party version, on people who are already yours.",
+     who:"Lenders and agents with a book of past clients", when:"Next, once alert delivery is confirmed", pay:"Lender-paid \u2014 this is a retention cost, not a consumer product",
+     inc:["Monitoring that continues after the loan closes",
+          "An alert when a mortgage inquiry lands from somewhere else",
+          "An alert when their credit changes enough to matter",
+          "Identity protection the consumer keeps for themselves"],
+     how:["The borrower stays enrolled after closing, sponsored or paid.",
+          "Monitoring watches inquiries and meaningful file changes.",
+          "A mortgage inquiry from another lender fires a same-day alert to whoever owns the relationship.",
+          "The officer or agent calls before the client is somebody else&rsquo;s."],
+     pro:["Lenders already pay real money for bureau trigger leads on strangers. This is the same signal on their own people, and it is warmer.",
+          "Turns retention from a mailing list into an event.",
+          "The consumer gets something they actually want out of it \u2014 identity cover."],
+     con:["<b>Delivery has to be verified first.</b> IdentityIQ alerts the consumer; the officer seeing it needs the partner portal or explicit authorisation. That answer decides whether this is free or a build.",
+          "Alert fatigue kills it. One useful alert beats twenty.",
+          "Chasing somebody who is quietly shopping can read as intrusive if the message is wrong."],
+     pilot:"200 past clients from one branch, 90 days. Count alerts fired, calls made, and conversations that turned into an application."},
+
+    {n:"09", w:2, t:"Brokerage, Builder and Employer Programs",
+     one:"Stop selling to individuals and sell to the organisation that already owns the people \u2014 a brokerage with 200 agents, a builder with standing inventory, an employer with a benefits budget.",
+     who:"Brokerages, homebuilders with in-house lending, employers, credit unions, associations", when:"Next \u2014 different sales motion, same product", pay:"The organisation sponsors; consumers can upgrade",
+     inc:["The same Check, Build, Dispute and Reporting products",
+          "Org-level branding and a link for every agent, branch or location",
+          "A roll-up view for whoever runs the program",
+          "Co-branded materials the org hands out"],
+     how:["The organisation signs once and distributes internally.",
+          "Every agent, officer or HR contact gets their own link under the org&rsquo;s brand.",
+          "Consumers enrol and work their plan exactly as they would anywhere else.",
+          "The org sees participation and outcomes; individuals see their own people."],
+     pro:["One conversation reaches hundreds of distributors instead of one.",
+          "<b>Brokerages compete for agents</b> \u2014 this is a recruiting perk with a different budget than a lender&rsquo;s marketing line.",
+          "<b>Builders are the fastest yes in the market.</b> They control both sides of the transaction and inventory costs them money every month it sits."],
+     con:["Longer procurement, and a committee instead of a person.",
+          "Rick&rsquo;s staffing plan is five inside sales people \u2014 that motion suits volume, not enterprise. This idea argues for one or two named hunters, not the inside team.",
+          "Org sponsorship raises the question of who owns the consumer relationship when somebody leaves."],
+     pilot:"One brokerage of 50\u2013150 agents, or one builder with an in-house lender. 90 days, participation and enrolment first, closings second."},
+
+    {n:"10", w:3, t:"Homeowner Retention",
+     one:"After closing, keep the monitoring and the relationship running so the next loan comes back here.",
+     who:"Lenders, servicers, agents, closed borrowers", when:"Later &middot; 90\u2013120 days after the core programs work", pay:"Sponsored period, consumer-paid continuation, or hybrid",
+     inc:["Ongoing monitoring and identity protection",
+          "An annual mortgage and credit checkup",
+          "Permissioned milestones for refinance, equity or repeat purchase",
+          "Anniversary and relationship reminders for the lender and the agent"],
+     how:["At closing the borrower is invited to continue, sponsored or paid.",
+          "Selected credit and homeowner milestones are monitored with permission.",
+          "The system flags moments worth a human conversation rather than declaring anybody qualified.",
+          "The lender or agent gets a task and reconnects personally."],
+     pro:["Extends the relationship well past the one transaction.",
+          "Recurring revenue that is not tied to origination volume.",
+          "Supports repeat loans, equity conversations and referrals."],
+     con:["Far less urgent than everything above it &mdash; it will lose every budget fight.",
+          "A refinance signal needs balance, pricing, equity, costs and breakeven to be credible. A rate move alone is not a signal.",
+          "Ongoing outreach needs clear permission and real restraint."],
+     pilot:"Do not start this until Check, Journey, Recovery and Protect are stable. Begin with an annual checkup and identity benefit before touching refinance signals."}
+    ];
+
+    var WL={1:"Pilot now",2:"Build next",3:"Build later"};
+    var LEAD={"10":"Stay useful after closing, not just visible.","01":"Check where your credit stands before anybody pays for a mortgage report.","02":"Not ready does not have to mean no. Here is the path forward.","03":"Your next closing may already be sitting in your old leads.","04":"Help buyers get ready before they fall in love with a house.","05":"Turn the rent you already pay into part of your plan to own.","06":"Protect the loan from application through closing.","07":"Keep your CRM. Add the readiness layer it is missing.","08":"Somebody just pulled your client&rsquo;s credit. It was not you.","09":"One signature, two hundred people handing it out."};
+    var li=function(a,c){ return '<ul class="gml'+(c?" "+c:"")+'">'+
+      a.map(function(x){return "<li>"+x+"</li>";}).join("")+"</ul>"; };
+    var N=IDEAS.length;
+
+    document.getElementById("gmmapbody").innerHTML=IDEAS.map(function(i,x){
+      return '<tr data-jump="'+x+'"><td>'+(x+1)+'</td><td>'+i.t+'</td><td>'+i.who+'</td><td>'+WL[i.w]+'</td></tr>';
+    }).join("");
+
+    document.getElementById("gmmapbody").addEventListener("click",function(e){
+      var r=e.target.closest("[data-jump]"); if(!r) return;
+      var el=document.getElementById("idea"+(parseInt(r.getAttribute("data-jump"),10)+1));
+      if(el) window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-80, behavior:"smooth"});
+    });
+    box.innerHTML=IDEAS.map(function(i,x){
+      return '<article class="gmplay">'+
+        '<div class="gmnum" id="idea'+(x+1)+'">Idea '+(x+1)+'</div>'+
+        '<h4>'+i.t+'</h4>'+
+        '<p class="gmsum">'+i.one+'</p>'+
+        '<div class="gmfacts">'+
+          '<div><b>Audience</b><span>'+i.who+'</span></div>'+
+          '<div><b>Timing</b><span>'+i.when+'</span></div>'+
+          '<div><b>Payment</b><span>'+i.pay+'</span></div>'+
+          '<div><b>Lead message</b><span>&ldquo;'+(i.lead||LEAD[i.n]||"")+'&rdquo;</span></div>'+
+        '</div>'+
+        '<div class="gmsec">What the consumer gets</div>'+li(i.inc)+
+        '<div class="gmsec">How it works</div>'+li(i.how)+
+        '<div class="gmsec">Upside</div>'+li(i.pro,"up")+
+        '<div class="gmsec">Watchouts</div>'+li(i.con,"wo")+
+        (i.note?'<div class="gmsec">Worth saying plainly</div><p class="gmpilot">'+i.note+'</p>':'')+
+        '<div class="gmsec">Recommended pilot</div><p class="gmpilot">'+i.pilot+'</p>'+
+      '</article>';
+    }).join("");
   })();
   /* credit-building shelf, resolved against one borrower */
   (function(){
