@@ -1999,6 +1999,41 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 .tablewrap.pipe tbody tr.s-ready td.cbcell{box-shadow:inset 3px 0 0 var(--green)}
 .tablewrap.pipe tbody tr.s-risk td.cbcell{box-shadow:inset 3px 0 0 var(--red)}
 
+/* ── the document opens as a title page, not a landing page ── */
+.dochead{padding:34px 0 44px; border-bottom:1px solid var(--line-2); margin-bottom:42px}
+.dockick{display:flex; align-items:center; gap:12px; font-size:10.5px; font-weight:600;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--brand)}
+.dockick i{flex:none; width:4px; height:4px; border-radius:50%; background:var(--line-2)}
+.dochead h1{font-size:64px; line-height:1.02; letter-spacing:-.045em; margin-top:20px; color:var(--ink)}
+.doclede{font-size:17px; line-height:1.6; color:var(--ink-2); margin-top:20px; max-width:60ch}
+.docmeta{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 30px; margin-top:38px;
+  border-top:1px solid var(--line)}
+.docmeta div{padding:16px 0 0}
+.docmeta b{display:block; font-size:9px; font-weight:600; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink-4); margin-bottom:6px}
+.docmeta span{font-size:13px; color:var(--ink-2); line-height:1.5}
+@media (max-width:860px){.dochead h1{font-size:42px}
+  .docmeta{grid-template-columns:minmax(0,1fr)}
+  .docmeta div{padding:12px 0; border-bottom:1px solid var(--line)}
+  .docmeta div:last-child{border-bottom:0}}
+
+/* ── the contact lists ── */
+.ctgrid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:var(--r-sm); overflow:hidden}
+.ctgrid div{background:var(--surface); padding:13px 15px}
+.ctgrid b{display:block; font-size:13px; font-weight:600; letter-spacing:-.012em; line-height:1.3}
+.ctgrid span{display:block; font-size:12px; color:var(--ink-3); margin-top:3px}
+.cttbl{width:100%; min-width:0; border-collapse:collapse; font-size:13px}
+.cttbl th{text-align:left; font-size:9px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-4); padding:0 14px 9px 0; border-bottom:1px solid var(--line)}
+.cttbl th:last-child, .cttbl td:last-child{text-align:right; white-space:nowrap}
+.cttbl td{padding:10px 14px 10px 0; border-bottom:1px solid var(--line); color:var(--ink-2)}
+.cttbl tr:last-child td{border-bottom:0}
+.cttbl td:first-child{font-weight:600; color:var(--ink)}
+.cttbl td.site{font-family:var(--mono); font-size:11.5px; color:var(--ink-4)}
+@media (max-width:760px){.ctgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.ctgrid{grid-template-columns:minmax(0,1fr)}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 </style>
 
@@ -2021,14 +2056,15 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 </header>
 
 <main class="wrap view" id="v-overview">
-  <div class="hero">
-    <h1>See if a borrower qualifies. <em>Build their credit if they don&rsquo;t.</em></h1>
-    <p>Mortgage companies and real estate agents run a soft credit check &mdash; the same FICO scores
-    mortgage underwriting uses, with no hard inquiry. If they qualify, pull the full report. If they
-    don&rsquo;t, we report the rent and bills they already pay to all three bureaus until they do.</p>
-    <div class="herofoot">
-      <button class="hbtn" data-view="lender">See the lender product</button>
-      <button class="hbtn ghost2" data-view="agent">See the agent view</button>
+  <div class="dochead">
+    <div class="dockick">Working strategy <i></i> August 2026</div>
+    <h1>Mortgage and<br>Real Estate</h1>
+    <p class="doclede">A credit readiness program built on the three brands we already sell. See if a
+    borrower qualifies. Build their credit if they don&rsquo;t.</p>
+    <div class="docmeta">
+      <div><b>The products</b><span>IdentityIQ &middot; MyScoreIQ &middot; CreditBuilderIQ</span></div>
+      <div><b>Who it is for</b><span>Mortgage companies, loan officers and real estate agents</span></div>
+      <div><b>What is in here</b><span>Five ideas, where to start, and a rough demo</span></div>
     </div>
   </div>
 
@@ -2116,9 +2152,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
   <div class="ovh">
     <h2>Where we would start</h2>
-    <p>Rick asked for targets on the smaller side and for a reason not to name UWM or Rocket. The reason is
-    the sales motion: five inside sales people can work a hundred small accounts and cannot work one
-    enterprise procurement cycle.</p>
+    <p>Targets on the smaller side, and a reason not to name UWM or Rocket: the sales motion. A small
+    inside team can work a hundred small accounts and cannot work one enterprise procurement cycle.</p>
   </div>
 
   <div class="gmfront">
@@ -2194,10 +2229,9 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
   <div class="ovh">
     <h2>Five ideas</h2>
-    <p>Everything we have talked about folds into these five. Each one is written the same way &mdash; who
-    it is for, when we could actually do it, who pays, what the consumer gets, how it runs, what it means
-    for a lender and for an agent, what is good about it, what is wrong with it, and the smallest pilot
-    that would settle the argument.</p>
+    <p>Each one is written the same way &mdash; who it is for, when we could actually do it, who pays,
+    what the consumer gets, how it runs, what it means for a lender and for an agent, what is good about
+    it, what is wrong with it, and the smallest pilot that would settle the argument.</p>
   </div>
 
   <div class="gmfront">
@@ -2285,6 +2319,83 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       <li><b class="ph3">Eventually</b> &mdash; Encompass and the other origination systems, CreditXpert, and
       routing that runs end to end without anybody touching it.</li>
     </ol>
+  </div>
+
+
+  <div class="ovh">
+    <h2>Who to call</h2>
+    <p>Two lists. The first is people I already know and can reach directly, which makes them the fastest
+    way to get an honest reaction to any of this. The second is small and medium online lenders that fit
+    the stage one profile &mdash; nobody on it is a top-ten lender, and all of them run on lead volume.</p>
+  </div>
+
+  <div class="gmfront">
+    <div class="gmsh">My own contacts &middot; mortgage</div>
+    <p class="gmpilot" style="margin-bottom:14px">Sixteen companies where I can get straight to a person
+    rather than a form. Worth using for the first conversations, whether or not they become customers.</p>
+      <div class="ctgrid">
+        <div><b>Apex Lending</b><span>Jeff Guthrie</span></div>
+        <div><b>HomeTown Lending</b><span>Matt McDaniel</span></div>
+        <div><b>Cornerstone Mortgage</b><span>Derrick Novakowski</span></div>
+        <div><b>Cross Country Mortgage</b><span>James Iley</span></div>
+        <div><b>Town Square Mortgage</b><span>Jeff Janasch</span></div>
+        <div><b>Patriot Home Mortgage</b><span>Aaron Duca</span></div>
+        <div><b>Novus Home Mortgage</b><span>Shawn Feely &middot; Marcus Lepp</span></div>
+        <div><b>Benchmark Mortgage</b><span>Stewart Hunter</span></div>
+        <div><b>Prime Lending</b><span>Rob Dessomes &middot; Angela Deaton</span></div>
+        <div><b>PennyMac</b><span>David Satow</span></div>
+        <div><b>Fairway Mortgage</b><span>Michael Inkman</span></div>
+        <div><b>West Capital Lending</b><span>JC Mier</span></div>
+        <div><b>Primis Mortgage</b><span>Derek Jackson</span></div>
+        <div><b>Lender Extraordinaire</b><span>Leticia Ramos</span></div>
+        <div><b>Pinnacle Home Loans</b><span>Michael Mahgoub</span></div>
+        <div><b>L &amp; I Funding</b><span>Iliana Davila</span></div>
+      </div>
+
+    <div class="gmsec">My own contacts &middot; real estate</div>
+    <p class="gmpilot" style="margin-bottom:14px">Nine agents and teams. These are the ones to test the
+    agent side against, because they will say plainly whether they would ever hand it out.</p>
+      <div class="ctgrid">
+        <div><b>Bohaas Realty</b><span>Amy Diamond</span></div>
+        <div><b>Keller Williams</b><span>Leah Rolen</span></div>
+        <div><b>Keller Williams</b><span>Ricardo Mendiola</span></div>
+        <div><b>EXP Realty</b><span>Dawn Sroka</span></div>
+        <div><b>EXP Realty</b><span>Tad Kirkpatrick</span></div>
+        <div><b>Myers Homebuyers</b><span>Josh Deshong</span></div>
+        <div><b>Williams Luxury Homes</b><span>Majo Mansour</span></div>
+        <div><b>Tonya Peek Group</b><span>Tonya Peek</span></div>
+        <div><b>JPar Realty</b><span>JP Piccinini</span></div>
+      </div>
+
+    <div class="gmsec">Online lenders to target</div>
+    <p class="gmpilot" style="margin-bottom:14px">Twenty companies in the stage one range &mdash; small
+    enough to decide quickly, and running enough digital lead volume to have a real fallout pile. Sizes are
+    a starting point and still need checking.</p>
+    <table class="cttbl">
+      <thead><tr><th>Company</th><th>Website</th><th>Size</th></tr></thead>
+      <tbody>
+        <tr><td>LoanFlight</td><td class="site">loanflight.com</td><td>11&ndash;50</td></tr>
+        <tr><td>Bee Mortgage</td><td class="site">beemortgageapp.com</td><td>11&ndash;50</td></tr>
+        <tr><td>Beeline Loans</td><td class="site">makeabeeline.com</td><td>51&ndash;200</td></tr>
+        <tr><td>Simplist</td><td class="site">simplist.com</td><td>51&ndash;200</td></tr>
+        <tr><td>Filo Mortgage</td><td class="site">filomortgage.com</td><td>51&ndash;200</td></tr>
+        <tr><td>Griffin Funding</td><td class="site">griffinfunding.com</td><td>51&ndash;200</td></tr>
+        <tr><td>GoRascal</td><td class="site">gorascal.com</td><td>11&ndash;50</td></tr>
+        <tr><td>USAloans</td><td class="site">usaloans.com</td><td>51&ndash;200</td></tr>
+        <tr><td>HomePlus Mortgage</td><td class="site">homeplusmortgage.com</td><td>51&ndash;200</td></tr>
+        <tr><td>Society Mortgage</td><td class="site">societymortgage.com</td><td>51&ndash;200</td></tr>
+        <tr><td>Loan Pronto</td><td class="site">loanpronto.com</td><td>11&ndash;50</td></tr>
+        <tr><td>Defy Mortgage</td><td class="site">defymortgage.com</td><td>11&ndash;50</td></tr>
+        <tr><td>Truss Financial Group</td><td class="site">trussfinancialgroup.com</td><td>11&ndash;50</td></tr>
+        <tr><td>Sammamish Mortgage</td><td class="site">sammamishmortgage.com</td><td>11&ndash;50</td></tr>
+        <tr><td>Strong Home Mortgage</td><td class="site">stronghome.com</td><td>51&ndash;200</td></tr>
+        <tr><td>ClearPath Lending</td><td class="site">clearpathlending.com</td><td>51&ndash;200</td></tr>
+        <tr><td>Simplify Home Loans</td><td class="site">simplifyhomeloans.com</td><td>51&ndash;200</td></tr>
+        <tr><td>Acadia Lending Group</td><td class="site">mainemortgage.com</td><td>11&ndash;50</td></tr>
+        <tr><td>Victory Wholesale Lending</td><td class="site">victorylending.net</td><td>2&ndash;10</td></tr>
+        <tr><td>Tomo Mortgage</td><td class="site">tomo.com</td><td>201&ndash;500</td></tr>
+      </tbody>
+    </table>
   </div>
 
   <div class="ovh">
