@@ -1677,6 +1677,49 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
 @media (max-width:620px){.p7sc{grid-template-columns:repeat(2,1fr)}}
 
+/* ── what a company actually does with this ── */
+.p8frame{background:var(--ink); border-radius:var(--r-lg); padding:30px 34px; margin-bottom:16px;
+  display:grid; grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); gap:34px; align-items:center}
+.p8fe{display:inline-block; font-size:9.5px; font-weight:500; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand); border:1px solid rgba(242,113,36,.42); padding:4px 11px; border-radius:20px;
+  margin-bottom:15px}
+.p8frame h3{font-size:25px; color:#fff; letter-spacing:-.032em; line-height:1.2}
+.p8frame > div > p{font-size:13.5px; color:#A8C0CE; line-height:1.62; margin-top:12px; max-width:56ch}
+.p8fr{display:flex; flex-direction:column; gap:1px; background:rgba(255,255,255,.11);
+  border-radius:var(--r-md); overflow:hidden}
+.p8fr div{background:#16405A; padding:13px 16px}
+.p8fr b{display:block; font-family:var(--mono); font-size:17px; font-weight:600; color:#fff;
+  letter-spacing:-.035em}
+.p8fr span{display:block; font-size:11.5px; color:#8FB3C6; margin-top:3px; line-height:1.4}
+
+.p8grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
+.p8u{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+  padding:19px 20px 17px; display:flex; flex-direction:column; transition:.16s}
+.p8u:hover{border-color:var(--line-2); box-shadow:var(--shadow)}
+.p8u.key{border-color:var(--brand-line); background:var(--brand-wash)}
+.p8top{display:flex; align-items:center; gap:9px; margin-bottom:11px}
+.p8n{font-family:var(--mono); font-size:11px; color:var(--ink-4); letter-spacing:-.02em}
+.p8who{font-size:8.5px; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  padding:2px 8px; border-radius:20px; margin-left:auto}
+.p8who.l{background:var(--teal-wash); color:var(--teal)}
+.p8who.a{background:var(--brand-wash); color:var(--brand)}
+.p8who.b{background:var(--surface-3); color:var(--ink-2)}
+.p8u.key .p8who.b{background:var(--brand); color:#fff}
+.p8u h4{font-size:15.5px; letter-spacing:-.024em; line-height:1.28}
+.p8u > p{font-size:12.5px; color:var(--ink-3); line-height:1.6; margin-top:8px}
+.p8u.key > p{color:var(--ink-2)}
+.p8k{margin-top:auto; padding-top:13px; font-size:11.5px; color:var(--ink-4); line-height:1.5;
+  border-top:1px solid var(--line)}
+.p8u.key .p8k{border-top-color:var(--brand-line)}
+.p8k b{font-family:var(--mono); color:var(--ink-2); font-weight:600; font-size:12px}
+.p8u.key .p8k b{color:var(--brand)}
+
+@media (max-width:980px){.p8grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .p8frame{grid-template-columns:minmax(0,1fr); gap:22px; padding:26px 24px}
+  .p8fr{flex-direction:row} .p8fr div{flex:1}}
+@media (max-width:620px){.p8grid{grid-template-columns:minmax(0,1fr)}
+  .p8frame h3{font-size:21px} .p8fr{flex-direction:column}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 </style>
 
@@ -1713,14 +1756,84 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   </div>
 
   <div class="ghost">
-    <div class="gh"><div class="ghv">3,412</div><div class="ghk">borrowers one lender declined on credit last year</div></div>
-    <div class="gh bad"><div class="ghv">541</div><div class="ghk">of them bought a house with somebody else within 14 months</div></div>
-    <div class="gh bad"><div class="ghv">$4.3M</div><div class="ghk">in revenue that walked, from people already paid for</div></div>
-    <div class="gh win"><div class="ghv">$0</div><div class="ghk">spent to find them &mdash; they were already in the database</div></div>
+    <div class="gh"><div class="ghv">3,412</div><div class="ghk">people who never became an application, because somebody looked at a score and stopped</div></div>
+    <div class="gh bad"><div class="ghv">541</div><div class="ghk">of them bought a house with somebody else inside 14 months</div></div>
+    <div class="gh bad"><div class="ghv">$4.3M</div><div class="ghk">in commission and origination that walked out on its own</div></div>
+    <div class="gh win"><div class="ghv">$0</div><div class="ghk">spent to find them &mdash; every one was already in the database</div></div>
   </div>
-  <p class="ghostnote">Those numbers come from matching a lender&rsquo;s own declined-applicant list against
-  public property records. <b>It is not a projection, it is a receipt.</b> An agent&rsquo;s version is the
-  same arithmetic against their &ldquo;call me next year&rdquo; list &mdash; and nobody argues with their own data.</p>
+  <p class="ghostnote"><b>Not one of those people was declined.</b> A decline is a decision on a file, and
+  none of these got that far. An officer or an agent looked at a score, did the arithmetic in their head,
+  decided it was not worth pulling, and quietly stopped calling. There is no record of it anywhere, which
+  is exactly why nobody ever goes back &mdash; and why the number is bigger than any decline report will
+  ever show you.</p>
+
+
+  <div class="ovh">
+    <h2>What a company actually does with this</h2>
+    <p>Six of them, and most start with the first one. The thing they all have in common is where they
+    sit &mdash; ahead of the expensive part, not after it.</p>
+  </div>
+
+  <div class="p8frame">
+    <div>
+      <span class="p8fe">The whole trick</span>
+      <h3>All of it happens before an application exists.</h3>
+      <p>No hard pull, no file, no decision anybody has to record or explain. A lender or an agent finds
+      out exactly where somebody stands, on the scoring models underwriting actually uses, for a fraction
+      of what a mortgage credit report costs &mdash; and it leaves nothing on the borrower&rsquo;s
+      credit, because they asked for it themselves.</p>
+    </div>
+    <div class="p8fr">
+      <div><b>$14.95 / $24.95</b><span>One bureau, or all three</span></div>
+      <div><b>No inquiry</b><span>Soft, and the consumer initiates it</span></div>
+      <div><b>About a minute</b><span>No login and no application</span></div>
+    </div>
+  </div>
+
+  <div class="p8grid">
+      <div class="p8u">
+        <div class="p8top"><span class="p8n">01</span><span class="p8who l">Lender</span></div>
+        <h4>Screen before you pay for the real pull</h4>
+        <p>A mortgage tri-merge costs real money every time and puts a hard inquiry on the file whether the answer is yes or no. Run ours first, on the same models, and only buy the expensive one once you already know how it lands.</p>
+        <div class="p8k"><b>$14.95</b> one bureau &middot; <b>$24.95</b> all three, against what a tri-merge costs you today</div>
+      </div>
+
+      <div class="p8u">
+        <div class="p8top"><span class="p8n">02</span><span class="p8who a">Agent</span></div>
+        <h4>Prequalify without a lender in the room</h4>
+        <p>An agent finds out what a buyer can offer and when, without sending them off to be pulled and without owing anybody a favour for it. They get a price range and a date &mdash; never a pre-approval letter, which stays the lender&rsquo;s to write.</p>
+        <div class="p8k">Decides whether a Saturday is worth spending, before it is spent</div>
+      </div>
+
+      <div class="p8u key">
+        <div class="p8top"><span class="p8n">03</span><span class="p8who b">Both</span></div>
+        <h4>Nobody gets declined. They get a date.</h4>
+        <p>This is the part people get backwards. A borrower who comes back short has not been turned down &mdash; there is no file to turn down. They are simply early, and now they know by how much and until when, instead of being quietly dropped.</p>
+        <div class="p8k">The difference between &ldquo;not right now&rdquo; and a <b>specific month</b></div>
+      </div>
+
+      <div class="p8u">
+        <div class="p8top"><span class="p8n">04</span><span class="p8who b">Both</span></div>
+        <h4>Build the file instead of losing the client</h4>
+        <p>Rent they have already paid and bills they already pay, reported to all three bureaus, up to twenty-four months backdated. It moves a thin file in about a month rather than over two years, and none of it is credit repair.</p>
+        <div class="p8k"><b>~30 days</b> for a rent backfill to land, not two years of waiting</div>
+      </div>
+
+      <div class="p8u">
+        <div class="p8top"><span class="p8n">05</span><span class="p8who b">Both</span></div>
+        <h4>Work the list you already have</h4>
+        <p>Every &ldquo;call me next year&rdquo; sitting in the database gets re-checked every month against every program on the shelf. The day one of them clears, you are told &mdash; and you paid nothing to find them.</p>
+        <div class="p8k">The cheapest borrower in the business is the one already in your CRM</div>
+      </div>
+
+      <div class="p8u">
+        <div class="p8top"><span class="p8n">06</span><span class="p8who b">Both</span></div>
+        <h4>Use our CRM, or wire it into yours</h4>
+        <p>A pipeline, client records, campaigns and the partner side are all included if you want them. If you already run something, eleven fields and seven events push into Total Expert, Follow Up Boss, kvCORE and a few thousand others through one connection &mdash; or we build directly into your own systems, a la carte.</p>
+        <div class="p8k">Nobody is asked to move off the software they already run</div>
+      </div>
+
+  </div>
 
   <div class="ovh">
     <h2>Two products IDIQ already owns, in the order a borrower needs them</h2>
@@ -1762,8 +1875,9 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       <p>Three ways in, and the borrower never pays to walk through any of them. Whoever sends them &mdash;
       lender or agent &mdash; owns the relationship from that point.</p>
       <div class="fdet">
-        <div class="fd"><b>A lender declines them</b><span>One click, or it fires automatically when the CRM
-        stage changes to declined. The moment of highest intent in the entire funnel.</span></div>
+        <div class="fd"><b>Somebody decides not to send them forward</b><span>One click, or it fires on its
+        own the moment an officer or an agent marks them as not ready. That is the highest intent anybody
+        in this funnel will ever have, and today it is where they go quiet.</span></div>
         <div class="fd"><b>An agent checks them</b><span>At the kitchen table or an open house. The agent finds
         out whether Saturday is worth spending, without sending them to a lender first.</span></div>
         <div class="fd"><b>They click a button on the website</b><span>The second door, for visitors who know
@@ -2254,7 +2368,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
     <div class="why">
       <h3>Your pipeline has 214 people. This page is about the other 18,240.</h3>
-      <p>Those are the contacts sitting in your CRM &mdash; declined once, went quiet, never followed up.
+      <p>Those are the contacts sitting in your CRM &mdash; told no, or more often told &ldquo;not
+      yet&rdquo; by somebody who never pulled anything, and then left alone.
       Nothing on this page works on people you can already see in the pipeline. <b>Everything here exists to
       move somebody from your database into it.</b> Two ways to do that: channels that run on their own, and
       sends you fire when you want a wave of them.</p>
@@ -2309,10 +2424,10 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
       <div class="chan">
         <div class="chanhd"><span class="chanic">&#9881;</span>
-          <span class="chanttl">Automatic from your CRM<small>Total Expert &middot; fires on &ldquo;Credit Denied&rdquo;</small></span>
+          <span class="chanttl">Automatic from your CRM<small>Total Expert &middot; fires on &ldquo;Not Ready&rdquo; or &ldquo;Credit Denied&rdquo;</small></span>
           <span class="chanpill live2">Live</span></div>
-        <p class="chanp">The moment a loan officer marks someone declined, they get invited. Nobody has to
-          remember, which is the only reason it actually happens.</p>
+        <p class="chanp">The moment an officer marks somebody not ready &mdash; or actually declines them
+          &mdash; they get invited. Nobody has to remember, which is the only reason it happens at all.</p>
         <div class="chanres"><span><b>94</b> invited</span><span><b>37</b> enrolled</span><span>this quarter</span></div>
         <div class="chanact"><button class="btn ghost">Change the trigger</button><button class="btn ghost">Connect another</button></div>
       </div>
@@ -2329,7 +2444,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       <div><h3>Bulk upload</h3><p>Got a list that isn&rsquo;t in your CRM? Drop it in and everyone gets their own link.</p></div>
     </div>
     <div class="card">
-      <div class="row"><div class="lab">declined-2024-2025.csv <small>3,412 records &middot; uploaded Aug 12</small></div>
+      <div class="row"><div class="lab">not-ready-2024-2025.csv <small>3,412 records &middot; uploaded Aug 12</small></div>
         <span class="pill p-ready">Ready to send</span></div>
       <div class="row"><div class="lab">What they get</div><select><option selected>CHECK &middot; 1 bureau</option><option>FULL &middot; 3 bureau</option></select></div>
       <div class="row"><div class="lab">How to reach them</div><select><option selected>Email and text</option><option>Email only</option></select></div>
@@ -4300,7 +4415,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     if(/program|qualify for|shelf|hfa|fha/.test(q)){
       var mo=EVERYONE.filter(function(r){return missed(r);}).slice(0,4);
       return '<b>'+EVERYONE.filter(function(r){return missed(r);}).length+
-        ' were declined for the loan they asked about but clear something else today.</b>'+
+        ' were turned away from the loan they asked about and clear a different one today.</b>'+
         nameList(mo,function(r){ var x=missed(r); return "asked for "+r.p+" &rarr; clears "+x.best.k; })+
         '<br>I re-check the whole shelf against every borrower overnight.';
     }
