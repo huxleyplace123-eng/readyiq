@@ -1553,9 +1553,16 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 #agentrows tr:not(.p6band){cursor:pointer; transition:background .13s}
 #agentrows tr:not(.p6band):hover{background:var(--brand-wash)}
 #agentrows tr:not(.p6band):focus-visible{outline:2px solid var(--brand); outline-offset:-2px}
-.p6price{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:15px; font-weight:600;
-  letter-spacing:-.035em}
-.p6chg{font-family:var(--mono); font-size:12px; font-weight:600; white-space:nowrap}
+.p6price{display:block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:15px;
+  font-weight:600; letter-spacing:-.035em}
+.p6chg{display:block; font-family:var(--mono); font-size:11.5px; font-weight:600; white-space:nowrap; margin-top:2px}
+.p6mid{display:block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:16px;
+  font-weight:600; letter-spacing:-.035em; color:var(--ink)}
+.p6bur{display:block; font-family:var(--mono); font-size:10.5px; color:var(--ink-4); margin-top:3px;
+  white-space:nowrap; letter-spacing:-.01em}
+.p6bur i{font-style:normal; color:var(--line-2)}
+.p6lend2{font-size:12.5px; font-weight:600; line-height:1.3}
+.p6lend2 small{display:block; font-weight:400; color:var(--ink-4); font-size:11.5px; margin-top:2px}
 .p6chg.up{color:var(--green)} .p6chg.dn{color:var(--red)} .p6chg.fl{color:var(--ink-4); font-weight:400}
 .p6city{font-size:11.5px; color:var(--ink-4); margin-top:2px}
 .p6nol{font-size:11px; font-weight:500; padding:2px 8px; border-radius:20px; background:var(--amber-wash);
@@ -1651,7 +1658,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   border-bottom:1px dashed var(--line)}
 .p7pr:last-child{border-bottom:0}
 .p7pr .m{width:15px; flex:none; text-align:center; font-weight:600}
-.p7pr.y .m{color:var(--green)} .p7pr.n .m{color:var(--ink-4)}
+.p7pr.y .m{color:var(--green)} .p7pr.n .m{color:var(--ink-4)} .p7pr.o .m{color:var(--amber)}
+.p7pr.o{color:var(--ink-2)}
 .p7pr.n{color:var(--ink-4)}
 
 #pdrawer{width:min(680px,100%)}
@@ -1928,7 +1936,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
         <div class="pzn">03</div>
         <div class="pzmain">
           <h4>Give every agent their own link</h4>
-          <p>The lender pays for it, the agent hands it out. The agent never sees a credit score &mdash; only whether the buyer is getting started, building, or ready to talk to a lender.</p>
+          <p>The lender pays for it, the agent hands it out. The agent sees the scores on buyers they enrolled themselves, and never the credit report behind them.</p>
           <div class="pzwho">
             <div><b>The loan officer</b>Your agents start sending you buyers who are already ready to go.</div>
             <div><b>The real estate agent</b>Something genuinely useful to hand out at an open house.</div>
@@ -2766,17 +2774,18 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   </div>
 
   <div class="tablewrap"><table>
-    <thead><tr><th>Buyer</th><th class="ta-r">Can offer</th><th class="ta-r">Change</th>
+    <thead><tr><th>Buyer</th><th class="ta-r">Qualifying score</th><th class="ta-r">Can offer</th>
       <th>Can shop</th><th>Wants to move</th><th>Their lender</th><th class="ta-r">Action</th></tr></thead>
     <tbody id="agentrows"></tbody>
   </table></div>
   <p class="ghostnote" style="margin-top:12px">Grouped by when they can go out, not by score &mdash; because
   that is the only question an agent is actually asking. <b>Click any buyer</b> for their side of it.</p>
 
-  <div class="stacknote" style="margin-top:24px"><b>No bureau columns, no loan products, no thresholds, and
-  no score anywhere.</b> Put this next to the lender pipeline and almost nothing matches: that one sorts by
-  a number and works down it, this one sorts by whether Saturday is worth spending. An agent does not
-  underwrite and should not be handed the tools to try.</div>
+  <div class="stacknote" style="margin-top:24px"><b>Scores yes, the credit report never.</b> On a buyer the
+  agent enrolled themselves, the buyer authorised the agent and the scores come across. On a buyer a lender
+  shares, the lender decides. Either way the accounts, balances and collections stay out &mdash; and notice
+  what this pipeline is sorted by. The lender&rsquo;s works down a number; this one works down whether
+  Saturday is worth spending.</div>
 
   <div class="uwarn" style="margin-top:24px"><b>&#9888; Say this precisely.</b> What the agent gets is a
   <b>buyer readiness snapshot</b> &mdash; a price range and a date. It is <b>not</b> a pre-qualification or
@@ -2795,10 +2804,10 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   </div>
 
   <div class="stats" style="margin-bottom:20px">
-    <div class="stat"><span class="k">Active partners</span><span class="v">8</span></div>
-    <div class="stat"><span class="k">Shared clients</span><span class="v">141</span></div>
-    <div class="stat hot"><span class="k">Ready right now<span class="livedot"></span></span><span class="v">21</span></div>
-    <div class="stat"><span class="k">Closed together</span><span class="v">17 <small>this year</small></span></div>
+    <div class="stat"><span class="k">Active partners</span><span class="v">9</span></div>
+    <div class="stat"><span class="k">Shared clients</span><span class="v">150</span></div>
+    <div class="stat hot"><span class="k">Ready right now<span class="livedot"></span></span><span class="v">23</span></div>
+    <div class="stat"><span class="k">Closed together</span><span class="v">19 <small>this year</small></span></div>
   </div>
 
   <div class="p7bar" id="p7chips" role="tablist" aria-label="Partner type"></div>
@@ -4877,23 +4886,32 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   (function(){
     var tb=document.getElementById("agentrows"); if(!tb) return;
     var BUYERS=[
-      {n:"Alicia Nwosu",   e:"a.nwosu@email.com",   c:"Katy, TX",    now:286000, was:240000, st:"ready", by:"Now",    want:"Dec 2026", lender:"Marcus Castellano", last:"3 days",
+      {n:"Alicia Nwosu", e:"a.nwosu@email.com", c:"Katy, TX", now:286000, was:240000, st:"ready", by:"Now", want:"Dec 2026",
+        co:"Summit Mortgage", lo:"Marcus Castellano", last:"3 days", ex:592, eq:587, tu:601, upd:"11 Aug",
         moved:"Rent reporting landed. Two years of on-time rent she had already paid went onto her file in one go.", since:"March", head:"nine months, and she is ahead of it"},
-      {n:"Ray Delgado",    e:"rdelgado@email.com",  c:"Cypress, TX", now:301000, was:265000, st:"ready", by:"Now",    want:"Jan 2027", lender:"Marcus Castellano", last:"1 week",
-        moved:"An old collection stopped counting the way it used to under the newer scoring model.", since:"May", head:"ten months, and he is ahead of it"},
-      {n:"Maria Gonzalez", e:"maria.g@email.com",   c:"Spring, TX",  now:265000, was:238000, st:"ready", by:"Now",    want:"Nov 2026", lender:"Rachel Okafor",     last:"2 days",
+      {n:"Ray Delgado", e:"rdelgado@email.com", c:"Cypress, TX", now:301000, was:265000, st:"ready", by:"Now", want:"Jan 2027",
+        co:"Summit Mortgage", lo:"Marcus Castellano", last:"1 week", ex:604, eq:612, tu:599, upd:"13 Aug",
+        moved:"A seven-year-old collection finally aged off his file.", since:"May", head:"ten months, and he is ahead of it"},
+      {n:"Maria Gonzalez", e:"maria.g@email.com", c:"Spring, TX", now:265000, was:238000, st:"ready", by:"Now", want:"Nov 2026",
+        co:"Harborline Mortgage", lo:"Priya Raman", last:"2 days", ex:611, eq:598, tu:604, upd:"12 Aug",
         moved:"She paid two cards down below a third of their limit, which is worth more than paying them off slowly.", since:"April", head:"eight months, and she is ahead of it"},
-      {n:"Tanya Brooks",   e:"tbrooks@email.com",   c:"Katy, TX",    now:310000, was:274000, st:"close", by:"Sep 22", want:"Oct 2026", lender:"Rachel Okafor",     last:"1 week",
+      {n:"Tanya Brooks", e:"tbrooks@email.com", c:"Katy, TX", now:310000, was:274000, st:"close", by:"Sep 22", want:"Oct 2026",
+        co:"Harborline Mortgage", lo:"Priya Raman", last:"1 week", ex:634, eq:631, tu:628, upd:"13 Aug",
         moved:"Rent reporting, plus a limit increase she asked for and got without a hard pull.", since:"March", head:"just about &mdash; she clears three weeks before she wants to move"},
-      {n:"Dontae Hill",    e:"dhill@email.com",     c:"Humble, TX",  now:246000, was:231000, st:"close", by:"Sep 30", want:"Nov 2026", lender:"Marcus Castellano", last:"4 days",
+      {n:"Dontae Hill", e:"dhill@email.com", c:"Humble, TX", now:246000, was:231000, st:"close", by:"Sep 30", want:"Nov 2026",
+        co:"Summit Mortgage", lo:"Marcus Castellano", last:"4 days", ex:592, eq:589, tu:583, upd:"13 Aug",
         moved:"Bill reporting went live in July &mdash; electricity and cellphone, both already in his name.", since:"February", head:"comfortable, with about six weeks to spare"},
-      {n:"Denise Alvarez", e:"d.alvarez@email.com", c:"Tomball, TX", now:240000, was:240000, st:"work",  by:"Oct 14", want:"Mar 2027", lender:"Marcus Castellano", last:"2 weeks",
+      {n:"Denise Alvarez", e:"d.alvarez@email.com", c:"Tomball, TX", now:240000, was:240000, st:"work", by:"Oct 14", want:"Mar 2027",
+        co:"Summit Mortgage", lo:"Marcus Castellano", last:"2 weeks", ex:558, eq:551, tu:562, upd:"14 Aug",
         moved:"Nothing yet. Her plan started three weeks ago and the first rent report has not posted.", since:"July", head:"plenty &mdash; she is not in a hurry and neither are you"},
-      {n:"Curtis Vaughn",  e:"cvaughn@email.com",   c:"Conroe, TX",  now:181000, was:174000, st:"work",  by:"Nov 30", want:"Dec 2026", lender:"",                  last:"3 weeks",
+      {n:"Curtis Vaughn", e:"cvaughn@email.com", c:"Conroe, TX", now:181000, was:174000, st:"work", by:"Nov 30", want:"Dec 2026",
+        co:"", lo:"", last:"3 weeks", ex:541, eq:536, tu:529, upd:"9 Aug",
         moved:"A small gain from paying one card down. The bigger moves have not started.", since:"June", head:"tight &mdash; he wants December and clears at the end of November"},
-      {n:"Shauna Pike",    e:"spike@email.com",     c:"Baytown, TX", now:172000, was:198000, st:"risk",  by:"Dec 5",  want:"Sep 2026", lender:"",                  last:"5 weeks",
-        moved:"A new collection posted in June and pushed her back. She may not know it is there.", since:"January", head:"gone &mdash; September is not happening, and somebody has to tell her"}
+      {n:"Shauna Pike", e:"spike@email.com", c:"Baytown, TX", now:172000, was:198000, st:"risk", by:"Dec 5", want:"Sep 2026",
+        co:"", lo:"", last:"5 weeks", ex:528, eq:519, tu:534, upd:"14 Aug",
+        moved:"A new collection posted in June and pushed her back. She may not know it is there.", since:"January", head:"gone &mdash; September is not happening, and somebody has to tell her"},
     ];
+    var mid3=function(b){ return [b.ex,b.eq,b.tu].sort(function(x,y){return x-y;})[1]; };
     var BANDS=[
       {k:"ready",t:"Take them out now", s:"Worth a Saturday."},
       {k:"close",t:"Weeks away",        s:"Keep them warm. Do not start showing, do not go quiet."},
@@ -4910,7 +4928,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
         var rows=BUYERS.filter(function(b){
           if(b.st!==B.k) return false;
           if(band!=="all" && band!==b.st) return false;
-          if(q && b.n.toLowerCase().indexOf(q)<0 && b.c.toLowerCase().indexOf(q)<0) return false;
+          if(q && (b.n+" "+b.c+" "+b.co+" "+b.lo).toLowerCase().indexOf(q)<0) return false;
           return true;
         });
         if(!rows.length) return;
@@ -4926,12 +4944,13 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
             '<td><div class="who">'+esc(b.n)+
               (b.st==="ready"?' <span class="livedot"></span>':'')+'</div>'+
               '<div class="p6city">'+esc(b.c)+' &middot; spoke '+b.last+' ago</div></td>'+
-            '<td class="ta-r"><span class="p6price">'+money(b.now)+'</span></td>'+
-            '<td class="ta-r">'+chg+'</td>'+
+            '<td class="ta-r"><span class="p6mid">'+mid3(b)+'</span>'+
+              '<span class="p6bur">'+b.ex+' &middot; '+b.eq+' &middot; '+b.tu+'<i> &middot; '+b.upd+'</i></span></td>'+
+            '<td class="ta-r"><span class="p6price">'+money(b.now)+'</span>'+chg+'</td>'+
             '<td class="upd">'+b.by+'</td>'+
             '<td class="upd">'+b.want+'</td>'+
-            '<td>'+(b.lender?'<div class="prod">'+esc(b.lender)+'</div>'
-                            :'<span class="p6nol">Not introduced</span>')+'</td>'+
+            '<td>'+(b.co?'<div class="p6lend2">'+esc(b.co)+'<small>'+esc(b.lo)+'</small></div>'
+                        :'<span class="p6nol">Not introduced</span>')+'</td>'+
             '<td class="ta-r"><button class="btn'+(b.st==="ready"?"":" ghost")+'">'+ACT[b.st]+'</button></td></tr>';
         }).join("");
       });
@@ -4961,7 +4980,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       if(!b) return;
       var d=b.now-b.was;
       var WHERE={ready:"Ready to shop", close:"Weeks away", work:"Months away", risk:"Went backwards"};
-      var init=b.lender ? b.lender.split(" ").map(function(w){return w[0];}).join("") : "?";
+      var init=b.lo ? b.lo.split(" ").map(function(w){return w[0];}).join("") : "?";
       document.getElementById("a-name").textContent=b.n;
       document.getElementById("a-meta").innerHTML=esc(b.c)+" &middot; your buyer since "+b.since+" 2026 &middot; last spoke "+b.last+" ago";
       document.getElementById("a-body").innerHTML=
@@ -4974,19 +4993,25 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
         '<div class="p6r"><span>Can go out</span><b>'+b.by+'</b></div>'+
         '<div class="p6r"><span>Wants to be in by</span><b>'+b.want+'</b></div>'+
         '<div class="p6r" style="border-bottom:0"><span>So your runway is</span><b>'+b.head+'</b></div>'+
+        '<div class="p6lab">Their credit</div>'+
+        '<div class="p6r"><span>Qualifying score</span><b class="num">'+mid3(b)+'</b></div>'+
+        '<div class="p6r"><span>Experian &middot; Equifax &middot; TransUnion</span><b class="num">'+
+          b.ex+' &middot; '+b.eq+' &middot; '+b.tu+'</b></div>'+
+        '<div class="p6r" style="border-bottom:0"><span>Last refreshed</span><b>'+b.upd+' &middot; soft, no inquiry</b></div>'+
         '<div class="p6lab">What moved it</div><div class="p6moved">'+b.moved+'</div>'+
         '<div class="p6lab">Their lender</div>'+
         '<div class="p6lend'+(b.lender?'':' none')+'"><span class="p6av">'+init+'</span>'+
-          '<span class="p6ln">'+(b.lender
-            ? esc(b.lender)+'<small>Connected partner &mdash; he sees his side, you see yours.</small>'
+          '<span class="p6ln">'+(b.co
+            ? esc(b.lo)+'<small>'+esc(b.co)+' &mdash; connected partner. They see their side, you see yours.</small>'
             : 'Nobody yet<small>They came in through your own link, so this one is entirely yours to place.</small>')+
           '</span></div>'+
         '<div class="p6acts"><button class="btn">'+ACT[b.st]+'</button>'+
           '<button class="btn ghost">Text them</button>'+
           '<button class="btn ghost">'+(b.lender?"Ask for the letter":"Introduce a lender")+'</button></div>'+
-        '<div class="p6never"><b>Not on this screen, ever:</b> their credit score, their accounts, their '+
-          'collections, their report. You get the answer and the date. The file belongs to them and to '+
-          'whoever is writing the loan.</div>';
+        '<div class="p6never"><b>What you never see:</b> the credit report itself &mdash; the accounts, the '+
+          'balances, the collections, the payment history. You get the scores and the answer because this '+
+          'buyer authorised you when they enrolled. On a buyer a lender shares with you, that lender '+
+          'decides whether the scores come across.</div>';
       ad.hidden=false;
       requestAnimationFrame(function(){ ad.classList.add("on"); if(scrim2) scrim2.classList.add("on"); });
     }
@@ -5093,7 +5118,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   (function(){
     var grid=document.getElementById("p7grid"); if(!grid) return;
     var T={
-      agent :{l:"Real estate",      c:"br", a:"a real estate agent",        see:"A price range and a date. Never a score."},
+      agent :{l:"Real estate",      c:"br", a:"a real estate agent",        see:"Scores and a price range. Never the report."},
       lender:{l:"Mortgage lender",  c:"te", a:"a mortgage lender",          see:"Scores, the gap, and every program they clear."},
       repair:{l:"Credit repair",    c:"am", a:"a credit repair company",    see:"Only what the client switches on for them."},
       title :{l:"Title & insurance",c:"gn", a:"a title or insurance partner",see:"A name and a closing date. Nothing about credit."},
@@ -5101,8 +5126,10 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       advis :{l:"Advisor or CPA",   c:"nv", a:"an advisor or CPA",          see:"The trend and the plan. Never the report."}
     };
     var ROWS={
-      agent :[["y","Ready or not ready"],["y","Price range they can offer"],["y","When they will be ready"],
-              ["y","Plan progress and the goal date"],["n","Any credit score"],["n","Accounts, collections, the report"]],
+      agent :[["y","Ready or not ready, and the price range"],["y","When they will be ready"],
+              ["y","Plan progress and the goal date"],
+              ["o","Bureau scores &mdash; on their own buyers always, on yours if you allow it"],
+              ["n","The report itself: accounts, balances, collections"]],
       lender:[["y","Three bureau scores and the qualifying score"],["y","Points to the threshold"],
               ["y","Every program they already clear"],["y","Whether a dispute flag is blocking underwriting"],
               ["n","The credit report itself &mdash; only the client opens that"]],
@@ -5121,8 +5148,10 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     var P=[
       {n:"Rivera & West Realty", t:"agent", s:"14 agents \u00b7 Katy and Cypress", st:"on",
        since:"4 March", who:"Dana Rivera", m1:31,m2:9,m1l:"shared",m2l:"ready now", closed:6, vol:"$1.94M"},
-      {n:"Castellano Lending",   t:"lender", s:"6 loan officers \u00b7 Houston", st:"on",
+      {n:"Summit Mortgage",      t:"lender", s:"6 loan officers \u00b7 Houston", st:"on",
        since:"4 March", who:"Marcus Castellano", m1:24,m2:7,m1l:"shared",m2l:"ready now", closed:5, vol:"$1.61M"},
+      {n:"Harborline Mortgage",  t:"lender", s:"3 loan officers \u00b7 Katy", st:"on",
+       since:"18 May", who:"Priya Raman", m1:9,m2:2,m1l:"shared",m2l:"ready now", closed:2, vol:"$604K"},
       {n:"Harbor Point Group",   t:"agent", s:"6 agents \u00b7 The Woodlands", st:"on",
        since:"2 May", who:"Tom Ferraro", m1:12,m2:3,m1l:"shared",m2l:"ready now", closed:3, vol:"$844K"},
       {n:"Kelsey Doyle",         t:"agent", s:"Independent \u00b7 Spring", st:"on",
@@ -5140,7 +5169,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     ];
     var CLIENTS={
       "Rivera & West Realty":[["Alicia Nwosu","Ready \u00b7 handed over 3 days ago"],["Ray Delgado","Ready \u00b7 handed over today"],["Tanya Brooks","Weeks away \u00b7 22 September"]],
-      "Castellano Lending":[["Alicia Nwosu","He has the file"],["Dontae Hill","Weeks away"],["Denise Alvarez","Months away"]],
+      "Summit Mortgage":[["Alicia Nwosu","Ready \u00b7 he has the file"],["Ray Delgado","Ready \u00b7 handed over today"],["Dontae Hill","Weeks away"],["Denise Alvarez","Months away"]],
+      "Harborline Mortgage":[["Maria Gonzalez","Ready \u00b7 handed over 2 days ago"],["Tanya Brooks","Weeks away \u00b7 22 September"]],
       "Harbor Point Group":[["Maria Gonzalez","Ready \u00b7 handed over 2 days ago"],["Curtis Vaughn","Months away"]],
       "Kelsey Doyle":[["Shauna Pike","Went backwards \u00b7 needs a call"]],
       "Second Chance Credit":[["Victor Ramos","Authorized \u00b7 3 disputed tradelines"]],
@@ -5196,7 +5226,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
         (sel==="none"?"a partner of a kind we have not listed":T[sel].a)+
         '</b>. On every client you share, they would see:</div><div class="p7pl">'+
         rows.map(function(r){ return '<div class="p7pr '+r[0]+'"><span class="m">'+
-          (r[0]==="y"?"\u2713":"\u2715")+'</span>'+r[1]+'</div>'; }).join("")+'</div>';
+          (r[0]==="y"?"\u2713":r[0]==="o"?"\u25cb":"\u2715")+'</span>'+r[1]+'</div>'; }).join("")+'</div>';
     }
     drawPick();
     pick.addEventListener("click",function(e){
@@ -5231,7 +5261,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       body+='<div class="p7lab">What '+esc(p.who.split(" ")[0])+' can see</div><div class="p7prev">'+
         '<div class="p7pl" style="padding:5px 15px 10px">'+
         ROWS[p.t].map(function(r){ return '<div class="p7pr '+r[0]+'"><span class="m">'+
-          (r[0]==="y"?"\u2713":"\u2715")+'</span>'+r[1]+'</div>'; }).join("")+'</div></div>';
+          (r[0]==="y"?"\u2713":r[0]==="o"?"\u25cb":"\u2715")+'</span>'+r[1]+'</div>'; }).join("")+'</div></div>';
       if(cl.length){
         body+='<div class="p7lab">Clients you both have</div>'+
           cl.map(function(c){ return '<div class="p7cl"><b>'+c[0]+'</b><span>'+c[1]+'</span></div>'; }).join("");
