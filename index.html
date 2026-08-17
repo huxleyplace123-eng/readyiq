@@ -1945,10 +1945,13 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
 .gmplays{display:flex; flex-direction:column}
 /* one column, 78ch, so an idea reads like a page rather than a dashboard */
-.gmplay{padding:40px 0 44px; border-top:2px solid var(--ink); max-width:78ch}
-.gmnum{font-family:var(--mono); font-size:12px; font-weight:600; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--brand)}
-.gmplay h4{font-size:26px; letter-spacing:-.032em; line-height:1.18; margin:12px 0 0}
+.gmplay{padding:56px 0 60px; border-top:3px solid var(--ink); max-width:78ch}
+.gmnum{display:flex; align-items:baseline; gap:14px; margin-bottom:14px}
+.gmnum .k{font-size:10.5px; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--ink-4)}
+.gmnum .n{font-family:var(--mono); font-size:46px; font-weight:600; letter-spacing:-.06em;
+  color:var(--brand); line-height:.9}
+.gmplay h4{font-size:28px; letter-spacing:-.034em; line-height:1.16; margin:0}
 .gmsum{font-size:14.5px; color:var(--ink-2); line-height:1.65; margin-top:12px}
 .gmfacts{margin:22px 0 8px; border-top:1px solid var(--line)}
 .gmfacts div{display:flex; gap:16px; padding:10px 0; border-bottom:1px solid var(--line)}
@@ -2115,6 +2118,62 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
   <div class="gmplays" id="iblist"></div>
 
+
+
+  <div class="ovh">
+    <h2>Further down the road</h2>
+    <p>None of this is needed to start, and none of it is being proposed now. It is here so the ceiling is
+    on the record &mdash; if the first version works, this is roughly where it goes.</p>
+  </div>
+
+  <div class="gmfront">
+    <p class="gmsum" style="margin-top:0">ReadyIQ can work on its own from day one. A professional adds a
+    consumer by hand, uploads a lead list, or sends a personal link. Nothing has to connect to anything.</p>
+    <p class="gmsum">As it grows it could connect to the systems these companies already run, which would
+    stop the double data entry and let somebody manage the whole thing from software they already know.</p>
+
+    <div class="gmsec">Mortgage CRM connections</div>
+    <ul class="gml">
+      <li>Total Expert</li><li>Jungo</li><li>Aidium</li><li>Shape</li><li>BNTouch</li>
+    </ul>
+    <p class="gmpilot" style="margin-top:14px">A lead lands in the company&rsquo;s CRM and the loan officer
+    picks <b>Check credit with ReadyIQ</b>. The consumer gets the invitation automatically. Updates come
+    back into the CRM as they happen &mdash; credit check completed, score available, consumer enrolled,
+    credit-building products active, dispute started, actively making progress, ready for another review.
+    Nobody has to log into two systems to find out what is going on.</p>
+
+    <div class="gmsec">Loan origination systems</div>
+    <ul class="gml">
+      <li>Encompass by ICE Mortgage Technology</li><li>LendingPad</li><li>BytePro</li><li>Calyx Point</li>
+    </ul>
+    <p class="gmpilot" style="margin-top:14px">When somebody becomes ready for a full review, ReadyIQ could
+    create or update their record inside the lender&rsquo;s origination system so the file moves into the
+    normal application process without anybody retyping it.</p>
+
+    <div class="gmsec">CreditXpert</div>
+    <p class="gmpilot">CreditXpert is the obvious incumbent here and it does one thing well: it analyses
+    mortgage credit and works out which actions would produce a better mortgage score. It does not give the
+    consumer anything to actually do about it.</p>
+    <p class="gmpilot" style="margin-top:12px">Connected, CreditXpert does the analysis and ReadyIQ becomes
+    where the consumer acts on it &mdash; monitoring, the recommended steps, credit-building products,
+    positive payment reporting, disputes through CreditBuilderIQ, progress tracking, and asking for another
+    review. Analysis on one side, execution on the other.</p>
+
+    <div class="gmsec">Where it ends up</div>
+    <p class="gmpilot">ReadyIQ sitting between the company&rsquo;s lead system, its credit process and its
+    mortgage platform. A lead comes in through the website or the CRM, runs the soft check, gets whatever
+    credit-building or dispute products they need, and moves into Encompass when they are ready. The
+    professional watches all of it from the system they already use; the consumer does all of it from one
+    account.</p>
+
+    <div class="gmsec">In what order</div>
+    <ol class="gmol gmph">
+      <li><b class="ph1">First</b> &mdash; personal links, manual entry, CSV uploads. No connections at all.</li>
+      <li><b class="ph2">Then</b> &mdash; direct connections into the mortgage CRMs.</li>
+      <li><b class="ph3">Eventually</b> &mdash; Encompass and the other origination systems, CreditXpert, and
+      routing that runs end to end without anybody touching it.</li>
+    </ol>
+  </div>
 
   <div class="ovh">
     <h2>A rough demo of how it could work</h2>
@@ -5441,7 +5500,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     });
     box.innerHTML=IDEAS.map(function(i,x){
       return '<article class="gmplay">'+
-        '<div class="gmnum" id="idea'+(x+1)+'">Idea '+(x+1)+'</div>'+
+        '<div class="gmnum" id="idea'+(x+1)+'"><span class="k">Idea</span>'+
+          '<span class="n">'+(x<9?"0":"")+(x+1)+'</span></div>'+
         '<h4>'+i.t+'</h4>'+
         '<p class="gmsum">'+i.one+'</p>'+
         '<div class="gmsec">What this looks like</div><p class="gmpilot gmex">'+i.ex+'</p>'+
