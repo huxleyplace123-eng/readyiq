@@ -2610,8 +2610,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
 <main class="wrap view" id="v-lender" hidden>
   <nav class="subnav" role="tablist" aria-label="Lender sections">
-    <button role="tab" aria-selected="true" data-sub="today">Today</button>
-    <button role="tab" aria-selected="false" data-sub="pipeline">Pipeline</button>
+    <button role="tab" aria-selected="true" data-sub="pipeline">Pipeline</button>
+    <button role="tab" aria-selected="false" data-sub="today">Today</button>
     <button role="tab" aria-selected="false" data-sub="working">Working clients</button>
     <button role="tab" aria-selected="false" data-sub="build">Credit building</button>
     <button role="tab" aria-selected="false" data-sub="closed">Closed loans</button>
@@ -2627,7 +2627,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     <span class="p3ja">Open partners &rarr;</span>
   </button>
 
-  <section id="s-today">
+  <section id="s-today" hidden>
     <div class="pagehead">
       <div>
         <div class="tdhead"><span class="tdbig" id="td-count">0</span>
@@ -2643,7 +2643,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     &mdash; a lender loads their own under Settings and every number here follows it.</div>
   </section>
 
-  <section id="s-pipeline" hidden>
+  <section id="s-pipeline">
     <div class="pagehead">
       <div><h2>Pipeline</h2><p>Summit Mortgage &middot; 214 borrowers being worked</p></div>
       <div class="seg" role="tablist" aria-label="Filter">
