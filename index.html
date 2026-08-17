@@ -359,6 +359,8 @@ th:nth-child(7),td:nth-child(7){min-width:172px}
 .emptyrow td{height:120px; text-align:center; color:var(--ink-4); font-size:13.5px}
 
 .tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface)}
+/* narrow tables opt out of the wide-grid minimum */
+.p2mx, .gmt, .p5tbl, .crmlist{min-width:0}
 table{width:100%; border-collapse:collapse; min-width:1080px}
 th{text-align:left; font-size:9px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
   color:var(--ink-4); padding:14px 16px 12px; border-bottom:1px solid var(--line); white-space:nowrap}
@@ -1345,13 +1347,13 @@ select{font:inherit; font-size:13px; font-weight:600; padding:6px 10px; border-r
 .p2scr.lend .p2act{background:var(--teal)}
 .p2scr.ag .p2act{background:var(--brand)}
 
-.p2mx{width:100%; border-collapse:collapse; font-size:12.5px}
+.p2mx{width:100%; border-collapse:collapse; font-size:12.5px; table-layout:fixed}
 .p2mx th{text-align:left; font-size:9.5px; font-weight:500; letter-spacing:.09em; text-transform:uppercase;
   color:var(--ink-4); padding:11px 14px; border-bottom:1px solid var(--line); white-space:nowrap}
-.p2mx th.c, .p2mx td.c{text-align:center; width:138px}
+.p2mx th.c, .p2mx td.c{text-align:center; width:27%}
 .p2mx td{padding:9px 14px; border-bottom:1px solid var(--line)}
 .p2mx tr:last-child td{border-bottom:0}
-.p2mx td:first-child{font-weight:500; min-width:210px}
+.p2mx td:first-child{font-weight:500; width:46%}
 .p2mx td small{display:block; color:var(--ink-4); font-weight:400; font-size:11px; margin-top:2px; line-height:1.4}
 .p2mx .y{color:var(--green); font-weight:600}
 .p2mx .n{color:var(--ink-4)}
@@ -1975,6 +1977,25 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   .gmmeta div:last-child{border-bottom:0}
   .gmplay h4{font-size:22px}}
 
+/* ── the pipeline scrolls inside its own box, not down the page ── */
+.tablewrap.pipe{max-height:min(70vh,720px); overflow:auto; position:relative}
+.tablewrap.pipe thead th{position:sticky; top:0; z-index:4; background:var(--surface);
+  box-shadow:inset 0 -1px 0 var(--line)}
+/* the borrower stays put while the columns move under it */
+.tablewrap.pipe th.cbcell, .tablewrap.pipe td.cbcell{position:sticky; left:0; z-index:3;
+  background:var(--surface)}
+.tablewrap.pipe thead th.cbcell{z-index:5}
+.tablewrap.pipe th:nth-child(2), .tablewrap.pipe td:nth-child(2){position:sticky; left:32px; z-index:3;
+  background:var(--surface); box-shadow:1px 0 0 var(--line)}
+.tablewrap.pipe thead th:nth-child(2){z-index:5}
+.tablewrap.pipe tbody tr:hover td.cbcell,
+.tablewrap.pipe tbody tr:hover td:nth-child(2){background:var(--surface-2)}
+.tablewrap.pipe tbody tr.picked td.cbcell,
+.tablewrap.pipe tbody tr.picked td:nth-child(2){background:var(--brand-wash)}
+/* the state rail lives on the sticky cell, so it rides along */
+.tablewrap.pipe tbody tr.s-ready td.cbcell{box-shadow:inset 3px 0 0 var(--green)}
+.tablewrap.pipe tbody tr.s-risk td.cbcell{box-shadow:inset 3px 0 0 var(--red)}
+
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 </style>
 
@@ -2275,7 +2296,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       <span class="cnt2" id="attach" style="margin-left:14px">&nbsp;</span>
     </div>
     <div id="selbar"></div>
-    <div class="tablewrap"><table>
+    <div class="tablewrap pipe"><table>
       <thead><tr>
         <th class="cbcell"><span class="cb" id="cball" role="checkbox" aria-checked="false" tabindex="0"
           aria-label="Select all"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.2 4.6 8.8 10 3.4"
@@ -2822,7 +2843,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
                 <button aria-selected="false" data-acc="agent">Real estate</button>
               </div>
               <p class="whoami" id="accwho"></p>
-              <div class="tablewrap" style="margin-top:16px"><table class="p2mx">
+              <div style="margin-top:16px"><table class="p2mx">
                 <thead><tr><th>What changes</th><th class="c">Lender</th><th class="c">Real estate</th></tr></thead>
                 <tbody>
                   <tr><td>Main working screen<small>The tab you live in all day</small></td>
