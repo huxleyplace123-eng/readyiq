@@ -761,13 +761,6 @@ select{font:inherit; font-size:13px; font-weight:600; padding:6px 10px; border-r
 .hbtn.ghost2:hover{background:rgba(255,255,255,.14)}
 
 /* the number that does the selling */
-.ghost{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1px; background:var(--line);
-  border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; margin-bottom:14px}
-.gh{background:var(--surface); padding:26px 26px 24px}
-.gh .ghv{font-size:38px; font-weight:600; letter-spacing:-.04em; line-height:1; font-variant-numeric:tabular-nums}
-.gh .ghk{font-size:13px; color:var(--ink-3); margin-top:11px; line-height:1.5}
-.gh.bad{background:var(--red-wash)} .gh.bad .ghv{color:var(--red)}
-.gh.win{background:var(--brand-wash)} .gh.win .ghv{color:var(--brand)}
 .ghostnote{font-size:13px; color:var(--ink-3); line-height:1.65; margin-bottom:42px; max-width:84ch}
 .ghostnote b{color:var(--ink); font-weight:600}
 
@@ -2047,28 +2040,34 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
 .tdlist{display:flex; flex-direction:column; gap:11px}
 .tdrow{background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--line-2);
-  border-radius:var(--r-md); padding:18px 20px 17px; display:grid;
-  grid-template-columns:auto minmax(0,1fr) minmax(0,300px); gap:0 20px; align-items:start}
+  border-radius:var(--r-md); padding:13px 17px 12px; display:grid;
+  grid-template-columns:auto minmax(0,1fr); gap:0 15px; align-items:start}
+.tdrow.tight{padding:13px 17px 12px}
+.tdline{margin-top:7px; font-size:12px; color:var(--ink-3); line-height:1.5}
+.tdline b{color:var(--ink); font-weight:600}
+.tdline span{color:var(--ink-4)}
 .tdrow.now{border-left-color:var(--green)}
 .tdrow.risk{border-left-color:var(--red)}
 .tdrow.soon{border-left-color:var(--brand)}
 .tdrow.quiet{border-left-color:var(--ink-4)}
-.tdn{font-family:var(--mono); font-size:15px; font-weight:600; color:var(--line-2); padding-top:2px}
+.tdn{font-family:var(--mono); font-size:13px; font-weight:600; color:var(--line-2); padding-top:3px}
 .tdmain{min-width:0}
 .tdwho{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-.tdwho b{font-size:16px; letter-spacing:-.02em}
+.tdwho b{font-size:14.5px; letter-spacing:-.018em}
 .tdtag{font-size:8.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; padding:3px 9px;
   border-radius:20px}
 .tdtag.now{background:var(--green-wash); color:var(--green)}
 .tdtag.risk{background:var(--red-wash); color:var(--red)}
 .tdtag.soon{background:var(--brand-wash); color:var(--brand)}
 .tdtag.quiet{background:var(--surface-3); color:var(--ink-3)}
-.tdwhy{font-size:13.5px; color:var(--ink-2); line-height:1.55; margin-top:8px}
-.tdmsg{margin-top:13px; background:var(--surface-2); border:1px solid var(--line); border-radius:9px;
-  padding:11px 13px; font-size:12.5px; color:var(--ink-2); line-height:1.55}
-.tdmsg b{display:block; font-size:8.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
-  color:var(--ink-4); margin-bottom:5px}
-.tdacts{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap}
+.tdwhy{font-size:12.5px; color:var(--ink-2); line-height:1.5; margin-top:6px}
+.tdmsg{margin-top:9px; background:var(--surface-2); border:1px solid var(--line); border-radius:8px;
+  padding:8px 11px; font-size:12px; color:var(--ink-3); line-height:1.5;
+  display:flex; gap:9px; align-items:baseline}
+.tdmsg b{flex:none; font-size:8px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--line-2)}
+.tdacts{display:flex; gap:7px; margin-top:9px; flex-wrap:wrap}
+.tdacts .btn{padding:5px 12px; font-size:11.5px; flex:0 0 auto; width:auto}
 
 /* points turned into money, which is the only unit a loan officer thinks in */
 .tdworth{background:var(--ink); border-radius:var(--r-sm); padding:15px 17px; align-self:stretch}
@@ -2082,10 +2081,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 .tdwnote{font-size:11px; color:#6E93A8; line-height:1.5; margin-top:11px; padding-top:11px;
   border-top:1px solid rgba(255,255,255,.12)}
 
-@media (max-width:1000px){.tdrow{grid-template-columns:auto minmax(0,1fr)}
-  .tdworth{grid-column:2; margin-top:14px}}
-@media (max-width:620px){.tdrow{grid-template-columns:minmax(0,1fr)} .tdn{display:none}
-  .tdworth{grid-column:1}}
+@media (max-width:620px){.tdrow{grid-template-columns:minmax(0,1fr)} .tdn{display:none}}
 
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 </style>
@@ -3828,6 +3824,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
         <div class="dcol"><h4>Contact</h4><div id="d-contact"></div></div>
         <div class="dcol"><h4>Loan</h4><div id="d-loan"></div></div>
       </div>
+      <div id="d-worth"></div>
       <div>
         <div class="eyebrow" style="margin-bottom:9px">What they are on</div>
         <div class="plist" id="d-prods2"></div>
@@ -4465,6 +4462,18 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     }
     document.getElementById("d-scores").innerHTML=sh;
     document.getElementById("d-upd").textContent=r.u+" ("+r.ua.toLowerCase()+")";
+
+    /* what the next score move is worth, in payment rather than points */
+    (function(){
+      var slot=document.getElementById("d-worth"); if(!slot||typeof worthOf!=="function") return;
+      var w=worthOf(r);
+      slot.innerHTML='<div class="eyebrow" style="margin-bottom:9px">What the next move is worth</div>'+
+        '<div class="tdworth" style="border-radius:var(--r-md)">'+
+        w.rows.map(function(rw){ return '<div class="tdwr"><span>'+rw[0]+'</span><b'+
+          (rw[2]?' class="up"':'')+'>'+rw[1]+'</b></div>'; }).join("")+
+        '<div class="tdwnote">'+w.note+' Figures use an illustrative rate sheet; a lender loads their '+
+        'own under Settings.</div></div>';
+    })();
 
     /* ── credit report ── */
     var bur=[["Experian",r.ex,"FICO 2"],["Equifax",r.eq,"FICO 5"],["TransUnion",r.tu,"FICO 4"]], rb="";
@@ -5536,27 +5545,22 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
           why:"<b>"+esc(r.flag)+".</b> Their qualifying score moved "+esc(r.t)+" and the date pushed to "+
               esc(r.eta||"later")+". They almost certainly do not know yet, and if they hear it from "+
               "somebody else first the file is gone.",
-          msg:"Hi "+r.n.split(" ")[0]+" &mdash; something landed on your credit this week and it moved your "+
-              "number. Nothing is lost, but I want to walk you through it before it becomes a problem. "+
-              "Are you around later today?", w:w});
+          msg:"Something landed on your credit this week. Nothing is lost, but I want to walk you through it before it becomes a problem — are you around later today?", w:w});
       } else if(g===0 && r.ua && /today|yesterday|days ago/i.test(r.ua)){
         out.push({r:r, k:"now", tag:"Qualifies now", rank:0,
           why:"Crossed at <b>"+m+"</b>, which clears "+esc(r.p)+" by "+(m-THRESH[r.p])+". Updated "+
               esc(r.ua.toLowerCase())+" and they have not been told.",
-          msg:"Hi "+r.n.split(" ")[0]+" &mdash; your credit came back where we needed it. You qualify "+
-              "today. Can we get twenty minutes this week to get the paperwork moving?", w:w});
+          msg:"Your credit came back where we needed it — you qualify today. Twenty minutes this week to get the paperwork moving?", w:w});
       } else if(g>0 && g<=15){
         out.push({r:r, k:"soon", tag:"One move away", rank:2,
           why:"<b>"+g+" points</b> from "+esc(r.p)+" at "+m+". Close enough that a single action on the "+
               "plan gets them there, and it is worth telling them exactly which one.",
-          msg:"Hi "+r.n.split(" ")[0]+" &mdash; you are "+g+" points away. I know the one thing that moves "+
-              "it fastest. Five minutes on the phone and we can line it up.", w:w});
+          msg:"You are "+g+" points away and I know the one move that gets you there fastest. Five minutes on the phone?", w:w});
       } else if(miss){
         out.push({r:r, k:"soon", tag:"Clears something else", rank:3,
           why:"Asked about "+esc(r.p)+" and does not clear it, but at "+m+" they already clear <b>"+
               esc(miss.best.k)+"</b>. Nobody has told them, because nobody re-runs the shelf.",
-          msg:"Hi "+r.n.split(" ")[0]+" &mdash; I ran your file against everything we offer, not just what "+
-              "you originally asked about. There is a program you qualify for right now. Worth a call?", w:w});
+          msg:"I ran your file against everything we offer, not just what you asked about. There is a program you qualify for right now.", w:w});
       }
     });
     /* the quiet ones, last */
@@ -5564,8 +5568,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       if(/weeks/.test(r.ua||"")) out.push({r:r, k:"quiet", tag:"Gone quiet", rank:4,
         why:"No activity in "+esc(r.ua)+". Still on the plan, still moving, but disengaged &mdash; and "+
             "month three is where these programs lose people.",
-        msg:"Hi "+r.n.split(" ")[0]+" &mdash; just checking in. Your file is still moving in the right "+
-            "direction. Anything you want me to look at?", w:worthOf(r)});
+        msg:"Just checking in — your file is still moving the right way. Anything you want me to look at?", w:worthOf(r)});
     });
     out.sort(function(a,b){ return a.rank-b.rank || (b.w.save||0)-(a.w.save||0); });
     return out;
@@ -5594,15 +5597,14 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
               '<span class="tdtag '+x.k+'">'+x.tag+'</span>'+
               '<span class="p6city">'+esc(x.r.p)+' &middot; needs '+THRESH[x.r.p]+'</span></div>'+
             '<div class="tdwhy">'+x.why+'</div>'+
+            (w.save?'<div class="tdline"><b>'+w.need+' points</b> from here is worth <b>'+
+              money0(w.save)+'/mo</b>, or <b>'+money0(w.save*360)+'</b> across the loan. '+
+              '<span>Open the file for the breakdown.</span></div>':'')+
             '<div class="tdmsg"><b>Drafted for you</b>'+x.msg+'</div>'+
             '<div class="tdacts"><button class="btn">Send it</button>'+
               '<button class="btn ghost">Call</button>'+
               '<button class="btn ghost" data-k="'+esc(x.r.n)+'">Open the file</button></div>'+
           '</div>'+
-          '<div class="tdworth"><span class="k">What the next move is worth</span>'+
-            w.rows.map(function(rw){ return '<div class="tdwr"><span>'+rw[0]+'</span><b'+
-              (rw[2]?' class="up"':'')+'>'+rw[1]+'</b></div>'; }).join("")+
-            '<div class="tdwnote">'+w.note+'</div></div>'+
         '</div>';
       }).join("");
     }
