@@ -2148,6 +2148,68 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   </div>
 
 
+
+  <div class="ovh">
+    <h2>What we would actually build</h2>
+    <p>Three things. Everything else on this page either already exists as a product or is a sample.</p>
+  </div>
+
+  <div class="gmfront">
+    <div class="gmsh">The problem worth naming first</div>
+    <p class="gmsum" style="margin-top:0">We do not have a full mortgage tri-merge. A conventional loan
+    qualifies on the middle of Experian FICO 2, Equifax FICO 5 and TransUnion FICO 4, and until somebody
+    confirms in writing which of those we return, we cannot tell a lender we are giving them their
+    qualifying score.</p>
+    <p class="gmsum">The fix is not to try to match it. <b>Let the lender calibrate against our number.</b>
+    They set the trigger at, say, 640. After ten or fifteen files they will see our number runs high or low
+    by a fairly consistent margin, and they move the trigger to match. The gap stops being an accuracy
+    problem and becomes a setting. We never claim our number is their number, and they never need it to be.</p>
+
+    <div class="gmsec">One. An attribution link</div>
+    <p class="gmpilot">A link per loan officer and per agent. Anybody who signs up through it is
+    permanently tied to that person. Without this there is no program, only referrals disappearing into
+    a general signup page and nobody able to prove anything.</p>
+
+    <div class="gmsec">Two. One status screen</div>
+    <p class="gmpilot">Not a CRM. One list: name, when they enrolled, what they are on, last activity,
+    current score, and a flag when they cross the trigger. That is the entire professional-facing product.
+    If it needs a second screen we have already overbuilt it.</p>
+
+    <div class="gmsec">Three. Threshold alerts</div>
+    <p class="gmpilot">The lender sets a number. When somebody crosses it the assigned officer gets a text
+    or an email, that day. Not a weekly digest and not a dashboard they have to remember to open, because
+    they will not open it.</p>
+
+    <div class="gmsec">What we would not build</div>
+    <ul class="gml wo">
+      <li>The portal in the demo below. The pipeline, the drawers, the partner pages, the campaign tools.
+      It is a sample and it should stay one.</li>
+      <li>A score simulator, anything touching a loan origination system, and any pipeline management.</li>
+      <li>The dispute workflow. CreditBuilderIQ already has it. Rebuilding what already ships is spending
+      money to arrive where we started.</li>
+    </ul>
+
+    <div class="gmsec">How it gets funded</div>
+    <p class="gmpilot">Do it by hand first. Co-branded landing pages are a marketing job. Unique promo
+    codes per officer probably already exist on the affiliate side. Then one person exports enrolments
+    every Friday and emails each officer their own list.</p>
+    <p class="gmpilot" style="margin-top:12px">That is ugly and it works, and it answers the only three
+    questions that matter: do consumers actually enrol off a loan officer&rsquo;s link, do they stay past
+    month two, and does anybody cross a threshold. Run it with two or three lenders for a quarter.</p>
+    <p class="gmpilot" style="margin-top:12px">If the answer is yes, the development conversation starts
+    with real numbers and a specific bottleneck &mdash; the manual report takes six hours a week and breaks
+    past forty borrowers &mdash; which is a far better ask than a roadmap. If the answer is no, we found
+    out for the price of somebody&rsquo;s Friday afternoon.</p>
+
+    <div class="gmsec">Before anybody scopes anything</div>
+    <ul class="gml">
+      <li>Confirm exactly which score model we return for each bureau. That single answer decides how much
+      of this page is accurate.</li>
+      <li>Find out whether CreditBuilderIQ&rsquo;s partner portal already does attribution and status. If it
+      does, items one and two are built and the only gap is the alert.</li>
+    </ul>
+  </div>
+
   <div class="ovh">
     <h2>Where we would start</h2>
     <p>Targets on the smaller side, and a reason not to name UWM or Rocket: the sales motion. A small
@@ -5559,33 +5621,6 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     var PH={1:"We can do this now",2:"Needs a small build",3:"Needs real development"};
     var IDEAS=[
 
-    {p:1, t:"Check credit before paying for a report",
-     ex:"Say a lender runs Facebook ads and gets 400 leads a month. Today an officer calls them, most sound fine on the phone, and the company buys a mortgage report on maybe 120 of them. A good chunk come back too low to do anything with, and that report money is just gone.\n\nWith this, the officer texts the lead a link before ordering anything. The person opens their own credit, sees their three scores, and shares the result. Now the officer knows who is over the line and only buys reports on those. Everybody else goes into the credit side instead of getting told to call back next year.",
-     lead:"A 500 is not a bad lead. It is a bad pull.",
-     one:"The consumer checks their own credit and shares the result. Nobody buys a mortgage report to find out somebody was never going to clear, and nobody gets told ninety days when the honest answer is two years.",
-     who:"Lenders, loan officers and real estate agents",
-     pay:"Consumer pays for their own check, or the company sponsors it",
-     inc:["Their own credit reports and scores &mdash; one bureau or all three",
-          "A readiness snapshot against the threshold for the loan they actually want",
-          "A plain-language reason they are short",
-          "An honest band: near miss, real work, or long road"],
-     how:["The consumer gets a co-branded text or email and creates their own secure account.",
-          "They verify their identity and open their own file. <b>This is a consumer looking at their own credit, not a lender pulling them.</b> No hard inquiry, nothing added to their report.",
-          "We receive only what the consumer agrees to share.",
-          "<b>Near miss, 10 to 25 points.</b> Twenty-four months of backdated rent usually covers it alone. Tell them about a month.",
-          "<b>Real work, 25 to 60 points.</b> Rent and bills together, balances brought down, a dispute where something is genuinely wrong. Tell them next spring.",
-          "<b>Long road, 60+ points or a 500.</b> Collections, charge-offs, or a file too thin to build on. Tell them next year, honestly.",
-          "Whoever clears is routed straight to the assigned loan officer for a real review."],
-     lend:"You find out whether the tri-merge is worth buying before you buy it. The reports you do order stop being wasted, and that saving lands on this quarter rather than next year. What we charge for the check is still to be worked out, but it is a fraction of a mortgage report either way.",
-     agent:"You find out whether Saturday is worth spending, without sending the buyer off to a lender to be pulled and without owing anybody a favour for it.",
-     pro:["The cost case is immediate and it is the lender&rsquo;s own money, not a projection.",
-          "Nothing to build. The consumer product already exists and already does this.",
-          "Sorting people into three honest bands is what stops a program dying in month four."],
-     con:["<b>A consumer viewing their own credit is not a lender soft pull.</b> Those are two different transactions and only one of them produces a report a lender may act on. Do not put the words &ldquo;soft pull&rdquo; on anything until the provider confirms it in writing.",
-          "It is a readiness snapshot, not a mortgage decision. Income, ratio, assets and the property are still the lender&rsquo;s work.",
-          "The score a consumer sees may not be the model underwriting runs, so call it a snapshot and never a qualification."],
-     pilot:"Five loan officers and five agents, personal links, 30 days. Count checks completed, reports not bought, and how the three bands actually split &mdash; because that split decides whether the rest of this is a 90-day story or a two-year one."},
-
     {p:1, t:"Credit building and disputes for the ones who do not qualify",
      ex:"A buyer checks and comes back at 585. She needs 620 for the loan she wants. She has rented the same house for three years and never missed.\n\nShe signs up for the three-bureau plan. Rent reporting goes on first, so 24 months of rent she already paid gets added to her file and shows up in about a month. The gameplan tells her which card to pay down and roughly how much. She spots a collection she does not recognise and runs the dispute herself. Every month she gets a fresh report and score.\n\nWhen she crosses 620 she taps request a review, and it goes back to the loan officer who sent her the link in the first place.",
      lead:"Not ready does not have to mean no.",
@@ -5621,6 +5656,35 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
           "A dispute filed during underwriting can stall a live file. Disputes are a pre-application activity and the product has to know the difference.",
           "The dispute offering needs its own legal review under federal and state credit-repair law before it is sold into a mortgage channel."],
      pilot:"50 to 100 consumers, 90 days. Recruit near-misses deliberately so funded loans can land inside the window, and measure actions completed and reviews requested &mdash; not score movement on its own."},
+
+    {p:1, t:"Sort who is close from who is nowhere near",
+     ex:"Say a lender runs Facebook ads and gets 400 leads a month. Today an officer calls them, most sound fine on the phone, and the company buys a mortgage report on maybe 120 of them. A good chunk come back too low to do anything with, and that report money is just gone.\n\nWith this, the officer texts the lead a link before ordering anything. The person opens their own credit, sees their three scores, and shares the result. Now the officer knows who is over the line and only buys reports on those. Everybody else goes into the credit side instead of getting told to call back next year.",
+     lead:"A 500 is not a bad lead. It is a bad pull.",
+     one:"The consumer checks their own credit and shares the result. This is a sorting tool, not a pre-underwrite. It answers whether somebody is ten points away or a hundred, which is the question that decides what you do with them next.",
+     who:"Lenders, loan officers and real estate agents",
+     pay:"Consumer pays for their own check, or the company sponsors it",
+     inc:["Their own credit reports and scores, on a mortgage model",
+          "A readiness snapshot against a threshold the lender sets",
+          "A plain-language reason they are short",
+          "An honest band: near miss, real work, or long road"],
+     how:["The consumer gets a co-branded text or email and creates their own secure account.",
+          "They verify their identity and open their own file. <b>This is a consumer looking at their own credit, not a lender pulling them.</b> No hard inquiry, nothing added to their report.",
+          "We receive only what the consumer agrees to share.",
+          "<b>The lender calibrates the trigger against our number, not against theirs.</b> They start at, say, 640. After ten or fifteen files they know our number runs high or low by a consistent margin and they move the trigger to match. The gap stops being an accuracy problem and becomes a setting.",
+          "<b>Near miss, 10 to 25 points.</b> Twenty-four months of backdated rent usually covers it alone. Tell them about a month.",
+          "<b>Real work, 25 to 60 points.</b> Rent and bills together, balances brought down, a dispute where something is genuinely wrong. Tell them next spring.",
+          "<b>Long road, 60+ points or a 500.</b> Collections, charge-offs, or a file too thin to build on. Tell them next year, honestly.",
+          "Whoever clears is routed straight to the assigned loan officer for a real review."],
+     lend:"You stop buying reports on people who are a hundred points out. The ones who look close you pull anyway, and you were always going to. What we charge is still to be worked out, but it is a fraction of a mortgage report.",
+     agent:"You find out whether Saturday is worth spending, without sending the buyer off to a lender to be pulled and without owing anybody a favour for it.",
+     pro:["The cost case is immediate and it is the lender&rsquo;s own money, not a projection.",
+          "Sorting people into three honest bands is what stops a program dying in month four.",
+          "It does not need to be precise to be useful. Knowing somebody is a hundred points out is worth money even if the exact number is off."],
+     con:["<b>This is not a mortgage tri-merge and we should never imply that it is.</b> A conventional loan qualifies on the middle of Experian FICO 2, Equifax FICO 5 and TransUnion FICO 4. Until we know exactly which of those we return, the honest description is a mortgage-model score, not their mortgage score.",
+          "<b>A consumer viewing their own credit is not a lender soft pull.</b> Two different transactions, and only one produces a report a lender may act on. Do not print the words &ldquo;soft pull&rdquo; until a provider confirms it in writing.",
+          "If the number is far enough off, a lender stops trusting it and pulls everybody anyway. The calibrated trigger is what protects against that, and it needs a handful of files before it settles.",
+          "It is a readiness snapshot, not a mortgage decision. Income, ratio, assets and the property are still the lender&rsquo;s work."],
+     pilot:"Five loan officers and five agents, personal links, 30 days. Count checks completed and how the three bands split. Then compare our number against the tri-merge on every borrower who did get pulled &mdash; that comparison is what sets the trigger and tells us whether this claim holds at all."},
 
     {p:1, t:"Going back to old leads",
      ex:"A branch has about 3,000 people sitting in their CRM from the last two years who never got to an application. Most were told to work on their credit and call back, and nobody has spoken to them since.\n\nThey export that list to a CSV and upload it. Each person gets a text from the officer who originally worked them, along the lines of a lot may have changed, here is where you stand. Some open it. The ones who look ready go straight back to that officer. The ones who do not get the plan, and the officer gets a note whenever one of them clears, whether that is next month or next year.",
