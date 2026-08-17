@@ -2009,18 +2009,53 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     </div>
   </div>
 
-  <div class="ghost">
-    <div class="gh"><div class="ghv">3,412</div><div class="ghk">people who never became an application, because somebody looked at a score and stopped</div></div>
-    <div class="gh bad"><div class="ghv">541</div><div class="ghk">of them bought a house with somebody else inside 14 months</div></div>
-    <div class="gh bad"><div class="ghv">$4.3M</div><div class="ghk">in commission and origination that walked out on its own</div></div>
-    <div class="gh win"><div class="ghv">$0</div><div class="ghk">spent to find them &mdash; every one was already in the database</div></div>
-  </div>
-  <p class="ghostnote"><b>Not one of those people was declined.</b> A decline is a decision on a file, and
-  none of these got that far. An officer or an agent looked at a score, did the arithmetic in their head,
-  decided it was not worth pulling, and quietly stopped calling. There is no record of it anywhere, which
-  is exactly why nobody ever goes back &mdash; and why the number is bigger than any decline report will
-  ever show you.</p>
+  <div class="gmfront" style="margin-bottom:34px">
+    <div class="gmsh">What ReadyIQ is</div>
+    <p class="gmsum" style="margin-top:0">ReadyIQ gives mortgage companies, loan officers and real estate
+    agents a way to keep working with leads who want to buy a home but are not ready for financing today.</p>
+    <p class="gmsum">The professional adds the consumer, or sends them a personal invitation link. The
+    consumer authorizes a soft credit check that does not affect their score and creates their own private
+    account. From there they can see their scores, their report, and a plain explanation of where they
+    actually stand.</p>
 
+    <div class="gmsec" style="margin-top:26px">Then they go down one of four paths</div>
+    <ul class="gml">
+      <li><b>Ready now.</b> Straight to the lender for a mortgage review or an application.</li>
+      <li><b>Needs credit building.</b> Enrolled in credit-building and positive payment reporting products.</li>
+      <li><b>Possible inaccurate information.</b> CreditBuilderIQ to review and dispute it themselves.</li>
+      <li><b>Needs more time.</b> Monitoring keeps running and progress is tracked until they are ready.</li>
+    </ul>
+
+    <div class="gmsec">What the consumer can get</div>
+    <ul class="gml">
+      <li>Credit reports, scores and monitoring</li>
+      <li>Credit-building products</li>
+      <li>Products that may add eligible positive payments to their credit history</li>
+      <li>Credit education and recommended next steps</li>
+      <li>CreditBuilderIQ tools to dispute information they believe is inaccurate</li>
+      <li>Alerts and progress tracking</li>
+    </ul>
+    <p class="gmpilot" style="margin-top:14px">The consumer normally pays for the products they choose. The
+    mortgage company or the agent does not have to do the credit-building or the dispute work.</p>
+
+    <div class="gmsec">What the professional sees</div>
+    <p class="gmpilot">Whether the consumer enrolled, which stage they are in, whether they are actively
+    working on their credit, and when they ask for another mortgage review. <b>Private credit-report and
+    dispute detail stays inside the consumer&rsquo;s own account.</b></p>
+
+    <div class="gmsec">When you would use it</div>
+    <ul class="gml">
+      <li>A new lead does not qualify because of credit</li>
+      <li>A buyer cannot get a preapproval</li>
+      <li>Before somebody starts seriously shopping for a house</li>
+      <li>Following up with old leads who were turned down a while ago</li>
+      <li>Keeping future borrowers attached to the officer or agent who found them</li>
+    </ul>
+    <p class="gmpilot" style="margin-top:14px">When the consumer has made progress and wants to try again,
+    ReadyIQ tells the assigned professional so they can reconnect and take the next step. Instead of losing
+    a lead because they are not ready today, the consumer gets tools to work on their credit while the
+    lender, loan officer or agent stays connected to the opportunity.</p>
+  </div>
 
   <div class="ovh">
     <h2>Five ideas</h2>
@@ -2061,8 +2096,12 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
 
   <div class="ovh">
-    <h2>Have a look around</h2>
-    <p>Everything here is clickable and runs on the same data, so the numbers agree with each other wherever you land.</p>
+    <h2>A rough demo of how it could work</h2>
+    <p><b>None of this has to be built, and I am not proposing that we build it.</b> I put these screens
+    together because it was easier to show how the pieces could fit than to describe it. A portal is
+    probably further down the road, if it happens at all &mdash; the products on the previous pages are the
+    part that already exists. Everything below is clickable and runs on the same made-up data, so the
+    numbers at least agree with each other wherever you land.</p>
   </div>
   <div class="doors">
     <button class="door" data-view="lender" data-only="lender"><div class="dn2">For the loan officer</div>
@@ -4425,7 +4464,13 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     var v=g.getAttribute("data-cgo");
     if(v==="enroll"){ goSection("sample-portal"); return; }
     cstep=parseInt(v,10); cRender();
-    window.scrollTo(0,0);
+    /* keep the check where it is */
+    var wrap=g.closest(".checkwrap");
+    if(wrap){
+      var box=wrap.getBoundingClientRect();
+      var offScreen = box.bottom < 80 || box.top > window.innerHeight - 80;
+      if(offScreen) window.scrollTo({top:box.top+window.pageYOffset-88, behavior:"smooth"});
+    }
   });
   cRender();
 
