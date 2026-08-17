@@ -2145,6 +2145,27 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
 @media (max-width:620px){.sfpair{grid-template-columns:1fr} .sflink{display:none}}
 
+/* ── the borrower's screen leads with the house, not the number ── */
+.bworth{background:var(--ink); border-radius:var(--r-md); padding:20px 22px; margin-bottom:14px}
+.bwk{font-size:9px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--brand)}
+.bwbig{font-family:var(--mono); font-size:40px; font-weight:600; letter-spacing:-.05em; color:#fff;
+  line-height:1; margin-top:9px}
+.bwwas{font-size:12.5px; color:#8FB3C6; margin-top:8px}
+.bwwas b{color:#8FE958; font-weight:600}
+.bwnext{margin-top:16px; padding-top:15px; border-top:1px solid rgba(255,255,255,.13)}
+.bwnext .h{font-size:13.5px; color:#fff; line-height:1.5; font-weight:600}
+.bwnext .h em{font-style:normal; color:#8FE958}
+.bwrows{display:flex; gap:22px; margin-top:12px; flex-wrap:wrap}
+.bwrows div{min-width:0}
+.bwrows b{display:block; font-family:var(--mono); font-size:17px; font-weight:600; color:#fff;
+  letter-spacing:-.03em}
+.bwrows span{display:block; font-size:11px; color:#8FB3C6; margin-top:3px; line-height:1.4}
+.bwfine{font-size:10.5px; color:#6E93A8; line-height:1.5; margin-top:14px; padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.1)}
+.bwmonth{background:var(--green-wash); border:1px solid var(--green-line); border-radius:var(--r-sm);
+  padding:12px 14px; margin-bottom:14px; font-size:12.5px; color:var(--ink-2); line-height:1.5}
+.bwmonth b{color:var(--green); font-weight:600}
+
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 </style>
 
@@ -6375,18 +6396,49 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
           '<div class="tt">You claimed every $0 move.</div>'+
           '<div class="td2">Your report updates within 30 days. We will tell you the moment it moves.</div></div>';
 
-      var b1=240000, b2=310000;
-      var budget='<div class="budget"><div class="bh2">What you can borrow</div>'+
+      var b1=240000, b2=310000, m$=function(v){ return "$"+Math.round(v).toLocaleString("en-US"); };
+
+      /* The same arithmetic the loan officer sees, pointed at the person doing
+         the work. A score going up means nothing; a bigger house and a smaller
+         payment mean everything, and that is what stops month-four churn. */
+      var loan1=Math.round(b1*.96), loan2=Math.round(b2*.96);
+      var pay=function(P,rate){ var r=rate/100/12; return P*r/(1-Math.pow(1+r,-360)); };
+      var r1=7.5, r2=6.875;                          /* illustrative sheet */
+      var mi1=loan1*.0094/12, mi2=loan2*.0052/12;    /* PMI tier moves with score */
+      var now=pay(loan1,r1)+mi1, then=pay(loan2,r2)+mi2;
+      var perMo=(pay(loan1,r1)+mi1)-(pay(loan1,r2)+loan1*.0052/12);  /* same loan, better score */
+
+      var worth='<div class="bworth">'+
+        '<span class="bwk">What you can offer on a house</span>'+
+        '<div class="bwbig">'+m$(done?b2:b1)+'</div>'+
+        '<div class="bwwas">That was '+m$(212000)+' in March. <b>&#9650; '+m$((done?b2:b1)-212000)+' so far.</b></div>'+
+        (done
+          ? '<div class="bwnext"><div class="h">You are there. Marcus has been told.</div></div>'
+          : '<div class="bwnext"><div class="h">'+rem+' more points gets you to <em>'+m$(b2)+'</em></div>'+
+            '<div class="bwrows">'+
+              '<div><b>'+m$(perMo)+'/mo</b><span>lower payment on the same house</span></div>'+
+              '<div><b>'+m$(perMo*360)+'</b><span>across a 30-year loan</span></div>'+
+              '<div><b>'+m$(b2-b1)+'</b><span>more house you could offer on</span></div>'+
+            '</div></div>')+
+        '<div class="bwfine">Estimates, not a quote. The exact rate depends on the day you lock, your '+
+        'down payment and the loan you choose &mdash; your loan officer gives you the real number.</div>'+
+      '</div>';
+
+      var monthly='<div class="bwmonth"><b>This month:</b> your rent posted and you went up 23 points. '+
+        'That is about <b>'+m$(19000)+' more house</b> than last month, for doing nothing you were not '+
+        'already doing.</div>';
+
+      var budget='<div class="budget"><div class="bh2">The detail, if you want it</div>'+
         '<div class="brow"><span class="bl">At '+s+' today</span><span class="bp">'+
-          '<span class="pp2">$'+b1.toLocaleString("en-US")+'</span><span class="mm">$1,880 a month</span></span></div>'+
+          '<span class="pp2">'+m$(b1)+'</span><span class="mm">'+m$(now)+' a month</span></span></div>'+
         '<div class="brow goal"><span class="bl">At '+TARGET+'</span><span class="bp">'+
-          '<span class="pp2">$'+b2.toLocaleString("en-US")+'</span><span class="mm">$2,090 &middot; no mortgage insurance</span></span></div>'+
+          '<span class="pp2">'+m$(b2)+'</span><span class="mm">'+m$(then)+' &middot; lower insurance</span></span></div>'+
         '<div class="bgain">'+(done
-            ? '&#10003; $'+(b2-b1).toLocaleString("en-US")+' more house &mdash; unlocked'
-            : '&#9650; $'+(b2-b1).toLocaleString("en-US")+' more house for '+rem+' more points')+
+            ? '&#10003; '+m$(b2-b1)+' more house &mdash; unlocked'
+            : '&#9650; '+m$(b2-b1)+' more house for '+rem+' more points')+
           '</div></div>';
 
-      return '<div class="pgrid"><div class="pcol">'+g+when+'</div>'+
+      return '<div class="pgrid"><div class="pcol">'+worth+monthly+g+when+'</div>'+
              '<div class="pcol">'+todo+budget+'</div></div>';
     },
     found:function(){
