@@ -1546,7 +1546,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 .p6band.work  .p6bt{color:var(--ink-3)}
 .p6band.risk  .p6bt{color:var(--red)}
 #agentrows tr:not(.p6band){cursor:pointer; transition:background .13s}
-#agentrows tr:not(.p6band):hover{background:var(--brand-wash)}
+#agentrows tr:not(.p6band):hover{background:var(--surface-2)}
 #agentrows tr:not(.p6band):focus-visible{outline:2px solid var(--brand); outline-offset:-2px}
 .p6price{font-family:var(--mono); font-variant-numeric:tabular-nums; letter-spacing:-.035em}
 .p6chg{white-space:nowrap}
@@ -1801,33 +1801,35 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   box-shadow:1px 0 0 var(--line)}
 .tablewrap.agpipe thead th:first-child{position:sticky; left:0; z-index:5; background:var(--surface);
   box-shadow:1px 0 0 var(--line), inset 0 -1px 0 var(--line)}
-.tablewrap.agpipe tbody tr:not(.p6band):hover td:first-child{background:var(--brand-wash)}
+.tablewrap.agpipe tbody tr:not(.p6band):hover td:first-child{background:var(--surface-2)}
 /* a band header spans all eight columns, so it can be neither frozen nor
    edged - the frozen column's hairline would trail off its right end */
 .tablewrap.agpipe tbody tr.p6band td{position:static; background:var(--surface-2); box-shadow:none}
-.agtbl{min-width:1181px; table-layout:fixed}
-.agtbl col.cadded{width:106px}
-.agtbl col.cscore{width:165px}
+.agtbl{min-width:1187px; table-layout:fixed}
+.agtbl col.cadded{width:118px}
+.agtbl col.cscore{width:168px}
 .agtbl col.coffer{width:132px}
 .agtbl col.cshop{width:92px}
 .agtbl col.cwant{width:108px}
 .agtbl col.clend{width:180px}
-.agtbl col.cact{width:142px}
+.agtbl col.cact{width:133px}
 .agtbl th{padding:14px 15px 11px}
-.agtbl td{height:auto; padding:13px 15px 14px; vertical-align:top}
-.agtbl td.act{vertical-align:middle; padding-top:9px; padding-bottom:9px}
-/* one shared band for every cell's first line, so the row reads across */
-.agtbl .l1{display:block; line-height:21px; font-size:13px; font-weight:500; color:var(--ink)}
-.agtbl .l2{display:block; line-height:15px; margin-top:4px; font-size:11px; color:var(--ink-4);
-  white-space:nowrap}
-.agtbl .l1.who{font-size:13.5px; font-weight:600; letter-spacing:-.012em}
-.agtbl .l1.p6mid{font-size:17px; font-weight:600}
-.agtbl .l1.p6price{font-size:15px}
+.agtbl td{padding:0 15px; height:60px; vertical-align:middle}
+/* one size for every primary field, one for every secondary - the lender's
+   system. Emphasis is carried by weight and colour, never by size. */
+.agtbl .l1{display:block; line-height:1.3; font-size:12.5px; font-weight:400; color:var(--ink);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.agtbl .l2{display:block; line-height:1.3; margin-top:3px; font-size:10.5px; color:var(--ink-4);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.agtbl .l1.who{font-weight:600; letter-spacing:-.012em}
+/* the two numbers that decide the row: same size, heavier and set in figures */
+.agtbl .l1.p6mid, .agtbl .l1.p6price{font-weight:600; font-variant-numeric:tabular-nums}
 .agtbl td:nth-child(2) .l1, .agtbl td:nth-child(5) .l1, .agtbl td:nth-child(6) .l1{font-weight:400; color:var(--ink-2)}
 .agtbl .l2.p6bur{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:10.5px;
   letter-spacing:-.02em; color:var(--ink-3)}
-.agtbl .l2.p6bur i{font-style:normal; color:var(--ink-4)}
-.agtbl .l2.p6chg{font-family:var(--mono); font-size:11px; font-weight:600; margin-top:3px}
+.agtbl .l2.p6bur i{font-style:normal; color:var(--ink-4); margin-left:9px;
+  padding-left:9px; border-left:1px solid var(--line)}
+.agtbl .l2.p6chg{font-family:var(--mono); font-size:10.5px; font-weight:600; margin-top:3px}
 .agtbl .p6nol{font-weight:500}
 .agtbl .p6band td{padding:10px 15px !important}
 
@@ -5487,7 +5489,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
             '<td><span class="l1">'+b.add+'</span></td>'+
             '<td class="ta-r"><span class="l1 p6mid">'+mid3(b)+'</span>'+
               '<span class="l2 p6bur">'+b.ex+'&thinsp;&middot;&thinsp;'+b.eq+'&thinsp;&middot;&thinsp;'+b.tu+
-              '<i>&ensp;'+b.upd+'</i></span></td>'+
+              '<i>'+b.upd+'</i></span></td>'+
             '<td class="ta-r"><span class="l1 p6price">'+money(b.now)+'</span>'+chg+'</td>'+
             '<td><span class="l1">'+b.by+'</span></td>'+
             '<td><span class="l1">'+b.want+'</span></td>'+
