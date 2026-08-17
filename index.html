@@ -2034,6 +2034,59 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 @media (max-width:760px){.ctgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.ctgrid{grid-template-columns:minmax(0,1fr)}}
 
+/* ── Today: a work queue instead of a database to interrogate ── */
+.tdhead{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:6px}
+.tdbig{font-family:var(--mono); font-size:38px; font-weight:600; letter-spacing:-.05em; line-height:1;
+  color:var(--brand)}
+.tdsub{font-size:14px; color:var(--ink-3)}
+.tdfil{display:flex; gap:7px; flex-wrap:wrap; margin:18px 0 20px}
+.tdfil button{padding:6px 13px; border-radius:20px; font-size:12.5px; font-weight:500;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink-3); transition:.15s}
+.tdfil button[aria-selected="true"]{background:var(--ink); border-color:var(--ink); color:#fff}
+.tdfil button i{font-style:normal; opacity:.55; margin-left:6px; font-family:var(--mono); font-size:11px}
+
+.tdlist{display:flex; flex-direction:column; gap:11px}
+.tdrow{background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--line-2);
+  border-radius:var(--r-md); padding:18px 20px 17px; display:grid;
+  grid-template-columns:auto minmax(0,1fr) minmax(0,300px); gap:0 20px; align-items:start}
+.tdrow.now{border-left-color:var(--green)}
+.tdrow.risk{border-left-color:var(--red)}
+.tdrow.soon{border-left-color:var(--brand)}
+.tdrow.quiet{border-left-color:var(--ink-4)}
+.tdn{font-family:var(--mono); font-size:15px; font-weight:600; color:var(--line-2); padding-top:2px}
+.tdmain{min-width:0}
+.tdwho{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.tdwho b{font-size:16px; letter-spacing:-.02em}
+.tdtag{font-size:8.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; padding:3px 9px;
+  border-radius:20px}
+.tdtag.now{background:var(--green-wash); color:var(--green)}
+.tdtag.risk{background:var(--red-wash); color:var(--red)}
+.tdtag.soon{background:var(--brand-wash); color:var(--brand)}
+.tdtag.quiet{background:var(--surface-3); color:var(--ink-3)}
+.tdwhy{font-size:13.5px; color:var(--ink-2); line-height:1.55; margin-top:8px}
+.tdmsg{margin-top:13px; background:var(--surface-2); border:1px solid var(--line); border-radius:9px;
+  padding:11px 13px; font-size:12.5px; color:var(--ink-2); line-height:1.55}
+.tdmsg b{display:block; font-size:8.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-4); margin-bottom:5px}
+.tdacts{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap}
+
+/* points turned into money, which is the only unit a loan officer thinks in */
+.tdworth{background:var(--ink); border-radius:var(--r-sm); padding:15px 17px; align-self:stretch}
+.tdworth .k{font-size:8.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--brand); display:block; margin-bottom:11px}
+.tdwr{display:flex; justify-content:space-between; gap:12px; padding:6px 0; font-size:12.5px;
+  color:#9DBACB; align-items:baseline}
+.tdwr b{color:#fff; font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600;
+  font-size:13.5px; text-align:right}
+.tdwr b.up{color:#8FE958}
+.tdwnote{font-size:11px; color:#6E93A8; line-height:1.5; margin-top:11px; padding-top:11px;
+  border-top:1px solid rgba(255,255,255,.12)}
+
+@media (max-width:1000px){.tdrow{grid-template-columns:auto minmax(0,1fr)}
+  .tdworth{grid-column:2; margin-top:14px}}
+@media (max-width:620px){.tdrow{grid-template-columns:minmax(0,1fr)} .tdn{display:none}
+  .tdworth{grid-column:1}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 </style>
 
@@ -2561,7 +2614,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
 <main class="wrap view" id="v-lender" hidden>
   <nav class="subnav" role="tablist" aria-label="Lender sections">
-    <button role="tab" aria-selected="true" data-sub="pipeline">Pipeline</button>
+    <button role="tab" aria-selected="true" data-sub="today">Today</button>
+    <button role="tab" aria-selected="false" data-sub="pipeline">Pipeline</button>
     <button role="tab" aria-selected="false" data-sub="working">Working clients</button>
     <button role="tab" aria-selected="false" data-sub="build">Credit building</button>
     <button role="tab" aria-selected="false" data-sub="closed">Closed loans</button>
@@ -2577,7 +2631,23 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     <span class="p3ja">Open partners &rarr;</span>
   </button>
 
-  <section id="s-pipeline">
+  <section id="s-today">
+    <div class="pagehead">
+      <div>
+        <div class="tdhead"><span class="tdbig" id="td-count">0</span>
+          <span class="tdsub">people worth a call today, out of 214 in the book</span></div>
+        <p>Sorted by what changed since yesterday, not alphabetically. Everything else can wait.</p>
+      </div>
+    </div>
+    <div class="tdfil" id="td-fil" role="tablist" aria-label="Filter"></div>
+    <div class="tdlist" id="td-list"></div>
+    <div class="stacknote" style="margin-top:22px"><b>This is the difference between a database and an
+    assistant.</b> A pipeline makes a loan officer go looking. This tells them who moved, what it is worth
+    in payment rather than points, and what to say. The dollar figures use an illustrative rate sheet
+    &mdash; a lender loads their own under Settings and every number here follows it.</div>
+  </section>
+
+  <section id="s-pipeline" hidden>
     <div class="pagehead">
       <div><h2>Pipeline</h2><p>Summit Mortgage &middot; 214 borrowers being worked</p></div>
       <div class="seg" role="tablist" aria-label="Filter">
@@ -5387,6 +5457,165 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     });
   })();
 
+
+  /* ══════════════ what points are actually worth ══════════════
+     A loan officer does not think in points, they think in payment. Everything
+     below converts a score move into rate, payment and mortgage insurance.
+     The rate sheet is illustrative and is meant to be replaced by the
+     lender's own under Settings. */
+  var RATESHEET={
+    base:6.5,
+    tiers:[[760,0],[740,.125],[720,.25],[700,.375],[680,.5],[660,.75],[640,1.0],[620,1.25]],
+    mi:{fha:.55, conv:[[760,.19],[740,.22],[720,.30],[700,.41],[680,.52],[660,.78],[640,.94],[620,1.10]]}
+  };
+  function rateFor(s){
+    for(var i=0;i<RATESHEET.tiers.length;i++) if(s>=RATESHEET.tiers[i][0]) return RATESHEET.base+RATESHEET.tiers[i][1];
+    return RATESHEET.base+1.5;
+  }
+  function convMI(s){
+    for(var i=0;i<RATESHEET.mi.conv.length;i++) if(s>=RATESHEET.mi.conv[i][0]) return RATESHEET.mi.conv[i][1];
+    return 1.10;
+  }
+  function pmt(P,rate){ var r=rate/100/12; return P*r/(1-Math.pow(1+r,-360)); }
+  function money0(v){ return "$"+Math.round(v).toLocaleString("en-US"); }
+
+  /* The next rung on the ladder that is actually worth reaching for. */
+  function nextRung(r){
+    var m=mid(r), t=THRESH[r.p];
+    if(m<t) return {to:t, why:"clears "+r.p, kind:"qualify"};
+    /* VA has no mortgage insurance and no down payment requirement. Moving a VA
+       borrower to conventional is a downgrade, so never suggest it. */
+    if(r.p==="FHA 30-yr" && m<680) return {to:680, why:"conventional starts to beat FHA", kind:"switch"};
+    var ladder=[660,680,700,720,740,760];
+    for(var i=0;i<ladder.length;i++) if(m<ladder[i]) return {to:ladder[i], why:"better pricing tier", kind:"price"};
+    return null;
+  }
+
+  function worthOf(r){
+    var m=mid(r), loan=Math.round((r.pow||250000)*.96), rung=nextRung(r);
+    var rows=[], note="";
+    if(!rung){
+      rows.push(["Already at the top tier","&mdash;",0]);
+      return {rows:rows, note:"Nothing left to gain from score. Anything further is rate shopping."};
+    }
+    var nowRate=rateFor(m), newRate=rateFor(rung.to);
+    var nowPay=pmt(loan,nowRate), newPay=pmt(loan,newRate);
+    rows.push(["Points needed", (rung.to-m), 0]);
+    rows.push(["Rate", nowRate.toFixed(3)+"% &rarr; "+newRate.toFixed(3)+"%", 0]);
+    var save=nowPay-newPay;
+    if(rung.kind==="switch"){
+      var fhaMI=loan*(RATESHEET.mi.fha/100)/12;
+      var cMI=loan*(convMI(rung.to)/100)/12;
+      rows.push(["Mortgage insurance", money0(fhaMI)+" &rarr; "+money0(cMI), cMI<fhaMI?1:0]);
+      rows.push(["and it", "falls off at 20%", 1]);
+      note="Do not average these together. FHA mortgage insurance runs for the life of the loan. "+
+        "Conventional comes off at 20% equity, which on a 30-year note is worth far more than the "+
+        "monthly difference on day one.";
+    } else if(r.p==="Conventional"){
+      var mNow=loan*(convMI(m)/100)/12, mNew=loan*(convMI(rung.to)/100)/12;
+      save+=(mNow-mNew);
+      note="Includes the mortgage insurance tier, which moves further than the rate does at these scores.";
+    } else if(r.p==="VA Purchase"){
+      note="Rate only. VA has no mortgage insurance, which is why we never suggest moving a VA borrower "+
+        "to conventional no matter how high their score goes.";
+    } else {
+      note="Rate only. FHA mortgage insurance does not move with score.";
+    }
+    rows.push(["Payment", money0(save)+"/mo", 1]);
+    rows.push(["Over 30 years", money0(save*360), 1]);
+    return {rows:rows, note:note, save:save, need:rung.to-m, why:rung.why};
+  }
+
+  /* ══════════════ who is worth a call today ══════════════ */
+  function todayQueue(){
+    var out=[];
+    EVERYONE.forEach(function(r){
+      var m=mid(r), g=gapOf(r), miss=missed(r), w=worthOf(r);
+      if(r.flag){
+        out.push({r:r, k:"risk", tag:"Call today", rank:1,
+          why:"<b>"+esc(r.flag)+".</b> Their qualifying score moved "+esc(r.t)+" and the date pushed to "+
+              esc(r.eta||"later")+". They almost certainly do not know yet, and if they hear it from "+
+              "somebody else first the file is gone.",
+          msg:"Hi "+r.n.split(" ")[0]+" &mdash; something landed on your credit this week and it moved your "+
+              "number. Nothing is lost, but I want to walk you through it before it becomes a problem. "+
+              "Are you around later today?", w:w});
+      } else if(g===0 && r.ua && /today|yesterday|days ago/i.test(r.ua)){
+        out.push({r:r, k:"now", tag:"Qualifies now", rank:0,
+          why:"Crossed at <b>"+m+"</b>, which clears "+esc(r.p)+" by "+(m-THRESH[r.p])+". Updated "+
+              esc(r.ua.toLowerCase())+" and they have not been told.",
+          msg:"Hi "+r.n.split(" ")[0]+" &mdash; your credit came back where we needed it. You qualify "+
+              "today. Can we get twenty minutes this week to get the paperwork moving?", w:w});
+      } else if(g>0 && g<=15){
+        out.push({r:r, k:"soon", tag:"One move away", rank:2,
+          why:"<b>"+g+" points</b> from "+esc(r.p)+" at "+m+". Close enough that a single action on the "+
+              "plan gets them there, and it is worth telling them exactly which one.",
+          msg:"Hi "+r.n.split(" ")[0]+" &mdash; you are "+g+" points away. I know the one thing that moves "+
+              "it fastest. Five minutes on the phone and we can line it up.", w:w});
+      } else if(miss){
+        out.push({r:r, k:"soon", tag:"Clears something else", rank:3,
+          why:"Asked about "+esc(r.p)+" and does not clear it, but at "+m+" they already clear <b>"+
+              esc(miss.best.k)+"</b>. Nobody has told them, because nobody re-runs the shelf.",
+          msg:"Hi "+r.n.split(" ")[0]+" &mdash; I ran your file against everything we offer, not just what "+
+              "you originally asked about. There is a program you qualify for right now. Worth a call?", w:w});
+      }
+    });
+    /* the quiet ones, last */
+    EVERYONE.slice(0,3).forEach(function(r){
+      if(/weeks/.test(r.ua||"")) out.push({r:r, k:"quiet", tag:"Gone quiet", rank:4,
+        why:"No activity in "+esc(r.ua)+". Still on the plan, still moving, but disengaged &mdash; and "+
+            "month three is where these programs lose people.",
+        msg:"Hi "+r.n.split(" ")[0]+" &mdash; just checking in. Your file is still moving in the right "+
+            "direction. Anything you want me to look at?", w:worthOf(r)});
+    });
+    out.sort(function(a,b){ return a.rank-b.rank || (b.w.save||0)-(a.w.save||0); });
+    return out;
+  }
+
+  (function(){
+    var list=document.getElementById("td-list"); if(!list) return;
+    var Q=todayQueue(), filt="all";
+    var LAB={all:"Everything", now:"Qualifies now", risk:"At risk", soon:"Nearly there", quiet:"Gone quiet"};
+    function chips(){
+      var c={all:Q.length};
+      Q.forEach(function(x){ c[x.k]=(c[x.k]||0)+1; });
+      document.getElementById("td-fil").innerHTML=Object.keys(LAB).filter(function(k){return c[k];})
+        .map(function(k){ return '<button role="tab" data-tf="'+k+'" aria-selected="'+(k===filt)+'">'+
+          LAB[k]+'<i>'+c[k]+'</i></button>'; }).join("");
+    }
+    function draw(){
+      var rows=Q.filter(function(x){ return filt==="all"||x.k===filt; });
+      document.getElementById("td-count").textContent=rows.length;
+      list.innerHTML=rows.map(function(x,i){
+        var w=x.w;
+        return '<div class="tdrow '+x.k+'">'+
+          '<div class="tdn">'+(i<9?"0":"")+(i+1)+'</div>'+
+          '<div class="tdmain">'+
+            '<div class="tdwho"><b>'+esc(x.r.n)+'</b>'+
+              '<span class="tdtag '+x.k+'">'+x.tag+'</span>'+
+              '<span class="p6city">'+esc(x.r.p)+' &middot; needs '+THRESH[x.r.p]+'</span></div>'+
+            '<div class="tdwhy">'+x.why+'</div>'+
+            '<div class="tdmsg"><b>Drafted for you</b>'+x.msg+'</div>'+
+            '<div class="tdacts"><button class="btn">Send it</button>'+
+              '<button class="btn ghost">Call</button>'+
+              '<button class="btn ghost" data-k="'+esc(x.r.n)+'">Open the file</button></div>'+
+          '</div>'+
+          '<div class="tdworth"><span class="k">What the next move is worth</span>'+
+            w.rows.map(function(rw){ return '<div class="tdwr"><span>'+rw[0]+'</span><b'+
+              (rw[2]?' class="up"':'')+'>'+rw[1]+'</b></div>'; }).join("")+
+            '<div class="tdwnote">'+w.note+'</div></div>'+
+        '</div>';
+      }).join("");
+    }
+    chips(); draw();
+    document.getElementById("td-fil").addEventListener("click",function(e){
+      var b=e.target.closest("[data-tf]"); if(!b) return;
+      filt=b.getAttribute("data-tf"); chips(); draw();
+    });
+    list.addEventListener("click",function(e){
+      var b=e.target.closest("[data-k]"); if(b) openDrawer(b.getAttribute("data-k"));
+    });
+  })();
+
   /* ---------- tabs ---------- */
   function tabs(sel,onPick){
     var g=document.querySelectorAll(sel);
@@ -5876,7 +6105,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   });
   tabs(".subnav button",function(b){
     var s=b.getAttribute("data-sub");
-    ["pipeline","working","build","closed","bring","crm"].forEach(function(x){ document.getElementById("s-"+x).hidden=(x!==s); });
+    ["today","pipeline","working","build","closed","bring","crm"].forEach(function(x){ document.getElementById("s-"+x).hidden=(x!==s); });
   });
 
   var th={fha:580,conv:640,va:600};
