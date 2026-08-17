@@ -1774,7 +1774,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   .pzrow{grid-template-columns:minmax(0,1fr); gap:10px; padding:18px 18px 17px}}
 
 /* ── the agent pipeline, laid out on a grid instead of by accident ── */
-.agtbl{min-width:1075px; table-layout:fixed}
+.agtbl{min-width:1181px; table-layout:fixed}
+.agtbl col.cadded{width:106px}
 .agtbl col.cscore{width:165px}
 .agtbl col.coffer{width:132px}
 .agtbl col.cshop{width:92px}
@@ -1791,7 +1792,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 .agtbl .l1.who{font-size:13.5px; font-weight:600; letter-spacing:-.012em}
 .agtbl .l1.p6mid{font-size:17px; font-weight:600}
 .agtbl .l1.p6price{font-size:15px}
-.agtbl td:nth-child(4) .l1, .agtbl td:nth-child(5) .l1{font-weight:400; color:var(--ink-2)}
+.agtbl td:nth-child(2) .l1, .agtbl td:nth-child(5) .l1, .agtbl td:nth-child(6) .l1{font-weight:400; color:var(--ink-2)}
 .agtbl .l2.p6bur{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:10.5px;
   letter-spacing:-.02em; color:var(--ink-3)}
 .agtbl .l2.p6bur i{font-style:normal; color:var(--ink-4)}
@@ -2708,6 +2709,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
           aria-label="Select all"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.2 4.6 8.8 10 3.4"
           stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></th>
         <th class="srt" data-sort="name">Borrower<span class="ind">&#9650;</span></th>
+        <th class="srt" data-sort="added">Added<span class="ind">&#9650;</span></th>
         <th class="srt" data-sort="prod">Loan product<span class="ind">&#9650;</span></th>
         <th class="bh srt" data-sort="ex">Experian<span class="ind">&#9650;</span></th>
         <th class="bh srt" data-sort="eq">Equifax<span class="ind">&#9650;</span></th>
@@ -3161,8 +3163,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   </div>
 
   <div class="tablewrap"><table class="agtbl">
-    <colgroup><col class="cbuy"><col class="cscore"><col class="coffer"><col class="cshop"><col class="cwant"><col class="clend"><col class="cact"></colgroup>
-    <thead><tr><th>Buyer</th><th class="ta-r">Qualifying score</th><th class="ta-r">Can offer</th>
+    <colgroup><col class="cbuy"><col class="cadded"><col class="cscore"><col class="coffer"><col class="cshop"><col class="cwant"><col class="clend"><col class="cact"></colgroup>
+    <thead><tr><th>Buyer</th><th>Added</th><th class="ta-r">Qualifying score</th><th class="ta-r">Can offer</th>
       <th>Can shop</th><th>Wants to move</th><th>Their lender</th><th class="ta-r">Action</th></tr></thead>
     <tbody id="agentrows"></tbody>
   </table></div>
@@ -4036,6 +4038,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       '<td><div class="who">'+esc(r.n)+
         (r.disp?'<span class="dchip" title="'+r.disp+' tradelines flagged in dispute">&#9888; '+r.disp+'</span>':'')+
         '</div><div class="sub">'+esc(r.e)+'</div></td>'+
+      '<td class="upd">'+esc(r.en)+'</td>'+
       '<td><div class="prod">'+esc(r.p)+'</div><div class="sub">needs '+THRESH[r.p]+'</div></td>'+
       bcell(r.ex,m)+bcell(r.eq,m)+bcell(r.tu,m)+
       '<td class="ta-c"><span class="midcell '+(g===0?"ok":"")+'">'+m+'</span></td>'+
@@ -4065,7 +4068,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     mid:   function(r){ return mid(r); },
     status:function(r){ return URGENCY[stateOf(r)]*1000 + gapOf(r); },
     trend: function(r){ return parseFloat(r.t.replace("−","-")); },
-    upd:   function(r){ return Date.parse("2026 " + r.u); }
+    upd:   function(r){ return Date.parse("2026 " + r.u); },
+    added: function(r){ return Date.parse(r.en); }
   };
 
   function visibleRows(){
@@ -5293,28 +5297,28 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   (function(){
     var tb=document.getElementById("agentrows"); if(!tb) return;
     var BUYERS=[
-      {n:"Alicia Nwosu", e:"a.nwosu@email.com", c:"Katy, TX", now:286000, was:240000, st:"ready", by:"Now", want:"Dec 2026",
+      {n:"Alicia Nwosu", add:"12 Mar 2026", e:"a.nwosu@email.com", c:"Katy, TX", now:286000, was:240000, st:"ready", by:"Now", want:"Dec 2026",
         co:"Summit Mortgage", lo:"Marcus Castellano", last:"3 days", ex:592, eq:587, tu:601, upd:"11 Aug",
         moved:"Rent reporting landed. Two years of on-time rent she had already paid went onto her file in one go.", since:"March", head:"nine months, and she is ahead of it"},
-      {n:"Ray Delgado", e:"rdelgado@email.com", c:"Cypress, TX", now:301000, was:265000, st:"ready", by:"Now", want:"Jan 2027",
+      {n:"Ray Delgado", add:"3 May 2026", e:"rdelgado@email.com", c:"Cypress, TX", now:301000, was:265000, st:"ready", by:"Now", want:"Jan 2027",
         co:"Summit Mortgage", lo:"Marcus Castellano", last:"1 week", ex:604, eq:612, tu:599, upd:"13 Aug",
         moved:"A seven-year-old collection finally aged off his file.", since:"May", head:"ten months, and he is ahead of it"},
-      {n:"Maria Gonzalez", e:"maria.g@email.com", c:"Spring, TX", now:265000, was:238000, st:"ready", by:"Now", want:"Nov 2026",
+      {n:"Maria Gonzalez", add:"21 Apr 2026", e:"maria.g@email.com", c:"Spring, TX", now:265000, was:238000, st:"ready", by:"Now", want:"Nov 2026",
         co:"Harborline Mortgage", lo:"Priya Raman", last:"2 days", ex:611, eq:598, tu:604, upd:"12 Aug",
         moved:"She paid two cards down below a third of their limit, which is worth more than paying them off slowly.", since:"April", head:"eight months, and she is ahead of it"},
-      {n:"Tanya Brooks", e:"tbrooks@email.com", c:"Katy, TX", now:310000, was:274000, st:"close", by:"Sep 22", want:"Oct 2026",
+      {n:"Tanya Brooks", add:"28 Mar 2026", e:"tbrooks@email.com", c:"Katy, TX", now:310000, was:274000, st:"close", by:"Sep 22", want:"Oct 2026",
         co:"Harborline Mortgage", lo:"Priya Raman", last:"1 week", ex:634, eq:631, tu:628, upd:"13 Aug",
         moved:"Rent reporting, plus a limit increase she asked for and got without a hard pull.", since:"March", head:"just about &mdash; she clears three weeks before she wants to move"},
-      {n:"Dontae Hill", e:"dhill@email.com", c:"Humble, TX", now:246000, was:231000, st:"close", by:"Sep 30", want:"Nov 2026",
+      {n:"Dontae Hill", add:"9 Feb 2026", e:"dhill@email.com", c:"Humble, TX", now:246000, was:231000, st:"close", by:"Sep 30", want:"Nov 2026",
         co:"Summit Mortgage", lo:"Marcus Castellano", last:"4 days", ex:592, eq:589, tu:583, upd:"13 Aug",
         moved:"Bill reporting went live in July &mdash; electricity and cellphone, both already in his name.", since:"February", head:"comfortable, with about six weeks to spare"},
-      {n:"Denise Alvarez", e:"d.alvarez@email.com", c:"Tomball, TX", now:240000, was:240000, st:"work", by:"Oct 14", want:"Mar 2027",
+      {n:"Denise Alvarez", add:"16 Jul 2026", e:"d.alvarez@email.com", c:"Tomball, TX", now:240000, was:240000, st:"work", by:"Oct 14", want:"Mar 2027",
         co:"Summit Mortgage", lo:"Marcus Castellano", last:"2 weeks", ex:558, eq:551, tu:562, upd:"14 Aug",
         moved:"Nothing yet. Her plan started three weeks ago and the first rent report has not posted.", since:"July", head:"plenty &mdash; she is not in a hurry and neither are you"},
-      {n:"Curtis Vaughn", e:"cvaughn@email.com", c:"Conroe, TX", now:181000, was:174000, st:"work", by:"Nov 30", want:"Dec 2026",
+      {n:"Curtis Vaughn", add:"5 Jun 2026", e:"cvaughn@email.com", c:"Conroe, TX", now:181000, was:174000, st:"work", by:"Nov 30", want:"Dec 2026",
         co:"", lo:"", last:"3 weeks", ex:541, eq:536, tu:529, upd:"9 Aug",
         moved:"A small gain from paying one card down. The bigger moves have not started.", since:"June", head:"tight &mdash; he wants December and clears at the end of November"},
-      {n:"Shauna Pike", e:"spike@email.com", c:"Baytown, TX", now:172000, was:198000, st:"risk", by:"Dec 5", want:"Sep 2026",
+      {n:"Shauna Pike", add:"22 Jan 2026", e:"spike@email.com", c:"Baytown, TX", now:172000, was:198000, st:"risk", by:"Dec 5", want:"Sep 2026",
         co:"", lo:"", last:"5 weeks", ex:528, eq:519, tu:534, upd:"14 Aug",
         moved:"A new collection posted in June and pushed her back. She may not know it is there.", since:"January", head:"gone &mdash; September is not happening, and somebody has to tell her"},
     ];
@@ -5340,7 +5344,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
         });
         if(!rows.length) return;
         seen+=rows.length;
-        html+='<tr class="p6band '+B.k+'"><td colspan="7"><span class="p6bt">'+B.t+'</span>'+
+        html+='<tr class="p6band '+B.k+'"><td colspan="8"><span class="p6bt">'+B.t+'</span>'+
           '<span class="p6bc">'+rows.length+'</span><span class="p6bs">'+B.s+'</span></td></tr>';
         html+=rows.map(function(b){
           var d=b.now-b.was;
@@ -5351,6 +5355,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
             '<td><span class="l1 who">'+esc(b.n)+
               (b.st==="ready"?' <span class="livedot"></span>':'')+'</span>'+
               '<span class="l2">'+esc(b.c)+' &middot; spoke '+b.last+' ago</span></td>'+
+            '<td><span class="l1">'+b.add+'</span></td>'+
             '<td class="ta-r"><span class="l1 p6mid">'+mid3(b)+'</span>'+
               '<span class="l2 p6bur">'+b.ex+'&thinsp;&middot;&thinsp;'+b.eq+'&thinsp;&middot;&thinsp;'+b.tu+
               '<i>&ensp;'+b.upd+'</i></span></td>'+
@@ -5362,7 +5367,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
             '<td class="ta-r act"><button class="btn'+(b.st==="ready"?"":" ghost")+'">'+ACT[b.st]+'</button></td></tr>';
         }).join("");
       });
-      tb.innerHTML = html || '<tr><td colspan="7" style="padding:26px;text-align:center;color:var(--ink-4)">Nobody matches that.</td></tr>';
+      tb.innerHTML = html || '<tr><td colspan="8" style="padding:26px;text-align:center;color:var(--ink-4)">Nobody matches that.</td></tr>';
       var cnt=document.getElementById("acount");
       if(cnt) cnt.textContent = seen+(seen===1?" buyer":" buyers");
     }
