@@ -1553,18 +1553,11 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 #agentrows tr:not(.p6band){cursor:pointer; transition:background .13s}
 #agentrows tr:not(.p6band):hover{background:var(--brand-wash)}
 #agentrows tr:not(.p6band):focus-visible{outline:2px solid var(--brand); outline-offset:-2px}
-.p6price{display:block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:15px;
-  font-weight:600; letter-spacing:-.035em}
-.p6chg{display:block; font-family:var(--mono); font-size:11.5px; font-weight:600; white-space:nowrap; margin-top:2px}
-.p6mid{display:block; font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:16px;
-  font-weight:600; letter-spacing:-.035em; color:var(--ink)}
-.p6bur{display:block; font-family:var(--mono); font-size:10.5px; color:var(--ink-4); margin-top:3px;
-  white-space:nowrap; letter-spacing:-.01em}
-.p6bur i{font-style:normal; color:var(--line-2)}
-.p6lend2{font-size:12.5px; font-weight:600; line-height:1.3}
-.p6lend2 small{display:block; font-weight:400; color:var(--ink-4); font-size:11.5px; margin-top:2px}
+.p6price{font-family:var(--mono); font-variant-numeric:tabular-nums; letter-spacing:-.035em}
+.p6chg{white-space:nowrap}
+.p6mid{font-family:var(--mono); font-variant-numeric:tabular-nums; letter-spacing:-.035em; color:var(--ink)}
 .p6chg.up{color:var(--green)} .p6chg.dn{color:var(--red)} .p6chg.fl{color:var(--ink-4); font-weight:400}
-.p6city{font-size:11.5px; color:var(--ink-4); margin-top:2px}
+
 .p6nol{font-size:11px; font-weight:500; padding:2px 8px; border-radius:20px; background:var(--amber-wash);
   color:var(--amber); white-space:nowrap}
 
@@ -1784,6 +1777,32 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 
 @media (max-width:760px){.pzwho{grid-template-columns:minmax(0,1fr)}
   .pzrow{grid-template-columns:minmax(0,1fr); gap:10px; padding:18px 18px 17px}}
+
+/* ── the agent pipeline, laid out on a grid instead of by accident ── */
+.agtbl{min-width:1075px; table-layout:fixed}
+.agtbl col.cscore{width:165px}
+.agtbl col.coffer{width:132px}
+.agtbl col.cshop{width:92px}
+.agtbl col.cwant{width:108px}
+.agtbl col.clend{width:180px}
+.agtbl col.cact{width:142px}
+.agtbl th{padding:14px 15px 11px}
+.agtbl td{height:auto; padding:13px 15px 14px; vertical-align:top}
+.agtbl td.act{vertical-align:middle; padding-top:9px; padding-bottom:9px}
+/* one shared band for every cell's first line, so the row reads across */
+.agtbl .l1{display:block; line-height:21px; font-size:13px; font-weight:500; color:var(--ink)}
+.agtbl .l2{display:block; line-height:15px; margin-top:4px; font-size:11px; color:var(--ink-4);
+  white-space:nowrap}
+.agtbl .l1.who{font-size:13.5px; font-weight:600; letter-spacing:-.012em}
+.agtbl .l1.p6mid{font-size:17px; font-weight:600}
+.agtbl .l1.p6price{font-size:15px}
+.agtbl td:nth-child(4) .l1, .agtbl td:nth-child(5) .l1{font-weight:400; color:var(--ink-2)}
+.agtbl .l2.p6bur{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:10.5px;
+  letter-spacing:-.02em; color:var(--ink-3)}
+.agtbl .l2.p6bur i{font-style:normal; color:var(--ink-4)}
+.agtbl .l2.p6chg{font-family:var(--mono); font-size:11px; font-weight:600; margin-top:3px}
+.agtbl .p6nol{font-weight:500}
+.agtbl .p6band td{padding:10px 15px !important}
 
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 </style>
@@ -2773,7 +2792,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     <span class="cnt2" id="acount">8 buyers</span>
   </div>
 
-  <div class="tablewrap"><table>
+  <div class="tablewrap"><table class="agtbl">
+    <colgroup><col class="cbuy"><col class="cscore"><col class="coffer"><col class="cshop"><col class="cwant"><col class="clend"><col class="cact"></colgroup>
     <thead><tr><th>Buyer</th><th class="ta-r">Qualifying score</th><th class="ta-r">Can offer</th>
       <th>Can shop</th><th>Wants to move</th><th>Their lender</th><th class="ta-r">Action</th></tr></thead>
     <tbody id="agentrows"></tbody>
@@ -4937,21 +4957,22 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
           '<span class="p6bc">'+rows.length+'</span><span class="p6bs">'+B.s+'</span></td></tr>';
         html+=rows.map(function(b){
           var d=b.now-b.was;
-          var chg = d>0 ? '<span class="p6chg up">&#9650; '+money(d)+'</span>'
-                  : d<0 ? '<span class="p6chg dn">&#9660; '+money(-d)+'</span>'
-                        : '<span class="p6chg fl">no change</span>';
+          var chg = d>0 ? '<span class="l2 p6chg up">&#9650; '+money(d)+'</span>'
+                  : d<0 ? '<span class="l2 p6chg dn">&#9660; '+money(-d)+'</span>'
+                        : '<span class="l2 p6chg fl">no change</span>';
           return '<tr tabindex="0" data-ak="'+esc(b.n)+'">'+
-            '<td><div class="who">'+esc(b.n)+
-              (b.st==="ready"?' <span class="livedot"></span>':'')+'</div>'+
-              '<div class="p6city">'+esc(b.c)+' &middot; spoke '+b.last+' ago</div></td>'+
-            '<td class="ta-r"><span class="p6mid">'+mid3(b)+'</span>'+
-              '<span class="p6bur">'+b.ex+' &middot; '+b.eq+' &middot; '+b.tu+'<i> &middot; '+b.upd+'</i></span></td>'+
-            '<td class="ta-r"><span class="p6price">'+money(b.now)+'</span>'+chg+'</td>'+
-            '<td class="upd">'+b.by+'</td>'+
-            '<td class="upd">'+b.want+'</td>'+
-            '<td>'+(b.co?'<div class="p6lend2">'+esc(b.co)+'<small>'+esc(b.lo)+'</small></div>'
-                        :'<span class="p6nol">Not introduced</span>')+'</td>'+
-            '<td class="ta-r"><button class="btn'+(b.st==="ready"?"":" ghost")+'">'+ACT[b.st]+'</button></td></tr>';
+            '<td><span class="l1 who">'+esc(b.n)+
+              (b.st==="ready"?' <span class="livedot"></span>':'')+'</span>'+
+              '<span class="l2">'+esc(b.c)+' &middot; spoke '+b.last+' ago</span></td>'+
+            '<td class="ta-r"><span class="l1 p6mid">'+mid3(b)+'</span>'+
+              '<span class="l2 p6bur">'+b.ex+'&thinsp;&middot;&thinsp;'+b.eq+'&thinsp;&middot;&thinsp;'+b.tu+
+              '<i>&ensp;'+b.upd+'</i></span></td>'+
+            '<td class="ta-r"><span class="l1 p6price">'+money(b.now)+'</span>'+chg+'</td>'+
+            '<td><span class="l1">'+b.by+'</span></td>'+
+            '<td><span class="l1">'+b.want+'</span></td>'+
+            '<td>'+(b.co?'<span class="l1">'+esc(b.co)+'</span><span class="l2">'+esc(b.lo)+'</span>'
+                        :'<span class="l1"><span class="p6nol">Not introduced</span></span>')+'</td>'+
+            '<td class="ta-r act"><button class="btn'+(b.st==="ready"?"":" ghost")+'">'+ACT[b.st]+'</button></td></tr>';
         }).join("");
       });
       tb.innerHTML = html || '<tr><td colspan="7" style="padding:26px;text-align:center;color:var(--ink-4)">Nobody matches that.</td></tr>';
