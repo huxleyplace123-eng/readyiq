@@ -2222,6 +2222,127 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
 
 /* ══════════════════════════════════════════════════════════════════════
+   THE PRODUCTS, DOING VISIBLE WORK
+   Brand marks reuse the dot colours already defined for the pipeline, so
+   a product reads the same everywhere it appears.
+   ══════════════════════════════════════════════════════════════════════ */
+.brandhd{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:8px}
+/* the brand keeps its own casing — MyScoreIQ, not MYSCOREIQ. Every other
+   label in this document is uppercased; a product name is not a label. */
+.brandby{font-size:11px; font-weight:600; letter-spacing:-.005em;
+  color:#0081FF; padding:3px 9px; border-radius:20px; background:rgba(0,129,255,.09)}
+.brandby.build{color:#0089A6; background:rgba(0,180,216,.12)}
+
+/* the refresh trace */
+.mtrace{margin-top:14px; padding:13px 14px 11px; border:1px solid var(--line);
+  border-radius:var(--r-md); background:var(--surface-2)}
+.mth{display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:11px}
+.mth>span:first-child{font-size:10px; font-weight:500; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink-4)}
+.mtd{font-size:12px; font-weight:600; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.mtd.up{color:var(--green)} .mtd.dn{color:var(--red)}
+.mtrow{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:6px; align-items:end}
+.mtc{display:flex; flex-direction:column; align-items:center; gap:5px; min-width:0}
+.mtb{width:100%; height:34px; display:flex; align-items:flex-end}
+.mtb i{display:block; width:100%; border-radius:3px 3px 0 0; background:var(--line-2)}
+.mtc.now .mtb i{background:#0081FF}
+.mtc b{font-size:12.5px; font-weight:600; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.mtc.now b{color:var(--ink); font-size:13.5px}
+.mtc em{font-style:normal; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-4)}
+.mtf{margin-top:10px; font-size:11px; line-height:1.5; color:var(--ink-4)}
+
+/* the plan */
+.pltop{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; padding-bottom:13px;
+  margin-bottom:14px; border-bottom:1px solid var(--line)}
+.pvgap{font-size:30px; font-weight:600; letter-spacing:-.03em; color:var(--brand); line-height:1}
+.pvgap small{display:block; margin-top:4px; font-size:11.5px; font-weight:500; letter-spacing:0;
+  color:var(--ink-3)}
+.pvok{font-size:20px; font-weight:600; letter-spacing:-.02em; color:var(--green)}
+.plsub{margin-left:auto; font-size:12px; color:var(--ink-3); text-align:right}
+.plsub b{color:var(--ink); font-weight:600}
+
+.plshelf{display:flex; flex-direction:column; gap:8px}
+.plrow{display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; gap:12px; align-items:start;
+  padding:13px 14px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface)}
+.plrow.running{border-color:var(--green-line); background:var(--green-wash)}
+.plrow.locked{border-style:dashed; background:var(--surface-2)}
+.plrow.held, .plrow.spare{opacity:.6}
+.plrk{width:20px; height:20px; border-radius:50%; background:var(--ink); color:#fff; font-size:11px;
+  font-weight:600; display:grid; place-items:center; flex:none}
+.plrow.locked .plrk, .plrow.held .plrk, .plrow.spare .plrk{background:var(--ink-4)}
+.plnm{font-size:13.5px; font-weight:600; color:var(--ink); letter-spacing:-.012em; min-width:0}
+.plnm small{display:block; margin-top:3px; font-size:11.5px; font-weight:400; line-height:1.5;
+  color:var(--ink-3)}
+.plest{font-size:13px; font-weight:600; color:var(--ink); white-space:nowrap; text-align:right;
+  font-variant-numeric:tabular-nums}
+.plest small{display:block; margin-top:3px; font-size:10.5px; font-weight:400; color:var(--ink-4);
+  white-space:normal; max-width:130px}
+.plst{font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap;
+  padding:4px 9px; border-radius:20px; background:var(--surface-3); color:var(--ink-3)}
+.plst.running{background:var(--green); color:#fff}
+.plst.enrolled{background:var(--green-wash); color:var(--green); box-shadow:inset 0 0 0 1px var(--green-line)}
+.plst.avail{background:var(--teal-wash); color:var(--teal)}
+.plst.locked{background:var(--brand-wash); color:var(--brand)}
+
+.plnote{margin-top:14px; padding:12px 14px; border-radius:var(--r-sm); font-size:12.5px; line-height:1.55;
+  border:1px solid var(--line); background:var(--surface-2); color:var(--ink-2)}
+.plnote b{color:var(--ink); font-weight:600}
+.plnote.ok{background:var(--green-wash); border-color:var(--green-line)}
+.plnote.run{background:var(--green-wash); border-color:var(--green-line)}
+.plnote.warn{background:var(--brand-wash); border-color:var(--brand-line)}
+.plnote.stop{background:var(--red-wash); border-color:var(--red-line)}
+.pldate{margin-top:12px; padding:13px 15px; border-radius:var(--r-md); background:var(--ink); color:#fff;
+  display:grid; grid-template-columns:auto auto 1fr; gap:4px 12px; align-items:baseline}
+.pldate span{font-size:10px; font-weight:500; letter-spacing:.09em; text-transform:uppercase; color:#9DBACB}
+.pldate b{font-size:17px; font-weight:600; letter-spacing:-.02em}
+.pldate small{grid-column:1/-1; margin-top:5px; font-size:11.5px; line-height:1.5; color:#B9CEDA}
+.plup{margin-top:12px; padding:13px 15px; border-radius:var(--r-md); background:var(--brand-wash);
+  border:1px solid var(--brand-line); display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.plup span{flex:1; min-width:190px; font-size:12.5px; line-height:1.5; color:var(--ink-2)}
+.plup b{color:var(--ink); font-weight:600}
+
+/* the signal that put someone on today's list */
+.tdsig{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px}
+.tdsp{font-size:10.5px; font-weight:600; letter-spacing:-.005em; padding:3px 9px; border-radius:20px}
+.tdsp.score{color:#0081FF; background:rgba(0,129,255,.09)}
+.tdsp.build{color:#0089A6; background:rgba(0,180,216,.12)}
+.tdsw{font-size:11.5px; font-weight:600; color:var(--ink-2)}
+.tdsd{font-size:11.5px; color:var(--ink-4); min-width:0}
+
+/* the book by tier */
+#sb-tiers{display:flex; flex-direction:column; gap:9px}
+.sbt{display:grid; grid-template-columns:88px auto minmax(90px,1fr) auto; gap:6px 14px;
+  align-items:center; padding:13px 15px; border:1px solid var(--line); border-radius:var(--r-md);
+  background:var(--surface)}
+.sbt.build{border-color:var(--green-line); background:var(--green-wash)}
+.sbt.zero{opacity:.55}
+.sbtn{font-size:12px; font-weight:600; letter-spacing:.07em; color:var(--ink)}
+.sbtc{font-size:19px; font-weight:600; letter-spacing:-.02em; color:var(--ink); white-space:nowrap;
+  font-variant-numeric:tabular-nums}
+.sbtc small{margin-left:5px; font-size:11px; font-weight:400; color:var(--ink-4)}
+.sbtbar{height:6px; border-radius:3px; background:var(--surface-3); overflow:hidden}
+.sbtbar i{display:block; height:100%; background:var(--ink-3); border-radius:3px}
+.sbt.build .sbtbar i{background:var(--green)}
+.sbtv{font-size:13px; font-weight:600; color:var(--ink); white-space:nowrap; text-align:right;
+  font-variant-numeric:tabular-nums}
+.sbtv small{display:block; margin-top:2px; font-size:10px; font-weight:400; color:var(--ink-4)}
+.sbtd{grid-column:1/-1; font-size:11.5px; line-height:1.5; color:var(--ink-3)}
+
+.sbup{display:flex; flex-direction:column; gap:8px}
+.sbur{display:grid; grid-template-columns:minmax(0,1fr) auto auto auto auto; gap:12px; align-items:center;
+  padding:11px 14px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface)}
+.sburn{font-size:13.5px; font-weight:600; color:var(--ink); letter-spacing:-.012em; min-width:0}
+.sburn small{display:block; margin-top:2px; font-size:11px; font-weight:400; color:var(--ink-4)}
+.sburg, .sburc, .sburv{font-size:14px; font-weight:600; color:var(--ink); white-space:nowrap;
+  text-align:right; font-variant-numeric:tabular-nums}
+.sburc{color:var(--green)}
+.sburg small, .sburc small, .sburv small{display:block; margin-top:2px; font-size:9.5px; font-weight:400;
+  letter-spacing:.05em; text-transform:uppercase; color:var(--ink-4)}
+.sbtot{margin-top:13px; padding:12px 14px; border-radius:var(--r-sm); background:var(--surface-2);
+  border:1px solid var(--line); font-size:12.5px; line-height:1.55; color:var(--ink-2)}
+.sbtot b{color:var(--ink); font-weight:600}
+
+/* ══════════════════════════════════════════════════════════════════════
    MOBILE PASS
    Everything above was drawn for a desktop dashboard. The page grid was
    already collapsing to one column, but the app chrome, the type scale,
@@ -2403,6 +2524,40 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
    sideways on a 320px screen — so they carry their own scroll container. */
 @media (max-width:760px){
   .gmt, .cttbl{display:block; overflow-x:auto; -webkit-overflow-scrolling:touch}
+}
+
+/* ── the new product surfaces, on a phone ──
+   All four are multi-column grids built for a desktop drawer or page. Each
+   collapses to a single readable column rather than shrinking its columns. */
+@media (max-width:760px){
+  /* the drawer picked up a fifth tab, so the strip scrolls like the others */
+  .dtabs{overflow-x:auto; scrollbar-width:none; gap:18px}
+  .dtabs::-webkit-scrollbar{display:none}
+  .dtabs button{white-space:nowrap}   /* "Credit report" was wrapping mid-tab */
+  .dtabs[data-overflow="1"]{
+    -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);
+    mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent)}
+
+  .mtrow{gap:4px}
+  .mtc b{font-size:11.5px} .mtc.now b{font-size:12.5px}
+  .mtc em{font-size:8.5px; letter-spacing:.03em}
+
+  .plsub{margin-left:0; text-align:left; flex:1 1 100%}
+  .plrow{grid-template-columns:auto minmax(0,1fr); row-gap:9px}
+  .plrow .plest{grid-column:2; text-align:left}
+  .plrow .plest small{max-width:none}
+  .plrow .plst{grid-column:2; justify-self:start}
+  .pldate{grid-template-columns:auto 1fr}
+
+  .sbt{grid-template-columns:auto 1fr; row-gap:8px}
+  .sbt .sbtbar{grid-column:1/-1}
+  .sbt .sbtv{text-align:left; grid-column:1/-1}
+  .sbt .sbtv small{display:inline; margin-left:6px}
+  .sbur{grid-template-columns:minmax(0,1fr) auto; row-gap:9px}
+  .sbur .sburg, .sbur .sburc{text-align:left}
+  .sbur .sburv{grid-column:1/-1; text-align:left}
+  .sbur .sburv small{display:inline; margin-left:6px}
+  .sbur .btn{grid-column:1/-1; width:100%; justify-content:center}
 }
 
 /* tables that stay tables still need to announce that they scroll */
@@ -2944,6 +3099,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     <button role="tab" aria-selected="false" data-sub="build">Credit building</button>
     <button role="tab" aria-selected="false" data-sub="closed">Closed loans</button>
     <button role="tab" aria-selected="false" data-sub="bring">Marketing</button>
+    <button role="tab" aria-selected="false" data-sub="subs">Subscriptions</button>
     <button role="tab" aria-selected="false" data-sub="crm">In their CRM</button>
   </nav>
 
@@ -3326,6 +3482,36 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       <div class="row"><div class="lab">How to reach them</div><select><option selected>Email and text</option><option>Email only</option></select></div>
       <button class="btn" style="margin-top:16px">Send 3,412 invitations</button>
     </div>
+  </section>
+
+  <section id="s-subs" hidden>
+    <div class="pagehead">
+      <div><h2>Subscriptions</h2>
+        <p>What this book is actually on, what each tier is doing for it, and where the next tier
+        would change an outcome rather than just a line item.</p></div>
+    </div>
+
+    <div class="stats" id="sb-stats" style="margin-bottom:20px"></div>
+
+    <div class="pblock" style="margin-bottom:22px">
+      <div class="pbh"><h3>The book by tier</h3>
+        <p>Every borrower sits on one tier. The question this answers is not how many seats are sold
+        &mdash; it is how many files are being watched when they could be worked.</p></div>
+      <div class="pbb tight"><div id="sb-tiers"></div></div>
+    </div>
+
+    <div class="pblock" style="margin-bottom:22px">
+      <div class="pbh"><h3>Where BUILD would change the answer</h3>
+        <p>Not everyone short of their threshold. Only the files where the gap is inside what the
+        retroactive levers cover, and the only thing standing between the borrower and a date is the
+        tier they are on. Ranked by the loan behind them.</p></div>
+      <div class="pbb tight"><div id="sb-upgrade"></div></div>
+    </div>
+
+    <div class="notice"><strong>Seats and loan volume, not revenue.</strong> IDIQ&rsquo;s price card is
+    yours and this document does not guess at it &mdash; the same reason the add-on prices on the
+    pricing page read &ldquo;+$X&rdquo;. Everything counted here is a borrower on a tier and the loan
+    sitting behind them, both of which come off the sample book above.</div>
   </section>
 
     <section id="s-crm" hidden>
@@ -4137,6 +4323,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     </div>
     <nav class="dtabs" role="tablist" aria-label="Client sections">
       <button role="tab" aria-selected="true" data-dt="overview">Overview</button>
+      <button role="tab" aria-selected="false" data-dt="plan">Plan</button>
       <button role="tab" aria-selected="false" data-dt="report">Credit report</button>
       <button role="tab" aria-selected="false" data-dt="programs">Programs</button>
       <button role="tab" aria-selected="false" data-dt="activity">Activity</button>
@@ -4149,11 +4336,15 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
       <div class="goal" id="d-goal"></div>
       <div class="cash" id="d-cash"></div>
       <div>
-        <div class="eyebrow" style="margin-bottom:8px">Current scores</div>
+        <div class="brandhd">
+          <span class="eyebrow">Current scores</span>
+          <span class="brandby" id="d-scoreby">MyScoreIQ</span>
+        </div>
         <div class="scoregrid" id="d-scores"></div>
         <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:11.5px;color:var(--ink-4)">
           <span>Last refreshed <span id="d-upd" style="color:var(--ink-2)"></span></span><span>Next pull <span style="color:var(--ink-2)">Sep 12</span></span>
         </div>
+        <div id="d-trace"></div>
       </div>
       <div class="dgrid">
         <div class="dcol"><h4>Contact</h4><div id="d-contact"></div></div>
@@ -4170,6 +4361,14 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
         <div class="draft"><div class="dl">Drafted for you</div><span id="d-draft"></span></div>
         <div style="display:flex;gap:9px;margin-top:11px;flex-wrap:wrap"><button class="btn">Send text</button><button class="btn ghost">Edit</button></div>
       </div>
+    </div>
+
+    <div class="dpane" id="dp-plan" hidden>
+      <div class="brandhd">
+        <span class="eyebrow">The plan for this file</span>
+        <span class="brandby build">CreditBuilderIQ</span>
+      </div>
+      <div id="d-plan"></div>
     </div>
 
     <div class="dpane" id="dp-report" hidden>
@@ -4325,6 +4524,298 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   function prodTitle(r){
     return prodsFor(r).map(function(k){return PRODUCT_META[k].label;}).join(" + ")+
       (MONITORED[r.pl]?" + monitoring":"")+"  ("+r.pl+")";
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     THE TWO PRODUCTS, DOING VISIBLE WORK
+
+     Everything below exists to answer one question on a file: what is this
+     subscription actually doing, and what would the next tier do? Nothing
+     here invents a capability. The lever ranges are the ones this deck
+     already publishes on the shelf, quoted at their LOW end; tier
+     availability is read off the pricing matrix, which puts rent,
+     utility/telecom and builder tools on BUILD; and IDIQ's own price card
+     stays "$X", the way the rest of the document leaves it.
+     ══════════════════════════════════════════════════════════════════════ */
+
+  /* The document is written as August 2026 — "Aug 13 · Yesterday" on the
+     freshest record. Fixed rather than live so the demo never drifts. */
+  var NOW=new Date(2026,7,14);
+  var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function seedOf(s){ var h=0; for(var i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return h; }
+  function monthsSince(str){
+    var d=Date.parse(str); if(isNaN(d)) return null;
+    d=new Date(d);
+    return (NOW.getFullYear()-d.getFullYear())*12 + (NOW.getMonth()-d.getMonth());
+  }
+
+  /* ── MyScoreIQ: the refresh trace ──
+     Illustrative sample history. Only the three current bureau scores are
+     "live" in this demo; the months behind them are generated from the
+     borrower's own trend, so the shape is honest about direction and pace
+     without inventing a precise past. Conservative by construction — the
+     whole window moves by exactly the trend already on the record, never
+     more — and deterministic, so a file reads the same every time. */
+  var HIST_MONTHS=6;
+  function scoreHist(r){
+    if(r.__hist) return r.__hist;
+    var n=HIST_MONTHS, cur=mid(r), move=parseFloat(String(r.t).replace("−","-"))||0;
+    var seed=seedOf(r.n), w=[], tot=0, i;
+    for(i=0;i<n-1;i++){ var v=((seed>>>(i*3))&7)+2; w.push(v); tot+=v; }
+    var pts=new Array(n); pts[n-1]=cur;
+    var acc=0;
+    for(i=n-2;i>=0;i--){ acc+=move*w[n-2-i]/tot; pts[i]=Math.round(cur-acc); }
+    var out=[];
+    for(i=0;i<n;i++){
+      var d=new Date(2026, 7-(n-1-i), 1);
+      out.push({label:MON[d.getMonth()], v:pts[i], last:i===n-1});
+    }
+    r.__hist=out; return out;
+  }
+
+  /* ── CreditBuilderIQ: the shelf, per file ──
+     The essay version of this shelf is hand-written for three borrowers.
+     This is the same shelf as an engine, so it can sit on every file. */
+  var LEVER_META={
+    rent:{k:"rent", n:"Rent reporting", by:"Resident-Link",
+      lo:18, hi:30, retro:true, lands:"about 30 days",
+      what:"A rental tradeline with month-by-month history, backdated up to 24 months. "+
+           "The strongest single lever, and on a thin file often worth more than the rest together."},
+    bill:{k:"bill", n:"Utility + telecom reporting", by:"CreditBuilderIQ",
+      lo:8, hi:15, retro:true, lands:"about 30 days",
+      what:"Positive history from recurring accounts they already pay. One product, one price, "+
+           "whatever they choose to connect."},
+    line:{k:"line", n:"Credit builder line", by:"CreditBuilderIQ",
+      lo:0, hi:0, retro:false, lands:"a payment at a time",
+      what:"A new revolving tradeline reported monthly. The only lever that adds capacity, "+
+           "and the only one that starts from zero the day it opens."}
+  };
+  /* Straight off the pricing matrix — the building levers are BUILD-only,
+     and the readiness engine that ranks them starts at PLAN. */
+  var LEVER_TIER="BUILD", ENGINE_TIERS={PLAN:1, BUILD:1};
+
+  function planFor(r){
+    if(r.__plan) return r.__plan;
+    var gap=gapOf(r), live=(r.pl===LEVER_TIER), engine=!!ENGINE_TIERS[r.pl];
+    var held=!!r.disp, steps=[], need=gap, i;
+    /* Retroactive first: both land in about a month, where the builder line
+       has to be built a payment at a time. Only reach for the slow one if
+       the fast two do not cover the gap. */
+    var order=["rent","bill","line"];
+    for(i=0;i<order.length;i++){
+      var L=LEVER_META[order[i]], take;
+      if(held) take="held";
+      else if(need<=0) take="spare";
+      else take="use";
+      if(take==="use" && L.lo) need-=L.lo;
+      else if(take==="use") need=need;   /* the line's lift varies; never counted */
+      steps.push({L:L, use:take, lo:L.lo, hi:L.hi});
+      if(take==="use" && !L.lo) break;   /* nothing quantifiable beyond it */
+    }
+    /* what the quantifiable levers cover, at the low end of their range */
+    var coverLo=0;
+    steps.forEach(function(s){ if(s.use==="use") coverLo+=s.lo; });
+    var enrolledM = live ? monthsSince(r.en) : null;
+    var landed = live && enrolledM!==null && enrolledM>=1;
+    var p={
+      gap:gap, held:held, live:live, engine:engine, steps:steps,
+      coverLo:coverLo, covers:coverLo>=gap,
+      enrolledM:enrolledM, landed:landed,
+      realized:landed ? Math.min(coverLo, LEVER_META.rent.lo) : 0,
+      eta:r.eta||null
+    };
+    r.__plan=p; return p;
+  }
+
+  /* ── the refresh trace, drawn as position-within-range ──
+     Deliberately not a bar chart off a zero baseline: a credit score has no
+     meaningful zero, and a bar from zero would make a 22-point move look
+     like nothing. The bar encodes where the month sits between the window's
+     own low and high, the number is exact, and the range is printed so
+     nobody has to guess the baseline. */
+  function renderTrace(r){
+    var slot=document.getElementById("d-trace"); if(!slot) return;
+    var h=scoreHist(r), n=h.length;
+    var vals=h.map(function(p){ return p.v; });
+    var lo=Math.min.apply(null,vals), hi=Math.max.apply(null,vals);
+    var span=Math.max(hi-lo,1), move=vals[n-1]-vals[0];
+    var cells=h.map(function(p){
+      var pctH=18+Math.round(((p.v-lo)/span)*82);
+      return '<span class="mtc'+(p.last?" now":"")+'">'+
+        '<span class="mtb"><i style="height:'+pctH+'%"></i></span>'+
+        '<b>'+p.v+'</b><em>'+p.label+'</em></span>';
+    }).join("");
+    slot.innerHTML=
+      '<div class="mtrace">'+
+        '<div class="mth"><span>Qualifying score, monthly refresh</span>'+
+          '<span class="mtd '+(move>0?"up":move<0?"dn":"")+'">'+
+            (move>0?"+":"")+move+' across the window</span></div>'+
+        '<div class="mtrow">'+cells+'</div>'+
+        '<div class="mtf">Bars show each month against this window’s range, '+lo+'–'+hi+
+        ' — not a zero baseline. Months behind the current pull are sample history.</div>'+
+      '</div>';
+  }
+
+  /* ── the book, by what it is paying for ──
+     Counts seats and the loan volume behind them. Deliberately no revenue:
+     IDIQ's price card is theirs, and this document leaves it "+$X". */
+  (function(){
+    var box=document.getElementById("sb-tiers"); if(!box) return;
+    var ORDER=["CHECK","FULL","PLAN","BUILD"];
+    var NOTE={
+      CHECK:"One bureau, a rough verdict. No monitoring, no plan, no levers.",
+      FULL:"Three bureaus, monitoring, the portal. Nothing yet that moves a score.",
+      PLAN:"The readiness engine — gap, ranking, date. The levers to act on it are one tier up.",
+      BUILD:"The whole shelf, running. Rent and utility history backdated, builder tools available."
+    };
+    var byTier={}, vol={}, n=EVERYONE.length, attach=0;
+    ORDER.forEach(function(t){ byTier[t]=0; vol[t]=0; });
+    EVERYONE.forEach(function(r){
+      var t=ORDER.indexOf(r.pl)>-1?r.pl:"CHECK";
+      byTier[t]++; vol[t]+=(r.pow||0); attach+=prodsFor(r).length;
+    });
+    var onBuild=byTier.BUILD, watched=byTier.CHECK+byTier.FULL;
+
+    /* files BUILD would actually change: short of the threshold, nothing
+       held, and the gap inside what the retroactive levers cover */
+    var up=[];
+    EVERYONE.forEach(function(r){
+      if(r.pl===LEVER_TIER) return;
+      var p=planFor(r);
+      if(p.held || p.gap<=0 || !p.covers) return;
+      up.push({r:r, gap:p.gap, cover:p.coverLo, pow:r.pow||0});
+    });
+    up.sort(function(a,b){ return b.pow-a.pow; });
+    var upVol=up.reduce(function(a,x){ return a+x.pow; },0);
+
+    var st=document.getElementById("sb-stats");
+    if(st) st.innerHTML=
+      /* the sample book, not the 214 the pipeline header quotes — said
+         plainly so the two numbers never read as a contradiction */
+      '<div class="stat"><span class="k">Files in this sample</span><span class="v">'+n+'</span></div>'+
+      '<div class="stat"><span class="k">On BUILD</span><span class="v">'+onBuild+
+        ' <small>of '+n+'</small></span></div>'+
+      '<div class="stat hot"><span class="k">Watched, not worked</span><span class="v">'+watched+'</span></div>'+
+      '<div class="stat"><span class="k">Products per file</span><span class="v">'+
+        (attach/n).toFixed(1)+'</span></div>';
+
+    box.innerHTML=ORDER.map(function(t){
+      var c=byTier[t], pct=n?Math.round(c/n*100):0;
+      return '<div class="sbt'+(t===LEVER_TIER?" build":"")+(c?"":" zero")+'">'+
+        '<span class="sbtn">'+t+'</span>'+
+        '<span class="sbtc">'+c+'<small>'+(c===1?"file":"files")+'</small></span>'+
+        '<span class="sbtbar"><i style="width:'+pct+'%"></i></span>'+
+        '<span class="sbtv">'+money0(vol[t])+'<small>loan volume</small></span>'+
+        '<span class="sbtd">'+NOTE[t]+'</span></div>';
+    }).join("");
+
+    var ub=document.getElementById("sb-upgrade");
+    if(ub) ub.innerHTML = up.length
+      ? '<div class="sbup">'+up.map(function(x){
+          return '<div class="sbur"><span class="sburn">'+esc(x.r.n)+
+            '<small>'+esc(x.r.p)+' · on '+esc(x.r.pl)+'</small></span>'+
+            '<span class="sburg">'+x.gap+'<small>points short</small></span>'+
+            '<span class="sburc">+'+x.cover+'<small>covered, low end</small></span>'+
+            '<span class="sburv">'+money0(x.pow)+'<small>purchase power</small></span>'+
+            '<button class="btn ghost" data-k="'+esc(x.r.n)+'">Open</button></div>';
+        }).join("")+'</div>'+
+        '<div class="sbtot"><b>'+up.length+' file'+(up.length===1?"":"s")+'</b> where the gap is inside '+
+        'what the retroactive levers cover at their low end, carrying <b>'+money0(upVol)+'</b> of '+
+        'purchase power. Every one of them has a date available and no way to reach it on the tier '+
+        'they are on.</div>'
+      : '<div class="sbtot">Nothing on this book is blocked by tier alone right now.</div>';
+
+    if(ub) ub.addEventListener("click",function(e){
+      var b=e.target.closest("[data-k]"); if(b) openDrawer(b.getAttribute("data-k"));
+    });
+  })();
+
+  /* ── the plan, per file ── */
+  function renderPlan(r){
+    var slot=document.getElementById("d-plan"); if(!slot) return;
+    var p=planFor(r), m=mid(r), thr=THRESH[r.p], h="";
+
+    /* the headline: gap, what the shelf covers, and the date it buys */
+    var verdict = p.gap===0
+      ? '<span class="pvok">Qualifies today</span>'
+      : '<span class="pvgap">'+p.gap+'<small>points short of '+esc(r.p)+'</small></span>';
+    h+='<div class="pltop">'+verdict+
+       '<span class="plsub">Qualifying '+m+' · needs '+thr+' · on <b>'+esc(r.pl)+'</b></span></div>';
+
+    if(p.gap===0){
+      h+='<div class="plnote ok"><b>Nothing to build.</b> The plan here is to hold the score still '+
+         'until the file closes — no new accounts, no balance moves, no shopping around. '+
+         'Monitoring stays on so a surprise gets caught before underwriting finds it.</div>';
+      slot.innerHTML=h; return;
+    }
+
+    if(p.held){
+      h+='<div class="plnote stop"><b>Everything is held.</b> '+r.disp+' tradeline'+(r.disp>1?"s are":" is")+
+         ' flagged as disputed. Automated underwriting pulls a flagged line out of the assessment, so '+
+         'this borrower could add thirty points and still get the same answer. Clear the flags with each '+
+         'bureau first, then the shelf below opens in order.</div>';
+    }
+
+    /* the ranked shelf */
+    var rows=p.steps.map(function(s,i){
+      var L=s.L, est = L.lo ? "+"+L.lo+" to +"+L.hi : "Varies";
+      /* "Running" is only honest for the retroactive levers, which switch on
+         with the tier and post by themselves. BUILD gives a borrower the
+         builder tools; actually opening a tradeline is still their move. */
+      var state = p.held ? "held"
+        : s.use==="spare" ? "spare"
+        : !p.live ? "locked"
+        : !L.retro ? "avail"
+        : p.landed ? "running" : "enrolled";
+      var stateLab = {held:"Held", spare:"Not needed", running:"Running", enrolled:"Backfill pending",
+        avail:"Available", locked:"Needs BUILD"}[state];
+      return '<div class="plrow '+state+'">'+
+        '<span class="plrk">'+(i+1)+'</span>'+
+        '<span class="plnm">'+L.n+'<small>'+L.what+'</small></span>'+
+        '<span class="plest">'+est+'<small>'+(L.retro?"backdated, lands in "+L.lands:"builds "+L.lands)+'</small></span>'+
+        '<span class="plst '+state+'">'+stateLab+'</span></div>';
+    }).join("");
+    /* the footnote belongs to the shelf, so it only appears with one — a
+       borrower who qualifies today is not shown ranges to disclaim */
+    h+='<div class="plshelf">'+rows+'</div>'+
+       '<div class="notice"><strong>Ranges are the shelf&rsquo;s, quoted at the low end.</strong> Rent '+
+       'and utility history are retroactive &mdash; they land about a month after switch-on and carry '+
+       'existing history with them. A builder line reports from the day it opens, which is why the '+
+       'engine only reaches for it when the retroactive levers cannot close the gap on their own.</div>';
+
+    if(p.held){ slot.innerHTML=h; return; }
+
+    /* what it adds up to — and who has to be paying for it */
+    var covers = p.covers
+      ? 'The two retroactive levers cover the gap on their own at the low end of their range — '+
+        p.coverLo+' points against '+p.gap+' needed.'
+      : 'At the low end the retroactive levers are worth '+p.coverLo+' points against '+p.gap+' needed, '+
+        'so the builder line has to carry the rest and the date moves out with it.';
+
+    if(p.live){
+      var prog = p.landed
+        ? '<b>Backfill has landed.</b> Enrolled '+esc(r.en)+', '+p.enrolledM+' month'+(p.enrolledM===1?"":"s")+
+          ' ago. The record shows '+esc(r.t)+' since, against a low estimate of +'+p.realized+' for the '+
+          'backfill alone — the rest is ordinary month-to-month movement.'
+        : '<b>Backfill has not landed yet.</b> Enrolled '+esc(r.en)+'. Rent history takes about thirty '+
+          'days to post, so the next refresh is the one that should move.';
+      h+='<div class="plnote run">'+prog+'</div>';
+      h+='<div class="pldate"><span>Ready by</span><b>'+esc(p.eta||"—")+'</b>'+
+         '<small>'+covers+'</small></div>';
+    } else if(p.engine){
+      h+='<div class="plnote warn"><b>The plan is here. The levers are not.</b> '+esc(r.pl)+' runs the '+
+         'readiness engine — the gap, the ranking, the date. Rent, utility and builder tools are on '+
+         'BUILD, so today this file has a plan nobody can execute.'+covers+'</div>';
+      h+='<div class="plup"><span>Moving them to <b>BUILD</b> turns this list from a recommendation into '+
+         'work that starts next month.</span><button class="btn">Upgrade to BUILD</button></div>';
+    } else {
+      h+='<div class="plnote warn"><b>No plan on '+esc(r.pl)+'.</b> The readiness engine starts at PLAN '+
+         'and the levers that build history are on BUILD. Today this borrower is being watched, not '+
+         'worked. '+covers+'</div>';
+      h+='<div class="plup"><span>The whole gap above is addressable, but not on this tier.</span>'+
+         '<button class="btn">Upgrade to BUILD</button></div>';
+    }
+    slot.innerHTML=h;
   }
 
   /* Sample tri-merge. The three bureau scores come from the live record; the
@@ -4799,6 +5290,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     }
     document.getElementById("d-scores").innerHTML=sh;
     document.getElementById("d-upd").textContent=r.u+" ("+r.ua.toLowerCase()+")";
+    renderTrace(r);
+    renderPlan(r);
 
     /* what the next score move is worth, in payment rather than points */
     (function(){
@@ -4936,7 +5429,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     document.querySelector(".dbody").scrollTop=0;
   }
   function setPane(id){
-    ["overview","report","programs","activity"].forEach(function(x){
+    ["overview","plan","report","programs","activity"].forEach(function(x){
       document.getElementById("dp-"+x).hidden=(x!==id);
     });
     var db=document.querySelector(".dbody"); if(db) db.scrollTop=0;
@@ -5878,24 +6371,32 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     var out=[];
     EVERYONE.forEach(function(r){
       var m=mid(r), g=gapOf(r), miss=missed(r), w=worthOf(r);
+      /* Every row below is here because a product noticed something. The
+         signal line names which one and what it saw — the same monitoring
+         and readiness output the tiers are sold on, credited rather than
+         left anonymous. */
       if(r.flag){
         out.push({r:r, k:"risk", tag:"Call today", rank:1,
+          sig:{p:"MyScoreIQ", w:"Monitoring alert", d:esc(r.flag)+" · caught on the "+esc(r.u)+" refresh"},
           why:"<b>"+esc(r.flag)+".</b> Their qualifying score moved "+esc(r.t)+" and the date pushed to "+
               esc(r.eta||"later")+". They almost certainly do not know yet, and if they hear it from "+
               "somebody else first the file is gone.",
           msg:"Something landed on your credit this week. Nothing is lost, but I want to walk you through it before it becomes a problem — are you around later today?", w:w});
       } else if(g===0 && r.ua && /today|yesterday|days ago/i.test(r.ua)){
         out.push({r:r, k:"now", tag:"Qualifies now", rank:0,
+          sig:{p:"MyScoreIQ", w:"Monthly refresh", d:"Qualifying score crossed "+THRESH[r.p]+" on the "+esc(r.u)+" pull"},
           why:"Crossed at <b>"+m+"</b>, which clears "+esc(r.p)+" by "+(m-THRESH[r.p])+". Updated "+
               esc(r.ua.toLowerCase())+" and they have not been told.",
           msg:"Your credit came back where we needed it — you qualify today. Twenty minutes this week to get the paperwork moving?", w:w});
       } else if(g>0 && g<=15){
         out.push({r:r, k:"soon", tag:"One move away", rank:2,
+          sig:{p:"CreditBuilderIQ", w:"Readiness engine", d:g+" points from "+esc(r.p)+" · one lever on the shelf closes it"},
           why:"<b>"+g+" points</b> from "+esc(r.p)+" at "+m+". Close enough that a single action on the "+
               "plan gets them there, and it is worth telling them exactly which one.",
           msg:"You are "+g+" points away and I know the one move that gets you there fastest. Five minutes on the phone?", w:w});
       } else if(miss){
         out.push({r:r, k:"soon", tag:"Clears something else", rank:3,
+          sig:{p:"CreditBuilderIQ", w:"Program matching", d:"Re-ran your shelf overnight · clears "+esc(miss.best.k)+" at "+m},
           why:"Asked about "+esc(r.p)+" and does not clear it, but at "+m+" they already clear <b>"+
               esc(miss.best.k)+"</b>. Nobody has told them, because nobody re-runs the shelf.",
           msg:"I ran your file against everything we offer, not just what you asked about. There is a program you qualify for right now.", w:w});
@@ -5904,6 +6405,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     /* the quiet ones, last */
     EVERYONE.slice(0,3).forEach(function(r){
       if(/weeks/.test(r.ua||"")) out.push({r:r, k:"quiet", tag:"Gone quiet", rank:4,
+        sig:{p:"MyScoreIQ", w:"Monitoring", d:"No movement on the file in "+esc(r.ua)},
         why:"No activity in "+esc(r.ua)+". Still on the plan, still moving, but disengaged &mdash; and "+
             "month three is where these programs lose people.",
         msg:"Just checking in — your file is still moving the right way. Anything you want me to look at?", w:worthOf(r)});
@@ -5934,6 +6436,8 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
             '<div class="tdwho"><b>'+esc(x.r.n)+'</b>'+
               '<span class="tdtag '+x.k+'">'+x.tag+'</span>'+
               '<span class="p6city">'+esc(x.r.p)+' &middot; needs '+THRESH[x.r.p]+'</span></div>'+
+            (x.sig?'<div class="tdsig"><span class="tdsp '+(x.sig.p==="MyScoreIQ"?"score":"build")+'">'+
+              x.sig.p+'</span><span class="tdsw">'+x.sig.w+'</span><span class="tdsd">'+x.sig.d+'</span></div>':'')+
             '<div class="tdwhy">'+x.why+'</div>'+
             (w.save?'<div class="tdline"><b>'+w.need+' points</b> from here is worth <b>'+
               money0(w.save)+'/mo</b>, or <b>'+money0(w.save*360)+'</b> across the loan. '+
@@ -6555,7 +7059,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   });
   tabs(".subnav button",function(b){
     var s=b.getAttribute("data-sub");
-    ["today","pipeline","working","build","closed","bring","crm"].forEach(function(x){ document.getElementById("s-"+x).hidden=(x!==s); });
+    ["today","pipeline","working","build","closed","bring","subs","crm"].forEach(function(x){ document.getElementById("s-"+x).hidden=(x!==s); });
   });
 
   var th={fha:580,conv:640,va:600};
@@ -6973,7 +7477,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
      fade is that affordance, so it is applied only when something is
      actually hidden; a strip that fits keeps its clean edge. */
   function navOverflow(){
-    var navs = document.querySelectorAll(".viewnav, .subnav"), i, n;
+    var navs = document.querySelectorAll(".viewnav, .subnav, .dtabs"), i, n;
     for(i=0;i<navs.length;i++){
       n = navs[i];
       /* a hidden view measures 0/0 — leave its flag alone until it shows */
