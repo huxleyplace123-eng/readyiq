@@ -2249,10 +2249,17 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   /* the selected tab reads as an underline once the pill background is gone */
   .viewnav button[aria-selected="true"]{background:transparent; color:var(--brand);
     font-weight:600; box-shadow:inset 0 -2px 0 var(--brand)}
-  /* on the narrowest phones the tabs still outrun the row, so it scrolls —
-     fade the right edge so that is visible rather than something you have
-     to discover. data-overflow is set from script only when it applies. */
-  .viewnav[data-overflow="1"]{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);
+}
+
+/* Both nav strips scroll rather than wrap, and neither said so. The section
+   subnav is the worse offender — 650px of tabs in a 350px window, with
+   "Credit building" sliced mid-word and three more sections past the edge.
+   Fade the right edge so the overflow is visible instead of something you
+   have to discover; script sets data-overflow only when it actually applies,
+   so a strip that fits keeps a clean edge. */
+@media (max-width:820px){
+  .viewnav[data-overflow="1"], .subnav[data-overflow="1"]{
+    -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);
     mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent)}
 }
 
@@ -6959,12 +6966,20 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     }
   }
 
-  /* The view nav only overflows on very narrow phones; the edge fade is
-     the affordance, so it is applied only when there is something hidden. */
+  /* Both nav strips scroll sideways on a phone rather than wrap. The view
+     nav only overflows on very narrow screens, but the section subnav is
+     650px of tabs in a 350px window on every phone — three of the lender's
+     sections sit off the edge with nothing to say they are there. The edge
+     fade is that affordance, so it is applied only when something is
+     actually hidden; a strip that fits keeps its clean edge. */
   function navOverflow(){
-    var nav = document.querySelector(".viewnav");
-    if(!nav) return;
-    nav.setAttribute("data-overflow", nav.scrollWidth > nav.clientWidth + 2 ? "1" : "0");
+    var navs = document.querySelectorAll(".viewnav, .subnav"), i, n;
+    for(i=0;i<navs.length;i++){
+      n = navs[i];
+      /* a hidden view measures 0/0 — leave its flag alone until it shows */
+      if(!n.clientWidth) continue;
+      n.setAttribute("data-overflow", n.scrollWidth > n.clientWidth + 2 ? "1" : "0");
+    }
   }
 
   var queued = false, busy = false;
@@ -6981,9 +6996,12 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   function start(){
     sweep();
     navOverflow();
-    /* childList only — stamp() writes attributes and classes, and observing
-       those would have it chasing its own tail */
-    new MutationObserver(schedule).observe(document.body, {childList:true, subtree:true});
+    /* childList for re-rendered rows, plus the two attributes that reveal a
+       previously hidden strip so it can finally be measured. Deliberately
+       narrow: stamp() writes class, data-th and data-overflow, none of which
+       are watched, so this never chases its own tail. */
+    new MutationObserver(schedule).observe(document.body,
+      {childList:true, subtree:true, attributes:true, attributeFilter:["hidden","aria-selected"]});
     window.addEventListener("resize", navOverflow);
   }
 
