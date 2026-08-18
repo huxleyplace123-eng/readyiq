@@ -72,8 +72,10 @@ button{font:inherit; color:inherit; border:0; background:none; cursor:pointer}
 .viewnav{display:flex; gap:2px; margin-left:auto; background:var(--surface-2); padding:3px;
   border-radius:var(--r-sm); border:1px solid var(--line); min-width:0; overflow-x:auto; scrollbar-width:none}
 .viewnav::-webkit-scrollbar{display:none}
-@media (max-width:900px){.viewnav button{padding:6px 11px; font-size:12.5px}}
 .viewnav button{padding:6px 15px; border-radius:7px; font-size:13px; font-weight:500; color:var(--ink-3); transition:.15s}
+/* has to sit after the base rule — same specificity, so declaration order
+   decides, and above this line the narrow-screen sizing never applied */
+@media (max-width:900px){.viewnav button{padding:6px 11px; font-size:12.5px}}
 .viewnav button[aria-selected="true"]{background:var(--brand); color:#fff}
 
 .wrap{max-width:1200px; margin:0 auto; padding:26px 20px 80px}
@@ -1792,7 +1794,10 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 @media (max-width:760px){.pzwho{grid-template-columns:minmax(0,1fr)}
   .pzrow{grid-template-columns:minmax(0,1fr); gap:10px; padding:18px 18px 17px}}
 
-/* ── the agent pipeline, laid out on a grid instead of by accident ── */
+/* ── the agent pipeline, laid out on a grid instead of by accident ──
+   Freezing and scroll-capping only make sense while this is still a table;
+   below 760px the rows restack as cards, so the whole group is gated. */
+@media (min-width:761px){
 .tablewrap.agpipe{max-height:min(70vh,720px); overflow:auto; position:relative}
 .tablewrap.agpipe thead th{position:sticky; top:0; z-index:4; background:var(--surface);
   box-shadow:inset 0 -1px 0 var(--line)}
@@ -1805,6 +1810,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 /* a band header spans all eight columns, so it can be neither frozen nor
    edged - the frozen column's hairline would trail off its right end */
 .tablewrap.agpipe tbody tr.p6band td{position:static; background:var(--surface-2); box-shadow:none}
+}
 .agtbl{min-width:1187px; table-layout:fixed}
 .agtbl col.cadded{width:118px}
 .agtbl col.cscore{width:168px}
@@ -2007,7 +2013,10 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
   .gmmeta div:last-child{border-bottom:0}
   .gmplay h4{font-size:22px}}
 
-/* ── the pipeline scrolls inside its own box, not down the page ── */
+/* ── the pipeline scrolls inside its own box, not down the page ──
+   Gated the same way as the agent pipeline: on a phone these rows become
+   cards, and a frozen column inside a card is meaningless. */
+@media (min-width:761px){
 .tablewrap.pipe{max-height:min(70vh,720px); overflow:auto; position:relative}
 .tablewrap.pipe thead th{position:sticky; top:0; z-index:4; background:var(--surface);
   box-shadow:inset 0 -1px 0 var(--line)}
@@ -2025,6 +2034,7 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 /* the state rail lives on the sticky cell, so it rides along */
 .tablewrap.pipe tbody tr.s-ready td.cbcell{box-shadow:inset 3px 0 0 var(--green)}
 .tablewrap.pipe tbody tr.s-risk td.cbcell{box-shadow:inset 3px 0 0 var(--red)}
+}
 
 /* ── the document opens as a title page, not a landing page ── */
 .dochead{padding:34px 0 44px; border-bottom:1px solid var(--line-2); margin-bottom:42px}
@@ -2210,6 +2220,198 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
 .bwmonth b{color:var(--green); font-weight:600}
 
 @media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
+
+/* ══════════════════════════════════════════════════════════════════════
+   MOBILE PASS
+   Everything above was drawn for a desktop dashboard. The page grid was
+   already collapsing to one column, but the app chrome, the type scale,
+   the tap targets and the wide tables never got a phone treatment. This
+   block is deliberately last so it wins on declaration order rather than
+   by rewriting the rules it corrects.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── the top bar ──
+   It was a single nowrap flex row — logo, audience toggle, then .viewnav
+   pushed right by margin-left:auto. Because .viewnav carried min-width:0
+   it absorbed the entire shortfall instead of the bar wrapping: on a
+   390px phone it measured 45px of scroll window holding 341px of tabs,
+   so every section of the app hid behind a sliver you had to know to
+   swipe. Let the bar wrap and give the nav a full-width row of its own. */
+@media (max-width:820px){
+  .topbar{flex-wrap:wrap; height:auto; align-items:center; gap:9px 14px; padding:9px 15px 0}
+  .topbar .logo{font-size:16px}
+  .p4role{margin-left:auto}
+  .p4role > label{display:none}          /* "Viewing as" — the segment says it */
+  .viewnav{order:3; flex:1 0 100%; margin-left:0; justify-content:flex-start;
+    border-radius:0; border:0; border-top:1px solid var(--line); background:transparent;
+    padding:4px 0 0; margin-top:1px}
+  .viewnav button{flex:none; border-radius:7px 7px 0 0; padding:8px 13px 9px}
+  /* the selected tab reads as an underline once the pill background is gone */
+  .viewnav button[aria-selected="true"]{background:transparent; color:var(--brand);
+    font-weight:600; box-shadow:inset 0 -2px 0 var(--brand)}
+}
+
+/* Both nav strips scroll rather than wrap, and neither said so. The section
+   subnav is the worse offender — 650px of tabs in a 350px window, with
+   "Credit building" sliced mid-word and three more sections past the edge.
+   Fade the right edge so the overflow is visible instead of something you
+   have to discover; script sets data-overflow only when it actually applies,
+   so a strip that fits keeps a clean edge. */
+@media (max-width:820px){
+  .viewnav[data-overflow="1"], .subnav[data-overflow="1"]{
+    -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);
+    mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent)}
+}
+
+/* ── touch targets ──
+   13 controls sat under the 44px minimum: the audience toggle at 29px,
+   the drawer close at 30, the call/text/email row at 35, tabs at 34.
+   Scoped to coarse pointers so the desktop density is untouched. */
+@media (pointer:coarse){
+  .btn, .btn.ghost{min-height:44px}
+  .closex{min-width:44px; min-height:44px}
+  .dtabs button, .subnav button{min-height:44px}
+  .dtabs button{padding:0 0 14px}
+  /* segmented and chip controls stop at 40 — 44 blows the pill proportions
+     out, and these always sit next to a full-height button for scale */
+  .p4seg button, .ptabs button, .viewnav button,
+  .seg button, .seg2 button, .p7bar button, .p7pick button,
+  .tdfil button, .p3pick button, .crmpick button{min-height:40px}
+  .p4seg button{padding:9px 14px}
+  .swatch{min-width:36px; min-height:36px}
+  .cb{min-width:26px; min-height:26px}
+}
+
+/* ── type scale ──
+   1105 elements rendered at 12.5px and ~500 more between 8px and 11.5px.
+   Fine at desk distance, not on a phone. Nudge the floor up rather than
+   rescaling everything, so the desktop rhythm survives. */
+@media (max-width:760px){
+  td, .maptbl td{font-size:13.5px}
+  th, .maptbl th{font-size:10.5px; letter-spacing:.08em}
+  .stat .k{font-size:11.5px}
+  .p3jump .p3jt small, .ghostnote, .stacknote, .notice{font-size:13px; line-height:1.55}
+  .sub, .l2{font-size:12px}
+}
+
+/* the channel header keeps its status pill on the title's line, which ran
+   past the right edge once the title wrapped */
+@media (max-width:760px){
+  .chanhd{flex-wrap:wrap}
+}
+
+/* ── the "open partners" jump ──
+   .p3jt carries min-width:0, so instead of wrapping the trailing link the
+   flex row just crushed the copy — the body text was landing three words
+   to a line. Give the text a full basis so the link wraps beneath it. */
+@media (max-width:620px){
+  .p3jump{flex-wrap:wrap; align-items:flex-start}
+  .p3jump .p3jt{flex:1 1 calc(100% - 31px)}
+  .p3jump .p3ja{flex:1 0 100%; margin-left:31px; margin-top:8px}
+}
+
+/* ── wide tables become cards ──
+   The pipeline table is 1417px wide, the agent table 1187px and the
+   partner table 940px, each inside a ~348px scroller — about a quarter
+   of a row visible at a time. Below 760px each row restacks as a card
+   and every cell picks up its column name from the <th>, stamped onto
+   data-th at runtime (see the script at the end of the file).
+   Marked tables only, so the genuinely narrow ones are left alone. */
+@media (max-width:760px){
+  .tablewrap.ascards{overflow:visible; border:0; background:transparent; max-height:none}
+  .tablewrap.ascards table{min-width:0; width:100%; display:block; table-layout:auto}
+  .tablewrap.ascards thead{display:none}
+  .tablewrap.ascards colgroup{display:none}
+  .tablewrap.ascards tbody{display:block}
+
+  /* A three-column grid, not a block: ordinary cells span the full width,
+     and the three bureau-score cells drop into one column each so they read
+     as a single strip. Percentage widths on inline cells round badly at
+     phone widths and wrapped the third bureau onto its own line. */
+  .tablewrap.ascards tbody tr{display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+    margin-bottom:10px; padding:13px 15px; position:relative;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+    box-shadow:var(--shadow)}
+  .tablewrap.ascards tbody tr:hover{background:var(--surface)}
+
+  /* the status stripe the desktop table carried on its sticky first cell */
+  .tablewrap.ascards tbody tr.s-ready{border-left:3px solid var(--green)}
+  .tablewrap.ascards tbody tr.s-risk{border-left:3px solid var(--red)}
+  .tablewrap.ascards tbody tr.picked{background:var(--brand-wash); border-color:var(--brand-line)}
+
+  /* min-width:0 matters: a grid item defaults to min-width:auto, so without
+     it a cell refuses to shrink below its content and punches out of its
+     track — which is exactly what the third bureau score was doing */
+  .tablewrap.ascards tbody td{grid-column:1/-1; display:flex; flex-wrap:wrap;
+    align-items:baseline; gap:0 12px; min-width:0;
+    height:auto; min-height:0; padding:5px 0; border:0; text-align:left !important;
+    position:static; box-shadow:none; background:transparent}
+  .tablewrap.ascards tbody td::before{content:attr(data-th); flex:0 0 38%;
+    font-size:10px; font-weight:500; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--ink-4); line-height:1.5}
+  .tablewrap.ascards tbody td[data-th=""]::before{display:none}
+  .tablewrap.ascards tbody td > *{flex:1 1 auto; min-width:0}
+  /* a cell carrying a value and a qualifier ("VA Purchase" / "needs 600")
+     stacks them in the value column rather than setting them side by side */
+  .tablewrap.ascards tbody td:not(.cardhead) > * ~ *{flex:1 1 100%; margin-left:calc(38% + 12px)}
+  /* these centre themselves against a fixed desktop column; in a card the
+     value column starts at the label, so centring reads as a stray indent */
+  .tablewrap.ascards tbody td .midcell{text-align:left}
+  .tablewrap.ascards tbody td .prods{justify-content:flex-start}
+
+  /* first cell is the card heading — name over email, no column label */
+  .tablewrap.ascards tbody td.cardhead{display:block; padding:0 0 9px; margin-bottom:8px;
+    border-bottom:1px solid var(--line)}
+  .tablewrap.ascards tbody td.cardhead::before{display:none}
+  .tablewrap.ascards tbody td.cardhead .who,
+  .tablewrap.ascards tbody td.cardhead .l1{font-size:15px}
+
+  /* the select checkbox rides in the heading corner instead of its own row */
+  .tablewrap.ascards tbody td.cbcell{position:absolute; right:13px; margin-top:-2px;
+    padding:0; width:auto}
+  .tablewrap.ascards tbody td.cbcell::before{display:none}
+
+  /* bureau scores read as one strip, not three label/value rows */
+  .tablewrap.ascards tbody td.bs{grid-column:auto; display:flex; flex-direction:column;
+    align-items:flex-start; gap:1px; padding:9px 0 3px}
+  .tablewrap.ascards tbody td.bs::before{flex:none; font-size:9.5px; letter-spacing:.06em}
+  .tablewrap.ascards tbody td.bs span{font-size:15px; font-weight:600}
+  .tablewrap.ascards tbody td.bs.mid span{color:var(--ink)}
+
+  /* the action button gets its own full-width row at the foot of the card */
+  .tablewrap.ascards tbody td.cardact{display:block; padding:12px 0 0; margin-top:9px;
+    border-top:1px solid var(--line)}
+  .tablewrap.ascards tbody td.cardact::before{display:none}
+  .tablewrap.ascards tbody td.cardact .btn{width:100%; justify-content:center}
+
+  /* rows that span the table — group bands, the empty state, "show all" */
+  .tablewrap.ascards tbody tr.emptyrow, .tablewrap.ascards tbody tr.grouprow,
+  .tablewrap.ascards tbody tr.p6band, .tablewrap.ascards tbody tr.spanrow{padding:11px 14px;
+    box-shadow:none; background:var(--surface-2)}
+  .tablewrap.ascards tbody tr.emptyrow td, .tablewrap.ascards tbody tr.grouprow td,
+  .tablewrap.ascards tbody tr.p6band td, .tablewrap.ascards tbody tr.spanrow td{display:block;
+    padding:0; text-align:center !important}
+  .tablewrap.ascards tbody tr.emptyrow td::before, .tablewrap.ascards tbody tr.grouprow td::before,
+  .tablewrap.ascards tbody tr.p6band td::before, .tablewrap.ascards tbody tr.spanrow td::before{display:none}
+  /* the band's aside runs on the same line as its title and ran off the
+     right edge; on a phone it gets its own line */
+  .tablewrap.ascards tbody tr.p6band .p6bs{display:block; margin:3px 0 0}
+}
+
+/* The two tables that sit outside a .tablewrap. They are narrow enough that
+   cards would be overkill, but their content still pushed the whole page
+   sideways on a 320px screen — so they carry their own scroll container. */
+@media (max-width:760px){
+  .gmt, .cttbl{display:block; overflow-x:auto; -webkit-overflow-scrolling:touch}
+}
+
+/* tables that stay tables still need to announce that they scroll */
+@media (max-width:760px){
+  .tablewrap:not(.ascards){position:relative}
+  .scrollhint{display:block; font-size:11.5px; color:var(--ink-4); margin:7px 2px 0;
+    letter-spacing:.01em}
+}
+.scrollhint{display:none}
 </style>
 
 <header class="topbar">
@@ -6651,6 +6853,160 @@ html[data-acct="agent"] [data-only="lender"]{display:none !important}
     ph+="</tr>";
   });
   document.getElementById("pricebody").innerHTML=ph;
+})();
+</script>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════
+   Mobile: turn the wide tables into cards.
+
+   The pipeline table is 1417px wide, the agent table 1187px and the
+   partner table 940px, each sitting in a ~348px scroller on a phone. The
+   stacked-card layout lives in CSS; what it needs from here is a column
+   name on every cell, because a card has no <thead> to read across to.
+
+   Rather than thread data-th through half a dozen row builders — several
+   of which render from JS and re-render on every filter, sort and search —
+   the labels are stamped from the table's own <thead> at runtime, and a
+   MutationObserver re-stamps whatever gets replaced. Tables opt in by
+   their natural width, so this keeps working if a column is added later.
+   ══════════════════════════════════════════════════════════════════════ */
+(function(){
+  "use strict";
+
+  /* Past this natural width a phone card beats a sideways scroller. Below
+     it the table still fits a swipe, and a table it stays. */
+  var CARD_MIN = 620;
+  /* Comparison matrices read as matrices — the columns ARE the comparison,
+     so stacking them destroys the point. These keep scrolling instead, and
+     just pick up the hint. .tl is the tri-merge: its three bureau columns
+     are the whole reason the table exists. */
+  var OPT_OUT = ".tiers table, .tl, .p2mx, .gmt, .p5tbl, .crmlist";
+  /* every container that scrolls a table sideways, not just .tablewrap */
+  var WRAPS = ".tablewrap, .tiers, .tlwrap";
+  var HINT = "Scroll sideways for the rest of this table.";
+
+  function headings(table){
+    var head = table.tHead, out = [];
+    if(!head || !head.rows.length) return out;
+    var cells = head.rows[head.rows.length-1].cells;
+    for(var i=0;i<cells.length;i++){
+      /* clone so the sort caret does not end up in the label */
+      var c = cells[i].cloneNode(true), ind = c.querySelector(".ind");
+      if(ind) ind.parentNode.removeChild(ind);
+      out.push(c.textContent.replace(/\s+/g," ").trim());
+    }
+    return out;
+  }
+
+  function stamp(table){
+    var labels = headings(table);
+    if(!labels.length) return;
+    for(var b=0;b<table.tBodies.length;b++){
+      var rows = table.tBodies[b].rows;
+      for(var i=0;i<rows.length;i++){
+        var cells = rows[i].cells, j;
+        /* a single cell spanning the table is a band, an empty state or a
+           "200 more" footer — it is not a record and must not be carded */
+        if(cells.length === 1 && cells[0].colSpan > 1){
+          rows[i].classList.add("spanrow");
+          continue;
+        }
+        var head = -1, act = -1;
+        for(j=0;j<cells.length;j++){
+          cells[j].setAttribute("data-th", labels[j] || "");
+          if(head < 0 && !cells[j].classList.contains("cbcell")) head = j;
+          if(cells[j].querySelector(".btn")) act = j;   /* last one wins */
+        }
+        if(head > -1) cells[head].classList.add("cardhead");
+        if(act > -1 && act !== head) cells[act].classList.add("cardact");
+      }
+    }
+  }
+
+  /* Measured once, before .ascards is applied, so it reflects the table's
+     real min-width rather than the collapsed card layout.
+
+     Most of these tables start life inside a hidden view, where scrollWidth
+     is 0 and tells us nothing — so fall back to the declared min-width,
+     which is what makes them too wide in the first place. A zero is never
+     cached, so a table stays re-measurable until it has actually rendered. */
+  function naturalWidth(table){
+    if(table.__natW) return table.__natW;
+    var w = table.scrollWidth;
+    if(!w){
+      var min = parseFloat(getComputedStyle(table).minWidth);
+      w = min > 0 ? min : 0;
+    }
+    if(w) table.__natW = w;
+    return w;
+  }
+
+  function addHint(wrap, table){
+    if(wrap.__hinted) return;
+    wrap.__hinted = 1;
+    /* width-independent: CSS decides whether the hint is actually shown,
+       so this does not need re-running when the viewport changes */
+    if(naturalWidth(table) <= 380) return;
+    var p = document.createElement("p");
+    p.className = "scrollhint";
+    p.textContent = HINT;
+    if(wrap.parentNode) wrap.parentNode.insertBefore(p, wrap.nextSibling);
+  }
+
+  function sweep(){
+    var wraps = document.querySelectorAll(WRAPS), i;
+    for(i=0;i<wraps.length;i++){
+      var wrap = wraps[i], table = wrap.querySelector("table");
+      if(!table) continue;
+      stamp(table);
+      if(table.matches && table.matches(OPT_OUT)){ addHint(wrap, table); continue; }
+      if(naturalWidth(table) > CARD_MIN) wrap.classList.add("ascards");
+      else addHint(wrap, table);
+    }
+  }
+
+  /* Both nav strips scroll sideways on a phone rather than wrap. The view
+     nav only overflows on very narrow screens, but the section subnav is
+     650px of tabs in a 350px window on every phone — three of the lender's
+     sections sit off the edge with nothing to say they are there. The edge
+     fade is that affordance, so it is applied only when something is
+     actually hidden; a strip that fits keeps its clean edge. */
+  function navOverflow(){
+    var navs = document.querySelectorAll(".viewnav, .subnav"), i, n;
+    for(i=0;i<navs.length;i++){
+      n = navs[i];
+      /* a hidden view measures 0/0 — leave its flag alone until it shows */
+      if(!n.clientWidth) continue;
+      n.setAttribute("data-overflow", n.scrollWidth > n.clientWidth + 2 ? "1" : "0");
+    }
+  }
+
+  var queued = false, busy = false;
+  function schedule(){
+    if(queued || busy) return;
+    queued = true;
+    requestAnimationFrame(function(){
+      queued = false;
+      busy = true;                 /* our own writes must not re-trigger us */
+      try { sweep(); navOverflow(); } finally { busy = false; }
+    });
+  }
+
+  function start(){
+    sweep();
+    navOverflow();
+    /* childList for re-rendered rows, plus the two attributes that reveal a
+       previously hidden strip so it can finally be measured. Deliberately
+       narrow: stamp() writes class, data-th and data-overflow, none of which
+       are watched, so this never chases its own tail. */
+    new MutationObserver(schedule).observe(document.body,
+      {childList:true, subtree:true, attributes:true, attributeFilter:["hidden","aria-selected"]});
+    window.addEventListener("resize", navOverflow);
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+  else start();
 })();
 </script>
 
